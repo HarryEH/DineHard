@@ -2,10 +2,39 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/mydb');
 
-const Cat = mongoose.model('Cat', { name: String});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    // we're connected!
+    console.log("connected");
+});
 
-const kitty = new Cat({ name: 'Zildjian' });
+var kittySchema = mongoose.Schema({
+    name: String
+});
 
-kitty.save().then(() => console.log('meow'));
+kittySchema.methods.speak = function () {
+    var greeting = this.name
+        ? "Meow name is " + this.name
+        : "I don't have a name";
+    console.log(greeting);
+}
+
+var Kitten = mongoose.model('Kitten', kittySchema);
+
+var fluffy = new Kitten({ name: 'fluffy' });
+fluffy.speak(); // "Meow name is fluffy"
+
+fluffy.save(function (err, fluffy) {
+    if (err) return console.error(err);
+    fluffy.speak();
+});
+
+Kitten.find(function (err, kittens) {
+    if (err) return console.error(err);
+    console.log(kittens);
+})
+
+Kitten.find({ name: /^fluff/ }, callback);
 
 
