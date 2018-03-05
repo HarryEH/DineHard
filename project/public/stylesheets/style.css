@@ -255,3 +255,24 @@ a{
   text-decoration: none;
   color: var(--bg2-color);
 }
+
+.results {
+  margin: 3vh 0px 3vh 0px;
+  overflow: hidden;
+  position: relative;
+  height: 15vh;
+    font-size: 14px;
+}
+
+.restName{
+    font-size: 18px;
+}
+
+p.results {
+    margin: 0px;
+}
+
+.thumbnail{
+    height: 100%;
+    width: 100%;
+}
