@@ -1,0 +1,257 @@
+:root{
+  /*--bg-color: #E5FCC2;
+  --bg2-color: #9DE0AD;
+  --nav-color: #45ADA8;
+  --text2-color: #547980;
+  --text-color: #594F4F;
+  --font: "Helvetica";*/
+  --bg-color: #FFF7F7;
+  --bg2-color: #D61F26;
+  --Y-color: #774C60;
+  --text-color: #000000;
+  --title-color: #FFFFFF;
+  --alert-color: #FF0008;
+  --shadow-color: #000000;
+  --font: "Trebuchet MS";
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+html {
+  background: var(--bg-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--bg-color);
+}
+
+
+a{
+  color: var(--title-color);
+}
+
+#top {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg2-color);
+  background-image: url("../images/titleImg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 0px;
+  -webkit-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+  -moz-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+  box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+}
+
+.titleHeader {
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  width: 80%;
+  z-index: 200;
+}
+
+.header {
+  /*position: fixed;*/
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: var(--bg2-color);
+  text-align: left;
+  margin: 0;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--bg2-color);
+  color: white;
+  text-align: left;
+  font-size: 12px;
+}
+
+.mainTitle {
+  color: var(--title-color);
+  font-size: 62px;
+  font-family: var(--font);
+  text-align: center;
+  margin-top: 10vw;
+  text-shadow: 2px 2px var(--shadow-color);
+}
+
+.mainSubtitle{
+  color: var(--title-color);
+  font-size: 24px;
+  text-align: center;
+  font-family: var(--font);
+  margin-top: 2vw;
+  margin-bottom: 10vw;
+  text-shadow: 2px 2px var(--shadow-color);
+}
+
+.searchTitle{
+  color: var(--title-color);
+  font-size: 18px;
+  text-align: center;
+  font-family: var(--font);
+  margin: 0 auto;
+}
+
+.titleSearch{
+  //float: left;
+  margin: 3px 0px 3px 10px;
+  width: 45vw;
+  height: 5vw;
+  max-height: 40px;
+  max-width: 650px;
+  font-size: 20px;
+  border: none;
+  border-color: transparent;
+}
+
+.titleSubmit{
+  float: right;
+  background-color: var(--bg2-color);
+  height: 5vw;
+  width: 10vw;
+  margin: 3px 10px 3px 0px;
+  max-height: 40px;
+  max-width: 80px;
+  color: var(--title-color);
+  font-size: 16px;
+  font-family: var(--font);
+  padding: 0;
+  border: none;
+}
+
+#msg {
+  float: left;
+  margin: 10px 0px 10px 0px;
+  color: var(--title-color);
+  font-family: var(--font);
+  font-size: 16px;
+}
+
+#top-links {
+  color: var(--title-color);
+  font-family: var(--font);
+  font-size: 16px;
+  float: right;
+  margin: 10px 0px 10px 0px;
+}
+
+.inlineList li {
+  display:inline;
+}
+
+.inlineList li + li:before {
+  content: " | ";
+}
+
+.search{
+  background: #ffffff;
+  margin: 0 auto;
+  width: 60%;
+  max-width: 800px;
+  margin-bottom: 15px;
+}
+
+.softHighlight{
+  background: rgba(20,20,20,0.65);
+}
+
+.alert{
+  background: var(--alert-color);
+  color: var(--title-color);
+  text-align: center;
+  width: 100%;
+  margin-top: 0px;
+  border-radius: 0px;
+  font-size: 14px;
+}
+
+.restInfo{
+  margin: 10px 15px 10px 0px;
+  color: var(--text-color);
+  font-size: 16px;
+  font-family: var(--font);
+}
+
+.title{
+  font-size: 30px;
+}
+
+.text
+{
+  margin:auto;
+  width: 85%;
+}
+
+.indexFeat{
+    text-align: center;
+    font-size: 30px;
+    margin: 0 auto;
+ }
+
+.featIcon{
+    font-size: 50px;
+}
+
+.slideshowImg{
+  height: 50vh;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  width:100%;
+  position: relative;
+  margin: auto;
+  background: #000000;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+#prev, #next {
+  color: var(--title-color);
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+#next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+#prev:hover, #next:hover {
+  background-color: rgba(0,0,0,0.8);
+  text-decoration: none;
+  color: var(--bg2-color);
+}

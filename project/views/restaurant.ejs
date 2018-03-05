@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid header">
+    <div id="msg">DINE HARD</div>
+    <ul class="inlineList" id="top-links">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/registration">Register</a></li>
+    </ul>
+</div>
+
+<div class="container-fluid restInfo">
+
+    <div class="row">
+        <ul class="inlineList">
+            <li><p class="title">Restuarant Name</p></li>
+        </ul>
+    </div>
+
+    <div class = "row">
+        <ul class="inlineList">
+            <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span>Average Score with X reviews</li>
+            <li>Cuisine(s)</li>
+        </ul>
+    </div>
+
+    <div class = "row inlineList">
+        <ul class="inlineList">
+            <li>Address (X miles away)</li>
+            <li><span class="glyphicon glyphicon-earphone"></span> Phone Number</li>
+            <li><i class="fa fa-laptop"></i> Website</li>
+        </ul>
+    </div>
+
+    <div class = "row">
+        <div class="slideshow-container">
+            <div class="restImg">
+                <img class="slideshowImg" src="images/restTest1.jpg">
+            </div>
+            <div class="restImg">
+                <img class="slideshowImg" src="images/restTest2.jpg">
+            </div>
+            <div class="restImg">
+                <img class="slideshowImg" src="images/restTest3.jpg">
+            </div>
+            <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a id="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <br>
+
+    <div class = "row">
+        <div class="col-8">
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="col-4">
+            MAP GOES HERE
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid footer">
+    © 2018 Copyright by Dine Hard. All Rights Reserved. Designed by Fab.io
+</div>
+
+<script src="javascripts/slideshow.js"></script>
+</body>
+</html>
