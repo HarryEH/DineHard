@@ -35,6 +35,10 @@ Kitten.find(function (err, kittens) {
     console.log(kittens);
 })
 
-Kitten.find({ name: /^fluff/ }, callback);
+var q = [];
+
+Kitten.find({ name: /^fluff/ }, q);
+
+console.log(q);
 
 
