@@ -1,6 +1,12 @@
 project/.idea/*
+project/.idea/jsLibraryMapping.xml
+project/.idea/misc.xml
+project/.idea/modules.xml
+project/.idea/workspace.xml
+project/.idea/runConfigurations/*
+project/.idea/runConfigurations/bin_www.xml
+
 
 project/.idea
 
 project/project.iml
-
