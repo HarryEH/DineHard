@@ -1,4 +1,5 @@
-<!DocType html>
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +10,17 @@
     <link rel="stylesheet" href="stylesheets/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="javascripts/error.js"></script>
 </head>
-<body onload='errorCheck(<%= error.status %>)'>
-
-    <% include header.ejs %>
-
-    <div class="container">
-        <div id="errorTitle"></div>
-        <h2>Error <%= error.status %></h2>
-        <pre><%= error.stack %></pre>
-    </div>
-
-    <% include footer.ejs %>
+<body>
+<div class="container-fluid header">
+    <div id="msg">DINE HARD</div>
+    <ul class="inlineList" id="top-links">
+        <% if (!loggedIn) {%>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/registration">Register</a></li>
+        <% } else { %>
+        <li><a href="/profile">View Profile</a></li>
+        <% } %>
+    </ul>
+</div>
 </body>
-

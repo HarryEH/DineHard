@@ -12,13 +12,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container-fluid header">
-    <div id="msg">DINE HARD</div>
-    <ul class="inlineList" id="top-links">
-        <li><a href="/login">Login</a></li>
-        <li><a href="/registration">Register</a></li>
-    </ul>
-</div>
+
+<% include header.ejs %>
 
 <div class="container-fluid restInfo">
 
@@ -71,10 +66,7 @@
     </div>
 </div>
 
-
-<div class="container-fluid footer">
-    © 2018 Copyright by Dine Hard. All Rights Reserved. Designed by Fab.io
-</div>
+<% include footer.ejs %>
 
 <script src="javascripts/slideshow.js"></script>
 </body>
