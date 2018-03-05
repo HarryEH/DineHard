@@ -10,4 +10,8 @@ router.get('/restaurant', function(req, res, next) {
     res.render('restaurant', { loggedIn: true });
 });
 
+router.get('/restaurant-*', function(req, res, next) {
+    res.render('restaurant', { loggedIn: true });
+});
+
 module.exports = router;
