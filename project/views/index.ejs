@@ -15,8 +15,12 @@
 <div class="container-fluid header">
     <div id="msg">DINE HARD</div>
     <ul class="inlineList" id="top-links">
-        <li><a href="/login">Login</a></li>
-        <li><a href="/registration">Register</a></li>
+        <% if (!loggedIn) {%>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/registration">Register</a></li>
+        <% } else { %>
+            <li><a href="/profile">View Profile</a></li>
+        <% } %>
     </ul>
 </div>
 
