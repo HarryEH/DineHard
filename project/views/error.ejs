@@ -11,12 +11,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="javascripts/error.js"></script>
 </head>
-<body onload='errorCheck(<%= error.status %>)'>
+<body>
 
     <% include header.ejs %>
 
     <div class="container">
-        <div id="errorTitle"></div>
+        <% if (error.status == "404") {%>
+            <div id="errorTitle">Whoospies! This page doesn't seem to exist.</div>
+        <% } else { %>
+            <div id="errorTitle">An error has occurred.</div>
+        <%}%>
         <h2>Error <%= error.status %></h2>
         <pre><%= error.stack %></pre>
     </div>

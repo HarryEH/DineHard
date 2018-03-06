@@ -14,21 +14,39 @@
 <body>
 
     <% include header.ejs %>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-2">
+            <div class="col-2 resultsSearch">
+                <form>
+                    <input type="text" class="" placeholder="Enter keyword(s)">
+                    <input type="submit" class="" value="Search">
+                </form>
+                <br>
+                <p>Distance from me: <span id="distVal"></span> miles</p>
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="25" value="10" class="slider" id="distRange">
+                </div>
+                <br>
+                <p style="display: inline">Sort by:</p>
+                <select name="sort" style="display: inline">
+                    <option value="relevance">Relevance</option>
+                    <option value="priceL2H">Price: Low to High</option>
+                    <option value="priceH2L">Price: High to Low</option>
+                    <option value="distance">Distance</option>
+                </select>
             </div>
             <div class="col-10">
                 <% results.forEach(function(item){ %>
                     <div class="container">
                         <div class="row results">
-                            <div class="col-3">
-                                <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50% no-repeat;">
+                            <div class="col-2">
+                                <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
                             </div>
-                            <div class="col-9">
-                                <p> <div class="restName"> <%= item %> </div>
-                                    Reviews <br>
-                                    Cusines <br> 1.1 Miles away</p>
+                            <div class="col-10">
+                                <div class="restName"> <a href="\<%= item %>"> <%= item %> </a> </div>
+                                Reviews <br>
+                                Cusines <br>
+                                1.1 Miles away
                             </div>
                         </div>
                     </div>
@@ -37,6 +55,16 @@
         </div>
     </div>
     <% include footer.ejs %>
+
+    <script>
+        var slider = document.getElementById("distRange");
+        var output = document.getElementById("distVal");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
 
 </body>
 </html>
