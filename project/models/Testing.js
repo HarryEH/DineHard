@@ -2,6 +2,7 @@ const models = require('./models');
 
 models.connect();
 
+// Example of saving
 var harry = new models.User({
     forename: "Harry",
     surname: "Howarth",
@@ -12,17 +13,17 @@ var harry = new models.User({
 });
 
 harry.save(function (err, harry) {
-    if (err) return console.error(err);
-    harry.getName();
+       if (err) return console.error(err);
+
 });
 
-console.log("q");
-
-var q = [];
-
-models.User.find({ forename: /^Har/ }, q);
-
-console.log(q);
+// Example query
+models.User.find({ forename: /^Har/ }, function (err, users) {
+    if (err) return console.error(err);
+    users.forEach(function(u){
+        console.log(u.surname);
+    })
+});
 
 
 // Example code

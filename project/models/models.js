@@ -79,15 +79,24 @@ userSchema.methods.getName = function () {
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+var user = mongoose.model('User', userSchema);
+
+var review = mongoose.model('Review', reviewSchema);
+
+
+var restaurantcuisine = mongoose.model('RestaurantCuisine', restaurantCuisineSchema);
+var cuisine = mongoose.model('Cuisine', cuisineSchema);
+var restaurant = mongoose.model('Restaurant', restaurantSchema);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Exports from this file
 module.exports = {
 
-    User: mongoose.model('User', userSchema),
-    Review: mongoose.model('Review', reviewSchema),
-    RestaurantCuisine: mongoose.model('RestaurantCuisine', restaurantCuisineSchema),
-    Cuisine: mongoose.model('Cuisine', cuisineSchema),
-    Restaurant: mongoose.model('Restaurant', restaurantSchema),
+    User: user,
+    Review: review,
+    RestaurantCuisine: restaurantcuisine,
+    Cuisine: cuisine,
+    Restaurant: restaurant,
 
     connect: function() {
         mongoose.connect('mongodb://localhost/mydb');
