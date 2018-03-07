@@ -109,15 +109,3 @@ module.exports = {
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// // This is just example code
-// var fluffy = new User({
-//     forename: "Harry",
-//     surname: "Howarth",
-//     email: "h@h.com",
-//     username: "HarryEH",
-//     password: "45e$ffdjj3120sH",
-//     score: 0
-// });
-//
-// fluffy.getName();
-
