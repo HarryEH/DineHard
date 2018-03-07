@@ -29,3 +29,23 @@ function showSlides(n) {
 
     slides[slideIndex-1].style.display = "inline";
 }
+
+function leftArrowPressed() {
+    showSlides(slideIndex -= 1);
+}
+
+function rightArrowPressed() {
+    showSlides(slideIndex += 1);
+}
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    switch (evt.keyCode) {
+        case 37:
+            leftArrowPressed();
+            break;
+        case 39:
+            rightArrowPressed();
+            break;
+    }
+};
