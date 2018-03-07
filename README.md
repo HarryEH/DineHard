@@ -10,3 +10,9 @@ git push
 
 
 git status
+
+
+if there have been changes to master when you are on your own branch & they are unlikely to conflict call
+
+git fetch origin
+git rebase origin/master
