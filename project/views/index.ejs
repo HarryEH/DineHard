@@ -30,8 +30,8 @@
       <p class="searchTitle">Enter your postcode to find local restaurants</p>
     </div>
       <div class="search" style="margin-top:1vh">
-          <form id="searchForm" onsubmit="onSearch()">
-              <input type="text" class="titleSearch" placeholder="Enter postcode" name="postcode" id="postcode">
+          <form id="searchForm" action="/results" method="get">
+              <input type="text" class="titleSearch" placeholder="Enter postcode or keywords" name="q" id="q">
               <input type="submit" class="titleSubmit" name="g" value="Search" id="g">
           </form>
       </div>

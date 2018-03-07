@@ -9,6 +9,8 @@ var restaurantSchema = mongoose.Schema({
     photoURL: String,
     tags: String,
     rating: Number,
+    lat: Number,
+    lng: Number,
     websiteURL: String
 });
 

@@ -51,6 +51,8 @@ var dinehard = new models.Restaurant({
     name: "Dine Hard",
     doorNumber: "37",
     postcode: "NE2 4RQ",
+    lat: 54.9857359,
+    lng: -1.6080269,
     photoURL: "null",
     tags: "homely, warm, good ambiance",
     rating: 3.14,
@@ -119,11 +121,3 @@ models.User.findOne({ forename: /^Har/ }, function (err, user) {
 // Kitten.find({ name: /^fluff/ }, q);
 //
 // console.log(q);
-
-
-function valid_postcode(postcode) {
-    postcode = postcode.replace(/\s/g, "");
-    var regex = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))[0-9][A-Za-z]{2})$/i;
-    return regex.test(postcode);
-}
-
