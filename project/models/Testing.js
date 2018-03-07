@@ -2,6 +2,8 @@ const models = require('./models');
 
 models.connect();
 
+// RUN `node models/Testing.js` from project directory
+
 // Example of saving
 var harry = new models.User({
     forename: "Harry",
@@ -12,17 +14,78 @@ var harry = new models.User({
     score: 0
 });
 
+var adam = new models.User({
+    forename: "Adam",
+    surname: "Orr",
+    email: "a@o.com",
+    username: "aca14ao",
+    password: "45e$ffdjj3120sA",
+    score: 0
+});
+
+var victoria = new models.User({
+    forename: "Victoria",
+    surname: "Neal",
+    email: "v@n.com",
+    username: "vneal1",
+    password: "45e$ffdjj3120sV",
+    score: 0
+});
+
 harry.save(function (err, harry) {
        if (err) return console.error(err);
 
 });
 
-// Example query
-models.User.find({ forename: /^Har/ }, function (err, users) {
+adam.save(function (err, adam) {
     if (err) return console.error(err);
-    users.forEach(function(u){
-        console.log(u.surname);
-    })
+
+});
+
+victoria.save(function (err, victoria) {
+    if (err) return console.error(err);
+
+});
+
+var dinehard = new models.Restaurant({
+    name: "Dine Hard",
+    doorNumber: "37",
+    postcode: "NE2 4RQ",
+    lat: 54.9857359,
+    lng: -1.6080269,
+    photoURL: "null",
+    tags: "homely, warm, good ambiance",
+    rating: 3.14,
+    websiteURL: "http://howarth.io"
+});
+
+dinehard.save(function (err, dinehard) {
+    if (err) return console.error(err);
+
+});
+
+// Example query
+models.User.findOne({ forename: /^Har/ }, function (err, user) {
+    if (err) return console.error(err);
+    models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
+        if (err) return console.error(err);
+
+        var review = new models.Review({
+            userId: user._id,
+            resId: res._id,
+            rating: "7",
+            time: "15:39:21",
+            date: "7/3/18",
+            review: "Absolutely great. Would recommend",
+            photos: ""
+        });
+
+        review.save(function (err, review) {
+            if (err) return console.error(err);
+
+        });
+
+    });
 });
 
 

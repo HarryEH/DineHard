@@ -1,17 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
+var ResultsController = require('./ResultsController');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var login = checkLogin();
     res.render('index', { loggedIn: login });
 });
 
-router.post('/index', function(req, res, next) {
-    var userData= req.body;
-    res.writeHead(200, { "Content-Type": "application/json"});
-    res.end(JSON.stringify(userData));
-});
 
 router.get('/restaurant', function(req, res, next) {
     var login = checkLogin();
@@ -26,9 +23,8 @@ router.get('/restaurant-*', function(req, res, next) {
 });
 
 router.get('/results', function(req, res, next) {
-    var login = checkLogin();
-    var results = ["Restaurant 1", "Restaurant 2", "Restaurant 3"];
-    res.render('results', { loggedIn: login, results: results  });
+    var login = checkLogin();// pass this
+    ResultsController.handleSearch(req,res, login);
 });
 
 router.get('/login', function(req, res, next) {

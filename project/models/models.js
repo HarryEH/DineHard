@@ -9,6 +9,8 @@ var restaurantSchema = mongoose.Schema({
     photoURL: String,
     tags: String,
     rating: Number,
+    lat: Number,
+    lng: Number,
     websiteURL: String
 });
 
@@ -80,10 +82,7 @@ userSchema.methods.getName = function () {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var user = mongoose.model('User', userSchema);
-
 var review = mongoose.model('Review', reviewSchema);
-
-
 var restaurantcuisine = mongoose.model('RestaurantCuisine', restaurantCuisineSchema);
 var cuisine = mongoose.model('Cuisine', cuisineSchema);
 var restaurant = mongoose.model('Restaurant', restaurantSchema);
@@ -111,16 +110,4 @@ module.exports = {
 
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// // This is just example code
-// var fluffy = new User({
-//     forename: "Harry",
-//     surname: "Howarth",
-//     email: "h@h.com",
-//     username: "HarryEH",
-//     password: "45e$ffdjj3120sH",
-//     score: 0
-// });
-//
-// fluffy.getName();
 
