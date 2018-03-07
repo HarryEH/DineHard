@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="stylesheets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="javascripts/location.js"></script>
-    <script src="javascripts/load.js"></script>
+  <script src="javascripts/location.js"></script>
+  <script src="javascripts/load.js"></script>
+  <script src="javascripts/search.js"></script>
 </head>
 <body onload="load();">
 
@@ -29,10 +30,10 @@
       <p class="searchTitle">Enter your postcode to find local restaurants</p>
     </div>
       <div class="search" style="margin-top:1vh">
-        <form id="titleSearch" onsubmit="">
-          <input type="text" class="titleSearch" placeholder="Enter postcode">
-          <input type="submit" class="titleSubmit" value="Search">
-        </form>
+          <form id="searchForm" onsubmit="onSearch()">
+              <input type="text" class="titleSearch" placeholder="Enter postcode" name="postcode" id="postcode">
+              <input type="submit" class="titleSubmit" name="g" value="Search" id="g">
+          </form>
       </div>
     </div>
   </div>

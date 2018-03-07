@@ -6,6 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { loggedIn: false });
 });
 
+router.post('/index', function(req, res, next) {
+    var userData= req.body;
+    res.writeHead(200, { "Content-Type": "application/json"});
+    res.end(JSON.stringify(userData));
+});
+
 router.get('/restaurant', function(req, res, next) {
     var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
     res.render('restaurant', { loggedIn: true, reviews: reviews });
