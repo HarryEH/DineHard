@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 });
 
 
-
 router.get('/restaurant', function(req, res, next) {
     var login = checkLogin();
     var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
@@ -25,7 +24,7 @@ router.get('/restaurant-*', function(req, res, next) {
 
 router.get('/results', function(req, res, next) {
     var login = checkLogin();// pass this
-    ResultsController.handleSearch(req,res);
+    ResultsController.handleSearch(req,res, login);
 });
 
 router.get('/login', function(req, res, next) {

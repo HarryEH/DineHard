@@ -10,7 +10,7 @@ function valid_postcode(postcode) {
 }
 
 module.exports = {
-    handleSearch: function(req, res) {
+    handleSearch: function(req, res, login) {
 
         var str = req.query.q;
         console.log(str);
@@ -23,7 +23,7 @@ module.exports = {
 
                 console.log(results);
 
-                res.render('results', { loggedIn: true, results: results  });
+                res.render('results', { loggedIn: login, results: results  });
 
             });
             return;
@@ -37,7 +37,7 @@ module.exports = {
 
                 console.log(results);
 
-                res.render('results', { loggedIn: true, results: results  });
+                res.render('results', { loggedIn: login, results: results  });
 
             });
             return;
@@ -62,13 +62,13 @@ module.exports = {
 
                 console.log(results);
 
-                res.render('results', { loggedIn: true, results: results  });
+                res.render('results', { loggedIn: login, results: results  });
 
             });
             return;
         }
 
-        res.render('results', { loggedIn: true, results: [{name:"res1"}, {name:"res2"}, {name:"res3"} ]  });
+        //res.render('results', { loggedIn: login, results: [{name:"res1"}, {name:"res2"}, {name:"res3"} ]  });
     }
 }
 
