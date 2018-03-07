@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script src="javascripts/login.js"></script>
+</head>
+<form id="loginForm" onsubmit="onlogin()">
+    <label for='username'>Username:</label>
+    <input type="'text" placeholder="Enter user name" name="username" id="username" value="hello">
+    <p><label for='password'>Password:</label>
+        <input type="password" placeholder="Enter password" name="password" id="password" value="password">
+    </p>
+    <p><input type="submit" name="g" value="Login" id="g"></p>
+</form>
+<div id="results" style="margin-top:30px"></div>
+
+</html>
