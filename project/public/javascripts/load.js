@@ -5,4 +5,8 @@ function load(){
         getLocation();
     }
 
+    if(sessionStorage.getItem("login") == null){
+        sessionStorage.setItem("login", false);
+    }
+
 }
