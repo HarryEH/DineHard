@@ -21,4 +21,25 @@ router.get('/results', function(req, res, next) {
     res.render('results', { loggedIn: true, results: results  });
 });
 
+router.get('/login', function(req, res, next) {
+    res.render('login', { loggedIn: false });
+});
+
+router.post('/login', function(req, res, next) {
+    var userData= req.body;
+    res.writeHead(200, { "Content-Type": "application/json"});
+    res.end(JSON.stringify(userData));
+});
+
+router.get('/register', function(req, res, next) {
+    res.render('register', { loggedIn: false});
+});
+
+router.post('/register', function(req, res, next) {
+    var userData= req.body;
+    res.writeHead(200, { "Content-Type": "application/json"});
+    res.end(JSON.stringify(userData));
+});
+
+
 module.exports = router;

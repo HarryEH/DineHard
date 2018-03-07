@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script src="javascripts/register.js"></script>
+</head>
+<form id="registerForm" onsubmit="register()">
+    <label for='forename'>Forename:</label>
+    <input type="'text" placeholder="Enter forename" name="forename" id="forename">
+    <p><label for='surname'>Surname:</label>
+        <input type="text" placeholder="Enter surname" name="surname" id="surname" >
+    </p>
+    <p><label for='email'>Email address:</label>
+        <input type="text" placeholder="Enter email" name="email" id="email">
+    </p>
+    <p><label for='username'>Username:</label>
+        <input type="text" placeholder="Enter username" name="username" id="username">
+    </p>
+    <p><label for='password'>Password:</label>
+        <input type="password" placeholder="Enter password" name="password" id="password">
+    </p>
+    <p><label for='username'>Confirm password:</label>
+        <input type="password" placeholder="Enter password" name="passwordconfirm" id="passwordconfirm">
+    </p>
+    <p><input type="submit" name="g" value="Register" id="g"></p>
+</form>
+<div id="results" style="margin-top:30px"></div>
+</html>
