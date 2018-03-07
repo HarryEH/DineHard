@@ -119,3 +119,11 @@ models.User.findOne({ forename: /^Har/ }, function (err, user) {
 // Kitten.find({ name: /^fluff/ }, q);
 //
 // console.log(q);
+
+
+function valid_postcode(postcode) {
+    postcode = postcode.replace(/\s/g, "");
+    var regex = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))[0-9][A-Za-z]{2})$/i;
+    return regex.test(postcode);
+}
+
