@@ -7,11 +7,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/restaurant', function(req, res, next) {
-    res.render('restaurant', { loggedIn: true });
+    var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
+    res.render('restaurant', { loggedIn: true, reviews: reviews });
 });
 
 router.get('/restaurant-*', function(req, res, next) {
-    res.render('restaurant', { loggedIn: true });
+    var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
+    res.render('restaurant', { loggedIn: true, reviews: reviews });
 });
 
 router.get('/results', function(req, res, next) {

@@ -66,6 +66,35 @@
     </div>
 </div>
 
+<br>
+
+<div class="container-fluid">
+    <h1> Reviews </h1>
+    <% reviews.forEach(function(review){ %>
+    <div class="container-fluid">
+        <div class="row reviews">
+            <div class="col-2">
+                <div style="margin: auto 0;">
+                <img class="reviewThumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
+                </div>
+            </div>
+            <div class="col-10">
+                <div class ="row">
+                    <div class="col-3">USERNAME</div>
+                    <div class="col-3">6 Days Ago</div>
+                </div>
+                <div class ="row">
+                    <div class="col-12">19 STARS</div>
+                </div>
+                <div class ="row">
+                    <div class="col-12"><%= review %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+</div>
+
 <% include footer.ejs %>
 
 <script src="javascripts/slideshow.js"></script>
