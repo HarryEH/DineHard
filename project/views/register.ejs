@@ -2,30 +2,70 @@
 <html>
 <head>
     <title>Register Page</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-    </script>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="javascripts/register.js"></script>
 </head>
-<form id="registerForm" onsubmit="register()">
-    <label for='forename'>Forename:</label>
-    <input type="'text" placeholder="Enter forename" name="forename" id="forename">
-    <p><label for='surname'>Surname:</label>
-        <input type="text" placeholder="Enter surname" name="surname" id="surname" >
-    </p>
-    <p><label for='email'>Email address:</label>
-        <input type="text" placeholder="Enter email" name="email" id="email">
-    </p>
-    <p><label for='username'>Username:</label>
-        <input type="text" placeholder="Enter username" name="username" id="username">
-    </p>
-    <p><label for='password'>Password:</label>
-        <input type="password" placeholder="Enter password" name="password" id="password">
-    </p>
-    <p><label for='username'>Confirm password:</label>
-        <input type="password" placeholder="Enter password" name="passwordconfirm" id="passwordconfirm">
-    </p>
-    <p><input type="submit" name="g" value="Register" id="g"></p>
-</form>
+<% include header.ejs %>
+<body>
+<div class="rForm">
+    <form id="registerForm" onsubmit="register()">
+        <div class="row">
+            <div class="col-25">
+                <label for='forename'>Forename:</label>
+            </div>
+            <div class="col-75">
+                <input type="'text" placeholder="Enter forename" name="forename" id="forename">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for='surname'>Surname:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" placeholder="Enter surname" name="surname" id="surname" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for='email'>Email address:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" placeholder="Enter email" name="email" id="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for='username'>Username:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" placeholder="Enter username" name="username" id="username">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for='password'>Password:</label>
+            </div>
+            <div class="col-75">
+                <input type="password" placeholder="Enter password" name="password" id="password">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for='username'>Confirm password:</label>
+            </div>
+            <div class="col-75">
+                <input type="password" placeholder="Enter password" name="passwordconfirm" id="passwordconfirm">
+            </div>
+        </div>
+        <p>By registering you agree to our <a href="tandc" style="color:#6a97ff">Terms and Conditions</a>.</p>
+        <input type="submit" name="g" value="Register" id="g">
+    </form>
+</div>
 <div id="results" style="margin-top:30px"></div>
+</body>
+<% include footer.ejs %>
 </html>

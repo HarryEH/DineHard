@@ -387,3 +387,31 @@ results p{
     background: #24f2ff;
     color: white;
 }
+
+
+.rForm, .lForm {
+    display: inline-block;
+    margin: 5% 0% 0% 35%;
+}
+
+.col-25 {
+    float: left;
+    width: 40%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 60%;
+    margin-top: 6px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.h1 {
+    display: inline-block;
+}
