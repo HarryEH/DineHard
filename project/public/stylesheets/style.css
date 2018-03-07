@@ -76,7 +76,8 @@ a{
   background-color: var(--bg2-color);
   color: white;
   text-align: left;
-  font-size: 12px;
+  font-size: 16px;
+    vertical-align: middle;
 }
 
 .mainTitle {
@@ -351,4 +352,38 @@ results p{
     border-radius: 50%;
     background: var(--bg2-color);
     cursor: pointer;
+}
+
+.social a{
+    margin: 5px 5px 5px 5px;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 100%;
+    width: 33px;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+    color: black;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-instagram {
+    background: #24f2ff;
+    color: white;
 }
