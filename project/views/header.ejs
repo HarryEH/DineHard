@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <div class="container-fluid header">
-    <div id="msg">DINE HARD</div>
+    <div id="msg"><a href="/">DINE HARD</a></div>
     <ul class="inlineList" id="top-links">
         <% if (!loggedIn) {%>
         <li><a href="/login">Login</a></li>
-        <li><a href="/registration">Register</a></li>
+        <li><a href="/register">Register</a></li>
         <% } else { %>
         <li><a href="/profile">View Profile</a></li>
         <% } %>
