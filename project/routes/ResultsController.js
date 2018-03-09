@@ -15,21 +15,23 @@ module.exports = {
         var str = req.query.q;
         console.log(str);
 
+        models.connect();
+
         // undefined || empty - return everything
         if (typeof str == 'undefined') {
-            returnAll(res);
+            returnAll(res, login);
             return;
         }
 
         // undefined || empty - return everything
         if (str == "") {
-            returnAll(res);
+            returnAll(res, login);
             return;
         }
 
         // if postcode
         if (valid_postcode(str)) {
-            onPostcode(res);
+            onPostcode(res, login);
             return;
         }
 
@@ -37,7 +39,7 @@ module.exports = {
     }
 };
 
-function onPostcode(res){
+function onPostcode(res, login){
 
     console.log('third');
     // do something
@@ -62,7 +64,7 @@ function onPostcode(res){
 
 };
 
-function returnAll(res){
+function returnAll(res, login){
     console.log('all');
 
     models.Restaurant.find(function (err, results) {
