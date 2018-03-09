@@ -13,7 +13,7 @@ var rad = function(x) {
     return x * Math.PI / 180;
 };
 
-var getDistance = function(rLat, rLong) {
+var getRDistance = function(rLat, rLong) {
     var R = 6378137; // Earth’s mean radius in meter
     var userLat = sessionStorage.getItem("userLat");
     var userLong = sessionStorage.getItem("userLong");
@@ -51,4 +51,13 @@ function locationToAddress(lat, long){
             alert(add);
         }
     });
+}
+
+
+module.exports={
+
+    getDistance: function(lat, lng){
+        getRDistance(lat, lng);
+    }
+
 }
