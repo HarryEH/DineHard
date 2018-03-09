@@ -28,7 +28,6 @@ var getDistance = function(rLat, rLong) {
 };
 
 function addressToLocation(address){
-
     var geocoder = new google.maps.Geocoder();
 
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -39,4 +38,17 @@ function addressToLocation(address){
             alert(longitude);
         }
     })
+}
+
+function locationToAddress(lat, long){
+    var geocoder  = new google.maps.Geocoder();
+
+    var location  = new google.maps.LatLng(lat, long);
+    
+    geocoder.geocode({'latLng': location}, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            var add = results[0].formatted_address;
+            alert(add);
+        }
+    });
 }
