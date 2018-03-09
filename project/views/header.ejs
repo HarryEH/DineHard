@@ -1,12 +1,18 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <script src="javascripts/toplinks.js"></script>
+</head>
+<body>
 <div class="container-fluid header">
-    <div id="msg"><a href="/">DINE HARD</a></div>
+    <div id="msg"><a href="/">
+            <img src="images/Dine Hard Full.png" alt="Dine Hard" style="height:35px;border:0;">
+        </a>
+    </div>
     <ul class="inlineList" id="top-links">
-        <% if (!loggedIn) {%>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-        <% } else { %>
-        <li><a href="/profile">View Profile</a></li>
-        <% } %>
+
     </ul>
+    <script>isLoggedIn();</script>
 </div>
+</body>
+</html>

@@ -8,5 +8,4 @@ function load(){
     if(sessionStorage.getItem("login") == null){
         sessionStorage.setItem("login", false);
     }
-
 }
