@@ -4,6 +4,19 @@ function getLocation() {
     }
 }
 
+function hiddenFields() {
+    const lat = sessionStorage.getItem("userLat");
+    const lng = sessionStorage.getItem("userLong");
+
+    console.log(lat);
+    console.log(lng);
+
+    $( "input#lat" ).val( lat );
+
+    $( "input#lng" ).val( lng );
+
+}
+
 function setPosition(position) {
     sessionStorage.setItem("userLat", position.coords.latitude);
     sessionStorage.setItem("userLong", position.coords.longitude);
@@ -54,10 +67,10 @@ function locationToAddress(lat, long){
 }
 
 
-module.exports={
-
-    getDistance: function(lat, lng){
-        getRDistance(lat, lng);
-    }
-
-}
+// module.exports = {
+//
+//     getDistance: function(lat, lng){
+//         getRDistance(lat, lng);
+//     }
+//
+// }

@@ -12,7 +12,7 @@
   <script src="javascripts/load.js"></script>
   <script src="javascripts/search.js"></script>
 </head>
-<body onload="load();">
+<body onload="load();hiddenFields();">
 
 <% include header.ejs %>
 
@@ -29,7 +29,9 @@
     </div>
       <div class="search" style="margin-top:1vh">
           <form id="searchForm" action="/results" method="get">
-              <input type="text" class="titleSearch" placeholder="Enter postcode or keywords" name="q" id="q">
+              <input type="text" class="titleSearch" placeholder="Enter postcode or keyword(s)" name="q" id="q">
+              <input type="text"  class="latField" hidden="true" name="lat" id="lat">
+              <input type="text" class="lngField" hidden="true" name="lng" id="lng">
               <input type="submit" class="titleSubmit" name="g" value="Search" id="g">
           </form>
       </div>
