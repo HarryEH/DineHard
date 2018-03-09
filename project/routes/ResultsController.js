@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const models = require('../models/models');
+const location = require('../public/javascripts/location.js');
 
 function valid_postcode(postcode) {
     postcode = postcode.replace(/\s/g, "");
