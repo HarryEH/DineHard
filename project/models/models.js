@@ -23,7 +23,7 @@ restaurantSchema.methods.getName = function () {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Cuisine Schema
 var cuisineSchema = mongoose.Schema({
-    type: String
+    type: {type: String, index: {unique: true}}
 });
 
 cuisineSchema.methods.getName = function () {
@@ -52,7 +52,7 @@ var reviewSchema = mongoose.Schema({
     resId: String,
     rating: Number,
     time: String,
-    date: String,
+    date: { type: Date, default: Date.now },
     review: String,
     photos: String
 });
@@ -68,8 +68,8 @@ reviewSchema.methods.getName = function () {
 var userSchema = mongoose.Schema({
     forename: String,
     surname: String,
-    email: String,
-    username: String,
+    email: {type: String, index: {unique: true}},
+    username: {type: String, index: {unique: true}},
     password: String,
     score: Number,
     photoURL: String

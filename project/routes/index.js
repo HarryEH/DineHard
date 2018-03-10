@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var ResultsController = require('./ResultsController');
+var ResultsController = require('../controllers/resultscontroller');
 var loginController = require('./loginController');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

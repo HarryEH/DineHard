@@ -12,28 +12,28 @@
   <script src="javascripts/load.js"></script>
   <script src="javascripts/search.js"></script>
 </head>
-<body onload="load();">
-<div class="mainWrapper">
-    <% include header.ejs %>
+<body onload="load();hiddenFields();">
 
-    <div id="top">
-      <div class="container-fluid">
-        <div class="titleHeader">
-          <p class="mainTitle">Experience the magic of Dine Hard</p>
-          <p class="mainSubtitle">The food, the bad and the ugly</p>
-        </div>
-      </div>
-      <div class="container-fluid softHighlight">
-        <div class="row">
-          <p class="searchTitle">Enter your postcode to find local restaurants</p>
-        </div>
-          <div class="search" style="margin-top:1vh">
-              <form id="searchForm" action="/results" method="get">
-                  <input type="text" class="titleSearch" placeholder="Enter postcode or keywords" name="q" id="q">
-                  <input type="submit" class="titleSubmit" name="g" value="Search" id="g">
-              </form>
-          </div>
-        </div>
+<% include header.ejs %>
+
+<div id="top">
+  <div class="container-fluid">
+    <div class="titleHeader">
+      <p class="mainTitle">Experience the magic of Dine Hard</p>
+      <p class="mainSubtitle">The food, the bad and the ugly</p>
+    </div>
+  </div>
+  <div class="container-fluid softHighlight">
+    <div class="row">
+      <p class="searchTitle">Enter your postcode to find local restaurants</p>
+    </div>
+      <div class="search" style="margin-top:1vh">
+          <form id="searchForm" action="/results" method="get">
+              <input type="text" class="titleSearch" placeholder="Enter postcode or keyword(s)" name="q" id="q">
+              <input type="text"  class="latField" hidden="true" name="lat" id="lat">
+              <input type="text" class="lngField" hidden="true" name="lng" id="lng">
+              <input type="submit" class="titleSubmit" name="g" value="Search" id="g">
+          </form>
       </div>
 
     <div style="box-shadow: 0 0 10px #d61f26; margin-top: 10px;" id="241">

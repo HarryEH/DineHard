@@ -13,8 +13,12 @@ function valid_postcode(postcode) {
 module.exports = {
     handleSearch: function(req, res, login) {
 
-        var str = req.query.q;
+        const str = req.query.q;
+        const lat = req.query.lat;
+        const lng = req.query.lng;
         console.log(str);
+        console.log(lat);
+        console.log(lng);
 
         models.connect();
 

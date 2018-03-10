@@ -4,6 +4,19 @@ function getLocation() {
     }
 }
 
+function hiddenFields() {
+    const lat = sessionStorage.getItem("userLat");
+    const lng = sessionStorage.getItem("userLong");
+
+    console.log(lat);
+    console.log(lng);
+
+    $( "input#lat" ).val( lat );
+
+    $( "input#lng" ).val( lng );
+
+}
+
 function setPosition(position) {
     sessionStorage.setItem("userLat", position.coords.latitude);
     sessionStorage.setItem("userLong", position.coords.longitude);
@@ -44,7 +57,7 @@ function locationToAddress(lat, long){
     var geocoder  = new google.maps.Geocoder();
 
     var location  = new google.maps.LatLng(lat, long);
-    
+
     geocoder.geocode({'latLng': location}, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var add = results[0].formatted_address;

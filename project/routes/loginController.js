@@ -16,6 +16,12 @@ module.exports = {
         models.User.findOne({username: user}, function (err, results) {
             if (err) {return console.error(err);}
 
+            if (!results) {
+                var error = "This user doesn't exist"
+                res.render( 'login', { loggedIn: false, error: error});
+                return;
+            }
+
             console.log(results);
             console.log(results.username);
             console.log(results.password);
