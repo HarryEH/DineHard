@@ -2,7 +2,7 @@ const models = require('./models');
 
 models.connect();
 
-// RUN `node models/Testing.js` from project directory
+// RUN `node models/testing.js` from project directory
 
 // Example of saving
 var harry = new models.User({
