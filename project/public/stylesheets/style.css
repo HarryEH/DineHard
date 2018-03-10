@@ -398,8 +398,8 @@ results p{
 
 .rForm, .lForm {
     display: inline-block;
-    margin: 10% 30% 10% 30% ;
-    width: 40%;
+    margin: 10% 25% 10% 25% ;
+    width: 50%;
 }
 
 .row:after {
@@ -417,14 +417,45 @@ results p{
     text-align: center;
 }
 
-.login{
-    width: 100%;
-}
-
 .error{
     width: 100%;
     color: black;
     text-align: center;
     background: rgba(150, 0, 37, 0.35);
     font-size: 14px;
+}
+
+.login input, .register input{
+    width: 100%;
+    margin: 5px;
+}
+
+.lBorder{
+    background: var(--bg2-color);
+    border-radius: 25px;
+    padding: 5px 15px 15px 15px;
+}
+
+.lTitle{
+    color: white;
+    font-size: 22px;
+    padding: 15px 5px 15px 5px;
+}
+
+.lInputWrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 4%;
+    background: white;
+    font-size: 14px;
+}
+
+.login{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.lSubmit, .rSubmit{
+    margin: 10px 45% 10px 45%;
+    width: 10%;
 }

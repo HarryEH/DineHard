@@ -50,7 +50,7 @@ router.post('/login', function(req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/register', function(req, res, next) {
     var login = checkLogin();
-    res.render('register', { loggedIn: login});
+    res.render('register', { loggedIn: login, error: ""});
 });
 
 router.post('/register', function(req, res, next) {
