@@ -84,6 +84,7 @@ a:hover {
   text-align: left;
   font-size: 16px;
     vertical-align: middle;
+    height: 45px;
 }
 
 .mainTitle {
@@ -458,4 +459,22 @@ results p{
 .lSubmit, .rSubmit{
     margin: 10px 45% 10px 45%;
     width: 10%;
+    min-width: 70px;
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.mainWrapper {
+    min-height: 100%;
+
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -45px;
+}
+
+.push {
+    height: 45px;
 }

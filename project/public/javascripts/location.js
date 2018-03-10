@@ -52,12 +52,3 @@ function locationToAddress(lat, long){
         }
     });
 }
-
-
-module.exports={
-
-    getDistance: function(lat, lng){
-        getRDistance(lat, lng);
-    }
-
-}

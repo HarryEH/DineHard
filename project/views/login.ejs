@@ -14,55 +14,60 @@
     <script src="javascripts/login.js"></script>
 </head>
 <body>
-<% include header.ejs %>
+<div class="mainWrapper">
+    <% include header.ejs %>
 
-<div class="lForm">
-    <div class ="lBorder">
-        <div class="lTitle">Login</div>
-        <div class = "error"><%= error %></div>
-        <div class="lInputWrapper">
-            <br>
-            <form id="loginForm" action="/login" onsubmit="validate();" method="post">
-                <div class="row login">
-                    <div class="col-3">
-                    </div>
-                    <div class="col-9">
-                        <div id="uError"></div>
-                    </div>
-                </div>
-
-                <div class="row login">
-                    <div class="col-3">
-                        <label for='username'>Username:</label>
-                    </div>
-                    <div class="col-9">
-                        <input type="'text" placeholder="Enter user name" name="u" id="u">
-                    </div>
-                </div>
+    <div class="lForm">
+        <div class ="lBorder">
+            <div class="lTitle">Login</div>
+            <div class = "error"><%= error %></div>
+            <div class="lInputWrapper">
                 <br>
-                <div class="row login">
-                    <div class="col-3">
+                <form id="loginForm" action="/login" onsubmit="validate();" method="post">
+                    <div class="row login">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="uError"></div>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <div id="pError"></div>
-                    </div>
-                </div>
 
-                <div class="row login">
-                    <div class="col-3">
-                        <label for='password'>Password:</label>
+                    <div class="row login">
+                        <div class="col-3">
+                            <label for='username'>Username:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="'text" placeholder="Enter user name" name="u" id="u">
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <input type="password" placeholder="Enter password" name="p" id="p">
+                    <br>
+                    <div class="row login">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="pError"></div>
+                        </div>
                     </div>
-                </div>
-                <input type="submit" name="g" value="Login" id="g" class="lSubmit">
-                <br>
-            </form>
+
+                    <div class="row login">
+                        <div class="col-3">
+                            <label for='password'>Password:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="password" placeholder="Enter password" name="p" id="p">
+                        </div>
+                    </div>
+                    <input type="submit" name="g" value="Login" id="g" class="lSubmit">
+                    <br>
+                </form>
+            </div>
+            <div id="results" style="margin-top:30px"></div>
         </div>
-        <div id="results" style="margin-top:30px"></div>
     </div>
+    <div class="push"></div>
 </div>
-</body>
+
 <% include footer.ejs %>
+
+</body>
 </html>

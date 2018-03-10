@@ -14,122 +14,127 @@
     <script src="javascripts/register.js"></script>
 </head>
 <body>
-<% include header.ejs %>
+<div class="mainWrapper">
+    <% include header.ejs %>
 
-<div class="rForm">
-    <div class ="lBorder">
-        <div class="lTitle">Register</div>
-        <div class = "error"><%= error %></div>
-        <div class="lInputWrapper">
-            <form id="registerForm" onsubmit="register()">
-                <div class="row register">
-                    <div class="col-3">
+    <div class="rForm">
+        <div class ="lBorder">
+            <div class="lTitle">Register</div>
+            <div class = "error"><%= error %></div>
+            <div class="lInputWrapper">
+                <form id="registerForm" onsubmit="register()">
+                    <div class="row register">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="fnError"></div>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <div id="fnError"></div>
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
-                        <label for='forename'>Forename:</label>
+                    <div class="row register">
+                        <div class="col-3">
+                            <label for='forename'>Forename:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="'text" placeholder="Enter forename" name="forename" id="forename">
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <input type="'text" placeholder="Enter forename" name="forename" id="forename">
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
+                    <div class="row register">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="snError"></div>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <div id="snError"></div>
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
-                        <label for='surname'>Surname:</label>
+                    <div class="row register">
+                        <div class="col-3">
+                            <label for='surname'>Surname:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" placeholder="Enter surname" name="surname" id="surname" >
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <input type="text" placeholder="Enter surname" name="surname" id="surname" >
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
+                    <div class="row register">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="emError"></div>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <div id="emError"></div>
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
-                        <label for='email'>Email address:</label>
+                    <div class="row register">
+                        <div class="col-3">
+                            <label for='email'>Email address:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" placeholder="Enter email" name="email" id="email">
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <input type="text" placeholder="Enter email" name="email" id="email">
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
+                    <div class="row register">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="uError"></div>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <div id="uError"></div>
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
-                        <label for='username'>Username:</label>
+                    <div class="row register">
+                        <div class="col-3">
+                            <label for='username'>Username:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" placeholder="Enter username" name="username" id="username">
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <input type="text" placeholder="Enter username" name="username" id="username">
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
+                    <div class="row register">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="pError"></div>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <div id="pError"></div>
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
-                        <label for='password'>Password:</label>
+                    <div class="row register">
+                        <div class="col-3">
+                            <label for='password'>Password:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="password" placeholder="Enter password" name="password" id="password">
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <input type="password" placeholder="Enter password" name="password" id="password">
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
+                    <div class="row register">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="p2Error"></div>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <div id="p2Error"></div>
-                    </div>
-                </div>
 
-                <div class="row register">
-                    <div class="col-3">
-                        <label for='username'>Confirm password:</label>
+                    <div class="row register">
+                        <div class="col-3">
+                            <label for='username'>Confirm password:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="password" placeholder="Confirm password" name="passwordconfirm" id="passwordconfirm">
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <input type="password" placeholder="Confirm password" name="passwordconfirm" id="passwordconfirm">
-                    </div>
-                </div>
-                <p style="text-align: center">By registering you agree to our <a href="tandc" style="color:#6a97ff">Terms and Conditions</a>.</p>
-                <input type="submit" name="g" value="Register" id="g" class="rSubmit">
-            </form>
+                    <p style="text-align: center">By registering you agree to our <a href="tandc" style="color:#6a97ff">Terms and Conditions</a>.</p>
+                    <input type="submit" name="g" value="Register" id="g" class="rSubmit">
+                </form>
+            </div>
         </div>
     </div>
+    <div id="results" style="margin-top:30px"></div>
+    <div class="push"></div>
 </div>
-<div id="results" style="margin-top:30px"></div>
-</body>
+
 <% include footer.ejs %>
+
+</body>
 </html>

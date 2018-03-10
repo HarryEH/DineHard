@@ -10,87 +10,89 @@
     <script src="javascripts/location.js"></script>
 </head>
 <body onload="load();">
+<div class="mainWrapper">
+    <% include header.ejs %>
 
-<% include header.ejs %>
+    <div class="container-fluid restInfo">
 
-<div class="container-fluid restInfo">
+        <div class="row">
+            <ul class="inlineList">
+                <li><p class="title">Restaurant Name</p></li>
+            </ul>
+        </div>
 
-    <div class="row">
-        <ul class="inlineList">
-            <li><p class="title">Restaurant Name</p></li>
-        </ul>
-    </div>
+        <div class = "row">
+            <ul class="inlineList">
+                <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span>Average Score with X reviews</li>
+                <li>Cuisine(s)</li>
+            </ul>
+        </div>
 
-    <div class = "row">
-        <ul class="inlineList">
-            <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span>Average Score with X reviews</li>
-            <li>Cuisine(s)</li>
-        </ul>
-    </div>
+        <div class = "row inlineList">
+            <ul class="inlineList">
+                <li>Address (X miles away)</li>
+                <li><span class="glyphicon glyphicon-earphone"></span> Phone Number</li>
+                <li><i class="fa fa-laptop"></i> Website</li>
+            </ul>
+        </div>
 
-    <div class = "row inlineList">
-        <ul class="inlineList">
-            <li>Address (X miles away)</li>
-            <li><span class="glyphicon glyphicon-earphone"></span> Phone Number</li>
-            <li><i class="fa fa-laptop"></i> Website</li>
-        </ul>
-    </div>
-
-    <div class = "row">
-        <div class="slideshow-container">
-            <div class="restImg">
-                <img class="slideshowImg" src="images/restTest1.jpg">
+        <div class = "row">
+            <div class="slideshow-container">
+                <div class="restImg">
+                    <img class="slideshowImg" src="images/restTest1.jpg">
+                </div>
+                <div class="restImg">
+                    <img class="slideshowImg" src="images/restTest2.jpg">
+                </div>
+                <div class="restImg">
+                    <img class="slideshowImg" src="images/restTest3.jpg">
+                </div>
+                <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a id="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
-            <div class="restImg">
-                <img class="slideshowImg" src="images/restTest2.jpg">
+        </div>
+
+        <br>
+
+        <div class = "row">
+            <div class="col-8">
+                <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
-            <div class="restImg">
-                <img class="slideshowImg" src="images/restTest3.jpg">
+            <div class="col-4">
+                MAP GOES HERE
             </div>
-            <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a id="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
     </div>
 
     <br>
 
-    <div class = "row">
-        <div class="col-8">
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="col-4">
-            MAP GOES HERE
-        </div>
-    </div>
-</div>
-
-<br>
-
-<div class="container-fluid">
-    <h1> Reviews </h1>
-    <% reviews.forEach(function(review){ %>
     <div class="container-fluid">
-        <div class="row reviews">
-            <div class="col-2">
-                <div style="margin: auto 0;">
-                <img class="reviewThumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
+        <h1> Reviews </h1>
+        <% reviews.forEach(function(review){ %>
+        <div class="container-fluid">
+            <div class="row reviews">
+                <div class="col-2">
+                    <div style="margin: auto 0;">
+                    <img class="reviewThumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
+                    </div>
                 </div>
-            </div>
-            <div class="col-10">
-                <div class ="row">
-                    <div class="col-3">USERNAME</div>
-                    <div class="col-3">6 Days Ago</div>
-                </div>
-                <div class ="row">
-                    <div class="col-12">19 STARS</div>
-                </div>
-                <div class ="row">
-                    <div class="col-12"><%= review %></div>
+                <div class="col-10">
+                    <div class ="row">
+                        <div class="col-3">USERNAME</div>
+                        <div class="col-3">6 Days Ago</div>
+                    </div>
+                    <div class ="row">
+                        <div class="col-12">19 STARS</div>
+                    </div>
+                    <div class ="row">
+                        <div class="col-12"><%= review %></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <% }); %>
     </div>
-    <% }); %>
+    <div class="push"></div>
 </div>
 
 <% include footer.ejs %>
