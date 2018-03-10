@@ -32,3 +32,28 @@ function sendAjaxQuery(url, stringifieddata) {
     });
 }
 
+function validate(){
+    var user = document.forms["loginForm"]["u"].value;
+    var pass = document.forms["loginForm"]["p"].value;
+    var uError = document.getElementById("uError");
+    var pError = document.getElementById("pError");
+    var loginOk = true;
+
+    if(user == ""){
+        uError.innerHTML = "* Enter a Username *";
+        loginOk = false;
+    }
+    if(pass == "") {
+        pError.innerHTML = "* Enter a Password *";
+        loginOk = false;
+    }
+
+    if(!loginOk)
+    {
+        event.preventDefault();
+        return false;
+    } else {
+        return true;
+    }
+}
+

@@ -57,7 +57,7 @@ function locationToAddress(lat, long){
     var geocoder  = new google.maps.Geocoder();
 
     var location  = new google.maps.LatLng(lat, long);
-    
+
     geocoder.geocode({'latLng': location}, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var add = results[0].formatted_address;
@@ -65,12 +65,3 @@ function locationToAddress(lat, long){
         }
     });
 }
-
-
-// module.exports = {
-//
-//     getDistance: function(lat, lng){
-//         getRDistance(lat, lng);
-//     }
-//
-// }

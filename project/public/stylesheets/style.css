@@ -84,6 +84,7 @@ a:hover {
   text-align: left;
   font-size: 16px;
     vertical-align: middle;
+    height: 45px;
 }
 
 .mainTitle {
@@ -398,19 +399,8 @@ results p{
 
 .rForm, .lForm {
     display: inline-block;
-    margin: 5% 0% 0% 35%;
-}
-
-.col-25 {
-    float: left;
-    width: 40%;
-    margin-top: 6px;
-}
-
-.col-75 {
-    float: left;
-    width: 60%;
-    margin-top: 6px;
+    margin: 10% 25% 10% 25% ;
+    width: 50%;
 }
 
 .row:after {
@@ -421,4 +411,70 @@ results p{
 
 .h1 {
     display: inline-block;
+}
+
+#uError, #pError{
+    color: var(--bg2-color);
+    text-align: center;
+}
+
+.error{
+    width: 100%;
+    color: black;
+    text-align: center;
+    background: rgba(150, 0, 37, 0.35);
+    font-size: 14px;
+}
+
+.login input, .register input{
+    width: 100%;
+    margin: 5px;
+}
+
+.lBorder{
+    background: var(--bg2-color);
+    border-radius: 25px;
+    padding: 5px 15px 15px 15px;
+}
+
+.lTitle{
+    color: white;
+    font-size: 22px;
+    padding: 15px 5px 15px 5px;
+}
+
+.lInputWrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 4%;
+    background: white;
+    font-size: 14px;
+}
+
+.login{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.lSubmit, .rSubmit{
+    margin: 10px 45% 10px 45%;
+    width: 10%;
+    min-width: 70px;
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.mainWrapper {
+    min-height: 100%;
+
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -45px;
+}
+
+.push {
+    height: 45px;
 }
