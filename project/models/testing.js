@@ -47,46 +47,46 @@ victoria.save(function (err, victoria) {
 
 });
 
-var dinehard = new models.Restaurant({
-    name: "Dine Hard",
-    doorNumber: "37",
-    postcode: "NE2 4RQ",
-    lat: 54.9857359,
-    lng: -1.6080269,
-    photoURL: "null",
-    tags: "homely, warm, good ambiance",
-    rating: 3.14,
-    websiteURL: "http://howarth.io"
-});
-
-dinehard.save(function (err, dinehard) {
-    if (err) return console.error(err);
-
-});
-
-// Example query
-models.User.findOne({ forename: /^Har/ }, function (err, user) {
-    if (err) return console.error(err);
-    models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
-        if (err) return console.error(err);
-
-        var review = new models.Review({
-            userId: user._id,
-            resId: res._id,
-            rating: "7",
-            time: "15:39:21",
-            date: "7/3/18",
-            review: "Absolutely great. Would recommend",
-            photos: ""
-        });
-
-        review.save(function (err, review) {
-            if (err) return console.error(err);
-
-        });
-
-    });
-});
+// var dinehard = new models.Restaurant({
+//     name: "Dine Hard",
+//     doorNumber: "37",
+//     postcode: "NE2 4RQ",
+//     lat: 54.9857359,
+//     lng: -1.6080269,
+//     photoURL: "null",
+//     tags: "homely, warm, good ambiance",
+//     rating: 3.14,
+//     websiteURL: "http://howarth.io"
+// });
+//
+// dinehard.save(function (err, dinehard) {
+//     if (err) return console.error(err);
+//
+// });
+//
+// // Example query
+// models.User.findOne({ forename: /^Har/ }, function (err, user) {
+//     if (err) return console.error(err);
+//     models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
+//         if (err) return console.error(err);
+//
+//         var review = new models.Review({
+//             userId: user._id,
+//             resId: res._id,
+//             rating: "7",
+//             time: "15:39:21",
+//             date: "7/3/18",
+//             review: "Absolutely great. Would recommend",
+//             photos: ""
+//         });
+//
+//         review.save(function (err, review) {
+//             if (err) return console.error(err);
+//
+//         });
+//
+//     });
+// });
 
 
 // Example code

@@ -48,8 +48,8 @@ restaurantCuisineSchema.methods.getName = function () {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Review Schema
 var reviewSchema = mongoose.Schema({
-    userId: {type: String, index: {unique: true}},
-    resId: {type: String, index: {unique: true}},
+    userId: String,
+    resId: String,
     rating: Number,
     time: String,
     date: { type: Date, default: Date.now },
