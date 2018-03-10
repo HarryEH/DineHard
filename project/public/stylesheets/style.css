@@ -398,19 +398,8 @@ results p{
 
 .rForm, .lForm {
     display: inline-block;
-    margin: 5% 0% 0% 35%;
-}
-
-.col-25 {
-    float: left;
+    margin: 10% 30% 10% 30% ;
     width: 40%;
-    margin-top: 6px;
-}
-
-.col-75 {
-    float: left;
-    width: 60%;
-    margin-top: 6px;
 }
 
 .row:after {
@@ -421,4 +410,21 @@ results p{
 
 .h1 {
     display: inline-block;
+}
+
+#uError, #pError{
+    color: var(--bg2-color);
+    text-align: center;
+}
+
+.login{
+    width: 100%;
+}
+
+.error{
+    width: 100%;
+    color: black;
+    text-align: center;
+    background: rgba(150, 0, 37, 0.35);
+    font-size: 14px;
 }

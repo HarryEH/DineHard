@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var ResultsController = require('./ResultsController');
+var loginController = require('./loginController');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
@@ -35,13 +36,14 @@ router.get('/results', function(req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/login', function(req, res, next) {
     var login = checkLogin();
-    res.render('login', { loggedIn: login });
+    res.render('login', { loggedIn: login, error: "" });
 });
 
 router.post('/login', function(req, res, next) {
-    var userData= req.body;
-    res.writeHead(200, { "Content-Type": "application/json"});
-    res.end(JSON.stringify(userData));
+    //var userData= req.body;
+    //res.writeHead(200, { "Content-Type": "application/json"});
+    //res.end(JSON.stringify(userData));
+    loginController.handleLogin(req, res, next);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

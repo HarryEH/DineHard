@@ -12,7 +12,7 @@
   <script src="javascripts/load.js"></script>
   <script src="javascripts/search.js"></script>
 </head>
-<body onload="load();">
+<body onload="load(<%= loggedIn %>);">
 
 <% include header.ejs %>
 
