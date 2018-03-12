@@ -1,6 +1,8 @@
 const models = require('../models/models');
 const geodata = require('./geodata');
 
+const mToDD = 100000;
+
 function valid_postcode(postcode) {
     postcode = postcode.replace(/\s/g, "");
     var regex = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))[0-9][A-Za-z]{2})$/i;
@@ -21,41 +23,33 @@ module.exports = {
             dist = DEFAULT_DIST;
         }
 
-        console.log(str);
-        console.log(lat);
-        console.log(lng);
-
         models.connect();
 
         // undefined || empty - return everything
         if (typeof str == 'undefined') {
-            returnAll(res, login);
+            returnAll(res, login, lat, lng);
             return;
         }
 
         // undefined || empty - return everything
         if (str == "") {
-            returnAll(res, login);
+            returnAll(res, login, lat, lng);
             return;
         }
 
         // if postcode
         if (valid_postcode(str)) {
-
             geodata.postcodeToLocation(str, onPostcode, res, login, dist);
-
             return;
         }
 
-        //TODO a keyword search!!!!
-
-        //res.render('results', { loggedIn: login, results: [{name:"res1"}, {name:"res2"}, {name:"res3"} ]  });
+        // otherwise keyword search
+        keywordSearch(res, str, lat, lng);
     }
 };
 
 function onPostcode(res, login, lat, lng, distance){
 
-    const mToDD = 100000;
 
     const distAdd = distance / mToDD;
 
@@ -71,9 +65,9 @@ function onPostcode(res, login, lat, lng, distance){
 
         console.log(results);
 
-        results.forEach(function (r) {
-            r.distance = geodata.getRDistance(r.lat, r.lng, lat, lng);
-        });
+        for(var i = 0; i < results.length; i++) {
+            results[i].distance = results[i].getDistance(lat, lng);
+        }
 
         res.render('results', { loggedIn: login, results: results });
 
@@ -81,7 +75,7 @@ function onPostcode(res, login, lat, lng, distance){
 
 }
 
-function returnAll(res, login){
+function returnAll(res, login, lat, lng){
     console.log('all');
 
     models.Restaurant.find(function (err, results) {
@@ -89,10 +83,40 @@ function returnAll(res, login){
 
         console.log(results);
 
-        res.render('results', { loggedIn: login, results: results  });
+        results.forEach(function(r, lat, lng) {
+            var x = r.getDistance(lat, lng);
+            r.distance = x;
+        });
+
+        res.render('results', { query: "", loggedIn: login, results: results });
 
     });
 }
 
+function keywordSearch(res, login, str, lat, lng){
+    // Keyword search!
+    models.connect();
+
+    // May need this when we are dynamically changing the distance
+    // const distAdd = dist / mToDD;
+    //
+    // const lat_min = lat - distAdd;
+    // const lat_max = lat - (-distAdd);
+    // const lng_min = lng - distAdd;
+    // const lng_max = lng - (-distAdd);
+
+    models.Restaurant.find({tags: new RegExp(str, "i") } , function (err, results) {
+        if (err) {return console.error(err);}
+
+        console.log(results);
+
+        for(var i = 0; i < results.length; i++) {
+            results[i].distance = results[i].getDistance(lat, lng);
+        }
+
+        res.render('results', { query: str, loggedIn: login, results: results });
+
+    });
+}
 
 

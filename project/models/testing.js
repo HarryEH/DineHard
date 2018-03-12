@@ -7,47 +7,47 @@ models.connect();
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 // Example of saving
-var harry = new models.User({
-    forename: "Harry",
-    surname: "Howarth",
-    email: "h@h.com",
-    username: "HarryEH",
-    password: "45e$ffdjj3120sH",
-    score: 0
-});
-
-var adam = new models.User({
-    forename: "Adam",
-    surname: "Orr",
-    email: "a@o.com",
-    username: "aca14ao",
-    password: "45e$ffdjj3120sA",
-    score: 0
-});
-
-var victoria = new models.User({
-    forename: "Victoria",
-    surname: "Neal",
-    email: "v@n.com",
-    username: "vneal1",
-    password: "45e$ffdjj3120sV",
-    score: 0
-});
-
-harry.save(function (err, harry) {
-       if (err) return console.error(err);
-
-});
-
-adam.save(function (err, adam) {
-    if (err) return console.error(err);
-
-});
-
-victoria.save(function (err, victoria) {
-    if (err) return console.error(err);
-
-});
+// var harry = new models.User({
+//     forename: "Harry",
+//     surname: "Howarth",
+//     email: "h@h.com",
+//     username: "HarryEH",
+//     password: "45e$ffdjj3120sH",
+//     score: 0
+// });
+//
+// var adam = new models.User({
+//     forename: "Adam",
+//     surname: "Orr",
+//     email: "a@o.com",
+//     username: "aca14ao",
+//     password: "45e$ffdjj3120sA",
+//     score: 0
+// });
+//
+// var victoria = new models.User({
+//     forename: "Victoria",
+//     surname: "Neal",
+//     email: "v@n.com",
+//     username: "vneal1",
+//     password: "45e$ffdjj3120sV",
+//     score: 0
+// });
+//
+// harry.save(function (err, harry) {
+//        if (err) return console.error(err);
+//
+// });
+//
+// adam.save(function (err, adam) {
+//     if (err) return console.error(err);
+//
+// });
+//
+// victoria.save(function (err, victoria) {
+//     if (err) return console.error(err);
+//
+// });
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
 
@@ -68,6 +68,23 @@ victoria.save(function (err, victoria) {
 //     if (err) return console.error(err);
 //
 // });
+
+var fake = new models.Restaurant({
+    name: "Harry Smells",
+    doorNumber: "37",
+    postcode: "s1 4dg",
+    lat: 53.3806721,
+    lng: -1.4822935,
+    photoURL: "lol",
+    tags: "smelly",
+    rating: 4.37,
+    websiteURL: "http://harryehowarth.com"
+});
+
+fake.save(function (err, fake) {
+    if (err) return console.error(err);
+
+});
 
 // Example query
 // models.User.findOne({ forename: /^Har/ }, function (err, user) {
