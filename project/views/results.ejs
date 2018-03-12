@@ -41,10 +41,10 @@
                                 <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
                             </div>
                             <div class="col-10">
-                                <div class="restName"> <a href="\restaurant-<%= item.name %>"> <%= item.name %> </a> </div>
+                                <div class="restName"> <a href="\restaurant-<%= item.generateURL()%>"> <%= item.name %> </a> </div>
                                 Reviews <br>
                                 Cusines <br>
-                                <div id="demo"></div>
+                                <div id="dist"><%= item.distance %>km away</div>
                             </div>
                         </div>
                     </div>

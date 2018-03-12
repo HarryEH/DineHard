@@ -1,8 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
 const models = require('../models/models');
-const location = require('../public/javascripts/location.js');
+const geodata = require('./geodata');
+
+const mToDD = 100000;
 
 function valid_postcode(postcode) {
     postcode = postcode.replace(/\s/g, "");
@@ -14,47 +13,50 @@ module.exports = {
     handleSearch: function(req, res, login) {
 
         const str = req.query.q;
-        const lat = req.query.lat;
-        const lng = req.query.lng;
-        console.log(str);
-        console.log(lat);
-        console.log(lng);
+        var lat = req.query.lat;
+        var lng = req.query.lng;
+        var dist = req.query.distance;
+
+        const DEFAULT_DIST = 5000;
+
+        if (typeof dist == 'undefined') {
+            dist = DEFAULT_DIST;
+        }
 
         models.connect();
 
         // undefined || empty - return everything
         if (typeof str == 'undefined') {
-            returnAll(res, login);
+            returnAll(res, login, lat, lng);
             return;
         }
 
         // undefined || empty - return everything
         if (str == "") {
-            returnAll(res, login);
+            returnAll(res, login, lat, lng);
             return;
         }
 
         // if postcode
         if (valid_postcode(str)) {
-            onPostcode(res, login);
+            geodata.postcodeToLocation(str, onPostcode, res, login, dist);
             return;
         }
 
-        //res.render('results', { loggedIn: login, results: [{name:"res1"}, {name:"res2"}, {name:"res3"} ]  });
+        // otherwise keyword search
+        keywordSearch(res, str, lat, lng);
     }
 };
 
-function onPostcode(res, login){
+function onPostcode(res, login, lat, lng, distance){
 
-    console.log('third');
-    // do something
-    console.log("valid_postcode");
-    // get the lat lng of the postcode entered
-    // find the right size bubble around it
-    var lat_min = 54.8;
-    var lat_max = 55;
-    var lng_min = -1.7;
-    var lng_max = -1.5;
+
+    const distAdd = distance / mToDD;
+
+    const lat_min = lat - distAdd;
+    const lat_max = lat + distAdd;
+    const lng_min = lng - distAdd;
+    const lng_max = lng + distAdd;
 
     models.connect();
 
@@ -63,13 +65,17 @@ function onPostcode(res, login){
 
         console.log(results);
 
-        res.render('results', { loggedIn: login, results: results  });
+        for(var i = 0; i < results.length; i++) {
+            results[i].distance = results[i].getDistance(lat, lng);
+        }
+
+        res.render('results', { loggedIn: login, results: results });
 
     });
 
-};
+}
 
-function returnAll(res, login){
+function returnAll(res, login, lat, lng){
     console.log('all');
 
     models.Restaurant.find(function (err, results) {
@@ -77,7 +83,38 @@ function returnAll(res, login){
 
         console.log(results);
 
-        res.render('results', { loggedIn: login, results: results  });
+        results.forEach(function(r, lat, lng) {
+            var x = r.getDistance(lat, lng);
+            r.distance = x;
+        });
+
+        res.render('results', { query: "", loggedIn: login, results: results });
+
+    });
+}
+
+function keywordSearch(res, login, str, lat, lng){
+    // Keyword search!
+    models.connect();
+
+    // May need this when we are dynamically changing the distance
+    // const distAdd = dist / mToDD;
+    //
+    // const lat_min = lat - distAdd;
+    // const lat_max = lat - (-distAdd);
+    // const lng_min = lng - distAdd;
+    // const lng_max = lng - (-distAdd);
+
+    models.Restaurant.find({tags: new RegExp(str, "i") } , function (err, results) {
+        if (err) {return console.error(err);}
+
+        console.log(results);
+
+        for(var i = 0; i < results.length; i++) {
+            results[i].distance = results[i].getDistance(lat, lng);
+        }
+
+        res.render('results', { query: str, loggedIn: login, results: results });
 
     });
 }

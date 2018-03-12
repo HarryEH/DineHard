@@ -4,49 +4,54 @@ models.connect();
 
 // RUN `node models/testing.js` from project directory
 
+
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 // Example of saving
-var harry = new models.User({
-    forename: "Harry",
-    surname: "Howarth",
-    email: "h@h.com",
-    username: "HarryEH",
-    password: "45e$ffdjj3120sH",
-    score: 0
-});
+// var harry = new models.User({
+//     forename: "Harry",
+//     surname: "Howarth",
+//     email: "h@h.com",
+//     username: "HarryEH",
+//     password: "45e$ffdjj3120sH",
+//     score: 0
+// });
+//
+// var adam = new models.User({
+//     forename: "Adam",
+//     surname: "Orr",
+//     email: "a@o.com",
+//     username: "aca14ao",
+//     password: "45e$ffdjj3120sA",
+//     score: 0
+// });
+//
+// var victoria = new models.User({
+//     forename: "Victoria",
+//     surname: "Neal",
+//     email: "v@n.com",
+//     username: "vneal1",
+//     password: "45e$ffdjj3120sV",
+//     score: 0
+// });
+//
+// harry.save(function (err, harry) {
+//        if (err) return console.error(err);
+//
+// });
+//
+// adam.save(function (err, adam) {
+//     if (err) return console.error(err);
+//
+// });
+//
+// victoria.save(function (err, victoria) {
+//     if (err) return console.error(err);
+//
+// });
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
-var adam = new models.User({
-    forename: "Adam",
-    surname: "Orr",
-    email: "a@o.com",
-    username: "aca14ao",
-    password: "45e$ffdjj3120sA",
-    score: 0
-});
 
-var victoria = new models.User({
-    forename: "Victoria",
-    surname: "Neal",
-    email: "v@n.com",
-    username: "vneal1",
-    password: "45e$ffdjj3120sV",
-    score: 0
-});
-
-harry.save(function (err, harry) {
-       if (err) return console.error(err);
-
-});
-
-adam.save(function (err, adam) {
-    if (err) return console.error(err);
-
-});
-
-victoria.save(function (err, victoria) {
-    if (err) return console.error(err);
-
-});
-
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 // var dinehard = new models.Restaurant({
 //     name: "Dine Hard",
 //     doorNumber: "37",
@@ -63,16 +68,33 @@ victoria.save(function (err, victoria) {
 //     if (err) return console.error(err);
 //
 // });
-//
-// // Example query
+
+var fake = new models.Restaurant({
+    name: "Harry Smells",
+    doorNumber: "37",
+    postcode: "s1 4dg",
+    lat: 53.3806721,
+    lng: -1.4822935,
+    photoURL: "lol",
+    tags: "smelly",
+    rating: 4.37,
+    websiteURL: "http://harryehowarth.com"
+});
+
+fake.save(function (err, fake) {
+    if (err) return console.error(err);
+
+});
+
+// Example query
 // models.User.findOne({ forename: /^Har/ }, function (err, user) {
 //     if (err) return console.error(err);
 //     models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
 //         if (err) return console.error(err);
 //
 //         var review = new models.Review({
-//             userId: user._id,
-//             resId: res._id,
+//             userId: user._id.str,
+//             resId: res._id.str,
 //             rating: "7",
 //             time: "15:39:21",
 //             date: "7/3/18",
@@ -87,7 +109,7 @@ victoria.save(function (err, victoria) {
 //
 //     });
 // });
-
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
 // Example code
 // var kittySchema = mongoose.Schema({
