@@ -1,8 +1,5 @@
-var express = require('express');
-var router = express.Router();
-
 const models = require('../models/models');
-const location = require('../public/javascripts/location.js');
+const geodata = require('../models/geodata');
 
 function valid_postcode(postcode) {
     postcode = postcode.replace(/\s/g, "");
@@ -14,8 +11,16 @@ module.exports = {
     handleSearch: function(req, res, login) {
 
         const str = req.query.q;
-        const lat = req.query.lat;
-        const lng = req.query.lng;
+        var lat = req.query.lat;
+        var lng = req.query.lng;
+        var dist = req.query.distance;
+
+        const DEFAULT_DIST = 5000;
+
+        if (typeof dist == 'undefined') {
+            dist = DEFAULT_DIST;
+        }
+
         console.log(str);
         console.log(lat);
         console.log(lng);
@@ -36,15 +41,23 @@ module.exports = {
 
         // if postcode
         if (valid_postcode(str)) {
-            onPostcode(res, login);
+
+            const geo = geodata.addressToLocation(str);
+            lat = geo[0];
+            lng = geo[1];
+
+            onPostcode(res, login, lat, lng, dist);
+
             return;
         }
+
+        //TODO a keyword search!!!!
 
         //res.render('results', { loggedIn: login, results: [{name:"res1"}, {name:"res2"}, {name:"res3"} ]  });
     }
 };
 
-function onPostcode(res, login){
+function onPostcode(res, login, lat, lng, distance){
 
     console.log('third');
     // do something
@@ -81,5 +94,6 @@ function returnAll(res, login){
 
     });
 }
+
 
 
