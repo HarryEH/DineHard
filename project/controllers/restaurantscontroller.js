@@ -1,5 +1,4 @@
 const models = require('../models/models');
-var mongoose = require('mongoose');
 
 module.exports = {
     renderRestaurant: function(req, res, login){
