@@ -478,3 +478,9 @@ html, body {
 .push {
     height: 45px;
 }
+
+.mWrapper {
+    margin-left: 5%;
+    font-size: 12pt;
+    margin-right: 5%;
+}
