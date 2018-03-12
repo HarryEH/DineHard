@@ -21,7 +21,3 @@ function setPosition(position) {
     sessionStorage.setItem("userLat", position.coords.latitude);
     sessionStorage.setItem("userLong", position.coords.longitude);
 }
-
-var rad = function(x) {
-    return x * Math.PI / 180;
-};

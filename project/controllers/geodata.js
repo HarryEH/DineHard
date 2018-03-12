@@ -1,3 +1,11 @@
+const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4'
+});
+
+var rad = function(x) {
+    return x * Math.PI / 180;
+};
+
 module.exports = {
 
     getRDistance: function(xLat, xLng, yLat, yLng ) {
@@ -9,19 +17,38 @@ module.exports = {
             Math.sin(dLong / 2) * Math.sin(dLong / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         const d = R * c;
-        return d; // returns the distance in meter
+        return d; // returns the distance in meters
+    },
+
+    postcodeToLocation: function (address, callback, res, login, dist){
+
+        // Geocode an address.
+        googleMapsClient.geocode({
+            address: address
+        }, function(err, response) {
+            if (!err) {
+                console.log(response.json.results[0].geometry.location);
+
+                const lat = response.json.results[0].geometry.location.lat;
+                const lng = response.json.results[0].geometry.location.lng;
+
+                callback(res, login, lat, lng, dist);
+                return;
+            }
+        });
     },
 
     addressToLocation: function (address){
-        const geocoder = new google.maps.Geocoder();
 
-        geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                var latitude = results[0].geometry.location.lat();
-                var longitude = results[0].geometry.location.lng();
-                return [latitude, longitude];
+        // Geocode an address.
+        googleMapsClient.geocode({
+            address: address
+        }, function(err, response) {
+            if (!err) {
+                console.log(response.json.results[0].geometry.location);
+                return response.json.results[0].geometry.location;
             }
-        })
+        });
     },
 
     locationToAddress: function(lat, long){

@@ -68,16 +68,16 @@ victoria.save(function (err, victoria) {
 //     if (err) return console.error(err);
 //
 // });
-//
-// // Example query
+
+// Example query
 // models.User.findOne({ forename: /^Har/ }, function (err, user) {
 //     if (err) return console.error(err);
 //     models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
 //         if (err) return console.error(err);
 //
 //         var review = new models.Review({
-//             userId: user._id,
-//             resId: res._id,
+//             userId: user._id.str,
+//             resId: res._id.str,
 //             rating: "7",
 //             time: "15:39:21",
 //             date: "7/3/18",
@@ -92,9 +92,7 @@ victoria.save(function (err, victoria) {
 //
 //     });
 // });
-
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-
 
 // Example code
 // var kittySchema = mongoose.Schema({

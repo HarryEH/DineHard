@@ -1,5 +1,5 @@
 const models = require('../models/models');
-const geodata = require('../models/geodata');
+const geodata = require('./geodata');
 
 function valid_postcode(postcode) {
     postcode = postcode.replace(/\s/g, "");
@@ -42,11 +42,7 @@ module.exports = {
         // if postcode
         if (valid_postcode(str)) {
 
-            const geo = geodata.addressToLocation(str);
-            lat = geo[0];
-            lng = geo[1];
-
-            onPostcode(res, login, lat, lng, dist);
+            geodata.postcodeToLocation(str, onPostcode, res, login, dist);
 
             return;
         }
@@ -59,15 +55,14 @@ module.exports = {
 
 function onPostcode(res, login, lat, lng, distance){
 
-    console.log('third');
-    // do something
-    console.log("valid_postcode");
-    // get the lat lng of the postcode entered
-    // find the right size bubble around it
-    var lat_min = 54.8;
-    var lat_max = 55;
-    var lng_min = -1.7;
-    var lng_max = -1.5;
+    const mToDD = 100000;
+
+    const distAdd = distance / mToDD;
+
+    const lat_min = lat - distAdd;
+    const lat_max = lat + distAdd;
+    const lng_min = lng - distAdd;
+    const lng_max = lng + distAdd;
 
     models.connect();
 
@@ -76,11 +71,15 @@ function onPostcode(res, login, lat, lng, distance){
 
         console.log(results);
 
-        res.render('results', { loggedIn: login, results: results  });
+        results.forEach(function (r) {
+            r.distance = geodata.getRDistance(r.lat, r.lng, lat, lng);
+        });
+
+        res.render('results', { loggedIn: login, results: results });
 
     });
 
-};
+}
 
 function returnAll(res, login){
     console.log('all');
