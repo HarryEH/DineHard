@@ -18,10 +18,9 @@ module.exports = {
 
             console.log(results);
             if(results !== null){
-                console.log(results.username);
-                console.log(results.password);
                 if (user === results.username && pass === results.password) {
-                    //req.session.user_id = results._id;
+                    req.session.user_id = results._id;
+                    console.log(req.session.user_id);
                     res.redirect('/');
                 } else {
                     res.render('login', { loggedIn: false, error: "Username and password do not match" });

@@ -7,20 +7,20 @@ var loginController = require('./loginController');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    var login = checkLogin();
+    var login = checkLogin(req, res, next);
     res.render('index', { loggedIn: login });
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/restaurant', function(req, res, next) {
-    var login = checkLogin();
+    var login = checkLogin(req, res, next);
     var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
     res.render('restaurant', { loggedIn: login, reviews: reviews });
 });
 
 router.get('/restaurant-*', function(req, res, next) {
-    var login = checkLogin();
+    var login = checkLogin(req, res, next);
     var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
     res.render('restaurant', { loggedIn: login, reviews: reviews });
 });
@@ -28,28 +28,30 @@ router.get('/restaurant-*', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/results', function(req, res, next) {
-    var login = checkLogin();// pass this
+    var login = checkLogin(req, res, next);// pass this
     ResultsController.handleSearch(req,res, login);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/login', function(req, res, next) {
-    var login = checkLogin();
+    var login = checkLogin(req, res, next);
     res.render('login', { loggedIn: login, error: "" });
 });
 
 router.post('/login', function(req, res, next) {
-    //var userData= req.body;
-    //res.writeHead(200, { "Content-Type": "application/json"});
-    //res.end(JSON.stringify(userData));
     loginController.handleLogin(req, res, next);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+router.get('/logout', function (req, res) {
+    delete req.session.user_id;
+    res.redirect('/');
+});
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/register', function(req, res, next) {
-    var login = checkLogin();
+    var login = checkLogin(req, res, next);
     res.render('register', { loggedIn: login, error: ""});
 });
 
@@ -61,14 +63,14 @@ router.post('/register', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/accessibility', function(req, res, next) {
-    var login = checkLogin();
+    var login = checkLogin(req, res, next);
     res.render('accessibility', { loggedIn: login });
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get('/tandc', function(req, res, next) {
-    var login = checkLogin();
+    var login = checkLogin(req, res, next);
     res.render('terms-conditions', { loggedIn: login });
 });
 
@@ -76,6 +78,20 @@ router.get('/tandc', function(req, res, next) {
 
 module.exports = router;
 
-function checkLogin(){
-    return false;
+function checkAuth(req, res, next) {
+    if (!req.session.user_id) {
+        res.send('You are not authorized to view this page');
+    } else {
+        next();
+    }
+}
+
+function checkLogin(req, res, next){
+    if(req.session.user_id === null){
+        console.log("FALSE");
+        return false;
+    } else {
+        console.log("TRUE");
+        return true;
+    }
 }
