@@ -24,7 +24,7 @@ module.exports = {
             score: 0
         });
 
-        newUser.save(function (err, victoria) {
+        newUser.save(function (err, newUser) {
             if (err) return console.error(err);
             res.redirect('/');
         });
