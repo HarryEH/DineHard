@@ -5,14 +5,23 @@
 </head>
 <header>
     <div class="container-fluid header">
-        <div id="msg"><a href="/">
+        <div id="msg">
+            <a href="/">
                 <img src="images/Dine Hard Full.png" alt="Dine Hard" style="height:35px;border:0;">
             </a>
         </div>
         <ul class="inlineList" id="top-links">
+            <% if (!loggedIn) {%>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            <%}else{%>
+                <li>Welcome <%= forename %></li>
+                <li><a href="/profile">View Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <%}%>
 
         </ul>
-        <script>isLoggedIn();</script>
+        <script></script>
     </div>
 </header>
 </html>

@@ -22,7 +22,7 @@
             <div class="lTitle">Register</div>
             <div class = "error"><%= error %></div>
             <div class="lInputWrapper">
-                <form id="registerForm" onsubmit="register()">
+                <form id="registerForm" action="/register" onsubmit="registerValidate();" method="post">
                     <div class="row register">
                         <div class="col-3">
                         </div>
@@ -36,7 +36,7 @@
                             <label for='forename'>Forename:</label>
                         </div>
                         <div class="col-9">
-                            <input type="'text" placeholder="Enter forename" name="forename" id="forename">
+                            <input type="'text" placeholder="Enter forename" name="f" id="forename">
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@
                             <label for='surname'>Surname:</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" placeholder="Enter surname" name="surname" id="surname" >
+                            <input type="text" placeholder="Enter surname" name="s" id="surname" >
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
                             <label for='email'>Email address:</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" placeholder="Enter email" name="email" id="email">
+                            <input type="text" placeholder="Enter email" name="e" id="email">
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@
                             <label for='username'>Username:</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" placeholder="Enter username" name="username" id="username">
+                            <input type="text" placeholder="Enter username" name="u" id="username">
                         </div>
                     </div>
 
@@ -104,7 +104,7 @@
                             <label for='password'>Password:</label>
                         </div>
                         <div class="col-9">
-                            <input type="password" placeholder="Enter password" name="password" id="password">
+                            <input type="password" placeholder="Enter password" name="p" id="password">
                         </div>
                     </div>
 
@@ -121,7 +121,7 @@
                             <label for='username'>Confirm password:</label>
                         </div>
                         <div class="col-9">
-                            <input type="password" placeholder="Confirm password" name="passwordconfirm" id="passwordconfirm">
+                            <input type="password" placeholder="Confirm password" name="c" id="passwordconfirm">
                         </div>
                     </div>
                     <p style="text-align: center">By registering you agree to our <a href="tandc" style="color:#6a97ff">Terms and Conditions</a>.</p>

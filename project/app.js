@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('client-sessions');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -19,7 +20,13 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+    cookieName: 'session',
+    secret: 'd1n3h4rd',
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
@@ -42,7 +49,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error', { loggedIn: true });
+  var forename = req.session.forename;
+  res.render('error', { loggedIn: true, forename: forename });
 });
 
 module.exports = app;
