@@ -28,7 +28,7 @@ restaurantSchema.methods.getDistance = function (lat, lng) {
 };
 
 restaurantSchema.methods.generateURL = function () {
-    return this._id + "-" + this.name.replace(/\s/g, '-');
+    return this.name.replace(/\s/g, '-') + "?rId="+ this._id;
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -50,7 +50,7 @@ var restaurantCuisineSchema = mongoose.Schema({
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Review Schema
 var reviewSchema = mongoose.Schema({
-    userId: String,
+    username: String,
     resId: String,
     rating: Number,
     time: String,

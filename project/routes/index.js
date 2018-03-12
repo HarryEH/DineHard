@@ -3,6 +3,7 @@ var router = express.Router();
 
 var ResultsController = require('../controllers/resultscontroller');
 var loginController = require('../controllers/logincontroller');
+var RestaurantController = require('../controllers/restaurantscontroller');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
@@ -22,8 +23,7 @@ router.get('/restaurant', function(req, res, next) {
 
 router.get('/restaurant-*', function(req, res, next) {
     var login = checkLogin(req, res, next);
-    var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
-    res.render('restaurant', { loggedIn: login, reviews: reviews });
+    RestaurantController.renderRestaurant(req,res,login);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
