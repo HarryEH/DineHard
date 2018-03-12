@@ -68,47 +68,47 @@ models.connect();
 //     if (err) return console.error(err);
 //
 // });
-
-var fake = new models.Restaurant({
-    name: "Harry Smells",
-    doorNumber: "37",
-    postcode: "s1 4dg",
-    lat: 53.3806721,
-    lng: -1.4822935,
-    photoURL: "lol",
-    tags: "smelly",
-    rating: 4.37,
-    websiteURL: "http://harryehowarth.com"
-});
-
-fake.save(function (err, fake) {
-    if (err) return console.error(err);
-
-});
+//
+// var fake = new models.Restaurant({
+//     name: "Harry Smells",
+//     doorNumber: "37",
+//     postcode: "s1 4dg",
+//     lat: 53.3806721,
+//     lng: -1.4822935,
+//     photoURL: "lol",
+//     tags: "smelly",
+//     rating: 4.37,
+//     websiteURL: "http://harryehowarth.com"
+// });
+//
+// fake.save(function (err, fake) {
+//     if (err) return console.error(err);
+//
+// });
 
 // Example query
-// models.User.findOne({ forename: /^Har/ }, function (err, user) {
-//     if (err) return console.error(err);
-//     models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
-//         if (err) return console.error(err);
-//
-//         var review = new models.Review({
-//             userId: user._id.str,
-//             resId: res._id.str,
-//             rating: "7",
-//             time: "15:39:21",
-//             date: "7/3/18",
-//             review: "Absolutely great. Would recommend",
-//             photos: ""
-//         });
-//
-//         review.save(function (err, review) {
-//             if (err) return console.error(err);
-//
-//         });
-//
-//     });
-// });
+models.User.findOne({ forename: /^Har/ }, function (err, user) {
+    if (err) return console.error(err);
+    models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
+        if (err) return console.error(err);
+
+        var review = new models.Review({
+            username: user.username,
+            resId: res._id,
+            rating: "7",
+            time: "15:39:21",
+            date: "7/3/18",
+            review: "Absolutely great. Would recommend",
+            photos: ""
+        });
+
+        review.save(function (err, review) {
+            if (err) return console.error(err);
+
+        });
+
+    });
+});
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
 // Example code
