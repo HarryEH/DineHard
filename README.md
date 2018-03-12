@@ -23,11 +23,11 @@ git rebase origin/master;
 
 IN YOUR COMMAND LINE IN THE MONGO SHELL
 
-> use mydb
-> db.users.drop()
-> db.restaurants.drop()
-> db.cuisines.drop()
-> db.reviews.drop()
+use mydb;
+db.users.drop();
+db.restaurants.drop();
+db.cuisines.drop();
+db.reviews.drop();
 
 THEN RUN 
 
