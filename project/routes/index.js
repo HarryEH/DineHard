@@ -69,7 +69,7 @@ router.get('/accessibility', function(req, res, next) {
 
 router.get('/tandc', function(req, res, next) {
     var login = checkLogin();
-    res.render('terms&conditions', { loggedIn: login });
+    res.render('terms-conditions', { loggedIn: login });
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
