@@ -44,7 +44,7 @@ module.exports = {
         }
 
         // otherwise keyword search
-        keywordSearch(res, str, lat, lng);
+        keywordSearch(res, login, str, lat, lng);
     }
 };
 
@@ -83,10 +83,9 @@ function returnAll(res, login, lat, lng){
 
         console.log(results);
 
-        results.forEach(function(r, lat, lng) {
-            var x = r.getDistance(lat, lng);
-            r.distance = x;
-        });
+        for(var i = 0; i < results.length; i++) {
+            results[i].distance = results[i].getDistance(lat, lng);
+        }
 
         res.render('results', { query: "", loggedIn: login, results: results });
 
