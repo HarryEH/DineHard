@@ -49,7 +49,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error', { loggedIn: true });
+  var forename = req.session.forename;
+  res.render('error', { loggedIn: true, forename: forename });
 });
 
 module.exports = app;

@@ -8,9 +8,6 @@ module.exports = {
         var user = req.body.u;
         var pass = req.body.p;
 
-        console.log(user);
-        console.log(pass);
-
         models.connect();
 
         models.User.findOne({username: user}, function (err, results) {
@@ -20,7 +17,7 @@ module.exports = {
             if(results !== null){
                 if (user === results.username && pass === results.password) {
                     req.session.user_id = results._id;
-                    console.log(req.session.user_id);
+                    req.session.forename = results.forename;
                     res.redirect('/');
                 } else {
                     res.render('login', { loggedIn: false, error: "Username and password do not match" });

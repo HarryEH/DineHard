@@ -8,7 +8,8 @@ var loginController = require('./loginController');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var login = checkLogin(req, res, next);
-    res.render('index', { loggedIn: login });
+    var forename = req.session.forename;
+    res.render('index', { loggedIn: login, forename: forename });
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -36,6 +37,7 @@ router.get('/results', function(req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/login', function(req, res, next) {
     var login = checkLogin(req, res, next);
+    var forename = req.session.forename;
     res.render('login', { loggedIn: login, error: "" });
 });
 
