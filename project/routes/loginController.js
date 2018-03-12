@@ -16,22 +16,20 @@ module.exports = {
         models.User.findOne({username: user}, function (err, results) {
             if (err) {return console.error(err);}
 
-            if (!results) {
-                var error = "This user doesn't exist"
-                res.render( 'login', { loggedIn: false, error: error});
-                return;
-            }
-
             console.log(results);
             console.log(results.username);
             console.log(results.password);
-
-            if (results.password == pass){
-                res.render( 'index', { loggedIn: true});
+            if(results !== null){
+                if (user === results.username && pass === results.password) {
+                    //req.session.user_id = results._id;
+                    res.redirect('/');
+                } else {
+                    res.send('Bad user/pass');
+                }
             } else {
-                var error = "Username and Password do not match"
-                res.render( 'login', { loggedIn: false, error: error});
+                res.send('Bad user/pass');
             }
+
         });
     }
 }
