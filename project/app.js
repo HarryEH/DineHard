@@ -1,5 +1,5 @@
 var express = require('express');
-var session = require('express-session')
+var session = require('client-sessions');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -20,13 +20,13 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1); // trust first proxy
 app.use(session({
+    cookieName: 'session',
     secret: 'd1n3h4rd',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
-}))
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);

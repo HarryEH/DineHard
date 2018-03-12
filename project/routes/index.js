@@ -44,8 +44,9 @@ router.post('/login', function(req, res, next) {
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-router.get('/logout', function (req, res) {
+router.get('/logout', function (req, res, next) {
     delete req.session.user_id;
+    console.log(req.session.user_id);
     res.redirect('/');
 });
 
@@ -87,7 +88,8 @@ function checkAuth(req, res, next) {
 }
 
 function checkLogin(req, res, next){
-    if(req.session.user_id === null){
+    console.log(req.session.user_id);
+    if(req.session.user_id === undefined){
         console.log("FALSE");
         return false;
     } else {
