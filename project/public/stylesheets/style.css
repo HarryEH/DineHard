@@ -391,7 +391,7 @@ results p{
 }
 
 
-.rForm, .lForm {
+.rForm, .lForm, .crForm {
     display: inline-block;
     margin: 4% 25% 0% 25% ;
     width: 50%;
@@ -420,24 +420,24 @@ results p{
     font-size: 14px;
 }
 
-.login input, .register input{
+.login input, .register input, .createRestaurant input{
     width: 100%;
     margin: 5px;
 }
 
-.lBorder{
+.lBorder, .crBorder{
     background: var(--bg2-color);
     border-radius: 25px;
     padding: 5px 15px 15px 15px;
 }
 
-.lTitle{
+.lTitle, .crTitle{
     color: white;
     font-size: 22px;
     padding: 15px 5px 15px 5px;
 }
 
-.lInputWrapper {
+.lInputWrapper , .crInputWrapper{
     width: 100%;
     margin: 0 auto;
     padding: 4%;
@@ -450,7 +450,7 @@ results p{
     width: 80%;
 }
 
-.lSubmit, .rSubmit{
+.lSubmit, .rSubmit, .crSubmit{
     margin: 10px 45% 10px 45%;
     width: 10%;
     min-width: 70px;
