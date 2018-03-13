@@ -65,6 +65,14 @@ router.post('/register', function(req, res, next) {
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+router.get('/create-restaurant', function(req, res, next) {
+    var login = checkLogin(req, res, next);
+    res.render('create-restaurant', { loggedIn: login, error: ""});
+});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/accessibility', function(req, res, next) {
     var login = checkLogin(req, res, next);
     res.render('accessibility', { loggedIn: login });
