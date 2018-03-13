@@ -1,12 +1,10 @@
-var express = require('express');
-var router = express.Router();
-
 const models = require('../models/models');
 
 models.connect();
 
 module.exports = {
     handleRegister: function(req, res, next) {
+
         var fname = req.body.f;
         var sname = req.body.s;
         var email = req.body.e;
@@ -21,12 +19,19 @@ module.exports = {
             email: email,
             username: user,
             password: pass,
+            photoURL: "",
             score: 0
         });
 
-        newUser.save(function (err, newUser) {
-            if (err) return console.error(err);
-            res.redirect('/');
+        newUser.save(function (err, user) {
+            if (err) {
+                res.render('register', {loggedIn: false, error: "User was not created!"});
+                console.error(err);
+            }
+
+            // do whatever based on whether it saved or not
+            res.redirect('/login', {loggedIn: false});
+
         });
     }
 }

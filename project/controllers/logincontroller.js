@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
 const models = require('../models/models');
 
 module.exports = {
+
     handleLogin: function(req, res, next) {
         var user = req.body.u;
         var pass = req.body.p;

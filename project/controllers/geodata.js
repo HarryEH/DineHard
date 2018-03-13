@@ -8,7 +8,7 @@ var rad = function(x) {
 
 module.exports = {
 
-    getRDistance: function(xLat, xLng, yLat, yLng ) {
+    getRDistance: function(xLat, xLng, yLat, yLng) {
         const R = 6378137; // Earth’s mean radius in meter
         const dLat = rad(xLat - yLat);
         const dLong = rad(xLng - yLng);
