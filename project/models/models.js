@@ -69,6 +69,7 @@ var userSchema = mongoose.Schema({
     username: {type: String, index: {unique: true}},
     password: String,
     score: Number,
+    admin: { type: Boolean, default: false },
     photoURL: String
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
