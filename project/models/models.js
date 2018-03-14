@@ -30,7 +30,7 @@ restaurantSchema.methods.getDistance = function (lat, lng) {
 };
 
 restaurantSchema.methods.generateURL = function () {
-    return this.name.replace(/\s/g, '-') + "?rId="+ this._id;
+    return "restaurant-" + this.name.replace(/\s/g, '-') + "?rId="+ this._id;
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
