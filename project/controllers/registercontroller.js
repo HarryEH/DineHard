@@ -35,7 +35,7 @@ module.exports = {
             console.log("USER SEARCH");
             console.log(results);
 
-            if (results !== undefined) {
+            if (results) {
                 console.log("NO");
                 registerOk = false;
                 userError = "* This Username is not available *";
@@ -49,7 +49,7 @@ module.exports = {
                 console.log("EMAIL SEARCH");
                 console.log(results);
 
-                if (results !== undefined) {
+                if (results) {
                     console.log("NO");
                     registerOk = false;
                     emailError = "* This Email Address is already in use *";
@@ -71,7 +71,7 @@ module.exports = {
                         }
 
                         // do whatever based on whether it saved or not
-                        res.redirect('/login', {loggedIn: false, error: ""});
+                        res.redirect('/login');
 
                     });
                 } else {
