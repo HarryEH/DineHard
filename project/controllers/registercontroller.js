@@ -40,52 +40,56 @@ module.exports = {
                 registerOk = false;
                 userError = "* This Username is not available *";
             }
-        });
 
-        models.User.findOne({email: email}, function (err, results) {
-            if (err) {
-                return console.error(err);
-            }
-
-            console.log("EMAIL SEARCH");
-            console.log(results);
-
-            if (results !== undefined) {
-                console.log("NO");
-                registerOk = false;
-                userError = "* This Email Address is already in use *";
-            }
-        });
-
-        console.log(registerOk);
-
-        if(registerOk === true) {
-            console.log("REGIST IS OK");
-            newUser.save(function (err, user) {
+            models.User.findOne({email: email}, function (err, results) {
                 if (err) {
-                    res.render('register', {
-                        loggedIn: false,
-                        error: "User was not created!",
-                        uerror: "",
-                        emerror: ""
-                    });
-                    console.error(err);
+                    return console.error(err);
                 }
 
-                // do whatever based on whether it saved or not
-                res.redirect('/login', {loggedIn: false, error: ""});
+                console.log("EMAIL SEARCH");
+                console.log(results);
 
+                if (results !== undefined) {
+                    console.log("NO");
+                    registerOk = false;
+                    emailError = "* This Email Address is already in use *";
+                }
+
+                console.log(registerOk);
+
+                if(registerOk === true) {
+                    console.log("REGIST IS OK");
+                    newUser.save(function (err, user) {
+                        if (err) {
+                            res.render('register', {
+                                loggedIn: false,
+                                error: "User was not created!",
+                                uerror: "",
+                                emerror: ""
+                            });
+                            console.error(err);
+                        }
+
+                        // do whatever based on whether it saved or not
+                        res.redirect('/login', {loggedIn: false, error: ""});
+
+                    });
+                } else {
+                    console.log("REGIST IS NOT OK");
+                    res.render('register', {
+                        loggedIn: false,
+                        error: "",
+                        uerror: userError,
+                        emerror: emailError
+                    });
+                }
             });
-        } else {
-            console.log("REGIST IS NOT OK");
-            res.render('register', {
-                loggedIn: false,
-                error: "",
-                uerror: userError,
-                emerror: emailError
-            });
-        }
+
+        });
+
+
+
     }
-}
+};
 
 
