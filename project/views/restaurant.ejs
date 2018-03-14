@@ -91,10 +91,10 @@
                 <div class="col-10">
                     <div class ="row">
                         <div class="col-3"><%= review.username %></div>
-                        <div class="col-3"><%= review.time %> on <%= review.date %></div>
+                        <div class="col-3"><%= review.time %> on <%= review.date.getDate() %>-<%= review.date.getMonth() %>-<%= review.date.getFullYear() %></div>
                     </div>
                     <div class ="row">
-                        <div class="col-12"><%= review.rating %></div>
+                        <div class="col-12"><%= review.rating %> out of 7 Chips</div>
                     </div>
                     <div class ="row">
                         <div class="col-12"><%= review.review %></div>
