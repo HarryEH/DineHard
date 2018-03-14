@@ -17,22 +17,29 @@
 
         <div class="row">
             <ul class="inlineList">
-                <li><p class="title">Restaurant Name</p></li>
+                <li><p class="title"><%= restaurant.name %></p></li>
             </ul>
         </div>
 
         <div class = "row">
             <ul class="inlineList">
-                <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span>Average Score with X reviews</li>
+                <li><span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
                 <li>Cuisine(s)</li>
             </ul>
         </div>
 
         <div class = "row inlineList">
             <ul class="inlineList">
-                <li>Address (X miles away)</li>
+                <li><%= address %> (<%= distance %>miles away)</li>
                 <li><span class="glyphicon glyphicon-earphone"></span> Phone Number</li>
-                <li><i class="fa fa-laptop"></i> Website</li>
+                <li><i class="fa fa-laptop"></i>
+                    <a href="<%= restaurant.websiteURL %>" style="color:black;"><%= restaurant.websiteURL %></a>
+                </li>
             </ul>
         </div>
 

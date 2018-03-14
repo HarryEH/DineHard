@@ -52,14 +52,13 @@ module.exports = {
     },
 
     locationToAddress: function(lat, long){
-        var geocoder  = new google.maps.Geocoder();
-
-        var location  = new google.maps.LatLng(lat, long);
-
-        geocoder.geocode({'latLng': location}, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                var add = results[0].formatted_address;
-                alert(add);
+        const latlng = {lat: lat, lng: long};
+        googleMapsClient.geocode({
+            location: latlng
+        }, function(err, response) {
+            if (!err) {
+                console.log(response.json.results[0].address_components);
+                return response.json.results[0].address_components;
             }
         });
     }
