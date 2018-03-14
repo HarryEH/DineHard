@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <% include stylesheets.ejs %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="javascripts/create-restaurant.js"></script>
 </head>
 <body>
 <div class="mainWrapper">
@@ -17,7 +18,7 @@
             <div class="crTitle">Create Restaurant</div>
             <div class = "error"><%= error %></div>
             <div class="crInputWrapper">
-                <form id="createRestaurantForm" onsubmit="createRestaurant()">
+                <div id="createRestaurantForm" onsubmit="createRestaurant()">
                     <div class="row createRestaurant">
                         <div class="col-3">
                         </div>
@@ -39,41 +40,77 @@
                         <div class="col-3">
                         </div>
                         <div class="col-9">
-                            <div id="dnError"></div>
-                        </div>
-                    </div>
-
-                    <div class="row createRestaurant">
-                        <div class="col-3">
-                            <label for='doorNumber'>Door Number:</label>
-                        </div>
-                        <div class="col-9">
-                            <input type="text" placeholder="Enter restaurant door number" name="doorNumber" id="doorNumber" >
-                        </div>
-                    </div>
-
-                    <div class="row createRestaurant">
-                        <div class="col-3">
-                        </div>
-                        <div class="col-9">
-                            <div id="pcError"></div>
-                        </div>
-                    </div>
-
-                    <div class="row createRestaurant">
-                        <div class="col-3">
-                            <label for='postcode'>Postcode:</label>
-                        </div>
-                        <div class="col-9">
-                            <input type="text" placeholder="Enter restaurant postcode" name="postcode" id="postcode">
-                        </div>
-                    </div>
-
-                    <div class="row createRestaurant">
-                        <div class="col-3">
-                        </div>
-                        <div class="col-9">
                             <div id="urlError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row createRestaurant">
+                        <div class="col-3">
+                            <label for='telephone'>Restaurant Telephone Number:</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" placeholder="Enter restaurant telephone number" name="name" id="name">
+                        </div>
+                    </div>
+
+                    <div class="row createRestaurant">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="aError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row createRestaurant">
+                        <div class="col-3">
+                            <label for='address'>Restaurant Address:</label>
+                        </div>
+                        <div class="col-9">
+                            <input id="autocomplete" placeholder="Enter door number and select address" onFocus="geolocate()" type="text"></input>
+                        </div>
+                    </div>
+
+                    <div class="row createRestaurant">
+                        <div class="col-3">
+                            <label for="doornumber">Door Number:</label>
+                        </div>
+                        <div class="col-9">
+                            <input class="field" id="street_number" disabled="true"></input>
+                        </div>
+                    </div>
+
+                    <div class="row createRestaurant">
+                        <div class="col-3">
+                            <label for="streetname">Street Name:</label>
+                        </div>
+                        <div class="col-9">
+                            <input class="field" id="route" disabled="true"></input>
+                        </div>
+                    </div>
+
+                    <!--<div class="row createRestaurant">-->
+                    <!--<div class="col-3">-->
+                    <!--<label for="city">City:</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-9">-->
+                    <!--<td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"></input></td>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="row createRestaurant">
+                        <div class="col-3">
+                            <label for="postcode">Postcode:</label>
+                        </div>
+                        <div class="col-9">
+                            <input class="field" id="postal_code" disabled="true"></input>
+                        </div>
+                    </div>
+
+                    <div class="row createRestaurant">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-9">
+                            <div id="purlError"></div>
                         </div>
                     </div>
 
@@ -116,19 +153,17 @@
                             <label for='websiteurl'>Website URL:</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" placeholder="Enter website URL" name="websiteURL" id="websiteurl">
+                            <input type="text" placeholder="Enter website URL" name="websiteurl" id="websiteurl">
                         </div>
                     </div>
                     <input type="submit" name="g" value="Create" id="g" class="crSubmit">
-                </form>
+                </div>
             </div>
         </div>
+        <div id="results" style="margin-top:30px"></div>
+        <div class="push"></div>
     </div>
-    <div id="results" style="margin-top:30px"></div>
-    <div class="push"></div>
 </div>
-
 <% include footer.ejs %>
-
 </body>
 </html>
