@@ -83,6 +83,8 @@ function addResCallback(req, res, login, lat, lng, z){
         name: req.query.name,
         doorNumber: req.query.doorNumber,
         postcode: req.query.postcode,
+        description: req.query.description,
+        phoneNo: req.query.phoneNo,
         lat: lat,
         lng: lng,
         photoURL: "",
