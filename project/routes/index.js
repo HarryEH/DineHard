@@ -9,6 +9,8 @@ var RestaurantController = require('../controllers/restaurantscontroller');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    req.session.prevURL = req.url;
+
     var login = checkLogin(req, res, next);
     var forename = req.session.forename;
     res.render('index', { loggedIn: login, forename: forename });
@@ -17,10 +19,12 @@ router.get('/', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/restaurant', function(req, res, next) {
-    res.redirect('/');
+    res.redirect(req.session.prevURL);
 });
 
 router.get('/restaurant-*', function(req, res, next) {
+    req.session.prevURL = req.url;
+
     var login = checkLogin(req, res, next);
     RestaurantController.renderRestaurant(req,res,login);
 });
@@ -28,6 +32,8 @@ router.get('/restaurant-*', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/results', function(req, res, next) {
+    req.session.prevURL = req.url;
+
     var login = checkLogin(req, res, next);// pass this
     ResultsController.handleSearch(req,res, login);
 });
@@ -36,9 +42,9 @@ router.get('/results', function(req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/login', function(req, res, next) {
     var login = checkLogin(req, res, next);
-    var forename = req.session.forename;
+
     if(login === true){
-        res.redirect('/');
+        res.redirect(req.session.prevURL);
     } else {
         res.render('login', {loggedIn: login, error: ""});
     }
@@ -52,7 +58,7 @@ router.post('/login', function(req, res, next) {
 router.get('/logout', function (req, res, next) {
     delete req.session.user_id;
     console.log(req.session.user_id);
-    res.redirect('/');
+    res.redirect(req.session.prevURL);
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,6 +88,8 @@ router.get('/create-restaurant', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/accessibility', function(req, res, next) {
+    req.session.prevURL = req.url;
+
     var login = checkLogin(req, res, next);
     res.render('accessibility', { loggedIn: login });
 });
