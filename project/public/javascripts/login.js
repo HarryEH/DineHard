@@ -5,6 +5,9 @@ function loginValidate(){
     var pError = document.getElementById("pError");
     var loginOk = true;
 
+    uError.innerHTML = "";
+    pError.innerHTML = "";
+
     if(user == ""){
         uError.innerHTML = "* Enter a Username *";
         loginOk = false;

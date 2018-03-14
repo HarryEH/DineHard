@@ -407,7 +407,7 @@ results p{
     display: inline-block;
 }
 
-#uError, #pError{
+.formError{
     color: var(--bg2-color);
     text-align: center;
 }
@@ -423,6 +423,10 @@ results p{
 .login input, .register input, .createRestaurant input{
     width: 100%;
     margin: 5px;
+}
+
+.login label, .register label, .createRestaurant label{
+    margin-top: 6px;
 }
 
 .lBorder, .crBorder{
