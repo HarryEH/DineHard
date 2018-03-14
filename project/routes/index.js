@@ -3,6 +3,7 @@ var router = express.Router();
 
 var ResultsController = require('../controllers/resultscontroller');
 var loginController = require('../controllers/logincontroller');
+var registerController = require('../controllers/registercontroller');
 var RestaurantController = require('../controllers/restaurantscontroller');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,13 +56,11 @@ router.get('/logout', function (req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/register', function(req, res, next) {
     var login = checkLogin(req, res, next);
-    res.render('register', { loggedIn: login, error: ""});
+    res.render('register', { loggedIn: login, error:"", uerror: "", emerror: ""});
 });
 
 router.post('/register', function(req, res, next) {
-    var userData= req.body;
-    res.writeHead(200, { "Content-Type": "application/json"});
-    res.end(JSON.stringify(userData));
+    registerController.handleRegister(req, res, next);
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
