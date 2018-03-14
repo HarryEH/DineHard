@@ -64,10 +64,10 @@ function loadRestaurant(req, res, login, rId){
             var userLat = req.session.user_lat;
             var userLng = req.session.user_lng;
 
-            var address = geodata.locationToAddress(results.lat,results.lng);
+            results.address = geodata.locationToAddress(results.lat,results.lng);
             results.distance = results.getDistance(userLat, userLng);
 
-            res.render('restaurant', { restaurant: results, address: address, distance: distance, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount });
+            res.render('restaurant', { restaurant: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount });
             return;
         });
 

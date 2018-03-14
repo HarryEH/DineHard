@@ -53,12 +53,13 @@ module.exports = {
 
     locationToAddress: function(lat, long){
         const latlng = {lat: lat, lng: long};
-        googleMapsClient.geocode({
-            location: latlng
+        googleMapsClient.reverseGeocode({
+            latlng: [-33.8571965, 151.2151398],
         }, function(err, response) {
             if (!err) {
-                console.log(response.json.results[0].address_components);
-                return response.json.results[0].address_components;
+                console.log("ADDRESS");
+                console.log(response.json.results[0].formatted_address);
+                return response.json.results[0].formatted_address;
             }
         });
     }
