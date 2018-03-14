@@ -21,17 +21,18 @@ module.exports = {
         models.connect();
         // verify that the restaurant's address isn't already in the db
 
-        const no = res.query.doorNumber;
-        const postcode = res.query.postcode;
+        const no = req.query.doorNumber;
+        const postcode = req.query.postcode;
 
         models.Restaurant.find({doorNumber: no, postcode: postcode}, function(err, results){
             if (err) {return console.error(err);}
 
-            if (results.length != 0){
-                // render some error
+            if (results.length == 0){
+                geodata.postcodeToLocation(postcode, addResCallback, res, req, login, []);
+                return;
             }
 
-            geodata.postcodeToLocation(postcode, addResCallback, res, login, []);
+            // else render some error
 
         })
 
@@ -74,20 +75,20 @@ function loadRestaurant(req, res, login, rId){
     });
 }
 
-function addResCallback(res, login, lat, lng, z){
+function addResCallback(req, res, login, lat, lng, z){
     // add the restaurant to the db
     models.connect();
 
     var restaurant = new models.Restaurant({
-        name: res.query.name,
-        doorNumber: res.query.name,
-        postcode: res.query.name,
+        name: req.query.name,
+        doorNumber: req.query.doorNumber,
+        postcode: req.query.postcode,
         lat: lat,
         lng: lng,
         photoURL: "",
-        tags: res.query.tags,
+        tags: req.query.tags,
         rating: 0,
-        websiteURL: res.query.websiteURL
+        websiteURL: req.query.websiteURL
     });
 
     restaurant.save(function (err, restaurant) {

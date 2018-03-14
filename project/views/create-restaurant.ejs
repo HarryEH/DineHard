@@ -18,7 +18,7 @@
             <div class="crTitle">Create Restaurant</div>
             <div class = "error"><%= error %></div>
             <div class="crInputWrapper">
-                <div id="createRestaurantForm" onsubmit="createRestaurant()">
+                <form id="createRestaurantForm" action="/create-restaurant" method="get" >
                     <div class="row createRestaurant">
                         <div class="col-5">
                         </div>
@@ -49,7 +49,7 @@
                             <label for='telephone'>Restaurant Telephone Number:</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" placeholder="Enter restaurant telephone number" name="name" id="name">
+                            <input type="text" placeholder="Enter restaurant telephone number" name="phoneNo" id="name">
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                             <label for="doornumber">Door Number:</label>
                         </div>
                         <div class="col-7">
-                            <input class="field" id="street_number" disabled="true">
+                            <input class="field" name="doorNumber" id="street_number" disabled="true">
                             </input>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                             <label for="postcode">Postcode:</label>
                         </div>
                         <div class="col-7">
-                            <input class="field" id="postal_code" disabled="true">
+                            <input class="field" name="postcode" id="postal_code" disabled="true">
                             </input>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <input type="submit" name="g" value="Create" id="g" class="crSubmit">
-                </div>
+                </form>
             </div>
         </div>
         <div id="results" style="margin-top:30px"></div>
