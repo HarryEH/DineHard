@@ -17,9 +17,7 @@ router.get('/', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/restaurant', function(req, res, next) {
-    var login = checkLogin(req, res, next);
-    var reviews = ["The food was delicious.", "I found the staff annoying and rude.", "I LVOE IT!!!1!!"];
-    res.render('restaurant', { loggedIn: login, reviews: reviews });
+    res.redirect('/');
 });
 
 router.get('/restaurant-*', function(req, res, next) {

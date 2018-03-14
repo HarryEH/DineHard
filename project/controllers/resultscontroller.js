@@ -14,7 +14,9 @@ module.exports = {
 
         const str = req.query.q;
         var lat = req.query.lat;
+        req.session.user_lat = lat;
         var lng = req.query.lng;
+        req.session.user_lng = lng;
         var dist = req.query.distance;
 
         const DEFAULT_DIST = 5000;

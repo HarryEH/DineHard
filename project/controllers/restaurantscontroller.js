@@ -13,7 +13,7 @@ module.exports = {
             res.render('error', {loggedIn: login, error: {status: "404"}});
         }
 
-        loadRestaurant(res, login, rId);
+        loadRestaurant(req, res, login, rId);
 
     },
 
@@ -39,7 +39,7 @@ module.exports = {
 
 };
 
-function loadRestaurant(res, login, rId){
+function loadRestaurant(req, res, login, rId){
 
     models.Restaurant.findById(rId, function (err, results) {
         if (err) {
@@ -54,7 +54,20 @@ function loadRestaurant(res, login, rId){
             if (err) { return console.error(err2);}
 
             console.log(reviewResults);
-            res.render('restaurant', { restaurant: results, loggedIn: login, reviews: reviewResults });
+
+            var reviewCount = 0;
+            reviewResults.forEach(function(review)
+            {
+               reviewCount += 1;
+            });
+
+            var userLat = req.session.user_lat;
+            var userLng = req.session.user_lng;
+
+            var address = geodata.locationToAddress(results.lat,results.lng);
+            results.distance = results.getDistance(userLat, userLng);
+
+            res.render('restaurant', { restaurant: results, address: address, distance: distance, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount });
             return;
         });
 
