@@ -8,7 +8,7 @@ module.exports = {
         var fname = req.body.f;
         var sname = req.body.s;
         var email = req.body.e;
-        var user = req.body.u;
+        var user = req.body.u.toLowerCase();
         var pass = req.body.p;
 
         var registerOk = true;
