@@ -3,12 +3,12 @@ const models = require('../models/models');
 module.exports = {
 
     handleLogin: function(req, res, next) {
-        var user = req.body.u;
+        var user = req.body.u.toLowerCase();
         var pass = req.body.p;
 
         models.connect();
 
-        models.User.findOne({username: user}, function (err, results) {
+        models.User.findOne({username: new RegExp(user, "i")}, function (err, results) {
             if (err) {return console.error(err);}
 
             console.log(results);

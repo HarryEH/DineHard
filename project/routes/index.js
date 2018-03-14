@@ -65,7 +65,14 @@ router.post('/register', function(req, res, next) {
 
 router.get('/create-restaurant', function(req, res, next) {
     var login = checkLogin(req, res, next);
-    res.render('create-restaurant', { loggedIn: login, error: ""});
+    //check the query
+
+    if(testCreateRestaurantInput(req)){
+        RestaurantController.addRestaurant(req,res,login);
+    } else {
+        res.render('create-restaurant', { loggedIn: login, error: "Fill all the required fields"});
+    }
+
 });
 
 
@@ -103,4 +110,23 @@ function checkLogin(req, res, next){
         console.log("TRUE");
         return true;
     }
+}
+
+function testCreateRestaurantInput(req){
+    const doorNumber = req.query.doorNumber;
+    const postcode = req.query.postcode;
+    const phoneNo = req.query.phoneNo;
+    const name = req.query.doorNumber;
+    const photoURL = req.query.photo;
+    const tags = req.query.tags;
+    const websiteURL = req.query.doorNumber;
+
+    return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
+        && undefCheck(photoURL) && undefCheck(tags) && undefCheck(websiteURL)
+        && undefCheck(phoneNo);
+
+}
+
+function undefCheck(x){
+    return typeof x != "undefined";
 }
