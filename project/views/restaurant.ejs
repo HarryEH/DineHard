@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="javascripts/location.js"></script>
+    <script src="javascripts/load.js"></script>
 </head>
 <body onload="load();">
 <div class="mainWrapper">
@@ -66,7 +67,8 @@
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div class="col-4">
-                MAP GOES HERE
+                <div id="map">
+                </div>
             </div>
         </div>
     </div>
@@ -75,6 +77,9 @@
 
     <div class="container-fluid">
         <h1> Reviews </h1>
+        <% if (reviewCount < 1){%>
+        <p>No reviews yet...</p>
+        <%}%>
         <% reviews.forEach(function(review){ %>
         <div class="container-fluid">
             <div class="row reviews">
@@ -85,14 +90,14 @@
                 </div>
                 <div class="col-10">
                     <div class ="row">
-                        <div class="col-3">USERNAME</div>
-                        <div class="col-3">6 Days Ago</div>
+                        <div class="col-3"><%= review.username %></div>
+                        <div class="col-3"><%= review.time %> on <%= review.date %></div>
                     </div>
                     <div class ="row">
-                        <div class="col-12">19 STARS</div>
+                        <div class="col-12"><%= review.rating %></div>
                     </div>
                     <div class ="row">
-                        <div class="col-12"><%= review %></div>
+                        <div class="col-12"><%= review.review %></div>
                     </div>
                 </div>
             </div>

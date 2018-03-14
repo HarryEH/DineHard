@@ -37,7 +37,11 @@ router.get('/results', function(req, res, next) {
 router.get('/login', function(req, res, next) {
     var login = checkLogin(req, res, next);
     var forename = req.session.forename;
-    res.render('login', { loggedIn: login, error: "" });
+    if(login === true){
+        res.redirect('/');
+    } else {
+        res.render('login', {loggedIn: login, error: ""});
+    }
 });
 
 router.post('/login', function(req, res, next) {
