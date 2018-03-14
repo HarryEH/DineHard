@@ -20,7 +20,7 @@ module.exports = {
         return d; // returns the distance in meters
     },
 
-    postcodeToLocation: function (address, callback, res, login, dist){
+    postcodeToLocation: function (address, callback, res, req, login, dist){
 
         // Geocode an address.
         googleMapsClient.geocode({
@@ -32,7 +32,7 @@ module.exports = {
                 const lat = response.json.results[0].geometry.location.lat;
                 const lng = response.json.results[0].geometry.location.lng;
 
-                callback(res, login, lat, lng, dist);
+                callback(req, res, login, lat, lng, dist);
                 return;
             }
         });
