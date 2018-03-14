@@ -121,13 +121,14 @@ function testCreateRestaurantInput(req){
     const postcode = req.query.postcode;
     const phoneNo = req.query.phoneNo;
     const name = req.query.doorNumber;
+    const description = req.query.description;
     const photoURL = req.query.photo;
     const tags = req.query.tags;
     const websiteURL = req.query.doorNumber;
 
     return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
         && undefCheck(photoURL) && undefCheck(tags) && undefCheck(websiteURL)
-        && undefCheck(phoneNo);
+        && undefCheck(phoneNo) && undefCheck(description);
 
 }
 
