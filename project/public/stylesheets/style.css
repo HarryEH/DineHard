@@ -9,6 +9,26 @@
   --font: "Trebuchet MS";
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.mainWrapper {
+    min-height: 100%;
+    margin-bottom: -45px;
+}
+
+.push {
+    height: 45px;
+}
+
+.mWrapper {
+    margin-left: 5%;
+    font-size: 12pt;
+    margin-right: 5%;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -397,6 +417,12 @@ results p{
     width: 50%;
 }
 
+.profile{
+    display: inline-block;
+    margin: 4% 25% 0% 25% ;
+    width: 50%;
+}
+
 .row:after {
     content: "";
     display: table;
@@ -429,13 +455,13 @@ results p{
     margin-top: 6px;
 }
 
-.lBorder, .crBorder{
+.lBorder, .crBorder, .pBorder{
     background: var(--bg2-color);
     border-radius: 25px;
     padding: 5px 15px 15px 15px;
 }
 
-.lTitle, .crTitle{
+.lTitle, .crTitle, .pTitle{
     color: white;
     font-size: 22px;
     padding: 15px 5px 15px 5px;
@@ -447,6 +473,16 @@ results p{
     padding: 4%;
     background: white;
     font-size: 14px;
+    border-radius: 5px;
+ }
+
+.pInfo{
+    width: 100%;
+    margin: 0 auto;
+    padding: 4%;
+    background: white;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
 .login{
@@ -461,21 +497,14 @@ results p{
     text-align: center;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-}
-.mainWrapper {
-    min-height: 100%;
-    margin-bottom: -45px;
+.resLink a{
+    color: black; !important;
+    font-weight: bold;
 }
 
-.push {
-    height: 45px;
-}
-
-.mWrapper {
-    margin-left: 5%;
-    font-size: 12pt;
-    margin-right: 5%;
+.pReview{
+    background: rgba(214, 31, 38, 0.15);
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    padding: 10px 0px 10px 10px;
 }

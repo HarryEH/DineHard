@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include stylesheets.ejs %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="javascripts/location.js"></script>
+    <script src="javascripts/load.js"></script>
+    <title><%= title %></title>
+</head>
+<body onload="load();">
+<div class="mainWrapper">
+    <% include header.ejs %>
+    <div class="profile">
+        <div class="pBorder">
+            <div class="pTitle"><%= title %></div>
+            <div class="pInfo">
+                <div class="row">
+                    <div class="col-5">
+                        <h2>Personal Details</h2>
+                        <div class="row">
+                            <div class="col-6">Forename:</div>
+                            <div class="col-6"><%= user.forename %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Surname:</div>
+                            <div class="col-6"><%= user.surname %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Username:</div>
+                            <div class="col-6"><%= user.username %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Email:</div>
+                            <div class="col-6"><%= user.email %></div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <h2>Reviews</h2>
+                        <% if(reviewCount == 0){%>
+                        <p>No reviews yet</p>
+                        <% }%>
+                        <% reviews.forEach(function(review){ %>
+                        <div class="container pReview">
+                            <div class="row">
+                                <div class="col-8 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
+                                <div class="col-4"><%= review.date.getDate() %>-<%= review.date.getMonth() %>-<%= review.date.getFullYear() %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6"><%= review.rating %> out of 7 stars</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12"><%= review.review %></div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+                <p># of reviews: <%= reviewCount %></p>
+
+            </div>
+        </div>
+    </div>
+    <div class="push"></div>
+</div>
+
+<% include footer.ejs %>
+
+</body>
+</html>
