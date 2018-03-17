@@ -497,7 +497,7 @@ results p{
     text-align: center;
 }
 
-.resLink a{
+.resLink a, .userLink a{
     color: black; !important;
     font-weight: bold;
 }

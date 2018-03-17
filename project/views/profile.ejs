@@ -20,7 +20,12 @@
             <div class="pInfo">
                 <div class="row">
                     <div class="col-5">
-                        <h2>Personal Details</h2>
+                        <div class="row">
+                            <div class="col-8"><h2>Personal Details</h2></div>
+                            <%if (myProfile === true){%>
+                                <div class="col-4"><button>Edit</button></div>
+                            <%}%>
+                        </div>
                         <div class="row">
                             <div class="col-6">Forename:</div>
                             <div class="col-6"><%= user.forename %></div>
@@ -33,16 +38,20 @@
                             <div class="col-6">Username:</div>
                             <div class="col-6"><%= user.username %></div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">Email:</div>
-                            <div class="col-6"><%= user.email %></div>
-                        </div>
+                        <%if (myProfile === true){%>
+                            <div class="row">
+                                <div class="col-6">Email:</div>
+                                <div class="col-6"><%= user.email %></div>
+                            </div>
+                        <%}%>
                     </div>
                     <div class="col-7">
-                        <h2>Reviews</h2>
                         <% if(reviewCount == 0){%>
-                        <p>No reviews yet</p>
-                        <% }%>
+                            <h2>Reviews</h2>
+                            <p>No reviews yet</p>
+                        <% } else { %>
+                            <h2>Reviews (<%= reviewCount %> total)</h2>
+                        <%}%>
                         <% reviews.forEach(function(review){ %>
                         <div class="container pReview">
                             <div class="row">
@@ -59,8 +68,6 @@
                         <% }); %>
                     </div>
                 </div>
-                <p># of reviews: <%= reviewCount %></p>
-
             </div>
         </div>
     </div>

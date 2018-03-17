@@ -20,7 +20,7 @@ module.exports = {
             } else {
                 var uID = user._id;
                 var title = uname + "'s Profile"
-                loadProfile(req, res, next, login, uID, title);
+                loadProfile(req, res, next, login, uID, title, false);
             }
         });
 
@@ -36,12 +36,12 @@ module.exports = {
             res.render('error', {loggedIn: login, error: {status: "404"}});
         }
 
-        loadProfile(req, res, next, login, uID, "My Profile");
+        loadProfile(req, res, next, login, uID, "My Profile", true);
 
     }
 };
 
-function loadProfile(req, res, next, login, uID, title){
+function loadProfile(req, res, next, login, uID, title, myProfile){
 
     models.User.findById(uID, function (err, results) {
         if (err) {
@@ -61,7 +61,7 @@ function loadProfile(req, res, next, login, uID, title){
 
             if(reviewCount == 0)
             {
-                res.render('profile', { user: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount, title: title });
+                res.render('profile', { user: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount, title: title, myProfile: myProfile });
                 return;
             }
 
@@ -76,7 +76,7 @@ function loadProfile(req, res, next, login, uID, title){
                     review.resURL = "restaurant-" + review.resName.replace(/\s/g, '-') + "?rId="+ review.resId;
 
                     if(reviewIndex == reviewCount){
-                        res.render('profile', { user: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount, title: title });
+                        res.render('profile', { user: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount, title: title, myProfile: myProfile });
                         return;
                     }
                 });
