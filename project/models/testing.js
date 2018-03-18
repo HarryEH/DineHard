@@ -6,7 +6,7 @@ models.connect();
 
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-// Example of saving
+//Example of saving
 // var harry = new models.User({
 //     forename: "Harry",
 //     surname: "Howarth",
@@ -91,7 +91,7 @@ models.connect();
 // });
 
 // Example query
-models.User.findOne({ forename: /^Har/ }, function (err, user) {
+models.User.findOne({ forename: /^Ala/ }, function (err, user) {
     if (err) return console.error(err);
     models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
         if (err) return console.error(err);

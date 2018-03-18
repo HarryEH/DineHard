@@ -78,6 +78,9 @@
 
     <div class="container-fluid">
         <h1> Reviews </h1>
+        <% if (loggedIn === false) {%>
+            <p class="blackLink"><a href="/login">Login</a> to leave a review</p>
+        <%}%>
         <% if (reviewCount < 1){%>
         <p>No reviews yet...</p>
         <%}%>
@@ -91,7 +94,7 @@
                 </div>
                 <div class="col-10">
                     <div class ="row">
-                        <div class="col-3"><%= review.username %></div>
+                        <div class="col-3 userLink"><a href="/profile-<%= review.username %>"><%= review.username %></a></div>
                         <div class="col-3"><%= review.time %> on <%= review.date.getDate() %>-<%= review.date.getMonth() %>-<%= review.date.getFullYear() %></div>
                     </div>
                     <div class ="row">

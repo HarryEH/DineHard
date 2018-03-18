@@ -4,6 +4,7 @@ var router = express.Router();
 var ResultsController = require('../controllers/resultscontroller');
 var loginController = require('../controllers/logincontroller');
 var registerController = require('../controllers/registercontroller');
+var profileController = require('../controllers/profilecontroller');
 var RestaurantController = require('../controllers/restaurantscontroller');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,6 +86,23 @@ router.get('/create-restaurant', function(req, res, next) {
 
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+router.get('/profile', function(req, res, next) {
+    req.session.prevURL = req.url;
+    var login = checkLogin(req, res, next);
+    if(login === false)
+    {
+        res.redirect('/login');
+    } else {
+        profileController.renderMyProfile(req, res, next, login);
+    }
+});
+
+router.get('/profile-*', function(req, res, next) {
+    req.session.prevURL = req.url;
+    var login = checkLogin(req, res, next);
+    profileController.renderProfile(req, res, next, login);
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/accessibility', function(req, res, next) {
