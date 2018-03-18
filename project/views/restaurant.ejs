@@ -78,6 +78,9 @@
 
     <div class="container-fluid">
         <h1> Reviews </h1>
+        <% if (loggedIn === false) {%>
+            <p class="blackLink"><a href="/login">Login</a> to leave a review</p>
+        <%}%>
         <% if (reviewCount < 1){%>
         <p>No reviews yet...</p>
         <%}%>
