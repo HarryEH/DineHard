@@ -3,7 +3,7 @@ const models = require('../models');
 models.connect();
 
 
-models.User.findOne({ forename: /^Ala/ }, function (err, user) {
+models.User.findOne({ forename: /^Har/ }, function (err, user) {
     if (err) return console.error(err);
     models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
         if (err) return console.error(err);
