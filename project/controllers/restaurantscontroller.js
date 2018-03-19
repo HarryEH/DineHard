@@ -49,7 +49,7 @@ function loadRestaurant(req, res, login, rId){
             return;
         }
 
-        console.log(results);
+        //console.log(results);
 
         if (results.length !== 0) {
 
@@ -62,9 +62,6 @@ function loadRestaurant(req, res, login, rId){
                 var userLng = req.session.user_lng;
 
                 results.distance = results.getDistance(userLat, userLng);
-
-                console.log("DISTANCE");
-                console.log(results.distance);
 
                 geodata.locationToAddress(results.lat, results.lng, renderResCallback, req, res, login, results, reviewResults);
 
