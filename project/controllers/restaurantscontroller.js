@@ -63,7 +63,7 @@ function loadRestaurant(req, res, login, rId){
 
                 results.distance = results.getDistance(userLat, userLng);
 
-                geodata.locationToAddress(results.lat, results.lng, renderResCallback, req, res, login, results, reviewResults);
+                geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
 
             });
         }
