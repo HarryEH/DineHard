@@ -54,7 +54,9 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     loginController.handleLogin(req, res, next);
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/forgot-password', function(req, res, next) {
     var login = checkLogin(req, res, next);
 
@@ -64,8 +66,10 @@ router.get('/forgot-password', function(req, res, next) {
 router.post('/forgot-password', function(req, res, next) {
     var login = checkLogin(req, res, next);
 
+    console.log(req.body.username);
+
     res.render('forgot-password', {loggedIn: login, error: "Check your emails"});
-})
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get('/logout', function (req, res, next) {
