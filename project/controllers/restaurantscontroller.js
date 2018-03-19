@@ -112,7 +112,7 @@ function addResCallback(obj) {
         lat: lat,
         lng: lng,
         photoURL: "",
-        tags: req.query.tags,
+        tags: req.query.tags + ", " + req.query.name,
         rating: 0,
         websiteURL: req.query.websiteURL
     });
