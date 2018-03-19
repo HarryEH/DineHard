@@ -51,26 +51,25 @@ function loadRestaurant(req, res, login, rId){
 
         console.log(results);
 
-        models.Review.find({resId: rId}, function(err2, reviewResults) {
-            if (err) { return console.error(err2);}
+        if (results.length !== 0) {
 
-            console.log(reviewResults);
+            models.Review.find({resId: rId}, function (err2, reviewResults) {
+                if (err) {
+                    return console.error(err2);
+                }
 
-            var reviewCount = 0;
-            reviewResults.forEach(function(review)
-            {
-               reviewCount += 1;
+                var userLat = req.session.user_lat;
+                var userLng = req.session.user_lng;
+
+                results.distance = results.getDistance(userLat, userLng);
+
+                console.log("DISTANCE");
+                console.log(results.distance);
+
+                geodata.locationToAddress(results.lat, results.lng, renderResCallback, req, res, login, results, reviewResults);
+
             });
-
-            var userLat = req.session.user_lat;
-            var userLng = req.session.user_lng;
-
-            results.address = geodata.locationToAddress(results.lat,results.lng);
-            results.distance = results.getDistance(userLat, userLng);
-
-            res.render('restaurant', { restaurant: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount });
-            return;
-        });
+        }
 
     });
 }
@@ -98,5 +97,12 @@ function addResCallback(req, res, login, lat, lng, z){
         res.redirect(restaurant.generateURL());
     });
 
+}
+
+function renderResCallback(req, res, results, reviews, login){
+
+    var reviewCount = reviews.length;
+    res.render('restaurant', { restaurant: results, loggedIn: login, reviews: reviews, reviewCount: reviewCount });
+    return;
 }
 
