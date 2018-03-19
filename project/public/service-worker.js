@@ -5,23 +5,35 @@ var urlsToCache = [
     '/styles/style.css',
     '/script/load.js'
 ];
-self.addEventListener('install'
-    , function(event) {
+self.addEventListener('install', function(event) {
 // Perform install steps
+    console.log('[ServiceWorker] Install');
         event.waitUntil(
-            caches.open(CACHE_NAME)
-                .then(function(cache) {
-                    console.log('Opened cache');
+            caches.open(CACHE_NAME).then(function(cache) {
+                    console.log('[ServiceWorker] Caching app shell');
                     return cache.addAll(urlsToCache);
                 })
         );
     });
 
+self.addEventListener('activate', function(event){
+   console.log('[ServiceWorker] Activate');
+   e.waitUntil(
+       caches.keys().then(function(keyList) {
+           return Promise.all(keyList.map(function(key){
+               if(key !== cacheName && key !== dataCacheName) {
+                   console.log('[ServiceWorker] Removing old cache', key);
+                   return caches.delete(key);
+               }
+           }))
+       })
+   )
+});
+
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         // it checks if the requested page is among the cached ones
-        caches.match(event.request)
-            .then(function (response) {
+        caches.match(event.request).then(function (response) {
                 // Cache hit - return the cache response (the cached page)
                 if (response) {
                     return response;
