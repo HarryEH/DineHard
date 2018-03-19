@@ -49,7 +49,7 @@
                                 <div class="restName"> <a href="/<%= item.generateURL()%>"> <%= item.name %> </a> </div>
                                 <div id='<%=divID%>'> Reviews </div>
                                 <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
-                                Cusines <br>
+                                <%= item.cuisines %> <br>
                                 <div id="dist"><%= item.distance %> miles away</div>
                             </div>
                         </div>

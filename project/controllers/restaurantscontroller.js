@@ -51,7 +51,7 @@ function loadRestaurant(req, res, login, rId) {
             return;
         }
 
-        if (results.length !== 0) {
+        if (results !== null) {
 
             models.Review.find({resId: rId}, function (err2, reviewResults) {
                 if (err) {
