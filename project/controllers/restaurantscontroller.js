@@ -52,57 +52,25 @@ function loadRestaurant(req, res, login, rId) {
         }
 
         if (results.length !== 0) {
-            models.RestaurantCuisine.find({rId: rId}, function (err, cuisines) {
+
+            models.Review.find({resId: rId}, function (err2, reviewResults) {
                 if (err) {
-                    res.render('error', {loggedIn: login, error: {status: "404"}});
-                    console.error(err);
-                    return;
+                    return console.error(err2);
                 }
 
-                console.log(cuisines);
+                console.log("ARGHHH");
 
-                var cuisineIndex = 0;
-                var cuisineNames = "";
-                cuisines.forEach(function (cuisine) {
-                    cuisineId = cuisine.cId;
-                    console.log(cuisineId);
-                    models.Cuisine.findById(cuisineId, function (err, c) {
-                        if (err) {
-                            res.render('error', {loggedIn: login, error: {status: "404"}});
-                            console.error(err);
-                            return;
-                        }
+                var userLat = req.session.user_lat;
+                var userLng = req.session.user_lng;
 
-                        cuisineIndex += 1;
-                        cuisineNames += c.type.toString();
-                        console.log(cuisineNames);
+                results.distance = results.getDistance(userLat, userLng);
 
-                        if (cuisineIndex >= cuisines.length) {
-                            results.cuisine = cuisineNames;
-                            console.log("REVIEWS");
-                            models.Review.find({resId: rId}, function (err2, reviewResults) {
-                                if (err) {
-                                    return console.error(err2);
-                                }
-
-                                console.log("ARGHHH");
-
-                                var userLat = req.session.user_lat;
-                                var userLng = req.session.user_lng;
-
-                                results.distance = results.getDistance(userLat, userLng);
-
-                                geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
-                                return;
-                            });
-                        }
-                        cuisineNames += ", ";
-                    })
-
-                });
-
+                geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+                return;
             });
+
         }
+
     });
 }
 
