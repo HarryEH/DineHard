@@ -51,15 +51,20 @@ module.exports = {
         });
     },
 
-    locationToAddress: function(lat, long){
+    locationToAddress: function(lat, long, callback, req, res, login, results, reviews){
         const latlng = {lat: lat, lng: long};
+        console.log("Loc 2 Add");
         googleMapsClient.reverseGeocode({
-            latlng: [-33.8571965, 151.2151398],
+            latlng: [lat, long]
         }, function(err, response) {
             if (!err) {
                 console.log("ADDRESS");
                 console.log(response.json.results[0].formatted_address);
-                return response.json.results[0].formatted_address;
+
+                results.address = response.json.results[0].formatted_address;
+
+                callback(req, res, results, reviews, login);
+                return;
             }
         });
     }
