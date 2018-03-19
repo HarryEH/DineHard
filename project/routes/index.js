@@ -6,6 +6,7 @@ var loginController = require('../controllers/logincontroller');
 var registerController = require('../controllers/registercontroller');
 var profileController = require('../controllers/profilecontroller');
 var RestaurantController = require('../controllers/restaurantscontroller');
+var PasswordController = require('../controllers/passwordcontroller');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
@@ -66,9 +67,7 @@ router.get('/forgot-password', function(req, res, next) {
 router.post('/forgot-password', function(req, res, next) {
     var login = checkLogin(req, res, next);
 
-    console.log(req.body.username);
-
-    res.render('forgot-password', {loggedIn: login, error: "Check your emails"});
+    PasswordController.sendEmail(req,res,login);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

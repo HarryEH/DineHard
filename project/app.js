@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mailer = require('express-mailer');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -65,7 +66,17 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-
+mailer.extend(app, {
+    from: 'no-reply@example.com',
+    host: 'smtp.gmail.com', // hostname
+    secureConnection: true, // use SSL
+    port: 465, // port for secure SMTP
+    transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+    auth: {
+        user: '?@gmail.com',
+        pass: '?'
+    }
+});
 
 // error handler
 app.use(function(err, req, res, next) {
