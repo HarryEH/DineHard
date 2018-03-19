@@ -60,6 +60,12 @@ router.get('/forgot-password', function(req, res, next) {
 
     res.render('forgot-password', {loggedIn: login, error: ""});
 });
+
+router.post('/forgot-password', function(req, res, next) {
+    var login = checkLogin(req, res, next);
+
+    res.render('forgot-password', {loggedIn: login, error: "Check your emails"});
+})
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get('/logout', function (req, res, next) {
