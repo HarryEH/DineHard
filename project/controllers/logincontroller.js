@@ -12,8 +12,9 @@ module.exports = {
             if (err) {return console.error(err);}
 
             console.log(results);
-            if(results !== null){
-                if (user === results.username && pass === results.password) {
+            if(results !== null) {
+
+                if (user === results.username.toLowerCase() && pass === results.password) {
                     req.session.user_id = results._id;
                     req.session.forename = results.forename;
                     res.redirect(req.session.prevURL);

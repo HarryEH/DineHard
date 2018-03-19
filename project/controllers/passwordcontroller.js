@@ -7,7 +7,7 @@ module.exports = {
             if (err) return console.error(err);
 
             const url = "http://"+ req.get('host') +"/change-password?username="+ user.username +"&tokenId="+ user._id;
-            console.log(url);//KEEP THIS
+            console.log(url);// KEEP THIS
 
             // Send them an email
             req.app.mailer.send('email', {
@@ -31,19 +31,23 @@ module.exports = {
 
         models.connect();
 
-        // Verify things then update
+        const id  = req.body.tokenId;
+        const usr = req.body.username;
+        const pss = req.body.password;
 
-        // Example code
-        // models.User.update({username: oldUsername}, {
-        //     username: newUser.username,
-        //     password: newUser.password,
-        //     rights: newUser.rights
-        // }, function(err, numberAffected, rawResponse) {
-        //     //handle it
-        // });
+        models.User.findOne({username: usr, _id: id}, function (err, user) {
+            user.password = pss;
 
-        res.redirect('/login');
+            user.save(function (err) {
+                if(err) {
+                    console.error('ERROR!');
+                    res.render('change-password', {tokenId: req.query.tokenId, username: req.query.username,
+                                                    loggedIn: login, error: "That didn't work. Try Again."});
+                }
 
+                res.redirect('/login');
+            });
+        });
     }
 
 };

@@ -84,25 +84,12 @@ router.post('/forgot-password', function(req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/change-password*', function(req, res, next) {
     var login = checkLogin(req, res, next);
-
-    const usr = req.query.username;
-    const id = req.query.tokenId;
-
-    res.render('change-password', {tokenId: id, username: usr, loggedIn: login, error: ""});
-
+    res.render('change-password', {tokenId: req.query.tokenId, username: req.query.username, loggedIn: login, error: ""});
 });
 
 router.post('/change-password', function(req, res, next) {
     var login = checkLogin(req, res, next);
-
-    const id  = req.body.tokenId;
-    console.log(id);
-    const usr = req.body.username;
-    console.log(usr);
-    const pss = req.body.password;
-    console.log(pss);
     PasswordController.handleReset(req,res,login);
-
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
