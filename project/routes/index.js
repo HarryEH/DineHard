@@ -54,6 +54,12 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     loginController.handleLogin(req, res, next);
 });
+
+router.get('/forgot-password', function(req, res, next) {
+    var login = checkLogin(req, res, next);
+
+    res.render('forgot-password', {loggedIn: login, error: ""});
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get('/logout', function (req, res, next) {
