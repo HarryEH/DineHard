@@ -39,7 +39,6 @@ module.exports = {
     },
 
     addressToLocation: function (address){
-
         // Geocode an address.
         googleMapsClient.geocode({
             address: address
@@ -51,17 +50,15 @@ module.exports = {
         });
     },
 
-    locationToAddress: function(lat, long, callback, req, res, login, results, reviews){
-        const latlng = {lat: lat, lng: long};
-        console.log("Loc 2 Add");
-        googleMapsClient.reverseGeocode({
-            latlng: [lat, long]
+    getFullAddress: function(callback, req, res, login, results, reviews){
+        var address = results.postcode.toString();
+        googleMapsClient.geocode({
+            address: address
         }, function(err, response) {
             if (!err) {
-                console.log("ADDRESS");
                 console.log(response.json.results[0].formatted_address);
 
-                results.address = response.json.results[0].formatted_address;
+                results.address = results.doorNumber.toString() + " " + response.json.results[0].formatted_address;
 
                 callback(req, res, results, reviews, login);
                 return;
