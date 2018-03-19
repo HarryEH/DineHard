@@ -7,12 +7,13 @@
     <% include stylesheets.ejs %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4&callback=myMap"></script>
     <script src="javascripts/location.js"></script>
     <script src="javascripts/load.js"></script>
     <script src="javascripts/reviewRating.js"></script>
     <title><%= restaurant.name %></title>
 </head>
-<body onload="load();">
+<body onload="load();myMap();addMarkers(<%=restaurant.lat%>, <%=restaurant.lng%>)">
 <div class="mainWrapper">
     <% include header.ejs %>
 
@@ -65,8 +66,7 @@
                 <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div class="col-4">
-                <div id="map">
-                </div>
+                <div id="map" style="width:400px;height:275px"></div>
             </div>
         </div>
     </div>
