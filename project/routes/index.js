@@ -6,6 +6,7 @@ var loginController = require('../controllers/logincontroller');
 var registerController = require('../controllers/registercontroller');
 var profileController = require('../controllers/profilecontroller');
 var RestaurantController = require('../controllers/restaurantscontroller');
+var PasswordController = require('../controllers/passwordcontroller');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
@@ -60,21 +61,53 @@ router.post('/login', function(req, res, next) {
 router.get('/forgot-password', function(req, res, next) {
     var login = checkLogin(req, res, next);
 
-    res.render('forgot-password', {loggedIn: login, error: ""});
+    if(login === true){
+        res.redirect(req.session.prevURL);
+    } else {
+        res.render('forgot-password', {loggedIn: login, error: ""});
+    }
+
 });
 
 router.post('/forgot-password', function(req, res, next) {
     var login = checkLogin(req, res, next);
 
-    console.log(req.body.username);
+    if(login === true){
+        res.redirect(req.session.prevURL);
+    } else {
+        PasswordController.sendEmail(req,res,login);
+    }
 
-    res.render('forgot-password', {loggedIn: login, error: "Check your emails"});
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+router.get('/change-password*', function(req, res, next) {
+    var login = checkLogin(req, res, next);
+
+    const usr = req.query.username;
+    const id = req.query.tokenId;
+
+    res.render('change-password', {tokenId: id, username: usr, loggedIn: login, error: ""});
+
+});
+
+router.post('/change-password', function(req, res, next) {
+    var login = checkLogin(req, res, next);
+
+    const id  = req.body.tokenId;
+    console.log(id);
+    const usr = req.body.username;
+    console.log(usr);
+    const pss = req.body.password;
+    console.log(pss);
+    PasswordController.handleReset(req,res,login);
+
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get('/logout', function (req, res, next) {
     delete req.session.user_id;
-    console.log(req.session.user_id);
     res.redirect(req.session.prevURL);
 });
 
@@ -148,12 +181,9 @@ function checkAuth(req, res, next) {
 }
 
 function checkLogin(req, res, next){
-    console.log(req.session.user_id);
     if(req.session.user_id === undefined){
-        console.log("FALSE");
         return false;
     } else {
-        console.log("TRUE");
         return true;
     }
 }
