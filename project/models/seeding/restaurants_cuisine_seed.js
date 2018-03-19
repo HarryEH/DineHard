@@ -22,4 +22,22 @@ models.Restaurant.findOne({ name: /^Dine/ }, function (err, res) {
     });
 
 });
+
+models.Restaurant.findOne({ name: /^Harr/ }, function (err, res) {
+    if (err) return console.error(err);
+
+    models.Cuisine.findOne({type: cuisines[1]}, function(err, result) {
+
+        const tmp = models.RestaurantCuisine({
+            rId: res._id,
+            cId: result._id
+        });
+
+        tmp.save(function (err, tmp) {
+            if (err) return console.error(err);
+        });
+
+    });
+
+});
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
