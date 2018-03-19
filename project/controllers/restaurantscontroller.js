@@ -3,7 +3,7 @@ const geodata = require('./geodata');
 
 module.exports = {
 
-    renderRestaurant: function(req, res, login){
+    renderRestaurant: function (req, res, login) {
 
         models.connect();
 
@@ -17,17 +17,19 @@ module.exports = {
 
     },
 
-    addRestaurant: function(req, res, login) {
+    addRestaurant: function (req, res, login) {
         models.connect();
         // verify that the restaurant's address isn't already in the db
 
         const no = req.query.doorNumber;
         const postcode = req.query.postcode;
 
-        models.Restaurant.find({doorNumber: no, postcode: postcode}, function(err, results){
-            if (err) {return console.error(err);}
+        models.Restaurant.find({doorNumber: no, postcode: postcode}, function (err, results) {
+            if (err) {
+                return console.error(err);
+            }
 
-            if (results.length == 0){
+            if (results.length == 0) {
                 geodata.postcodeToLocation(postcode, addResCallback, res, req, login, []);
                 return;
             }
@@ -40,7 +42,7 @@ module.exports = {
 
 };
 
-function loadRestaurant(req, res, login, rId){
+function loadRestaurant(req, res, login, rId) {
 
     models.Restaurant.findById(rId, function (err, results) {
         if (err) {
@@ -61,47 +63,68 @@ function loadRestaurant(req, res, login, rId){
 
                 var cuisineIndex = 0;
                 var cuisineNames = "";
-                cuisines.forEach(function(cuisine){
+                cuisines.forEach(function (cuisine) {
                     cuisineId = cuisine.cId;
                     console.log(cuisineId);
-                   models.Cuisine.findById(cuisineId, function(err, c){
-                       if (err) {
-                           res.render('error', {loggedIn: login, error: {status: "404"}});
-                           console.error(err);
-                           return;
-                       }
+                    models.Cuisine.findById(cuisineId, function (err, c) {
+                        if (err) {
+                            res.render('error', {loggedIn: login, error: {status: "404"}});
+                            console.error(err);
+                            return;
+                        }
 
-                       cuisineIndex += 1;
-                       cuisineNames += c.type.toString();
+                        cuisineIndex += 1;
+                        cuisineNames += c.type.toString();
+                        console.log(cuisineNames);
 
-                       if(cuisineIndex >= cuisines.length)
-                       {
+                        if (cuisineIndex >= cuisines.length) {
                             results.cuisine = cuisineNames;
-                           models.Review.find({resId: rId}, function (err2, reviewResults) {
-                               if (err) {
-                                   return console.error(err2);
-                               }
+                            console.log("REVIEWS");
+                            models.Review.find({resId: rId}, function (err2, reviewResults) {
+                                if (err) {
+                                    return console.error(err2);
+                                }
 
-                               var userLat = req.session.user_lat;
-                               var userLng = req.session.user_lng;
+                                console.log("ARGHHH");
 
-                               results.distance = results.getDistance(userLat, userLng);
+                                var userLat = req.session.user_lat;
+                                var userLng = req.session.user_lng;
 
-                               geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+                                results.distance = results.getDistance(userLat, userLng);
 
-                           });
-                       }
-
-                       cuisineNames += ", ";
-                   })
+                                geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+                                return;
+                            });
+                        }
+                        cuisineNames += ", ";
+                    })
 
                 });
+
             });
         }
     });
 }
 
-function addResCallback(req, res, login, lat, lng, z){
+function getReviews(req, res, login, results, rId) {
+    models.Review.find({resId: rId}, function (err2, reviewResults) {
+        if (err) {
+            return console.error(err2);
+        }
+
+        console.log("ARGHHH");
+
+        var userLat = req.session.user_lat;
+        var userLng = req.session.user_lng;
+
+        results.distance = results.getDistance(userLat, userLng);
+
+        geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+        return;
+    });
+}
+
+function addResCallback(req, res, login, lat, lng, z) {
     // add the restaurant to the db
     models.connect();
 
@@ -126,10 +149,10 @@ function addResCallback(req, res, login, lat, lng, z){
 
 }
 
-function renderResCallback(req, res, results, reviews, login){
+function renderResCallback(req, res, results, reviews, login) {
 
     var reviewCount = reviews.length;
-    res.render('restaurant', { restaurant: results, loggedIn: login, reviews: reviews, reviewCount: reviewCount });
+    res.render('restaurant', {restaurant: results, loggedIn: login, reviews: reviews, reviewCount: reviewCount});
     return;
 }
 
