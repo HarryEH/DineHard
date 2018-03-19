@@ -27,23 +27,17 @@ use mydb;
 db.users.drop();
 db.restaurants.drop();
 db.cuisines.drop();
+db.restaurantcuisines.drop();
 db.reviews.drop();
 
-THEN RUN 
+THEN RUN
 
-node models/testing.js
+node models/seeding/users_seed.js
 
-THEN comment out the code between 
-//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-code
-//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+node models/seeding/restaurants_seed.js
 
-THEN uncomment out the code between
-//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-code
-//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+node models/seeding/reviews_seed.js
 
-THEN RUN 
+node models/seeding/cuisines_seed.js
 
-node models/testing.js
-
+node models/seeding/restaurants_cuisines_seed.js
