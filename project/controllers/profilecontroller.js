@@ -18,9 +18,14 @@ module.exports = {
             if (user === null) {
                 res.render('error', {loggedIn: login, error: {status: "404"}});
             } else {
-                var uID = user._id;
-                var title = uname + "'s Profile"
-                loadProfile(req, res, next, login, uID, title, false);
+                const uID = user._id;
+                const myID = req.session.user_id;
+                if (myID == uID) {
+                    res.redirect('/profile');
+                } else {
+                    var title = uname + "'s Profile";
+                    loadProfile(req, res, next, login, uID, title, false);
+                }
             }
         });
 
@@ -50,12 +55,12 @@ function loadProfile(req, res, next, login, uID, title, myProfile){
             return;
         }
 
-        console.log(results);
+        //console.log(results);
 
         models.Review.find({username: results.username}, function(err2, reviewResults) {
             if (err2) { return console.error(err2);}
 
-            console.log(reviewResults);
+            //console.log(reviewResults);
 
             var reviewCount = reviewResults.length;
 
