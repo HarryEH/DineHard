@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="javascripts/location.js"></script>
+    <script src="javascripts/reviewRating.js"></script>
     <title>Results</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
     <% include header.ejs %>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 resultsSearch">
+            <div class="col-3 resultsSearch">
                 <form>
                     <input type="text" class="" placeholder="Enter keyword(s)">
                     <input type="submit" class="" value="Search">
@@ -34,16 +35,20 @@
                     <option value="distance">Distance</option>
                 </select>
             </div>
-            <div class="col-10">
+            <div class="col-9">
+                <% var resNum = 0;%>
                 <% results.forEach(function(item){ %>
+                <% resNum += 1;%>
                     <div class="container">
                         <div class="row results">
                             <div class="col-2">
                                 <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
                             </div>
                             <div class="col-10">
+                                <% var divID = "res" + resNum.toString();%>
                                 <div class="restName"> <a href="/<%= item.generateURL()%>"> <%= item.name %> </a> </div>
-                                Reviews <br>
+                                <div id='<%=divID%>'> Reviews </div>
+                                <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
                                 Cusines <br>
                                 <div id="dist"><%= item.distance %> miles away</div>
                             </div>
