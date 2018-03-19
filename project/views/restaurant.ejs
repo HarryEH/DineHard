@@ -26,7 +26,7 @@
 
         <div class = "row">
             <ul class="inlineList">
-                <li><div id="starRating"></div>
+                <li><div id="starRating" style="display: inline;"></div>
                     <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
                 <li>Cuisine(s)</li>
             </ul>
@@ -34,7 +34,7 @@
 
         <div class = "row inlineList">
             <ul class="inlineList">
-                <li><%= restaurant.address %> (<%= restaurant.distance %>miles away)</li>
+                <li><%= restaurant.address %> (<%= restaurant.distance %> miles away)</li>
                 <li><span class="glyphicon glyphicon-earphone"></span> Phone Number</li>
                 <li><i class="fa fa-laptop"></i>
                     <a href="<%= restaurant.websiteURL %>" style="color:black;"><%= restaurant.websiteURL %></a>
