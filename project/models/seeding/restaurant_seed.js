@@ -13,6 +13,7 @@ var one = new models.Restaurant({
     lat: 54.9857359,
     lng: -1.6080269,
     photoURL: "null",
+    price: 10,
     tags: "homely, warm, good ambiance",
     rating: 3.14,
     websiteURL: "http://howarth.io"
@@ -33,6 +34,7 @@ var two = new models.Restaurant({
     lat: 53.3806721,
     lng: -1.4822935,
     photoURL: "lol",
+    price: 2,
     tags: "smelly",
     rating: 4.37,
     websiteURL: "http://harryehowarth.com"
