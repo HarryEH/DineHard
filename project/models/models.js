@@ -72,7 +72,6 @@ var userSchema = mongoose.Schema({
 
 var user = mongoose.model('User', userSchema);
 var review = mongoose.model('Review', reviewSchema);
-var restaurantcuisine = mongoose.model('RestaurantCuisine', restaurantCuisineSchema);
 var cuisine = mongoose.model('Cuisine', cuisineSchema);
 var restaurant = mongoose.model('Restaurant', restaurantSchema);
 
@@ -82,7 +81,6 @@ module.exports = {
 
     User: user,
     Review: review,
-    RestaurantCuisine: restaurantcuisine,
     Cuisine: cuisine,
     Restaurant: restaurant,
 
