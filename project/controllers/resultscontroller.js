@@ -41,7 +41,8 @@ module.exports = {
 
         // if postcode
         if (valid_postcode(str)) {
-            geodata.postcodeToLocation(str, onPostcode, res, "", login, dist);
+            const obj = {res: res, login: login, dist: dist};
+            geodata.postcodeToLocation(str, onPostcode, obj);
             return;
         }
 
@@ -50,8 +51,13 @@ module.exports = {
     }
 };
 
-function onPostcode(ignore, res, login, lat, lng, distance){
+function onPostcode(obj){
 
+    const res = obj.res;
+    const login = obj.login;
+    const lat = obj.lat;
+    const lng = obj.lng;
+    const distance = obj.dist;
 
     const distAdd = distance / mToDD;
 

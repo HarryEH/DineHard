@@ -30,7 +30,8 @@ module.exports = {
             }
 
             if (results.length == 0) {
-                geodata.postcodeToLocation(postcode, addResCallback, res, req, login, []);
+                const obj = {res: res, req: req, login: login};
+                geodata.postcodeToLocation(postcode, addResCallback, obj);
                 return;
             }
 
@@ -92,9 +93,15 @@ function getReviews(req, res, login, results, rId) {
     });
 }
 
-function addResCallback(req, res, login, lat, lng, z) {
+function addResCallback(obj) {
     // add the restaurant to the db
     models.connect();
+
+    const req = obj.req;
+    const res = obj.res;
+    const login = obj.login;
+    const lat = obj.lat;
+    const lng = obj.lng;
 
     var restaurant = new models.Restaurant({
         name: req.query.name,
