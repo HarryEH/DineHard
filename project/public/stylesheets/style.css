@@ -80,13 +80,14 @@ a:hover {
 }
 
 .header {
-  /*position: fixed;*/
+  position: relative;
   left: 0;
   top: 0;
   width: 100%;
   background-color: var(--bg2-color);
   text-align: left;
   margin: 0;
+    z-index: 1;
 }
 
 .footer {
@@ -99,6 +100,8 @@ a:hover {
   font-size: 16px;
     vertical-align: middle;
     height: 45px;
+    position: relative;
+    z-index: 1;
 }
 
 .mainTitle {
@@ -278,10 +281,10 @@ a:hover {
 }
 
 .results {
-  margin: 30px 0px 12px 0px;
+  margin: 30px 20px 12px 20px;
   overflow: hidden;
   position: relative;
-  height: 15vh;
+  height:  auto;
     min-height: 90px;
     font-size: 14px;
     color: var(--text-color) !important;
@@ -299,12 +302,28 @@ results p{
     margin: 0px;
 }
 
+.resultsWrapper{
+    height:100%;
+    padding: 0px auto;
+}
+
+.resultsListWrapper{
+    margin-left: 170px;
+    width: 80%;
+}
+
 .resultsSearch {
-    margin: 30px 0px 12px 0px;
-    overflow: hidden;
-    position: relative;
+    padding: 20px 15px 0px 15px;
     font-size: 14px;
     color: var(--text-color) !important;
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    overflow-x: hidden;
+    background-color: #1fd6c7;
+    margin-bottom: -45px;
 }
 
 .thumbnail{
