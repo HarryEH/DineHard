@@ -59,8 +59,6 @@ function loadRestaurant(req, res, login, rId) {
                     return console.error(err2);
                 }
 
-                console.log("ARGHHH");
-
                 var userLat = req.session.user_lat;
                 var userLng = req.session.user_lng;
 
@@ -80,9 +78,7 @@ function getReviews(req, res, login, results, rId) {
         if (err) {
             return console.error(err2);
         }
-
-        console.log("ARGHHH");
-
+        
         var userLat = req.session.user_lat;
         var userLng = req.session.user_lng;
 
