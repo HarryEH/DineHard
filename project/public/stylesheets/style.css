@@ -225,14 +225,14 @@ a:hover {
 }
 
 .text {
-    margin: auto;
     width: 85%;
+    margin: auto;
 }
 
 .indexFeat {
+    margin: 0 auto;
     text-align: center;
     font-size: 30px;
-    margin: 0 auto;
 }
 
 .featIcon {
@@ -240,17 +240,17 @@ a:hover {
 }
 
 .slideshowImg {
+    display: block;
     height: 50vh;
     max-width: 100%;
-    display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
 /* Slideshow container */
 .slideshow-container {
-    width: 100%;
     position: relative;
+    width: 100%;
     margin: auto;
     background: #000000;
 }
@@ -262,17 +262,17 @@ a:hover {
 
 /* Next & previous buttons */
 #prev, #next {
-    color: var(--title-color);
-    cursor: pointer;
     position: absolute;
     top: 50%;
     width: auto;
     margin-top: -22px;
     padding: 16px;
+    border-radius: 0 3px 3px 0;
+    color: var(--title-color);
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    cursor: pointer;
 }
 
 /* Position the "next button" to the right */
@@ -289,15 +289,15 @@ a:hover {
 }
 
 .results {
-    margin: 20px 10px 20px 10px;
-    padding: 10px 10px 10px 10px;
-    overflow: hidden;
     position: relative;
     height: auto;
     min-height: 90px;
-    font-size: 20px;
-    color: var(--text-color) !important;
+    margin: 20px 10px 20px 10px;
+    padding: 10px 10px 10px 10px;
     border-radius: 10px;
+    color: var(--text-color) !important;
+    font-size: 20px;
+    overflow: hidden;
 }
 
 .results:hover {
@@ -310,22 +310,22 @@ a:hover {
 }
 
 .resultsListWrapper {
-    margin-left: 25%;
     width: 60%;
+    margin-left: 25%;
 }
 
 .resultsSearch {
-    padding: 20px 15px 0px 15px;
-    font-size: 16px;
-    color: black !important;
+    position: fixed;
+    left: 0;
+    z-index: 0;
     height: 100%;
     width: 20%;
-    position: fixed;
-    z-index: 0;
-    left: 0;
-    overflow-x: hidden;
-    background-color: rgba(214, 36, 37, 0.76);
     margin-bottom: -45px;
+    padding: 20px 15px 0px 15px;
+    background-color: rgba(214, 36, 37, 0.76);
+    color: black !important;
+    font-size: 16px;
+    overflow-x: hidden;
 }
 
 .resultsSearchbar {
@@ -351,46 +351,46 @@ a:hover {
 }
 
 .thumbnail {
-    margin: 0px;
     height: 130px;
     width: 130px;
     min-height: 90px;
     min-width: 90px;
+    margin: 0px;
 }
 
 .resThumbnail {
     position: absolute;
-    width: 150px;
-    height: 150px;
     float: left;
+    height: 150px;
+    width: 150px;
 }
 
 .resInfo {
     position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 130px;
-    margin-left: 160px;
     display: inline-block;
     z-index: 10;
+    height: auto;
+    min-height: 130px;
+    width: 100%;
+    margin-left: 160px;
 }
 
 .reviews {
-    margin: 15px 0px 5px 0px;
-    overflow: hidden;
     position: relative;
     height: 10vh;
     min-height: 90px;
-    font-size: 14px;
+    margin: 15px 0px 5px 0px;
     color: var(--text-color) !important;
+    font-size: 14px;
+    overflow: hidden;
 }
 
 .reviewThumbnail {
-    margin: 0 auto;
     height: 9vh;
-    width: 9vh;
     min-height: 50px;
+    width: 9vh;
     min-width: 50px;
+    margin: 0 auto;
 }
 
 .searchArea {
@@ -410,44 +410,45 @@ a:hover {
 }
 
 .slider {
-    -webkit-appearance: none;
-    width: 100%;
     height: 15px;
+    width: 100%;
     border-radius: 5px;
     background: #d3d3d3;
-    opacity: 1;
     -webkit-transition: .2s;
+    -webkit-appearance: none;
+    opacity: 1;
     transition: opacity .2s;
+
 }
 
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
     height: 25px;
+    width: 25px;
+    border: 2px solid black;
     border-radius: 40%;
+    -webkit-appearance: none;
     background: var(--slider-color);
+    appearance: none;
     cursor: pointer;
-    border: 2px solid black;;
 }
 
 .slider::-moz-range-thumb {
-    width: 25px;
     height: 25px;
+    width: 25px;
+    border: 2px solid black;
     border-radius: 40%;
     background: var(--slider-color);
     cursor: pointer;
-    border: 2px solid black;
 }
 
 .social a {
+    width: 33px;
     margin: 5px 5px 5px 5px;
     padding: 8px;
+    border-radius: 100%;
     font-size: 16px;
     text-align: center;
     text-decoration: none;
-    border-radius: 100%;
-    width: 33px;
 }
 
 /* Add a hover effect if you want */
@@ -478,19 +479,19 @@ a:hover {
 
 .rForm, .lForm, .crForm {
     display: inline-block;
-    margin: 4% 25% 0% 25%;
     width: 50%;
+    margin: 4% 25% 0% 25%;
 }
 
 .profile {
     display: inline-block;
-    margin: 4% 25% 0% 25%;
     width: 50%;
+    margin: 4% 25% 0% 25%;
 }
 
 .row:after {
-    content: "";
     display: table;
+    content: "";
     clear: both;
 }
 
@@ -505,9 +506,9 @@ a:hover {
 
 .error {
     width: 100%;
+    background: rgba(150, 0, 37, 0.35);
     color: black;
     text-align: center;
-    background: rgba(150, 0, 37, 0.35);
     font-size: 14px;
 }
 
@@ -521,44 +522,44 @@ a:hover {
 }
 
 .lBorder, .crBorder, .pBorder {
-    background: var(--bg2-color);
-    border-radius: 25px;
     padding: 5px 15px 15px 15px;
+    border-radius: 25px;
+    background: var(--bg2-color);
 }
 
 .lTitle, .crTitle, .pTitle {
+    padding: 15px 5px 15px 5px;
     color: white;
     font-size: 22px;
-    padding: 15px 5px 15px 5px;
 }
 
 .lInputWrapper, .crInputWrapper, .reviewcontainer {
     width: 100%;
     margin: 0 auto;
     padding: 4%;
+    border-radius: 5px;
     background: white;
     font-size: 14px;
-    border-radius: 5px;
 }
 
 .pInfo {
     width: 100%;
     margin: 0 auto;
     padding: 4%;
+    border-radius: 5px;
     background: white;
     font-size: 16px;
-    border-radius: 5px;
 }
 
 .login {
-    margin: 0 auto;
     width: 80%;
+    margin: 0 auto;
 }
 
 .lSubmit, .rSubmit, .crSubmit {
-    margin: 10px 45% 10px 45%;
     width: 10%;
     min-width: 70px;
+    margin: 10px 45% 10px 45%;
     text-align: center;
 }
 
@@ -569,10 +570,10 @@ a:hover {
 }
 
 .pReview {
-    background: rgba(214, 31, 38, 0.15);
-    border-radius: 5px;
     margin: 5px 0px 5px 0px;
     padding: 10px 0px 10px 10px;
+    border-radius: 5px;
+    background: rgba(214, 31, 38, 0.15);
 }
 
 /* The container */
@@ -581,12 +582,12 @@ a:hover {
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 14px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 /* Hide the browser's default checkbox */
@@ -643,33 +644,33 @@ a:hover {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 0;
     top: 0;
-    width: 100%; /* Full width */
+    left: 0;
+    display: none; /* Hidden by default */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    width: 100%; /* Full width */
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    overflow: auto; /* Enable scroll if needed */
     padding-top: 60px;
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    width: 70%; /* Could be more or less, depending on screen size */
     margin: 5px auto; /* 15% from the top and centered */
     border: 1px solid #888;
-    width: 70%; /* Could be more or less, depending on screen size */
+    background-color: #fefefe;
 }
 
 /* The Close Button */
 .close {
     /* Position it in the top right corner outside of the modal */
     position: absolute;
-    right: 25px;
     top: 0;
+    right: 25px;
     color: #000;
     font-size: 35px;
     font-weight: bold;
@@ -712,9 +713,9 @@ a:hover {
 
 .modalheader {
     padding: 2px 16px;
-    font-size: 22px;
     background-color: red;
     color: white;
+    font-size: 22px;
 }
 
 .wrSubmit, .cancelbtn {
