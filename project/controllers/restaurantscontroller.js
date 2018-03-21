@@ -37,7 +37,7 @@ module.exports = {
 
             // else render some error
 
-        })
+        });
 
     }
 
