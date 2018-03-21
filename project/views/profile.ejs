@@ -14,39 +14,52 @@
 </head>
 <body onload="load();">
 <div class="mainWrapper">
+
     <% include header.ejs %>
-    <div class="profile">
-        <div class="pBorder">
-            <div class="pTitle"><%= title %></div>
-            <div class="pInfo">
+
+    <div class="user-form">
+
+        <div class="user-border">
+
+            <div class="user-title"><%= title %></div>
+
+            <div class="profile">
+
                 <div class="row">
-                    <div class="col-5">
+                    <div class="profile-details">
+
                         <div class="row">
                             <div class="col-8"><h2>Personal Details</h2></div>
+
                             <%if (myProfile === true){%>
-                                <div class="col-4"><button>Edit</button></div>
+                                <div class="col-4"><button class="profile-edit">Edit</button></div>
                             <%}%>
                         </div>
+
                         <div class="row">
                             <div class="col-6">Forename:</div>
                             <div class="col-6"><%= user.forename %></div>
                         </div>
+
                         <div class="row">
                             <div class="col-6">Surname:</div>
                             <div class="col-6"><%= user.surname %></div>
                         </div>
+
                         <div class="row">
                             <div class="col-6">Username:</div>
                             <div class="col-6"><%= user.username %></div>
                         </div>
+
                         <%if (myProfile === true){%>
                             <div class="row">
                                 <div class="col-6">Email:</div>
                                 <div class="col-6"><%= user.email %></div>
                             </div>
                         <%}%>
+
                     </div>
-                    <div class="col-7">
+                    <div class="profile-reviews">
                         <% if(reviewCount == 0){%>
                             <h2>Reviews</h2>
                             <p>No reviews yet</p>

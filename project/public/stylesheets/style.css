@@ -227,20 +227,18 @@ a:hover {
 }
 
 .index-search-text {
-    height: 5vw;
-    max-height: 40px;
+    height: 30px;
     width: 75%;
     max-width: 650px;
     margin: 3px 0px 3px 10px;
     border: none;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .index-search-submit {
     float: right;
-    height: 5vw;
-    max-height: 40px;
-    width: 15%;
+    height: 30px;
+    width: 18%;
     max-width: 80px;
     margin: 3px 10px 3px 0px;
     padding: 0;
@@ -274,6 +272,109 @@ a:hover {
     color: var(--title-color);
     text-align: center;
     font-size: 12px;
+}
+
+/* ------------ FORM CSS ------------ */
+
+.user-form, .crForm {
+    display: inline-block;
+    width: 90%;
+    margin: 8% 5% 0% 5%;
+}
+
+.user-border, .crBorder, .pBorder {
+    padding: 5px 15px 15px 15px;
+    border-radius: 25px;
+    background: var(--bg2-color);
+}
+
+.user-title, .crTitle, .pTitle {
+    padding: 15px 5px 10px 5px;
+    color: white;
+    font-size: 22px;
+}
+
+.user-input-wrapper, .crInputWrapper, .reviewcontainer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 4%;
+    border-radius: 5px;
+    background: white;
+    font-size: 12px;
+}
+
+.login{
+    width: 90%;
+    margin: 0% 5% 0% 5%;
+}
+
+.register {
+    width: 95%;
+    margin: 0% 0% 0% 5%;
+}
+
+.login input, .register input, .createRestaurant input, .review input {
+    width: 90%;
+    margin: 5px 7% 5px 3%;
+}
+
+.login label, .register label, .createRestaurant label, .review label {
+    margin: 5px 5px 5px 0px;
+}
+
+.login [class*='col-'], .register [class*='col-']{
+    padding: 0px;
+}
+
+.l-submit, .rSubmit, .crSubmit {
+    width: 20%;
+    min-width: 70px;
+    margin: 10px 40% 10px 40%;
+    text-align: center;
+}
+
+.error {
+    width: 100%;
+    background: rgba(150, 0, 37, 0.35);
+    color: black;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-error {
+    width: 100%;
+    color: var(--bg2-color);
+    text-align: center;
+}
+
+/* ------------ PROFILE CSS ------------ */
+
+.profile {
+    width: 100%;
+    margin: 0 auto;
+    padding: 4%;
+    border-radius: 5px;
+    background: white;
+    font-size: 14px;
+}
+
+.profile-details{
+    width: 100%;
+    padding: 5px 0px 5px 15px;
+}
+
+.profile-edit{
+    width: 60%;
+    margin: 5px 20% 5px 20%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bg2-color);
+    color: white;
+}
+
+.profile-reviews{
+    width: 100%;
+    padding: 5px 0px 5px 15px;
 }
 
 /* ------------ OTHER CSS ------------ */
@@ -496,18 +597,6 @@ a:hover {
     cursor: pointer;
 }
 
-.rForm, .lForm, .crForm {
-    display: inline-block;
-    width: 50%;
-    margin: 4% 25% 0% 25%;
-}
-
-.profile {
-    display: inline-block;
-    width: 50%;
-    margin: 4% 25% 0% 25%;
-}
-
 .row:after {
     display: table;
     content: "";
@@ -516,70 +605,6 @@ a:hover {
 
 .h1 {
     display: inline-block;
-}
-
-.formError {
-    color: var(--bg2-color);
-    text-align: center;
-}
-
-.error {
-    width: 100%;
-    background: rgba(150, 0, 37, 0.35);
-    color: black;
-    text-align: center;
-    font-size: 14px;
-}
-
-.login input, .register input, .createRestaurant input, .review input {
-    width: 100%;
-    margin: 5px;
-}
-
-.login label, .register label, .createRestaurant label, .review label {
-    margin-top: 6px;
-}
-
-.lBorder, .crBorder, .pBorder {
-    padding: 5px 15px 15px 15px;
-    border-radius: 25px;
-    background: var(--bg2-color);
-}
-
-.lTitle, .crTitle, .pTitle {
-    padding: 15px 5px 15px 5px;
-    color: white;
-    font-size: 22px;
-}
-
-.lInputWrapper, .crInputWrapper, .reviewcontainer {
-    width: 100%;
-    margin: 0 auto;
-    padding: 4%;
-    border-radius: 5px;
-    background: white;
-    font-size: 14px;
-}
-
-.pInfo {
-    width: 100%;
-    margin: 0 auto;
-    padding: 4%;
-    border-radius: 5px;
-    background: white;
-    font-size: 16px;
-}
-
-.login {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.lSubmit, .rSubmit, .crSubmit {
-    width: 10%;
-    min-width: 70px;
-    margin: 10px 45% 10px 45%;
-    text-align: center;
 }
 
 .resLink a, .userLink a, .blackLink a {
