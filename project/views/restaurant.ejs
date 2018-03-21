@@ -11,6 +11,7 @@
     <script src="javascripts/location.js"></script>
     <script src="javascripts/load.js"></script>
     <script src="javascripts/reviewRating.js"></script>
+    <script src="javascripts/pricing.js"></script>
     <title><%= restaurant.name %></title>
 </head>
 <body onload="load();myMap();addMarkers(<%=restaurant.lat%>, <%=restaurant.lng%>)">
@@ -30,6 +31,8 @@
                 <li><div id="starRating" style="display: inline;"></div>
                     <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
                 <li><%= restaurant.cuisines %></li>
+                <li><div id="resPrice" style="display: inline;">Price</div></li>
+                <script>getPrice(<%= restaurant.price %>, "resPrice");</script>
             </ul>
         </div>
 
