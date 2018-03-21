@@ -1,0 +1,74 @@
+
+<!-- Button to open the modal login form -->
+<button onclick="document.getElementById('review').style.display='block'">Write a review</button>
+
+<!-- The Modal -->
+<div id="review" class="modal">
+    <span onclick="document.getElementById('review').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <form class="modal-content animate" action="/action_page.php">
+        <div class="modalheader">
+            <h2>Write Review</h2>
+        </div>
+        <div class="reviewcontainer">
+            <div class="row review">
+                <div class="col-4">
+                </div>
+                <div class="col-8">
+                    <div id="sError"></div>
+                </div>
+            </div>
+            <div class="row review">
+                <div class="col-4">
+                    <label for="rating">Rating out of 7 stars:</label>
+                </div>
+
+                <div class="col-8">
+                    <p>Star rating: <span id="star"></span> stars</p>
+                    <div class="slidecontainerreview">
+                        <input type="range" min="0" max="7" value="4" class="slider" id="reviewslider">
+                    </div>
+                </div>
+            </div>
+            <div class="row review">
+                <div class="col-4">
+                </div>
+                <div class="col-8">
+                    <div id="dError"></div>
+                </div>
+            </div>
+            <div class="row review">
+                <div class="col-4">
+                    <label for="review">Review description</label>
+                </div>
+                <div class="col-8">
+                    <textarea rows="8" cols="50" placeholder="Enter review" name="review" required></textarea>
+                </div>
+            </div>
+            <button type="submit" class="wrSubmit">Submit Review</button>
+
+            <div class="container">
+                <button type="button" onclick="document.getElementById('review').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    var modal = document.getElementById('review');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    var slider = document.getElementById("reviewslider");
+    var output = document.getElementById("star");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+</script>
