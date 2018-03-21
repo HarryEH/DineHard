@@ -15,21 +15,6 @@ html, body {
     margin: 0;
 }
 
-.mainWrapper {
-    min-height: 100%;
-    margin-bottom: -45px;
-}
-
-.push {
-    height: 45px;
-}
-
-.mWrapper {
-    margin-left: 5%;
-    margin-right: 5%;
-    font-size: 12pt;
-}
-
 input:focus,
 select:focus,
 textarea:focus,
@@ -59,27 +44,30 @@ a:hover {
     opacity: 0.7;
 }
 
-#top {
-    height: 100%;
-    width: 100%;
-    margin-bottom: 0px;
-    -webkit-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-    -moz-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-    box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-    background-color: var(--bg2-color);
-    background-image: url("../images/titleImg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+.mainWrapper {
+    min-height: 100%;
+    margin-bottom: -45px;
 }
 
-.titleHeader {
-    position: relative;
-    z-index: 200;
-    height: 100%;
-    width: 80%;
-    margin: 0 auto;
+.push {
+    height: 45px;
 }
+
+.mWrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 12pt;
+}
+
+.algnLeft {
+    text-align: left;
+}
+
+.algnRight {
+    text-align: right;
+}
+
+/* ------------ HEADER CSS ------------ */
 
 .header {
     position: relative;
@@ -92,92 +80,20 @@ a:hover {
     text-align: left;
 }
 
-.footer {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    height: 45px;
-    width: 100%;
-    background-color: var(--bg2-color);
-    color: white;
-    font-size: 16px;
-    vertical-align: middle;
-}
-
-.algnLeft {
-    text-align: left;
-}
-
-.algnRight {
-    text-align: right;
-}
-
-.mainTitle {
-    margin-top: 10vw;
-    color: var(--title-color);
-    text-align: center;
-    text-shadow: 2px 2px var(--shadow-color);
-    font-size: 62px;
-    font-family: var(--font);
-}
-
-.mainSubtitle {
-    margin-top: 2vw;
-    margin-bottom: 10vw;
-    color: var(--title-color);
-    text-align: center;
-    text-shadow: 2px 2px var(--shadow-color);
-    font-size: 24px;
-    font-family: var(--font);
-}
-
-.searchTitle {
-    margin: 0 auto;
-    color: var(--title-color);
-    text-align: center;
-    font-size: 18px;
-    font-family: var(--font);
-}
-
-.titleSearch {
+.logo-wrapper {
     float: left;
-    height: 5vw;
-    max-height: 40px;
-    width: 45vw;
-    max-width: 650px;
-    margin: 3px 0px 3px 10px;
-    border: none;
-    border-color: transparent;
-    font-size: 20px;
+    padding: 10px 0px 5px 0px;
 }
 
-.titleSubmit {
+.header-logo {
+    height: 30px;
+    width: auto;
+    border: 0;
+}
+
+.top-links {
     float: right;
-    height: 5vw;
-    max-height: 40px;
-    width: 10vw;
-    max-width: 80px;
-    margin: 3px 10px 3px 0px;
-    padding: 0;
-    border: none;
-    background-color: var(--bg2-color);
-    color: var(--title-color);
-    font-size: 16px;
-    font-family: var(--font);
-}
-
-#msg {
-    float: left;
-    margin: 10px 0px 10px 0px;
-    color: var(--title-color);
-    font-family: var(--font);
-    font-size: 16px;
-}
-
-#top-links {
-    float: right;
-    margin: 15px 30px 15px 0px;
+    margin: 15px 15px 10px 0px;
     color: var(--title-color);
     font-family: var(--font);
     font-size: 16px;
@@ -191,16 +107,163 @@ a:hover {
     content: " | ";
 }
 
-.search {
-    width: 60%;
-    max-width: 800px;
+/* ------------ FOOTER CSS ------------ */
+
+.footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 45px;
+    width: 100%;
+    background-color: var(--bg2-color);
+    vertical-align: middle;
+}
+
+.footer-copyright {
+    width: 55%;
+    margin: 5px 15px 0px 20px;
+    color: white;
+    font-size: 11px;
+}
+
+.footer-social{
+    float: right;
+    width: 35%;
+    margin-left: 5px;
+}
+
+.footer-social a {
+    height: 33px;
+    width: 33px;
+    margin: 5px 2% 0px 2%;
+    padding: 8px;
+    border-radius: 100%;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.fa:hover {
+    color: black;
+    opacity: 1;
+!important;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-instagram {
+    background: #24f2ff;
+    color: white;
+}
+
+/* ------------ INDEX PAGE CSS ------------ */
+
+.index-top-wrapper {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0px;
+    -webkit-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    -moz-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    background-image: url("../images/titleImg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.index-header {
+    position: relative;
+    z-index: 200;
+    width: 80%;
     margin: 0 auto;
-    margin-bottom: 15px;
+}
+
+.index-title {
+    padding-top: 10vw;
+    color: var(--title-color);
+    text-align: center;
+    text-shadow: 2px 2px var(--shadow-color);
+    font-size: 44px;
+    font-family: var(--font);
+}
+
+.index-subtitle {
+    margin-top: 2vw;
+    margin-bottom: 10vw;
+    color: var(--title-color);
+    text-align: center;
+    text-shadow: 2px 2px var(--shadow-color);
+    font-size: 18px;
+    font-family: var(--font);
+}
+
+.soft-highlight {
+    padding: 5px 0px 10px 0px;
+    background: rgba(20, 20, 20, 0.65);
+}
+
+.index-search-title {
+    margin: 0 auto;
+    color: var(--title-color);
+    text-align: center;
+    font-size: 12px;
+    font-family: var(--font);
+}
+
+.index-search {
+    width: 90%;
+    max-width: 800px;
+    margin: 0px 5% 0px 5%;
     background: #ffffff;
 }
 
-.softHighlight {
-    background: rgba(20, 20, 20, 0.65);
+.index-search-text {
+    height: 5vw;
+    max-height: 40px;
+    width: 75%;
+    max-width: 650px;
+    margin: 3px 0px 3px 10px;
+    border: none;
+    font-size: 12px;
+}
+
+.index-search-submit {
+    float: right;
+    height: 5vw;
+    max-height: 40px;
+    width: 15%;
+    max-width: 80px;
+    margin: 3px 10px 3px 0px;
+    padding: 0;
+    border: none;
+    background-color: var(--bg2-color);
+    color: var(--title-color);
+    font-size: 12px;
+    font-family: var(--font);
+}
+
+.index-feat-wrapper {
+    margin-top: 3vh
+}
+
+.index-feat {
+    width: 90%;
+    margin: 10px 10px 20px 10px;
+    text-align: center;
+    font-size: 21px;
+}
+
+.feat-icon {
+    font-size: 35px;
 }
 
 .alert {
@@ -210,8 +273,10 @@ a:hover {
     background: var(--alert-color);
     color: var(--title-color);
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
 }
+
+/* ------------ OTHER CSS ------------ */
 
 .restInfo {
     margin: 10px 15px 10px 0px;
@@ -227,16 +292,6 @@ a:hover {
 .text {
     width: 85%;
     margin: auto;
-}
-
-.indexFeat {
-    margin: 0 auto;
-    text-align: center;
-    font-size: 30px;
-}
-
-.featIcon {
-    font-size: 50px;
 }
 
 .slideshowImg {
@@ -439,42 +494,6 @@ a:hover {
     border-radius: 40%;
     background: var(--slider-color);
     cursor: pointer;
-}
-
-.social a {
-    width: 33px;
-    margin: 5px 5px 5px 5px;
-    padding: 8px;
-    border-radius: 100%;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-}
-
-/* Add a hover effect if you want */
-.fa:hover {
-    color: black;
-    opacity: 1;
-!important;
-}
-
-/* Set a specific color for each brand */
-
-/* Facebook */
-.fa-facebook {
-    background: #3B5998;
-    color: white;
-}
-
-/* Twitter */
-.fa-twitter {
-    background: #55ACEE;
-    color: white;
-}
-
-.fa-instagram {
-    background: #24f2ff;
-    color: white;
 }
 
 .rForm, .lForm, .crForm {
