@@ -11,6 +11,8 @@ module.exports = {
         var user = req.body.u.toLowerCase();
         var pass = req.body.p;
 
+        var values = {fname: fname, sname: sname, email: email, user: user};
+
         var registerOk = true;
         var userError = "";
         var emailError = "";
@@ -80,7 +82,8 @@ module.exports = {
                         loggedIn: false,
                         error: "",
                         uerror: userError,
-                        emerror: emailError
+                        emerror: emailError,
+                        values: values
                     });
                 }
             });
