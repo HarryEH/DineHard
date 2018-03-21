@@ -163,14 +163,6 @@ router.get('/tandc', function(req, res, next) {
 
 module.exports = router;
 
-function checkAuth(req, res, next) {
-    if (!req.session.user_id) {
-        res.send('You are not authorized to view this page');
-    } else {
-        next();
-    }
-}
-
 function checkLogin(req, res, next){
     if(req.session.user_id === undefined){
         return false;
