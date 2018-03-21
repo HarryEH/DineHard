@@ -64,7 +64,14 @@ function loadRestaurant(req, res, login, rId) {
 
                 results.distance = results.getDistance(userLat, userLng);
 
-                geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+                var obj = {};
+                obj.req = req;
+                obj.res = res;
+                obj.login = login;
+                obj.results = results;
+                obj.reviewResults = reviewResults;
+
+                geodata.getFullAddress(renderResCallback, obj);
                 return;
             });
 
@@ -78,13 +85,21 @@ function getReviews(req, res, login, results, rId) {
         if (err) {
             return console.error(err2);
         }
-        
+
         var userLat = req.session.user_lat;
         var userLng = req.session.user_lng;
 
         results.distance = results.getDistance(userLat, userLng);
 
-        geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+        var obj = {};
+        obj.req = req;
+        obj.res = res;
+        obj.login = login;
+        obj.results = results;
+        obj.reviewResults = reviewResults;
+
+
+        geodata.getFullAddress(renderResCallback, obj);
         return;
     });
 }
@@ -120,7 +135,13 @@ function addResCallback(obj) {
 
 }
 
-function renderResCallback(req, res, results, reviews, login) {
+function renderResCallback(obj) {
+
+    const req = obj.req;
+    const res = obj.res;
+    const results = obj.results;
+    const reviews = obj.reviews;
+    const login = obj.login;
 
     var reviewCount = reviews.length;
     res.render('restaurant', {restaurant: results, loggedIn: login, reviews: reviews, reviewCount: reviewCount});
