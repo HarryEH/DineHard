@@ -1,13 +1,13 @@
-:root{
-  --bg-color: #FFF7F7;
-  --bg2-color: #D61F26;
-  --Y-color: #774C60;
-  --text-color: #000000;
-  --title-color: #FFFFFF;
-  --alert-color: #FF0008;
-  --shadow-color: #000000;
+:root {
+    --bg-color: #FFF7F7;
+    --bg2-color: #D61F26;
+    --Y-color: #774C60;
+    --text-color: #000000;
+    --title-color: #FFFFFF;
+    --alert-color: #FF0008;
+    --shadow-color: #000000;
     --slider-color: #ED168A;
-  --font: "Trebuchet MS";
+    --font: "Trebuchet MS";
 }
 
 html, body {
@@ -26,267 +26,266 @@ html, body {
 
 .mWrapper {
     margin-left: 5%;
-    font-size: 12pt;
     margin-right: 5%;
+    font-size: 12pt;
 }
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-  outline: none;
+    outline: none;
 }
 
 html {
-  background: var(--bg-color);
-  color: var(--text-color);
-  -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 body {
-  background: var(--bg-color);
+    background: var(--bg-color);
 }
 
-
-a{
-  color: var(--title-color);
+a {
+    color: var(--title-color);
 }
 
 a:hover {
-    color: var(--title-color); !important;
-    text-decoration: none; !important;
+    color: var(--title-color);
+!important;
+    text-decoration: none;
+!important;
     opacity: 0.7;
 }
 
 #top {
-  height: 100%;
-  width: 100%;
-  background-color: var(--bg2-color);
-  background-image: url("../images/titleImg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 0px;
-  -webkit-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-  -moz-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-  box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0px;
+    -webkit-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    -moz-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    background-color: var(--bg2-color);
+    background-image: url("../images/titleImg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .titleHeader {
-  height: 100%;
-  margin: 0 auto;
-  position: relative;
-  width: 80%;
-  z-index: 200;
+    position: relative;
+    z-index: 200;
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .header {
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background-color: var(--bg2-color);
-  text-align: left;
-  margin: 0;
-    z-index: 1;
-}
-
-.footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--bg2-color);
-  color: white;
-  text-align: left;
-  font-size: 16px;
-    vertical-align: middle;
-    height: 45px;
     position: relative;
+    top: 0;
+    left: 0;
     z-index: 1;
-}
-
-.algnRight{
-    text-align: right;
-}
-
-.algnLeft{
+    width: 100%;
+    margin: 0;
+    background-color: var(--bg2-color);
     text-align: left;
 }
 
+.footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 45px;
+    width: 100%;
+    background-color: var(--bg2-color);
+    color: white;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.algnLeft {
+    text-align: left;
+}
+
+.algnRight {
+    text-align: right;
+}
+
 .mainTitle {
-  color: var(--title-color);
-  font-size: 62px;
-  font-family: var(--font);
-  text-align: center;
-  margin-top: 10vw;
-  text-shadow: 2px 2px var(--shadow-color);
+    margin-top: 10vw;
+    color: var(--title-color);
+    text-align: center;
+    text-shadow: 2px 2px var(--shadow-color);
+    font-size: 62px;
+    font-family: var(--font);
 }
 
-.mainSubtitle{
-  color: var(--title-color);
-  font-size: 24px;
-  text-align: center;
-  font-family: var(--font);
-  margin-top: 2vw;
-  margin-bottom: 10vw;
-  text-shadow: 2px 2px var(--shadow-color);
+.mainSubtitle {
+    margin-top: 2vw;
+    margin-bottom: 10vw;
+    color: var(--title-color);
+    text-align: center;
+    text-shadow: 2px 2px var(--shadow-color);
+    font-size: 24px;
+    font-family: var(--font);
 }
 
-.searchTitle{
-  color: var(--title-color);
-  font-size: 18px;
-  text-align: center;
-  font-family: var(--font);
-  margin: 0 auto;
+.searchTitle {
+    margin: 0 auto;
+    color: var(--title-color);
+    text-align: center;
+    font-size: 18px;
+    font-family: var(--font);
 }
 
-.titleSearch{
-  //float: left;
-  margin: 3px 0px 3px 10px;
-  width: 45vw;
-  height: 5vw;
-  max-height: 40px;
-  max-width: 650px;
-  font-size: 20px;
-  border: none;
-  border-color: transparent;
+.titleSearch {
+    float: left;
+    height: 5vw;
+    max-height: 40px;
+    width: 45vw;
+    max-width: 650px;
+    margin: 3px 0px 3px 10px;
+    border: none;
+    border-color: transparent;
+    font-size: 20px;
 }
 
-.titleSubmit{
-  float: right;
-  background-color: var(--bg2-color);
-  height: 5vw;
-  width: 10vw;
-  margin: 3px 10px 3px 0px;
-  max-height: 40px;
-  max-width: 80px;
-  color: var(--title-color);
-  font-size: 16px;
-  font-family: var(--font);
-  padding: 0;
-  border: none;
+.titleSubmit {
+    float: right;
+    height: 5vw;
+    max-height: 40px;
+    width: 10vw;
+    max-width: 80px;
+    margin: 3px 10px 3px 0px;
+    padding: 0;
+    border: none;
+    background-color: var(--bg2-color);
+    color: var(--title-color);
+    font-size: 16px;
+    font-family: var(--font);
 }
 
 #msg {
-  float: left;
-  margin: 10px 0px 10px 0px;
-  color: var(--title-color);
-  font-family: var(--font);
-  font-size: 16px;
+    float: left;
+    margin: 10px 0px 10px 0px;
+    color: var(--title-color);
+    font-family: var(--font);
+    font-size: 16px;
 }
 
 #top-links {
-  color: var(--title-color);
-  font-family: var(--font);
-  font-size: 16px;
-  float: right;
-  margin: 15px 30px 15px 0px;
+    float: right;
+    margin: 15px 30px 15px 0px;
+    color: var(--title-color);
+    font-family: var(--font);
+    font-size: 16px;
 }
 
 .inlineList li {
-  display:inline;
+    display: inline;
 }
 
 .inlineList li + li:before {
-  content: " | ";
+    content: " | ";
 }
 
-.search{
-  background: #ffffff;
-  margin: 0 auto;
-  width: 60%;
-  max-width: 800px;
-  margin-bottom: 15px;
+.search {
+    width: 60%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    background: #ffffff;
 }
 
-.softHighlight{
-  background: rgba(20,20,20,0.65);
+.softHighlight {
+    background: rgba(20, 20, 20, 0.65);
 }
 
-.alert{
-  background: var(--alert-color);
-  color: var(--title-color);
-  text-align: center;
-  width: 100%;
-  margin-top: 0px;
-  border-radius: 0px;
-  font-size: 14px;
+.alert {
+    width: 100%;
+    margin-top: 0px;
+    border-radius: 0px;
+    background: var(--alert-color);
+    color: var(--title-color);
+    text-align: center;
+    font-size: 14px;
 }
 
-.restInfo{
-  margin: 10px 15px 10px 0px;
-  color: var(--text-color);
-  font-size: 16px;
-  font-family: var(--font);
+.restInfo {
+    margin: 10px 15px 10px 0px;
+    color: var(--text-color);
+    font-size: 16px;
+    font-family: var(--font);
 }
 
-.title{
-  font-size: 30px;
+.title {
+    font-size: 30px;
 }
 
-.text
-{
-  margin:auto;
-  width: 85%;
+.text {
+    margin: auto;
+    width: 85%;
 }
 
-.indexFeat{
+.indexFeat {
     text-align: center;
     font-size: 30px;
     margin: 0 auto;
- }
+}
 
-.featIcon{
+.featIcon {
     font-size: 50px;
 }
 
-.slideshowImg{
-  height: 50vh;
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.slideshowImg {
+    height: 50vh;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Slideshow container */
 .slideshow-container {
-  width:100%;
-  position: relative;
-  margin: auto;
-  background: #000000;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    background: #000000;
 }
 
 /* Hide the images by default */
 .mySlides {
-  display: none;
+    display: none;
 }
 
 /* Next & previous buttons */
 #prev, #next {
-  color: var(--title-color);
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
+    color: var(--title-color);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
 }
 
 /* Position the "next button" to the right */
 #next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 #prev:hover, #next:hover {
-  background-color: rgba(0,0,0,0.8);
-  text-decoration: none;
-  color: var(--bg2-color);
+    background-color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    color: var(--bg2-color);
 }
 
 .results {
@@ -294,23 +293,23 @@ a:hover {
     padding: 10px 10px 10px 10px;
     overflow: hidden;
     position: relative;
-    height:  auto;
+    height: auto;
     min-height: 90px;
     font-size: 20px;
     color: var(--text-color) !important;
     border-radius: 10px;
 }
 
-.results:hover{
+.results:hover {
     background-color: rgba(24, 255, 0, 0.15);
 }
 
-.resultsWrapper{
-    height:100%;
+.resultsWrapper {
+    height: 100%;
     padding: 0px auto;
 }
 
-.resultsListWrapper{
+.resultsListWrapper {
     margin-left: 25%;
     width: 60%;
 }
@@ -329,29 +328,29 @@ a:hover {
     margin-bottom: -45px;
 }
 
-.resultsSearchbar{
+.resultsSearchbar {
     width: 75%;
 }
 
-.resultsSubmit{
+.resultsSubmit {
     width: 20%;
 }
 
-.restTitle{
+.restTitle {
     font-size: 24px;
     font-weight: bold;
 }
 
-.resultsStars{
+.resultsStars {
     font-size: 24px;
 }
 
-.restDist{
+.restDist {
     font-size: 16px;
     font-style: italic;
 }
 
-.thumbnail{
+.thumbnail {
     margin: 0px;
     height: 130px;
     width: 130px;
@@ -359,14 +358,14 @@ a:hover {
     min-width: 90px;
 }
 
-.resThumbnail{
+.resThumbnail {
     position: absolute;
     width: 150px;
     height: 150px;
     float: left;
 }
 
-.resInfo{
+.resInfo {
     position: relative;
     width: 100%;
     height: auto;
@@ -386,7 +385,7 @@ a:hover {
     color: var(--text-color) !important;
 }
 
-.reviewThumbnail{
+.reviewThumbnail {
     margin: 0 auto;
     height: 9vh;
     width: 9vh;
@@ -394,15 +393,15 @@ a:hover {
     min-width: 50px;
 }
 
-.searchArea{
+.searchArea {
     font-size: 12px;
 }
 
-#errorTitle{
-  font-size: 24px;
+#errorTitle {
+    font-size: 24px;
 }
 
-.noMargin{
+.noMargin {
     margin: 0 auto;
 }
 
@@ -441,7 +440,7 @@ a:hover {
     border: 2px solid black;
 }
 
-.social a{
+.social a {
     margin: 5px 5px 5px 5px;
     padding: 8px;
     font-size: 16px;
@@ -454,7 +453,8 @@ a:hover {
 /* Add a hover effect if you want */
 .fa:hover {
     color: black;
-    opacity: 1; !important;
+    opacity: 1;
+!important;
 }
 
 /* Set a specific color for each brand */
@@ -476,16 +476,15 @@ a:hover {
     color: white;
 }
 
-
 .rForm, .lForm, .crForm {
     display: inline-block;
-    margin: 4% 25% 0% 25% ;
+    margin: 4% 25% 0% 25%;
     width: 50%;
 }
 
-.profile{
+.profile {
     display: inline-block;
-    margin: 4% 25% 0% 25% ;
+    margin: 4% 25% 0% 25%;
     width: 50%;
 }
 
@@ -499,12 +498,12 @@ a:hover {
     display: inline-block;
 }
 
-.formError{
+.formError {
     color: var(--bg2-color);
     text-align: center;
 }
 
-.error{
+.error {
     width: 100%;
     color: black;
     text-align: center;
@@ -512,37 +511,37 @@ a:hover {
     font-size: 14px;
 }
 
-.login input, .register input, .createRestaurant input, .review input{
+.login input, .register input, .createRestaurant input, .review input {
     width: 100%;
     margin: 5px;
 }
 
-.login label, .register label, .createRestaurant label, .review label{
+.login label, .register label, .createRestaurant label, .review label {
     margin-top: 6px;
 }
 
-.lBorder, .crBorder, .pBorder{
+.lBorder, .crBorder, .pBorder {
     background: var(--bg2-color);
     border-radius: 25px;
     padding: 5px 15px 15px 15px;
 }
 
-.lTitle, .crTitle, .pTitle{
+.lTitle, .crTitle, .pTitle {
     color: white;
     font-size: 22px;
     padding: 15px 5px 15px 5px;
 }
 
-.lInputWrapper , .crInputWrapper, .reviewcontainer{
+.lInputWrapper, .crInputWrapper, .reviewcontainer {
     width: 100%;
     margin: 0 auto;
     padding: 4%;
     background: white;
     font-size: 14px;
     border-radius: 5px;
- }
+}
 
-.pInfo{
+.pInfo {
     width: 100%;
     margin: 0 auto;
     padding: 4%;
@@ -551,31 +550,30 @@ a:hover {
     border-radius: 5px;
 }
 
-.login{
+.login {
     margin: 0 auto;
     width: 80%;
 }
 
-.lSubmit, .rSubmit, .crSubmit{
+.lSubmit, .rSubmit, .crSubmit {
     margin: 10px 45% 10px 45%;
     width: 10%;
     min-width: 70px;
     text-align: center;
 }
 
-.resLink a, .userLink a, .blackLink a{
-    color: black; !important;
+.resLink a, .userLink a, .blackLink a {
+    color: black;
+!important;
     font-weight: bold;
 }
 
-.pReview{
+.pReview {
     background: rgba(214, 31, 38, 0.15);
     border-radius: 5px;
     margin: 5px 0px 5px 0px;
     padding: 10px 0px 10px 10px;
 }
-
-
 
 /* The container */
 .container1 {
@@ -620,9 +618,9 @@ a:hover {
 
 /*!* Create the checkmark/indicator (hidden when not checked) *!*/
 /*.checkmark:after {*/
-    /*content: "";*/
-    /*position: absolute;*/
-    /*display: none;*/
+/*content: "";*/
+/*position: absolute;*/
+/*display: none;*/
 /*}*/
 
 /* Show the checkmark when checked */
@@ -643,8 +641,6 @@ a:hover {
     transform: rotate(45deg);
 }
 
-
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -655,8 +651,8 @@ a:hover {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     padding-top: 60px;
 }
 
@@ -693,20 +689,26 @@ a:hover {
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
 }
 
 @keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
-
-.slidecontainerreview{
+.slidecontainerreview {
     width: 50%;
 }
-
 
 .modalheader {
     padding: 2px 16px;
