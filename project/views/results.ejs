@@ -9,22 +9,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="javascripts/location.js"></script>
     <script src="javascripts/reviewRating.js"></script>
+    <script src="javascripts/pricing.js"></script>
+    <script src="javascripts/results.js"></script>
     <title>Results</title>
 </head>
 <body>
 <div class="mainWrapper">
     <% include header.ejs %>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-3 resultsSearch">
+    <div class="resultsWrapper">
+            <div class="resultsSearch">
                 <form>
-                    <input type="text" class="" placeholder="Enter keyword(s)">
-                    <input type="submit" class="" value="Search">
+                    <input type="text" class="resultsSearchbar" placeholder="Enter keyword(s)">
+                    <input type="submit" class="resultsSubmit" value="Search">
                 </form>
+                <input type="radio" name="searchArea" id="nearMe" checked="checked" value="nearMe">
+                <label for="nearMe" class="searchArea" >Search results near me</label>
+                <input type="radio" name="searchArea" id="all" value="all">
+                <label for="all" class="searchArea" >Search all results</label>
                 <br>
                 <p>Distance from me: <span id="distVal"></span> miles</p>
                 <div class="slidecontainer">
-                    <input type="range" min="1" max="25" value="10" class="slider" id="distRange">
+                    <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange">
                 </div>
                 <br>
                 <p style="display: inline">Sort by:</p>
@@ -35,42 +40,55 @@
                     <option value="distance">Distance</option>
                 </select>
             </div>
-            <div class="col-9">
+            <div class="resultsListWrapper">
                 <% var resNum = 0;%>
+                <div class="container">
                 <% results.forEach(function(item){ %>
                 <% resNum += 1;%>
-                    <div class="container">
+                    <a href="/<%= item.generateURL()%>">
                         <div class="row results">
-                            <div class="col-2">
+                            <div class="resThumbnail">
                                 <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
                             </div>
-                            <div class="col-10">
-                                <% var divID = "res" + resNum.toString();%>
-                                <div class="restName"> <a href="/<%= item.generateURL()%>"> <%= item.name %> </a> </div>
-                                <div id='<%=divID%>'> Reviews </div>
-                                <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
-                                <%= item.cuisines %> <br>
-                                <div id="dist"><%= item.distance %> miles away</div>
+                            <div class="resInfo">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="restTitle">  <%= item.name %></div>
+                                    </div>
+                                    <div class="col-6">
+                                        <% var divID = "resStar" + resNum.toString();%>
+                                        <div class="restTitle algnRight" id='<%=divID%>'> Reviews </div>
+                                        <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <%= item.cuisines %>
+                                    </div>
+                                    <div class="col-6">
+                                        <% divID = "resPrice" + resNum.toString();%>%>
+                                        <div class="algnRight" id='<%=divID%>'> Price </div>
+                                        <script>getPrice(<%= item.price %>, "<%=divID%>");</script>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="restDist" id="dist"><%= item.distance %> miles away</div>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                    <hr>
                 <% }); %>
+                </div>
             </div>
-        </div>
     </div>
     <div class="push"></div>
 </div>
     <% include footer.ejs %>
 
-    <script>
-        var slider = document.getElementById("distRange");
-        var output = document.getElementById("distVal");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function() {
-            output.innerHTML = this.value;
-        }
-    </script>
+    <script>sliderChange();</script>
+    <script>radioButtonChange();</script>
+</body>
 
 </body>
 </html>
