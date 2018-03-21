@@ -10,6 +10,7 @@
     <script src="javascripts/location.js"></script>
     <script src="javascripts/reviewRating.js"></script>
     <script src="javascripts/pricing.js"></script>
+    <script src="javascripts/results.js"></script>
     <title>Results</title>
 </head>
 <body>
@@ -21,10 +22,14 @@
                     <input type="text" class="resultsSearchbar" placeholder="Enter keyword(s)">
                     <input type="submit" class="resultsSubmit" value="Search">
                 </form>
+                <input type="radio" name="searchArea" id="nearMe" checked="checked" value="nearMe">
+                <label for="nearMe" class="searchArea" >Search results near me</label>
+                <input type="radio" name="searchArea" id="all" value="all">
+                <label for="all" class="searchArea" >Search all results</label>
                 <br>
                 <p>Distance from me: <span id="distVal"></span> miles</p>
                 <div class="slidecontainer">
-                    <input type="range" min="1" max="25" value="10" class="slider" id="distRange">
+                    <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange">
                 </div>
                 <br>
                 <p style="display: inline">Sort by:</p>
@@ -81,15 +86,9 @@
 </div>
     <% include footer.ejs %>
 
-    <script>
-        var slider = document.getElementById("distRange");
-        var output = document.getElementById("distVal");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function() {
-            output.innerHTML = this.value;
-        }
-    </script>
+    <script>sliderChange();</script>
+    <script>radioButtonChange();</script>
+</body>
 
 </body>
 </html>

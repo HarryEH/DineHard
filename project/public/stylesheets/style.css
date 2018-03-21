@@ -394,6 +394,10 @@ a:hover {
     min-width: 50px;
 }
 
+.searchArea{
+    font-size: 12px;
+}
+
 #errorTitle{
   font-size: 24px;
 }
