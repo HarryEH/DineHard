@@ -140,7 +140,7 @@ function renderResCallback(obj) {
     const req = obj.req;
     const res = obj.res;
     const results = obj.results;
-    const reviews = obj.reviews;
+    const reviews = obj.reviewResults;
     const login = obj.login;
 
     var reviewCount = reviews.length;
