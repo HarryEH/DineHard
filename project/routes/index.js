@@ -95,7 +95,7 @@ router.post('/change-password', function(req, res, next) {
 
 router.get('/logout', function (req, res, next) {
     delete req.session.user_id;
-    res.redirect(req.session.prevURL);
+    res.redirect('/');
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,11 +114,14 @@ router.post('/register', function(req, res, next) {
 router.get('/create-restaurant', function(req, res, next) {
     var login = checkLogin(req, res, next);
     //check the query
-
-    if(testCreateRestaurantInput(req)){
-        RestaurantController.addRestaurant(req,res,login);
+    if (login === false) {
+        res.redirect('/login');
     } else {
-        res.render('create-restaurant', { loggedIn: login, error: "Fill all the required fields"});
+        if (testCreateRestaurantInput(req)) {
+            RestaurantController.addRestaurant(req, res, login);
+        } else {
+            res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
+        }
     }
 
 });
