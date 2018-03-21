@@ -101,7 +101,8 @@ router.get('/logout', function (req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/register', function(req, res, next) {
     var login = checkLogin(req, res, next);
-    res.render('register', { loggedIn: login, error:"", uerror: "", emerror: ""});
+    var values = {fname: "", sname: "", email: "", user: ""};
+    res.render('register', { loggedIn: login, error:"", uerror: "", emerror: "", values: values});
 });
 
 router.post('/register', function(req, res, next) {
