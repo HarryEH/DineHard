@@ -21,69 +21,70 @@
 
     <% include header.ejs %>
 
-    <div class="container-fluid restaurant-info m-font">
-
-        <div class="row">
-            <ul class="inline-list">
-                <li><p class="title"><%= restaurant.name %></p></li>
-            </ul>
-        </div>
-
-        <div class="row">
-            <ul class="inline-list">
-                <li><div id="starRating" class="inline"></div> <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
-
-                <li><%= restaurant.cuisines %></li>
-
-                <li class="no-wrap"><div id="resPrice" class="inline">Price</div></li>
-
-                <script>getPrice(<%= restaurant.price %>, "resPrice");</script>
-            </ul>
-        </div>
-
-        <script>getStarRating(<%= restaurant.rating %>, "starRating");</script>
-
-        <div class="row">
-            <ul class="inline-list">
-                <li><%= restaurant.address %> (<%= restaurant.distance %> miles away)</li>
-
-                <li class="no-wrap">
-                    <span class="glyphicon glyphicon-earphone"></span> <%= restaurant.phoneNo %>
-                </li>
-
-                <li class="no-wrap">
-                    <i class="fa fa-laptop"></i>
-                    <a href="<%= restaurant.websiteURL %>" style="color:black;"><%= restaurant.websiteURL %></a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="row">
-            <div class="slideshow-container">
-
-                <div class="restaurant-img">
-                    <img class="slideshow-img" src="images/restTest1.jpg">
-                </div>
-
-                <div class="restaurant-img">
-                    <img class="slideshow-img" src="images/restTest2.jpg">
-                </div>
-
-                <div class="restaurant-img">
-                    <img class="slideshow-img" src="images/restTest3.jpg">
-                </div>
-
-                <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a id="next" onclick="plusSlides(1)">&#10095;</a>
-
+    <div class="col-100">
+        <div class="restaurant-info m-font">
+            <div class="row">
+                <ul class="inline-list">
+                    <li><p class="restaurant-title-font"><%= restaurant.name %></p></li>
+                </ul>
             </div>
-        </div>
 
-        <div class = "row">
-            <div class="restaurant-description col-45">
-                <p class="text"><%= restaurant.description %></p>
+            <div class="row">
+                <ul class="inline-list">
+                    <li><div id="starRating" class="inline"></div> <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
+
+                    <li><%= restaurant.cuisines %></li>
+
+                    <li class="no-wrap"><div id="resPrice" class="inline">Price</div></li>
+
+                    <script>getPrice(<%= restaurant.price %>, "resPrice");</script>
+                </ul>
             </div>
-                <div id="map" class="restaurant-map col-55"></div>
+
+            <script>getStarRating(<%= restaurant.rating %>, "starRating");</script>
+
+            <div class="row">
+                <ul class="inline-list">
+                    <li><%= restaurant.address %> (<%= restaurant.distance %> miles away)</li>
+
+                    <li class="no-wrap">
+                        <span class="glyphicon glyphicon-earphone"></span> <%= restaurant.phoneNo %>
+                    </li>
+
+                    <li class="no-wrap">
+                        <i class="fa fa-laptop"></i>
+                        <a href="<%= restaurant.websiteURL %>" style="color:black;"><%= restaurant.websiteURL %></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="slideshow-container">
+
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="images/restTest1.jpg">
+                    </div>
+
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="images/restTest2.jpg">
+                    </div>
+
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="images/restTest3.jpg">
+                    </div>
+
+                    <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a id="next" onclick="plusSlides(1)">&#10095;</a>
+
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class="restaurant-description col-50">
+                    <p class="text"><%= restaurant.description %></p>
+                </div>
+                <div id="map" class="restaurant-map col-45"></div>
+            </div>
         </div>
     </div>
 
@@ -102,7 +103,7 @@
         </div>
 
         <% if (loggedIn === false) {%>
-            <p class="blackLink"><a href="/login">Login</a> to leave a review</p>
+            <p class="blackLink xs-font"><a href="/login">Login</a> to leave a review</p>
         <%}%>
 
         <% if (reviewCount < 1){%>

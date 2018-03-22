@@ -55,7 +55,7 @@
 
             </div>
 
-            <div class="results-list-wrapper col-75">
+            <div class="results-list-wrapper col-70">
 
                 <% var resNum = 0;%>
 
@@ -81,7 +81,7 @@
 
                                     <div class="col-50">
                                         <% var divID = "resStar" + resNum.toString();%>
-                                        <div id='<%=divID%>'> Reviews </div>
+                                        <div class="align-right" id='<%=divID%>'> Reviews </div>
                                         <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
                                     </div>
 
