@@ -75,41 +75,72 @@ a:hover {
     text-align: right;
 }
 
-.no-wrap{
+.no-wrap {
     white-space: nowrap;
 }
 
-[class*='row']{
+#errorTitle {
+    font-size: 24px;
+}
+
+.noMargin {
+    margin: 0 auto;
+}
+
+[class*='row'] {
     margin: 0px;
     padding: 0px;
 }
 
-[class*='col-']{
+[class*='col-'] {
     display: inline;
     width: 100%;
     padding: 0px;
 }
 
+.resLink a, .userLink a, .blackLink a {
+    color: black;
+!important;
+    font-weight: bold;
+}
+
 /* ------------ FONT CSS ------------ */
 
-.xxs-font{font-size: 10px;}
+.xxs-font {
+    font-size: 10px;
+}
 
-.xs-font{font-size: 12px;}
+.xs-font {
+    font-size: 12px;
+}
 
-.s-font{font-size: 14px;}
+.s-font {
+    font-size: 14px;
+}
 
-.m-font{font-size: 16px;}
+.m-font {
+    font-size: 16px;
+}
 
-.l-font{font-size: 18px;}
+.l-font {
+    font-size: 18px;
+}
 
-.xl-font{font-size: 20px;}
+.xl-font {
+    font-size: 20px;
+}
 
-.xxl-font{font-size: 22px;}
+.xxl-font {
+    font-size: 22px;
+}
 
-.feat-icon-font{font-size: 35px;}
+.feat-icon-font {
+    font-size: 35px;
+}
 
-.title-font{font-size: 44px;}
-
+.title-font {
+    font-size: 44px;
+}
 
 /* ------------ HEADER CSS ------------ */
 
@@ -142,7 +173,7 @@ a:hover {
     font-family: var(--font);
 }
 
-.inline-list{
+.inline-list {
     padding: 0px;
 }
 
@@ -174,7 +205,7 @@ a:hover {
     color: white;
 }
 
-.footer-social{
+.footer-social {
     float: right;
     width: 35%;
     margin-left: 3%;
@@ -312,25 +343,25 @@ a:hover {
 
 /* ------------ FORM CSS ------------ */
 
-.user-form, .crForm {
+.user-form {
     display: inline-block;
     width: 90%;
     margin: 8% 5% 0% 5%;
 }
 
-.user-border, .crBorder, .pBorder {
+.user-border, .pBorder {
     padding: 5px 15px 15px 15px;
     border-radius: 25px;
     background: var(--bg2-color);
 }
 
-.user-title, .crTitle, .pTitle {
+.user-title, .pTitle {
     padding: 15px 5px 10px 5px;
     color: white;
     font-size: 22px;
 }
 
-.user-input-wrapper, .crInputWrapper, .reviewcontainer {
+.user-input-wrapper, .reviewcontainer {
     width: 100%;
     margin: 0 auto;
     padding: 4%;
@@ -338,25 +369,30 @@ a:hover {
     background: white;
 }
 
-.login, .register{
+.login, .register {
     width: 95%;
     margin: 0% 0% 0% 5%;
 }
 
-.login input, .register input, .createRestaurant input, .review input {
+.login input, .register input, .create-restaurant input, .review input {
     width: 90%;
     margin: 5px 7% 5px 3%;
 }
 
-.login label, .register label, .createRestaurant label, .review label {
+.login label, .register label, .create-restaurant label, .review label {
     margin: 5px 5px 5px 0px;
 }
 
-.user-submit, .crSubmit {
+.user-submit, .create-restaurant-submit {
+    height: 30px;
     width: 20%;
     min-width: 70px;
     margin: 10px 40% 10px 40%;
+    border: none;
+    border-radius: 5px;
     text-align: center;
+    background: var(--bg2-color);
+    color: white;
 }
 
 .error {
@@ -383,17 +419,24 @@ a:hover {
     background: white;
 }
 
-.profile-details, .profile-reviews{
+.profile-details, .profile-review-wrapper {
     padding: 5px 5px 5px 5px;
 }
 
-.profile-edit{
+.profile-edit {
     width: 60%;
     margin: 5px 20% 5px 20%;
     border: none;
     border-radius: 5px;
     background-color: var(--bg2-color);
     color: white;
+}
+
+.profile-review {
+    margin: 5px 0px 5px 0px;
+    padding: 10px 0px 10px 10px;
+    border-radius: 5px;
+    background: rgba(214, 31, 38, 0.15);
 }
 
 /* ------------ RESULTS CSS ------------ */
@@ -432,11 +475,11 @@ a:hover {
     margin: 8px 3% 0px 3%;
 }
 
-.results-distance{
+.results-distance {
     margin: 0px 3% 10px 3%;
 }
 
-.results-sort{
+.results-sort {
     margin: 5px 3% 10px 3%;
 }
 
@@ -534,11 +577,11 @@ a:hover {
     font-family: var(--font);
 }
 
-.restaurant-description{
+.restaurant-description {
     margin: 10px 0px 10px 0px;
 }
 
-.restaurant-map{
+.restaurant-map {
     height: 200px;
 }
 
@@ -556,7 +599,6 @@ a:hover {
 .mySlides {
     display: none;
 }
-
 
 .slideshow-img {
     display: block;
@@ -594,6 +636,82 @@ a:hover {
     color: var(--bg2-color);
 }
 
+/* ------------ NEW RESTAURANT CSS ------------ */
+
+/* The container */
+.cuisines {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+/* Hide the browser's default checkbox */
+.cuisines input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.cuisines:hover input ~ .checkmark {
+    background-color: grey;
+}
+
+/* When the checkbox is checked, add a blue background */
+.cuisines input:checked ~ .checkmark {
+    background-color: red;
+}
+
+/*!* Create the checkmark/indicator (hidden when not checked) *!*/
+/*.checkmark:after {*/
+/*content: "";*/
+/*position: absolute;*/
+/*display: none;*/
+/*}*/
+
+/* Show the checkmark when checked */
+.cuisines input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.cuisines .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.create-restauarant-input{
+    margin: 5px 7% 5px 3%;
+}
+
+.create-restaurant-text-area {
+    width: 100%;
+}
+
+
 /* ------------ REVIEWS CSS ------------ */
 
 .reviews {
@@ -604,7 +722,7 @@ a:hover {
     overflow: hidden;
 }
 
-.review-thumbnail-wrapper{
+.review-thumbnail-wrapper {
     height: 70px;
     width: 70px;
     margin-top: 5px;
@@ -617,17 +735,17 @@ a:hover {
     border-radius: 5px;
 }
 
-.review-wrapper{
+.review-wrapper {
     display: inline;
     width: 70%;
 }
 
-.review-header{
-    width:50%;
+.review-header {
+    width: 50%;
 }
 
-.review-date{
-    width:50%;
+.review-date {
+    width: 50%;
 }
 
 /* ------------ CREATE REVIEW CSS ------------ */
@@ -704,7 +822,7 @@ a:hover {
     font-size: 22px;
 }
 
-.new-review-submit{
+.new-review-submit {
     float: left;
     width: 40%;
     margin: 10px 5% 0px 0px;
@@ -716,7 +834,7 @@ a:hover {
     margin: 10px 0px 0px 3%;
 }
 
-.new-review-submit, .new-review-cancel{
+.new-review-submit, .new-review-cancel {
     height: 30px;
     border: none;
     border-radius: 5px;
@@ -724,115 +842,8 @@ a:hover {
     color: white;
 }
 
-.review-text{
+.review-text {
     width: 100%;
 }
 
-
 /* ------------ OTHER CSS ------------ */
-
-.title {
-    font-size: 30px;
-}
-
-.text {
-    width: 85%;
-    margin: auto;
-}
-
-#errorTitle {
-    font-size: 24px;
-}
-
-.noMargin {
-    margin: 0 auto;
-}
-
-.row:after {
-    display: table;
-    content: "";
-    clear: both;
-}
-
-.h1 {
-    display: inline-block;
-}
-
-.resLink a, .userLink a, .blackLink a {
-    color: black;
-!important;
-    font-weight: bold;
-}
-
-.pReview {
-    margin: 5px 0px 5px 0px;
-    padding: 10px 0px 10px 10px;
-    border-radius: 5px;
-    background: rgba(214, 31, 38, 0.15);
-}
-
-/* The container */
-.container1 {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-/* Hide the browser's default checkbox */
-.container1 input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.container1:hover input ~ .checkmark {
-    background-color: grey;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container1 input:checked ~ .checkmark {
-    background-color: red;
-}
-
-/*!* Create the checkmark/indicator (hidden when not checked) *!*/
-/*.checkmark:after {*/
-/*content: "";*/
-/*position: absolute;*/
-/*display: none;*/
-/*}*/
-
-/* Show the checkmark when checked */
-.container1 input:checked ~ .checkmark:after {
-    display: block;
-}
-
-/* Style the checkmark/indicator */
-.container1 .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}

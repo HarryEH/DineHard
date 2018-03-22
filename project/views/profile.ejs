@@ -59,7 +59,7 @@
                         <%}%>
 
                     </div>
-                    <div class="profile-reviews col-50">
+                    <div class="profile-review-wrapper col-50">
                         <% if(reviewCount == 0){%>
                             <h2>Reviews</h2>
                             <p>No reviews yet</p>
@@ -69,7 +69,7 @@
                         <% var reviewNum = 0;%>
                         <% reviews.forEach(function(review){ %>
                         <% reviewNum += 1;%>
-                        <div class="container pReview">
+                        <div class="container profile-review">
                             <div class="row">
                                 <div class="col-6 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
                                 <div class="col-6"><%= review.date.getDate() %>-<%= review.date.getMonth() %>-<%= review.date.getFullYear() %></div>

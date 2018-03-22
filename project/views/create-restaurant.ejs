@@ -10,24 +10,30 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="javascripts/create-restaurant.js"></script>
 </head>
+
 <body>
 <div class="main-wrapper">
+
     <% include header.ejs %>
-    <div class="crForm">
-        <div class ="crBorder">
-            <div class="crTitle">Create Restaurant</div>
+
+    <div class="user-form">
+        <div class ="user-border">
+
+            <div class="user-title">Create Restaurant</div>
+
             <div class = "error"><%= error %></div>
-            <div class="crInputWrapper">
+
+            <div class="user-input-wrapper">
+
                 <form id="createRestaurantForm" action="/create-restaurant" method="get" >
-                    <div class="row createRestaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
                             <div id="nError"></div>
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='restaurantName'>Restaurant Name:</label>
                         </div>
@@ -36,42 +42,38 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
+                    <div class="row create-restaurant">
+                        <div class="col-100">
                             <div id="urlError"></div>
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='telephone'>Restaurant Telephone Number:</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" placeholder="Enter restaurant telephone number" name="phoneNo" id="name">
+                            <input type="text" placeholder="Enter telephone number" name="phoneNo" id="name">
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
+                    <div class="row create-restaurant">
+                        <div class="col-100">
                             <div id="aError"></div>
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='address'>Restaurant Address:</label>
                         </div>
                         <div class="col-7">
-                            <input id="autocomplete" placeholder="Enter door number and select address" onFocus="geolocate()" type="text">
+                            <input id="autocomplete" placeholder="Enter and select address" onFocus="geolocate()" type="text">
                             </input>
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for="doornumber">Door Number:</label>
                         </div>
@@ -81,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for="streetname">Street Name:</label>
                         </div>
@@ -100,7 +102,7 @@
                     <!--</div>-->
                     <!--</div>-->
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for="postcode">Postcode:</label>
                         </div>
@@ -110,15 +112,13 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
+                    <div class="row create-restaurant">
+                        <div class="col-100">
                             <div id="purlError"></div>
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='photo'>Photo URL:</label>
                         </div>
@@ -127,7 +127,7 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                         </div>
                         <div class="col-7">
@@ -135,17 +135,17 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='tags'>Tags:</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" placeholder="Enter tags separated by commas e.g cosy, fun" name="tags" id="tags">
+                            <input type="text" placeholder="Enter comma separated tags e.g cosy, fun" name="tags" id="tags">
                         </div>
                     </div>
 
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                         </div>
                         <div class="col-7">
@@ -153,32 +153,36 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='cuisines'>Cuisines:</label>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7 xs-font">
+                            <div class="create-restauarant-input">
+                                <label class="cuisines">Italian<br>
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
 
-                            <label class="container1">Italian<br>
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="container1">Chinese<br>
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="container1">Mexican<br>
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="container1">Spanish<br>
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
+                                <label class="cuisines">Chinese<br>
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Mexican<br>
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Spanish<br>
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                         </div>
                         <div class="col-7">
@@ -186,25 +190,27 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='price'>Price range:</label>
                         </div>
                         <div class="col-7">
-                            <select name="pricerange">
-                                <option value="1">£</option>
-                                <option value="2">£-££</option>
-                                <option value="3">££</option>
-                                <option value="4">££-£££</option>
-                                <option value="5">£££</option>
-                                <option value="6">£££-££££</option>
-                                <option value="7">££££</option>
-                                <option value="8">£££££</option>
-                            </select>
+                            <div class="create-restauarant-input">
+                                <select name="pricerange">
+                                    <option value="1">£</option>
+                                    <option value="2">£-££</option>
+                                    <option value="3">££</option>
+                                    <option value="4">££-£££</option>
+                                    <option value="5">£££</option>
+                                    <option value="6">£££-££££</option>
+                                    <option value="7">££££</option>
+                                    <option value="8">£££££</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                         </div>
                         <div class="col-7">
@@ -212,7 +218,7 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='websiteurl'>Website URL:</label>
                         </div>
@@ -221,7 +227,7 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                         </div>
                         <div class="col-7">
@@ -229,16 +235,18 @@
                         </div>
                     </div>
 
-                    <div class="row createRestaurant">
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for='description'>Restaurant Description:</label>
                         </div>
                         <div class="col-7">
-                            <textarea rows="8" cols="44" placeholder="Enter restaurant description" name="description" id="description"></textarea>
+                            <div class="create-restauarant-input">
+                                <textarea class="create-restaurant-text-area" rows="8" cols="44" placeholder="Enter restaurant description" name="description" id="description"></textarea>
+                            </div>
                         </div>
                     </div>
 
-                    <input type="submit" name="g" value="Create" id="g" class="crSubmit">
+                    <input type="submit" name="g" value="Create" id="g" class="create-restaurant-submit">
                 </form>
             </div>
         </div>
