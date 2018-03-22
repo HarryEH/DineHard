@@ -6,7 +6,8 @@
     --title-color: #FFFFFF;
     --alert-color: #FF0008;
     --shadow-color: #000000;
-    --slider-color: #ED168A;
+    --searchbg-color: #FB787F;
+    --slider-color: #D61F26;
     --font: "Trebuchet MS";
 }
 
@@ -62,8 +63,22 @@ a:hover {
     height: 45px;
 }
 
-.algnRight {
+.inline{
+    display: inline;
+}
+
+.align-right {
     text-align: right;
+}
+
+[class*='row']{
+    margin: 0px;
+    padding: 0px;
+}
+
+[class*='col-']{
+    display: inline;
+    padding: 0px;
 }
 
 /* ------------ HEADER CSS ------------ */
@@ -220,7 +235,6 @@ a:hover {
 
 .index-search {
     width: 90%;
-    max-width: 800px;
     margin: 0px 5% 0px 5%;
     background: #ffffff;
 }
@@ -319,10 +333,6 @@ a:hover {
 
 .login label, .register label, .createRestaurant label, .review label {
     margin: 5px 5px 5px 0px;
-}
-
-.login [class*='col-'], .register [class*='col-']{
-    padding: 0px;
 }
 
 .user-submit, .crSubmit {
@@ -428,7 +438,116 @@ a:hover {
     color: var(--bg2-color);
 }
 
+/* ------------ RESULTS CSS ------------ */
+
+.results-wrapper {
+    height: 100%;
+    padding: 0px auto;
+}
+
+.results-search {
+    position: sticky;
+    display: block;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    margin: 0px 0px -45px 0px;
+    padding: 15px 15px 10px 15px;
+    background-color: var(--searchbg-color);
+    color: black !important;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+.results-search-text {
+    width: 70%;
+    margin: 10px 0px 0px 3%;
+}
+
+.results-submit {
+    float: right;
+    width: 20%;
+    margin: 10px 3% 0px 0px;
+}
+
+.results-search-area {
+    margin: 8px 3% 0px 3%;
+    font-size: 12px;
+}
+
+.results-distance{
+    margin: 0px 3% 10px 3%;
+    font-size: 16px;
+}
+
+.results-sort{
+    margin: 5px 3% 10px 3%;
+    font-size: 16px;
+}
+
+.results-list-wrapper {
+    display: block;
+    width: 100%;
+    padding: 45px 0px 0px 0px;
+}
+
+.results {
+    position: relative;
+    z-index: 0;
+    margin: 5px 10px 5px 10px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    color: var(--text-color) !important;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.results:hover {
+    background-color: rgba(24, 255, 0, 0.15);
+}
+
+.results-info {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    margin-left: 100px;
+}
+
+.result-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.result-name {
+    width: 100%;
+}
+
+.result-star {
+    width: 100%;
+}
+
+.restult-distance {
+    font-style: italic;
+}
+
+.results-thumbnail {
+    position: absolute;
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+
+.thumbnail {
+    height: 90px;
+    width: 90px;
+    margin: 0px;
+}
+
 /* ------------ OTHER CSS ------------ */
+
 
 .restInfo {
     margin: 10px 15px 10px 0px;
@@ -444,93 +563,6 @@ a:hover {
 .text {
     width: 85%;
     margin: auto;
-}
-
-.results {
-    position: relative;
-    height: auto;
-    min-height: 90px;
-    margin: 20px 10px 20px 10px;
-    padding: 10px 10px 10px 10px;
-    border-radius: 10px;
-    color: var(--text-color) !important;
-    font-size: 20px;
-    overflow: hidden;
-}
-
-.results:hover {
-    background-color: rgba(24, 255, 0, 0.15);
-}
-
-.resultsWrapper {
-    height: 100%;
-    padding: 0px auto;
-}
-
-.resultsListWrapper {
-    width: 60%;
-    margin-left: 25%;
-}
-
-.resultsSearch {
-    position: fixed;
-    left: 0;
-    z-index: 0;
-    height: 100%;
-    width: 20%;
-    margin-bottom: -45px;
-    padding: 20px 15px 0px 15px;
-    background-color: rgba(214, 36, 37, 0.76);
-    color: black !important;
-    font-size: 16px;
-    overflow-x: hidden;
-}
-
-.resultsSearchbar {
-    width: 75%;
-}
-
-.resultsSubmit {
-    width: 20%;
-}
-
-.restTitle {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.resultsStars {
-    font-size: 24px;
-}
-
-.restDist {
-    font-size: 16px;
-    font-style: italic;
-}
-
-.thumbnail {
-    height: 130px;
-    width: 130px;
-    min-height: 90px;
-    min-width: 90px;
-    margin: 0px;
-}
-
-.resThumbnail {
-    position: absolute;
-    float: left;
-    height: 150px;
-    width: 150px;
-}
-
-.resInfo {
-    position: relative;
-    display: inline-block;
-    z-index: 10;
-    height: auto;
-    min-height: 130px;
-    width: 100%;
-    margin-left: 160px;
 }
 
 .reviews {
@@ -549,10 +581,6 @@ a:hover {
     width: 9vh;
     min-width: 50px;
     margin: 0 auto;
-}
-
-.searchArea {
-    font-size: 12px;
 }
 
 #errorTitle {

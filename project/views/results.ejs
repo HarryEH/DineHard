@@ -15,80 +15,114 @@
 </head>
 <body>
 <div class="main-wrapper">
+
     <% include header.ejs %>
-    <div class="resultsWrapper">
-            <div class="resultsSearch">
+
+    <div class="results-wrapper">
+
+        <div class="container-fluid row">
+
+            <div class="results-search">
                 <form>
-                    <input type="text" class="resultsSearchbar" placeholder="Enter keyword(s)">
-                    <input type="submit" class="resultsSubmit" value="Search">
+                    <input type="text" class="results-search-text" placeholder="Enter keyword(s)">
+                    <input type="submit" class="results-submit" value="Search">
                 </form>
-                <input type="radio" name="searchArea" id="nearMe" checked="checked" value="nearMe">
-                <label for="nearMe" class="searchArea" >Search results near me</label>
-                <input type="radio" name="searchArea" id="all" value="all">
-                <label for="all" class="searchArea" >Search all results</label>
-                <br>
-                <p>Distance from me: <span id="distVal"></span> miles</p>
-                <div class="slidecontainer">
-                    <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange">
+
+                <div class="results-search-area">
+                    <input type="radio" name="searchArea" id="nearMe" checked="checked" value="nearMe">
+                    <label for="nearMe" class="search-area" >Search results near me</label>
+                    <input type="radio" name="searchArea" id="all" value="all">
+                    <label for="all" class="search-area" >Search all results</label>
                 </div>
-                <br>
-                <p style="display: inline">Sort by:</p>
-                <select name="sort" style="display: inline">
-                    <option value="relevance">Relevance</option>
-                    <option value="priceL2H">Price: Low to High</option>
-                    <option value="priceH2L">Price: High to Low</option>
-                    <option value="distance">Distance</option>
-                </select>
+
+                <div class="results-distance">
+                    <p>Distance from me: <span id="distVal"></span> miles</p>
+                    <div class="slidecontainer">
+                        <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange">
+                    </div>
+                </div>
+
+                <div class="results-sort">
+                    <p class="inline">Sort by:</p>
+                    <select name="sort" class="inline">
+                        <option value="relevance">Relevance</option>
+                        <option value="priceL2H">Price: Low to High</option>
+                        <option value="priceH2L">Price: High to Low</option>
+                        <option value="distance">Distance</option>
+                    </select>
+                </div>
+
             </div>
-            <div class="resultsListWrapper">
+
+            <div class="results-list-wrapper">
+
                 <% var resNum = 0;%>
-                <div class="container">
+
+                <div class="container-fluid">
+
                 <% results.forEach(function(item){ %>
                 <% resNum += 1;%>
+
                     <a href="/<%= item.generateURL()%>">
+
                         <div class="row results">
-                            <div class="resThumbnail">
+
+                            <div class="results-thumbnail">
                                 <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
                             </div>
-                            <div class="resInfo">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="restTitle">  <%= item.name %></div>
+
+                            <div class="results-info">
+                                <div class="result-title row">
+
+                                    <div class="result-name">
+                                        <div> <%= item.name %></div>
                                     </div>
-                                    <div class="col-6">
+
+                                    <div class="result-star">
                                         <% var divID = "resStar" + resNum.toString();%>
-                                        <div class="restTitle algnRight" id='<%=divID%>'> Reviews </div>
+                                        <div id='<%=divID%>'> Reviews </div>
                                         <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
                                     </div>
+
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-6">
                                         <%= item.cuisines %>
                                     </div>
+
                                     <div class="col-6">
                                         <% divID = "resPrice" + resNum.toString();%>%>
-                                        <div class="algnRight" id='<%=divID%>'> Price </div>
+                                        <div class="align-right" id='<%=divID%>'> Price </div>
                                         <script>getPrice(<%= item.price %>, "<%=divID%>");</script>
                                     </div>
+
                                 </div>
-                                <br>
-                                <div class="restDist" id="dist"><%= item.distance %> miles away</div>
+
+                                <div class="result-distance" id="dist"><%= item.distance %> miles away</div>
+
                             </div>
                         </div>
                     </a>
+
                     <hr>
+
                 <% }); %>
+
                 </div>
             </div>
+        </div>
     </div>
+
     <div class="push"></div>
+
 </div>
+
     <% include footer.ejs %>
 
     <script>sliderChange();</script>
     <script>radioButtonChange();</script>
-</body>
 
 </body>
 </html>
