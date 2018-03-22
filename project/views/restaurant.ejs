@@ -21,7 +21,7 @@
 
     <% include header.ejs %>
 
-    <div class="container-fluid restaurant-info">
+    <div class="container-fluid restaurant-info m-font">
 
         <div class="row">
             <ul class="inline-list">
@@ -80,10 +80,10 @@
         </div>
 
         <div class = "row">
-            <div class="restaurant-description">
+            <div class="restaurant-description col-45">
                 <p class="text"><%= restaurant.description %></p>
             </div>
-                <div id="map" class="restaurant-map"></div>
+                <div id="map" class="restaurant-map col-55"></div>
         </div>
     </div>
 
@@ -115,7 +115,7 @@
 
         <div class="container-fluid">
 
-            <div class="row reviews">
+            <div class="row reviews s-font">
                 <div class="review-thumbnail-wrapper">
                     <a href="/profile-<%= review.username %>">
                         <img class="review-thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">

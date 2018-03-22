@@ -11,49 +11,56 @@
         <div class="modalheader">
             <h2>Write Review for <%= restaurant.name %></h2>
         </div>
+
         <div class="reviewcontainer">
+
             <div class="row review">
-                <div class="col-4">
-                </div>
-                <div class="col-8">
+
+                <div class="col-100">
                     <div id="sError"></div>
                 </div>
+
             </div>
+
             <div class="row review">
-                <div class="col-4">
-                    <label for="rating">Rating out of 7 stars:</label>
+
+                <div class="col-33">
+                    <label for="rating">Rating: <span id="star"></span> out of 7 stars</label>
                 </div>
 
-                <div class="col-8">
-                    <p>Star rating: <span id="star"></span> stars</p>
-                    <div class="slidecontainerreview">
+                <div class="col-66">
+                    <div class="slidecontainer">
                         <input type="range" min="0" max="7" value="4" class="slider" id="reviewslider">
                     </div>
                 </div>
+
             </div>
+
             <div class="row review">
-                <div class="col-4">
-                </div>
-                <div class="col-8">
+
+                <div class="col-100">
                     <div id="dError"></div>
                 </div>
+
             </div>
+
             <div class="row review">
-                <div class="col-4">
+                <div class="col-33">
                     <label for="review">Review description</label>
                 </div>
-                <div class="col-8">
-                    <textarea rows="8" cols="50" placeholder="Enter review" name="review" required></textarea>
-                </div>
-            </div>
-            <button type="submit" class="wrSubmit">Submit Review</button>
 
-            <div class="container">
-                <button type="button" onclick="document.getElementById('review').style.display='none'" class="cancelbtn">Cancel</button>
+                <div class="col-66">
+                    <textarea class="review-text" rows="8" cols="50" placeholder="Enter review" name="review" required></textarea>
+                </div>
+
             </div>
+            <button type="submit" class="new-review-submit">Submit Review</button>
+
+            <button type="button" onclick="document.getElementById('review').style.display='none'" class="new-review-cancel">Cancel</button>
         </div>
     </form>
 </div>
+
 <script>
     var modal = document.getElementById('review');
 

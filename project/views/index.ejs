@@ -13,6 +13,7 @@
     <script src="javascripts/search.js"></script>
     <title>Dine Hard</title>
 </head>
+
 <body onload="load();hiddenFields();">
 <div class="main-wrapper">
 
@@ -20,18 +21,18 @@
 
     <div class="index-top-wrapper">
         <div class="index-header">
-            <p class="index-title">A Good Day to Dine Hard</p>
-            <p class="index-subtitle">The food, the bad and the ugly</p>
+            <p class="index-title title-font">A Good Day to Dine Hard</p>
+            <p class="index-subtitle l-font">The food, the bad and the ugly</p>
         </div>
         <div class="container-fluid soft-highlight">
             <div class="container-fluid row">
-                <p class="index-search-title">Enter your postcode to find local restaurants</p>
+                <p class="index-search-title xs-font">Enter your postcode to find local restaurants</p>
             </div>
             <form class="index-search" id="searchForm" action="/results" method="get">
-                <input type="text" class="index-search-text" placeholder="Enter postcode or keyword(s)" name="q" id="q">
+                <input type="text" class="index-search-text xs-font" placeholder="Enter postcode or keyword(s)" name="q" id="q">
                 <input type="text" class="latField" hidden="true" name="lat" id="lat">
                 <input type="text" class="lngField" hidden="true" name="lng" id="lng">
-                <input type="submit" class="index-search-submit" name="g" value="Search" id="g">
+                <input type="submit" class="index-search-submit xs-font" name="g" value="Search" id="g">
             </form>
         </div>
     </div>
@@ -45,16 +46,16 @@
 
     <div class="container-fluid" class="index-feat-wrapper">
         <div class="row">
-            <div class="index-feat">
-                <span class="glyphicon glyphicon-heart feat-icon" style="color:darkred"></span><br>
+            <div class="index-feat col-33 xl-font">
+                <span class="glyphicon glyphicon-heart feat-icon-font" style="color:darkred"></span><br>
                 Find your favourite local restaurants and bars
             </div>
-            <div class="index-feat">
-                <span class="glyphicon glyphicon-search feat-icon" style="color:darkgreen"></span><br>
+            <div class="index-feat col-33 xl-font">
+                <span class="glyphicon glyphicon-search feat-icon-font" style="color:darkgreen"></span><br>
                 Sort results by relevance, price and location
             </div>
-            <div class="index-feat">
-                <span class="glyphicon glyphicon-star feat-icon" style="color:orangered"></span><br>
+            <div class="index-feat col-33 xl-font">
+                <span class="glyphicon glyphicon-star feat-icon-font" style="color:orangered"></span><br>
                 Write and view reviews from other users
             </div>
         </div>
