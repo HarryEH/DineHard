@@ -10,9 +10,10 @@
     --font: "Trebuchet MS";
 }
 
+/* ------------ TAG CSS ------------ */
+
 html, body {
     height: 100%;
-    margin: 0;
 }
 
 input:focus,
@@ -44,13 +45,11 @@ a:hover {
     opacity: 0.7;
 }
 
-.mainWrapper {
+/* ------------ GENERAL CSS ------------ */
+
+.main-wrapper {
     min-height: 100%;
     margin-bottom: -45px;
-}
-
-.push {
-    height: 45px;
 }
 
 .mWrapper {
@@ -59,8 +58,8 @@ a:hover {
     font-size: 12pt;
 }
 
-.algnLeft {
-    text-align: left;
+.push {
+    height: 45px;
 }
 
 .algnRight {
@@ -99,11 +98,11 @@ a:hover {
     font-size: 16px;
 }
 
-.inlineList li {
+.inline-list li {
     display: inline;
 }
 
-.inlineList li + li:before {
+.inline-list li + li:before {
     content: " | ";
 }
 
@@ -326,7 +325,7 @@ a:hover {
     padding: 0px;
 }
 
-.l-submit, .rSubmit, .crSubmit {
+.user-submit, .crSubmit {
     width: 20%;
     min-width: 70px;
     margin: 10px 40% 10px 40%;
@@ -377,23 +376,6 @@ a:hover {
     padding: 5px 0px 5px 15px;
 }
 
-/* ------------ OTHER CSS ------------ */
-
-.restInfo {
-    margin: 10px 15px 10px 0px;
-    color: var(--text-color);
-    font-size: 16px;
-    font-family: var(--font);
-}
-
-.title {
-    font-size: 30px;
-}
-
-.text {
-    width: 85%;
-    margin: auto;
-}
 
 .slideshowImg {
     display: block;
@@ -402,6 +384,8 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* ------------ SLIDESHOW CSS ------------ */
 
 /* Slideshow container */
 .slideshow-container {
@@ -442,6 +426,24 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
     color: var(--bg2-color);
+}
+
+/* ------------ OTHER CSS ------------ */
+
+.restInfo {
+    margin: 10px 15px 10px 0px;
+    color: var(--text-color);
+    font-size: 16px;
+    font-family: var(--font);
+}
+
+.title {
+    font-size: 30px;
+}
+
+.text {
+    width: 85%;
+    margin: auto;
 }
 
 .results {
