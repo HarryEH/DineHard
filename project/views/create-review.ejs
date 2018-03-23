@@ -8,15 +8,13 @@
     <span onclick="document.getElementById('reviewForm').style.display='none'" class="close" title="Close Modal">&times;</span>
 
     <!-- Modal Content -->
-    <form class="modal-content animate" action="/action_page.php" onsubmit="reviewValidate();">
+    <form id="reviewForm" class="modal-content animate" action="/action_page.php" onsubmit="reviewValidate();">
         <div class="modalheader">
             <h2>Write Review for <%= restaurant.name %></h2>
         </div>
 
         <div class="reviewcontainer">
-
             <div class="row review">
-
                 <div class="col-33">
                     <label for="rating">Rating: <span id="star"></span> out of 7 stars</label>
                 </div>
