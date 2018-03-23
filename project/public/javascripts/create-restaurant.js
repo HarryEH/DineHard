@@ -68,6 +68,7 @@ function validateRestaurant(){
     var postcode = document.forms["createRestaurantForm"]["postcode"].value.trim();
     var photo = document.forms["createRestaurantForm"]["photo"].value.trim();
     var tags = document.forms["createRestaurantForm"]["tags"].value.trim();
+    var cuisines = document.forms["createRestaurantForm"]["cuisines"];
     var website = document.forms["createRestaurantForm"]["websiteurl"].value.trim();
     var desc = document.forms["createRestaurantForm"]["description"].value.trim();
 
@@ -122,6 +123,17 @@ function validateRestaurant(){
     if(tags == ""){
         tHTML = "* Please enter at least one tag *";
         var createOk = false;
+    }
+
+    var cuisine = false;
+    for(var i=0; cuisines[i]; i++){
+        if(cuisines[i].checked){
+            cuisine = true;
+            break;
+        }
+    }
+    if(!cuisine){
+        cHTML = "* Please select at least one cuisine type *";
     }
 
     if(!validateURL(website)){
