@@ -14,10 +14,8 @@ function reviewValidate(){
     }
     if(!reviewOk) {
         event.preventDefault();
-        alert("Review not complete!");
         return false;
     } else {
-        alert("Review complete!");
         return true;
     }
 }
