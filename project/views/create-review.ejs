@@ -8,7 +8,7 @@
     <span onclick="document.getElementById('reviewForm').style.display='none'" class="close" title="Close Modal">&times;</span>
 
     <!-- Modal Content -->
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate" action="/action_page.php" onsubmit="reviewValidate();">
         <div class="modalheader">
             <h2>Write Review for <%= restaurant.name %></h2>
         </div>
@@ -47,7 +47,7 @@
                 </div>
 
             </div>
-            <button type="submit" class="new-review-submit" onsubmit="reviewValidate();">Submit Review</button>
+            <button type="submit" class="new-review-submit">Submit Review</button>
 
             <button type="button" onclick="document.getElementById('reviewForm').style.display='none'" class="new-review-cancel">Cancel</button>
         </div>
