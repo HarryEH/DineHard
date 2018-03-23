@@ -16,8 +16,8 @@ function reviewValidate(){
 
     dError.innerHTML = "";
 
-    if(dError === ""){
-        fnError.innerHTML = "* Please enter a review *";
+    if(reviewdescription === ""){
+        dError.innerHTML = "* Please enter a review *";
         reviewOk = false;
     }
     if(!reviewOk) {
