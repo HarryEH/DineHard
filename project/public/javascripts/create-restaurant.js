@@ -1,7 +1,5 @@
 //https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
 
-
-
 var placeSearch, autocomplete;
 var componentForm = {
     street_number: 'short_name',
@@ -60,4 +58,123 @@ function geolocate() {
             autocomplete.setBounds(circle.getBounds());
         });
     }
+}
+
+function validateRestaurant(){
+    var name = document.forms["createRestaurantForm"]["name"].value.trim();
+    var phone = document.forms["createRestaurantForm"]["phoneNo"].value.trim();
+    var address = document.forms["createRestaurantForm"]["address"].value.trim();
+    var doorNum = document.forms["createRestaurantForm"]["doorNumber"].value.trim();
+    var postcode = document.forms["createRestaurantForm"]["postcode"].value.trim();
+    var photo = document.forms["createRestaurantForm"]["photo"].value.trim();
+    var tags = document.forms["createRestaurantForm"]["tags"].value.trim();
+    var cuisines = document.forms["createRestaurantForm"]["cuisines"];
+    var website = document.forms["createRestaurantForm"]["websiteurl"].value.trim();
+    var desc = document.forms["createRestaurantForm"]["description"].value.trim();
+
+    var nError = document.getElementById("nError");
+    var pError = document.getElementById("pError");
+    var aError = document.getElementById("aError");
+    var dnError = document.getElementById("dnError");
+    var pcError = document.getElementById("pcError");
+    var purlError = document.getElementById("purlError");
+    var tError = document.getElementById("tError");
+    var cError = document.getElementById("cError");
+    var wuError = document.getElementById("wuError");
+    var deError = document.getElementById("deError");
+
+    var nHTML = "";
+    var pHTML = "";
+    var aHTML = "";
+    var dnHTML = "";
+    var pcHTML = "";
+    var purlHTML = "";
+    var tHTML = "";
+    var cHTML = "";
+    var wuHTML = "";
+    var deHTML = "";
+
+    var createOk = true;
+
+    if(name == ""){
+        nHTML = "* Please enter a restaurant name *";
+        var createOk = false;
+    }
+
+    if(phone == ""){
+        pHTML = "* Please enter a restaurant phone number *";
+        var createOk = false;
+    }
+
+    if(address == "" && doorNum == "" && postcode == ""){
+        aHTML = "* Please enter a restaurant address *";
+        var createOk = false;
+    } else {
+        if(doorNum == ""){
+            dnHTML = "* Please enter a door number *";
+            var createOk = false;
+        }
+        if(postcode == ""){
+            pcHTML = "* Please enter a postcode *";
+            var createOk = false;
+        }
+    }
+
+    if(tags == ""){
+        tHTML = "* Please enter at least one tag *";
+        var createOk = false;
+    }
+
+    var cuisine = false;
+    for(var i=0; cuisines[i]; i++){
+        if(cuisines[i].checked){
+            cuisine = true;
+            break;
+        }
+    }
+    if(!cuisine){
+        cHTML = "* Please select at least one cuisine type *";
+    }
+
+    if(!validateURL(website)){
+        wuHTML = "* Please enter a valid restaurant website *";
+        var createOk = false;
+    }
+
+    if(desc == ""){
+        deHTML = "* Please enter a description for the restaurant *";
+        var createOk = false;
+    } else if (countWords(desc) < 100){
+        deHTML = "* Please enter at least 100 words for the description *";
+        var createOk = false;
+    }
+
+    nError.innerHTML = nHTML;
+    pError.innerHTML = pHTML;
+    aError.innerHTML = aHTML;
+    dnError.innerHTML = dnHTML;
+    pcError.innerHTML = pcHTML;
+    purlError.innerHTML = purlHTML;
+    tError.innerHTML = tHTML;
+    cError.innerHTML = cHTML;
+    wuError.innerHTML = wuHTML;
+    deError.innerHTML = deHTML;
+
+    if(!createOk)
+    {
+        event.preventDefault();
+        alert("Creation not fine!");
+        return false;
+    } else {
+        alert("Creation fine!");
+        return true;
+    }
+}
+
+function countWords(str) {
+    return str.trim().split(/\s+/).length;
+}
+
+function validateURL(website){
+    return true;
 }

@@ -24,13 +24,13 @@
 
             <div class = "error"><%= error %></div>
 
-            <div class="user-input-wrapper">
+            <div class="user-input-wrapper s-font">
 
-                <form id="createRestaurantForm" action="/create-restaurant" method="get" >
+                <form id="createRestaurantForm" action="/create-restaurant" onsubmit="validateRestaurant();" method="get" >
 
                     <div class="row create-restaurant">
                         <div class="col-100">
-                            <div id="nError"></div>
+                            <div class="form-error" id="nError"></div>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
 
                     <div class="row create-restaurant">
                         <div class="col-100">
-                            <div id="urlError"></div>
+                            <div class="form-error" id="pError"></div>
                         </div>
                     </div>
 
@@ -54,13 +54,13 @@
                             <label for='telephone'>Restaurant Telephone Number:</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" placeholder="Enter telephone number" name="phoneNo" id="name">
+                            <input type="text" placeholder="Enter telephone number" name="phoneNo" id="phoneNo">
                         </div>
                     </div>
 
                     <div class="row create-restaurant">
                         <div class="col-100">
-                            <div id="aError"></div>
+                            <div class="form-error" id="aError"></div>
                         </div>
                     </div>
 
@@ -69,8 +69,14 @@
                             <label for='address'>Restaurant Address:</label>
                         </div>
                         <div class="col-7">
-                            <input id="autocomplete" placeholder="Enter and select address" onFocus="geolocate()" type="text">
+                            <input id="autocomplete" placeholder="Enter and select address" name="address" onFocus="geolocate()" type="text">
                             </input>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="dnError"></div>
                         </div>
                     </div>
 
@@ -104,6 +110,12 @@
                     <!--</div>-->
 
                     <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="pcError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
                         <div class="col-5">
                             <label for="postcode">Postcode:</label>
                         </div>
@@ -115,7 +127,7 @@
 
                     <div class="row create-restaurant">
                         <div class="col-100">
-                            <div id="purlError"></div>
+                            <div class="form-error" id="purlError"></div>
                         </div>
                     </div>
 
@@ -129,10 +141,8 @@
                     </div>
 
                     <div class="row create-restaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
-                            <div id="tError"></div>
+                        <div class="col-100">
+                            <div class="form-error" id="tError"></div>
                         </div>
                     </div>
 
@@ -147,10 +157,8 @@
 
 
                     <div class="row create-restaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
-                            <div id="cError"></div>
+                        <div class="col-100">
+                            <div class="form-error" id="cError"></div>
                         </div>
                     </div>
 
@@ -161,22 +169,22 @@
                         <div class="col-7 xs-font">
                             <div class="create-restauarant-input">
                                 <label class="cuisines">Italian<br>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="cuisines">
                                     <span class="checkmark"></span>
                                 </label>
 
                                 <label class="cuisines">Chinese<br>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="cuisines">
                                     <span class="checkmark"></span>
                                 </label>
 
                                 <label class="cuisines">Mexican<br>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="cuisines">
                                     <span class="checkmark"></span>
                                 </label>
 
                                 <label class="cuisines">Spanish<br>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="cuisines">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -184,10 +192,8 @@
                     </div>
 
                     <div class="row create-restaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
-                            <div id="pError"></div>
+                        <div class="col-100">
+                            <div class="form-error" id="pError"></div>
                         </div>
                     </div>
 
@@ -212,10 +218,8 @@
                     </div>
 
                     <div class="row create-restaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
-                            <div id="wuError"></div>
+                        <div class="col-100">
+                            <div class="form-error" id="wuError"></div>
                         </div>
                     </div>
 
@@ -229,10 +233,8 @@
                     </div>
 
                     <div class="row create-restaurant">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-7">
-                            <div id="deError"></div>
+                        <div class="col-100">
+                            <div class="form-error" id="deError"></div>
                         </div>
                     </div>
 
