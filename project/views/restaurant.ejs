@@ -12,64 +12,78 @@
     <script src="javascripts/load.js"></script>
     <script src="javascripts/reviewRating.js"></script>
     <script src="javascripts/pricing.js"></script>
+    <script src="javascripts/date.js"></script>
     <title><%= restaurant.name %></title>
 </head>
+
 <body onload="load();myMap();addMarkers(<%=restaurant.lat%>, <%=restaurant.lng%>)">
-<div class="mainWrapper">
+<div class="main-wrapper">
+
     <% include header.ejs %>
 
-    <div class="container-fluid restInfo">
-
-        <div class="row">
-            <ul class="inlineList">
-                <li><p class="title"><%= restaurant.name %></p></li>
-            </ul>
-        </div>
-
-        <div class = "row">
-            <ul class="inlineList">
-                <li><div id="starRating" style="display: inline;"></div>
-                    <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
-                <li><%= restaurant.cuisines %></li>
-                <li><div id="resPrice" style="display: inline;">Price</div></li>
-                <script>getPrice(<%= restaurant.price %>, "resPrice");</script>
-            </ul>
-        </div>
-
-        <div class = "row inlineList">
-            <ul class="inlineList">
-                <li><%= restaurant.address %> (<%= restaurant.distance %> miles away)</li>
-                <li><span class="glyphicon glyphicon-earphone"></span> <%= restaurant.phoneNo %> </li>
-                <li><i class="fa fa-laptop"></i>
-                    <a href="<%= restaurant.websiteURL %>" style="color:black;"><%= restaurant.websiteURL %></a>
-                </li>
-            </ul>
-        </div>
-
-        <div class = "row">
-            <div class="slideshow-container">
-                <div class="restImg">
-                    <img class="slideshowImg" src="images/restTest1.jpg">
-                </div>
-                <div class="restImg">
-                    <img class="slideshowImg" src="images/restTest2.jpg">
-                </div>
-                <div class="restImg">
-                    <img class="slideshowImg" src="images/restTest3.jpg">
-                </div>
-                <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a id="next" onclick="plusSlides(1)">&#10095;</a>
+    <div class="col-100">
+        <div class="restaurant-info m-font">
+            <div class="row">
+                <ul class="inline-list">
+                    <li><p class="restaurant-title-font"><%= restaurant.name %></p></li>
+                </ul>
             </div>
-        </div>
 
-        <br>
+            <div class="row">
+                <ul class="inline-list">
+                    <li><div id="starRating" class="inline"></div> <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
 
-        <div class = "row">
-            <div class="col-8">
-                <p class="text"><%= restaurant.description %></p>
+                    <li><%= restaurant.cuisines %></li>
+
+                    <li class="no-wrap"><div id="resPrice" class="inline">Price</div></li>
+
+                    <script>getPrice(<%= restaurant.price %>, "resPrice");</script>
+                </ul>
             </div>
-            <div class="col-4">
-                <div id="map" style="width:400px;height:275px"></div>
+
+            <script>getStarRating(<%= restaurant.rating %>, "starRating");</script>
+
+            <div class="row">
+                <ul class="inline-list">
+                    <li><%= restaurant.address %> (<%= restaurant.distance %> miles away)</li>
+
+                    <li class="no-wrap">
+                        <span class="glyphicon glyphicon-earphone"></span> <%= restaurant.phoneNo %>
+                    </li>
+
+                    <li class="no-wrap">
+                        <i class="fa fa-laptop"></i>
+                        <a href="<%= restaurant.websiteURL %>" style="color:black;"><%= restaurant.websiteURL %></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="slideshow-container">
+
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="images/restTest1.jpg">
+                    </div>
+
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="images/restTest2.jpg">
+                    </div>
+
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="images/restTest3.jpg">
+                    </div>
+
+                    <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a id="next" onclick="plusSlides(1)">&#10095;</a>
+
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class="restaurant-description col-50">
+                    <p class="text"><%= restaurant.description %></p>
+                </div>
+                <div id="map" class="restaurant-map col-45"></div>
             </div>
         </div>
     </div>
@@ -77,48 +91,72 @@
     <br>
 
     <div class="container-fluid">
-        <h1> Reviews </h1>
+        <div class="row">
+            <div class="col-8">
+                <h1> Reviews </h1>
+            </div>
+            <div class="col-4">
+                <% if (loggedIn !== false) {%>
+                    <% include create-review.ejs %>
+                <%}%>
+            </div>
+        </div>
+
         <% if (loggedIn === false) {%>
-            <p class="blackLink"><a href="/login">Login</a> to leave a review</p>
+            <p class="blackLink xs-font"><a href="/login">Login</a> to leave a review</p>
         <%}%>
+
         <% if (reviewCount < 1){%>
-        <p>No reviews yet...</p>
+            <p>No reviews yet...</p>
         <%}%>
+
         <% var reviewNum = 0;%>
         <% reviews.forEach(function(review){ %>
         <% reviewNum += 1; %>
+
         <div class="container-fluid">
-            <div class="row reviews">
-                <div class="col-2">
-                    <div style="margin: auto 0;">
-                    <img class="reviewThumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
-                    </div>
+
+            <div class="row reviews s-font">
+                <div class="review-thumbnail-wrapper">
+                    <a href="/profile-<%= review.username %>">
+                        <img class="review-thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
+                    </a>
                 </div>
-                <div class="col-10">
+
+                <div class="review-wrapper">
                     <div class ="row">
-                        <div class="col-3 userLink"><a href="/profile-<%= review.username %>"><%= review.username %></a></div>
-                        <div class="col-3"><%= review.time %> on <%= review.date.getDate() %>-<%= review.date.getMonth() %>-<%= review.date.getFullYear() %></div>
+                        <div class="review-header userLink"><a href="/profile-<%= review.username %>"><%= review.username %></a></div>
+                        <% var divID = "review-date" + reviewNum.toString();%>
+                        <div class="review-date align-right" id='<%=divID%>'><%= review.date %></div>
+                        <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divID%>");</script>
                     </div>
+
                     <div class ="row">
-                        <% var divID = "review" + reviewNum.toString();%>
+                        <% divID = "review-star" + reviewNum.toString();%>
                         <div class="col-12" id='<%=divID%>'><%= review.rating %> out of 7 Chips</div>
                         <script>getStarRating(<%= review.rating %>, "<%=divID%>");</script>
                     </div>
+
                     <div class ="row">
                         <div class="col-12"><%= review.review %></div>
                     </div>
+
                 </div>
             </div>
+
         </div>
+
+        <hr>
+
         <% }); %>
     </div>
-    <% include create-review.ejs %>
+
     <div class="push"></div>
+
 </div>
 
 <% include footer.ejs %>
 
 <script src="javascripts/slideshow.js"></script>
-<script>getStarRating(<%= restaurant.rating %>, "starRating");</script>
 </body>
 </html>

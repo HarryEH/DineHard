@@ -1,471 +1,454 @@
-:root{
-  --bg-color: #FFF7F7;
-  --bg2-color: #D61F26;
-  --Y-color: #774C60;
-  --text-color: #000000;
-  --title-color: #FFFFFF;
-  --alert-color: #FF0008;
-  --shadow-color: #000000;
-    --slider-color: #ED168A;
-  --font: "Trebuchet MS";
+:root {
+    --bg-color: #FFF7F7;
+    --bg2-color: #D61F26;
+    --Y-color: #774C60;
+    --text-color: #000000;
+    --title-color: #FFFFFF;
+    --alert-color: #FF0008;
+    --shadow-color: #000000;
+    --searchbg-color: #FB787F;
+    --slider-color: #D61F26;
+    --font: "Trebuchet MS";
 }
+
+/* ------------ TAG CSS ------------ */
 
 html, body {
     height: 100%;
-    margin: 0;
-}
-
-.mainWrapper {
-    min-height: 100%;
-    margin-bottom: -45px;
-}
-
-.push {
-    height: 45px;
-}
-
-.mWrapper {
-    margin-left: 5%;
-    font-size: 12pt;
-    margin-right: 5%;
 }
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-  outline: none;
+    outline: none;
 }
 
 html {
-  background: var(--bg-color);
-  color: var(--text-color);
-  -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 body {
-  background: var(--bg-color);
+    background: var(--bg-color);
 }
 
-
-a{
-  color: var(--title-color);
+a {
+    color: var(--title-color);
 }
 
 a:hover {
-    color: var(--title-color); !important;
-    text-decoration: none; !important;
+    color: var(--title-color);
+!important;
+    text-decoration: none;
+!important;
     opacity: 0.7;
 }
 
-#top {
-  height: 100%;
-  width: 100%;
-  background-color: var(--bg2-color);
-  background-image: url("../images/titleImg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 0px;
-  -webkit-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-  -moz-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-  box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
-}
+/* ------------ GENERAL CSS ------------ */
 
-.titleHeader {
-  height: 100%;
-  margin: 0 auto;
-  position: relative;
-  width: 80%;
-  z-index: 200;
-}
-
-.header {
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background-color: var(--bg2-color);
-  text-align: left;
-  margin: 0;
-    z-index: 1;
-}
-
-.footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--bg2-color);
-  color: white;
-  text-align: left;
-  font-size: 16px;
-    vertical-align: middle;
-    height: 45px;
-    position: relative;
-    z-index: 1;
-}
-
-.algnRight{
-    text-align: right;
-}
-
-.algnLeft{
-    text-align: left;
-}
-
-.mainTitle {
-  color: var(--title-color);
-  font-size: 62px;
-  font-family: var(--font);
-  text-align: center;
-  margin-top: 10vw;
-  text-shadow: 2px 2px var(--shadow-color);
-}
-
-.mainSubtitle{
-  color: var(--title-color);
-  font-size: 24px;
-  text-align: center;
-  font-family: var(--font);
-  margin-top: 2vw;
-  margin-bottom: 10vw;
-  text-shadow: 2px 2px var(--shadow-color);
-}
-
-.searchTitle{
-  color: var(--title-color);
-  font-size: 18px;
-  text-align: center;
-  font-family: var(--font);
-  margin: 0 auto;
-}
-
-.titleSearch{
-  //float: left;
-  margin: 3px 0px 3px 10px;
-  width: 45vw;
-  height: 5vw;
-  max-height: 40px;
-  max-width: 650px;
-  font-size: 20px;
-  border: none;
-  border-color: transparent;
-}
-
-.titleSubmit{
-  float: right;
-  background-color: var(--bg2-color);
-  height: 5vw;
-  width: 10vw;
-  margin: 3px 10px 3px 0px;
-  max-height: 40px;
-  max-width: 80px;
-  color: var(--title-color);
-  font-size: 16px;
-  font-family: var(--font);
-  padding: 0;
-  border: none;
-}
-
-#msg {
-  float: left;
-  margin: 10px 0px 10px 0px;
-  color: var(--title-color);
-  font-family: var(--font);
-  font-size: 16px;
-}
-
-#top-links {
-  color: var(--title-color);
-  font-family: var(--font);
-  font-size: 16px;
-  float: right;
-  margin: 15px 30px 15px 0px;
-}
-
-.inlineList li {
-  display:inline;
-}
-
-.inlineList li + li:before {
-  content: " | ";
-}
-
-.search{
-  background: #ffffff;
-  margin: 0 auto;
-  width: 60%;
-  max-width: 800px;
-  margin-bottom: 15px;
-}
-
-.softHighlight{
-  background: rgba(20,20,20,0.65);
-}
-
-.alert{
-  background: var(--alert-color);
-  color: var(--title-color);
-  text-align: center;
-  width: 100%;
-  margin-top: 0px;
-  border-radius: 0px;
-  font-size: 14px;
-}
-
-.restInfo{
-  margin: 10px 15px 10px 0px;
-  color: var(--text-color);
-  font-size: 16px;
-  font-family: var(--font);
-}
-
-.title{
-  font-size: 30px;
-}
-
-.text
-{
-  margin:auto;
-  width: 85%;
-}
-
-.indexFeat{
-    text-align: center;
-    font-size: 30px;
-    margin: 0 auto;
- }
-
-.featIcon{
-    font-size: 50px;
-}
-
-.slideshowImg{
-  height: 50vh;
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Slideshow container */
-.slideshow-container {
-  width:100%;
-  position: relative;
-  margin: auto;
-  background: #000000;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-#prev, #next {
-  color: var(--title-color);
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-}
-
-/* Position the "next button" to the right */
-#next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-#prev:hover, #next:hover {
-  background-color: rgba(0,0,0,0.8);
-  text-decoration: none;
-  color: var(--bg2-color);
-}
-
-.results {
-    margin: 20px 10px 20px 10px;
-    padding: 10px 10px 10px 10px;
-    overflow: hidden;
-    position: relative;
-    height:  auto;
-    min-height: 90px;
-    font-size: 20px;
-    color: var(--text-color) !important;
-    border-radius: 10px;
-}
-
-.results:hover{
-    background-color: rgba(24, 255, 0, 0.15);
-}
-
-.resultsWrapper{
-    height:100%;
-    padding: 0px auto;
-}
-
-.resultsListWrapper{
-    margin-left: 25%;
-    width: 60%;
-}
-
-.resultsSearch {
-    padding: 20px 15px 0px 15px;
-    font-size: 16px;
-    color: black !important;
-    height: 100%;
-    width: 20%;
-    position: fixed;
-    z-index: 0;
-    left: 0;
-    overflow-x: hidden;
-    background-color: rgba(214, 36, 37, 0.76);
+.main-wrapper {
+    min-height: 100%;
     margin-bottom: -45px;
 }
 
-.resultsSearchbar{
-    width: 75%;
+.mWrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 12pt;
 }
 
-.resultsSubmit{
-    width: 20%;
+.push {
+    height: 45px;
 }
 
-.restTitle{
+.inline {
+    display: inline;
+}
+
+.block {
+    display: block;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+#errorTitle {
     font-size: 24px;
+}
+
+.noMargin {
+    margin: 0 auto;
+}
+
+.inline-list {
+    padding: 0px;
+}
+
+.inline-list li {
+    display: inline;
+}
+
+.inline-list li + li:before {
+    content: " | ";
+}
+
+.resLink a, .userLink a, .blackLink a {
+    color: black;
+!important;
     font-weight: bold;
 }
 
-.resultsStars{
-    font-size: 24px;
-}
-
-.restDist{
-    font-size: 16px;
-    font-style: italic;
-}
-
-.thumbnail{
+[class*='row'] {
     margin: 0px;
-    height: 130px;
-    width: 130px;
-    min-height: 90px;
-    min-width: 90px;
+    padding: 0px;
 }
 
-.resThumbnail{
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    float: left;
-}
-
-.resInfo{
-    position: relative;
+[class*='col-'] {
+    display: inline;
     width: 100%;
-    height: auto;
-    min-height: 130px;
-    margin-left: 160px;
-    display: inline-block;
-    z-index: 10;
+    padding: 0px;
 }
 
-.reviews {
-    margin: 15px 0px 5px 0px;
-    overflow: hidden;
-    position: relative;
-    height: 10vh;
-    min-height: 90px;
-    font-size: 14px;
-    color: var(--text-color) !important;
+@media (min-width: 768px) {
+    .col-10{
+        width: 10%;
+    }
+
+    .col-20{
+        width: 20%;
+    }
+
+    .col-25{
+        width: 25%;
+    }
+
+    .col-30{
+        width: 30%;
+    }
+
+    .col-33{
+        width: 33%;
+    }
+
+    .col-40{
+        width: 40%;
+    }
+
+    .col-45{
+        width: 45%;
+    }
+
+    .col-50{
+        width: 50%;
+    }
+
+    .col-55{
+        width: 55%;
+    }
+
+    .col-60{
+        width: 60%;
+    }
+
+    .col-66{
+        width: 66%;
+    }
+
+    .col-70{
+        width: 70%;
+    }
+
+    .col-75{
+        width: 75%;
+    }
+
+    .col-80{
+        width: 80%;
+    }
+
+    .col-90{
+        width: 90%;
+    }
+
+    .col-100{
+        width: 100%;
+    }
 }
 
-.reviewThumbnail{
-    margin: 0 auto;
-    height: 9vh;
-    width: 9vh;
-    min-height: 50px;
-    min-width: 50px;
+/* ------------ FONT CSS ------------ */
+
+.xxs-font {
+    font-size: 10px;
 }
 
-.searchArea{
+.xs-font {
     font-size: 12px;
 }
 
-#errorTitle{
-  font-size: 24px;
+.s-font {
+    font-size: 14px;
 }
 
-.noMargin{
-    margin: 0 auto;
+.m-font {
+    font-size: 16px;
 }
 
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
+.l-font {
+    font-size: 18px;
 }
 
-.slider {
-    -webkit-appearance: none;
+.xl-font {
+    font-size: 20px;
+}
+
+.xxl-font {
+    font-size: 22px;
+}
+
+.restaurant-title-font{
+    font-size: 28px;
+}
+
+.feat-icon-font {
+    font-size: 35px;
+}
+
+.title-font {
+    font-size: 44px;
+}
+
+@media (min-width: 768px) {
+    .xxs-font {
+        font-size: 12px;
+    }
+
+    .xs-font {
+        font-size: 14px;
+    }
+
+    .s-font {
+        font-size: 16px;
+    }
+
+    .m-font {
+        font-size: 18px;
+    }
+
+    .l-font {
+        font-size: 20px;
+    }
+
+    .xl-font {
+        font-size: 22px;
+    }
+
+    .xxl-font {
+        font-size: 24px;
+    }
+
+    .restaurant-title-font{
+        font-size: 34px;
+    }
+
+    .feat-icon-font {
+        font-size: 55px;
+    }
+
+    .title-font {
+        font-size: 66px;
+    }
+}
+/* ------------ HEADER CSS ------------ */
+
+.header {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
     width: 100%;
-    height: 15px;
-    border-radius: 5px;
-    background: #d3d3d3;
-    opacity: 1;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+    margin: 0;
+    background-color: var(--bg2-color);
+    text-align: left;
 }
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 40%;
-    background: var(--slider-color);
+.logo-wrapper {
+    float: left;
+    padding: 10px 0px 5px 0px;
+}
+
+.header-logo {
+    height: 33px;
+    width: auto;
+    border: 0;
+}
+
+.headerMenu {
+    background-color: var(--bg2-color);
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+    width: 100%;
+    font-size: 16px;
+}
+
+.headerMenu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color:  var(--bg2-color);
+}
+
+.headerMenu li a {
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+}
+
+.headerMenu li a:hover {
+    background-color: #9a1d21;
+}
+
+.headerMenu .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+.headerMenu .menu-icon {
     cursor: pointer;
-    border: 2px solid black;;
+    display: inline-block;
+    float: right;
+    padding: 25px 20px 20px 20px;
+    position: relative;
+    user-select: none;
 }
 
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 40%;
-    background: var(--slider-color);
-    cursor: pointer;
-    border: 2px solid black;
+.headerMenu .menu-icon .navicon {
+    background: #FFFFFF;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
 }
 
-.social a{
-    margin: 5px 5px 5px 5px;
+.headerMenu .menu-icon .navicon:before,
+.headerMenu .menu-icon .navicon:after {
+    background: #FFFFFF;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.headerMenu .menu-icon .navicon:before {
+    top: 5px;
+}
+
+.headerMenu .menu-icon .navicon:after {
+    top: -5px;
+}
+
+.headerMenu .menu-btn {
+    display: none;
+}
+
+.headerMenu .menu-btn:checked ~ .menu {
+    max-height: 240px;
+}
+
+.headerMenu .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+
+.headerMenu .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.headerMenu .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.headerMenu .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.headerMenu .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+@media (min-width: 768px) {
+    .headerMenu li {
+        float: left;
+    }
+    .headerMenu li a {
+        padding: 15px 30px;
+    }
+    .headerMenu .menu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+    .headerMenu .menu-icon {
+        display: none;
+    }
+}
+
+/* ------------ FOOTER CSS ------------ */
+
+.footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 45px;
+    width: 100%;
+    background-color: var(--bg2-color);
+    vertical-align: middle;
+}
+
+.footer-copyright {
+    width: 55%;
+    margin: 5px 2% 0px 2%;
+    padding: 5px 0px;
+    vertical-align: middle;
+    color: white;
+}
+
+.footer-social {
+    float: right;
+    width: 35%;
+    margin-left: 3%;
+}
+
+.footer-social a {
+    float: right;
+    height: 33px;
+    width: 33px;
+    margin: 5px 3% 0px 3%;
     padding: 8px;
+    border-radius: 100%;
     font-size: 16px;
     text-align: center;
     text-decoration: none;
-    border-radius: 100%;
-    width: 33px;
 }
 
-/* Add a hover effect if you want */
 .fa:hover {
     color: black;
-    opacity: 1; !important;
+    opacity: 1;
+!important;
 }
 
-/* Set a specific color for each brand */
-
-/* Facebook */
 .fa-facebook {
     background: #3B5998;
     color: white;
 }
 
-/* Twitter */
 .fa-twitter {
     background: #55ACEE;
     color: white;
@@ -476,123 +459,488 @@ a:hover {
     color: white;
 }
 
+@media (min-width: 768px) {
+    .footer-copyright {
+        width: 70%;
+    }
 
-.rForm, .lForm, .crForm {
+    .footer-social {
+        width: 20%;
+    }
+}
+
+/* ------------ INDEX PAGE CSS ------------ */
+
+.index-top-wrapper {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0px;
+    -webkit-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    -moz-box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    box-shadow: 0px 5px 20px 0px rgb(66, 66, 66);
+    background-image: url("../images/titleImg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.index-header {
+    position: relative;
+    z-index: 200;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.index-title {
+    padding-top: 10vw;
+    color: var(--title-color);
+    text-align: center;
+    text-shadow: 2px 2px var(--shadow-color);
+    font-family: var(--font);
+}
+
+.index-subtitle {
+    margin-top: 2vw;
+    margin-bottom: 10vw;
+    color: var(--title-color);
+    text-align: center;
+    text-shadow: 2px 2px var(--shadow-color);
+    font-family: var(--font);
+}
+
+.soft-highlight {
+    padding: 5px 0px 10px 0px;
+    background: rgba(20, 20, 20, 0.65);
+}
+
+.index-search-title {
+    margin: 0 auto;
+    color: var(--title-color);
+    text-align: center;
+    font-family: var(--font);
+}
+
+.index-search {
+    width: 90%;
+    margin: 0px 5% 0px 5%;
+    background: #ffffff;
+}
+
+.index-search-text {
+    height: 30px;
+    width: 75%;
+    max-width: 650px;
+    margin: 3px 0px 3px 10px;
+    border: none;
+}
+
+.index-search-submit {
+    float: right;
+    height: 30px;
+    width: 18%;
+    max-width: 80px;
+    margin: 3px 10px 3px 0px;
+    padding: 0;
+    border: none;
+    background-color: var(--bg2-color);
+    color: var(--title-color);
+    font-family: var(--font);
+}
+
+.index-feat-wrapper {
+    margin-top: 3vh
+}
+
+.index-feat {
+    padding: 10px 10px 20px 10px;
+    text-align: center;
+}
+
+.alert {
+    width: 100%;
+    margin-top: 0px;
+    border-radius: 0px;
+    background: var(--alert-color);
+    color: var(--title-color);
+    text-align: center;
+    font-size: 12px;
+}
+
+@media (min-width: 768px) {
+    .index-search {
+        width: 70%;
+        margin: 0px 15% 0px 15%;
+        background: #ffffff;
+    }
+
+    .index-search-text {
+        height: 40px;
+    }
+
+    .index-search-submit {
+        height: 40px;
+    }
+}
+
+/* ------------ FORM CSS ------------ */
+
+.user-form {
     display: inline-block;
-    margin: 4% 25% 0% 25% ;
-    width: 50%;
+    width: 90%;
+    margin: 8% 5% 0% 5%;
 }
 
-.profile{
-    display: inline-block;
-    margin: 4% 25% 0% 25% ;
-    width: 50%;
+.user-border {
+    padding: 5px 15px 15px 15px;
+    border-radius: 25px;
+    background: var(--bg2-color);
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.user-title{
+    padding: 15px 5px 10px 5px;
+    color: white;
+    font-size: 22px;
 }
 
-.h1 {
-    display: inline-block;
+.user-input-wrapper, .reviewcontainer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 4%;
+    border-radius: 5px;
+    background: white;
 }
 
-.formError{
+.login, .register {
+    width: 95%;
+    margin: 0% 0% 0% 5%;
+}
+
+.login input, .register input, .create-restaurant input, .review input {
+    width: 90%;
+    margin: 5px 7% 5px 3%;
+}
+
+.login label, .register label, .create-restaurant label, .review label {
+    margin: 5px 5px 5px 0px;
+}
+
+.user-submit, .create-restaurant-submit {
+    height: 30px;
+    width: 20%;
+    min-width: 70px;
+    margin: 10px 40% 10px 40%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--bg2-color);
+    color: white;
+}
+
+.error {
+    width: 100%;
+    background: rgba(150, 0, 37, 0.35);
+    color: black;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-error {
+    width: 100%;
     color: var(--bg2-color);
     text-align: center;
 }
 
-.error{
+@media (min-width: 768px) {
+    .user-form {
+        width: 60%;
+        margin: 8% 20% 0% 20%;
+    }
+}
+
+/* ------------ PROFILE CSS ------------ */
+
+.profile {
     width: 100%;
-    color: black;
-    text-align: center;
-    background: rgba(150, 0, 37, 0.35);
-    font-size: 14px;
+    margin: 0 auto;
+    padding: 4%;
+    border-radius: 5px;
+    background: white;
 }
 
-.login input, .register input, .createRestaurant input, .review input{
-    width: 100%;
-    margin: 5px;
+.profile-details, .profile-review-wrapper {
+    padding: 5px 5px 5px 5px;
 }
 
-.login label, .register label, .createRestaurant label, .review label{
-    margin-top: 6px;
-}
-
-.lBorder, .crBorder, .pBorder{
-    background: var(--bg2-color);
-    border-radius: 25px;
-    padding: 5px 15px 15px 15px;
-}
-
-.lTitle, .crTitle, .pTitle{
+.profile-edit {
+    width: 60%;
+    margin: 5px 20% 5px 20%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bg2-color);
     color: white;
-    font-size: 22px;
-    padding: 15px 5px 15px 5px;
 }
 
-.lInputWrapper , .crInputWrapper, .reviewcontainer{
-    width: 100%;
-    margin: 0 auto;
-    padding: 4%;
-    background: white;
-    font-size: 14px;
+.profile-review {
+    margin: 5px 0px 5px 0px;
+    padding: 10px 0px 10px 10px;
     border-radius: 5px;
- }
+    background: rgba(214, 31, 38, 0.15);
+}
 
-.pInfo{
+/* ------------ RESULTS CSS ------------ */
+
+.results-wrapper {
+    height: 100%;
+    padding: 0px auto;
+}
+
+.results-search {
+    position: sticky;
+    display: block;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    height: 20%;
+    margin: 0px 0px -45px 0px;
+    padding: 15px 15px 10px 15px;
+    background-color: var(--searchbg-color);
+    color: black !important;
+    overflow-x: hidden;
+}
+
+.results-search-text {
+    width: 70%;
+    margin: 10px 0px 0px 3%;
+}
+
+.results-submit {
+    float: right;
+    width: 20%;
+    margin: 10px 3% 0px 0px;
+}
+
+.results-search-area {
+    margin: 8px 3% 0px 3%;
+}
+
+.results-distance {
+    margin: 0px 3% 10px 3%;
+}
+
+.results-sort {
+    margin: 5px 3% 10px 3%;
+}
+
+.results-list-wrapper {
+    display: block;
+    padding: 45px 0px 0px 0px;
+}
+
+.results {
+    position: relative;
+    z-index: 0;
+    margin: 5px 10px 5px 10px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    color: var(--text-color) !important;
+    overflow: hidden;
+}
+
+.results:hover {
+    background-color: rgba(24, 255, 0, 0.15);
+}
+
+.results-info {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    min-height: 100px;
     width: 100%;
-    margin: 0 auto;
-    padding: 4%;
-    background: white;
-    font-size: 16px;
-    border-radius: 5px;
+    margin-left: 100px;
 }
 
-.login{
-    margin: 0 auto;
-    width: 80%;
-}
-
-.lSubmit, .rSubmit, .crSubmit{
-    margin: 10px 45% 10px 45%;
-    width: 10%;
-    min-width: 70px;
-    text-align: center;
-}
-
-.resLink a, .userLink a, .blackLink a{
-    color: black; !important;
+.result-title {
     font-weight: bold;
 }
 
-.pReview{
-    background: rgba(214, 31, 38, 0.15);
-    border-radius: 5px;
-    margin: 5px 0px 5px 0px;
-    padding: 10px 0px 10px 10px;
+.result-distance {
+    font-style: italic;
 }
 
+.result-thumbnail {
+    position: absolute;
+    float: left;
+    height: 100px;
+    width: 100px;
+}
 
+.thumbnail {
+    height: 90px;
+    width: 90px;
+    margin: 0px;
+}
+
+@media (min-width: 768px) {
+    .results-search {
+        z-index: 0;
+        height: 95vh;
+        margin-bottom: -45px;
+    }
+
+    .results-info {
+        min-height: 140px;
+        width: 85%;
+        margin-left: 160px;
+    }
+
+    .result-thumbnail {
+        height: 140px;
+        width: 140px;
+    }
+
+    .thumbnail {
+        height: 130px;
+        width: 130px;
+    }
+}
+
+/* ------------ SLIDER CSS ------------ */
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+.slider {
+    height: 15px;
+    width: 100%;
+    border-radius: 5px;
+    background: #d3d3d3;
+    -webkit-transition: .2s;
+    -webkit-appearance: none;
+    opacity: 1;
+    transition: opacity .2s;
+
+}
+
+.slider::-webkit-slider-thumb {
+    height: 25px;
+    width: 25px;
+    border: 2px solid black;
+    border-radius: 40%;
+    -webkit-appearance: none;
+    background: var(--slider-color);
+    appearance: none;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    height: 25px;
+    width: 25px;
+    border: 2px solid black;
+    border-radius: 40%;
+    background: var(--slider-color);
+    cursor: pointer;
+}
+
+/* ------------ RESTAURANT CSS ------------ */
+
+.restaurant-info {
+    margin: 10px 20px 10px 20px;
+    color: var(--text-color);
+    font-family: var(--font);
+}
+
+.restaurant-description {
+    margin: 10px 2% 10px 2%;
+}
+
+.restaurant-map {
+    float: right;
+    height: 200px;
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+@media (min-width: 768px) {
+    .restaurant-map {
+        height: 400px;
+    }
+}
+
+/* ------------ SLIDESHOW CSS ------------ */
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    margin: 15px 0px 15px 0px;
+    background: #000000;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+.slideshow-img {
+    display: block;
+    height: 35vh;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Next & previous buttons */
+#prev, #next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    border-radius: 0 3px 3px 0;
+    color: var(--title-color);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    cursor: pointer;
+}
+
+/* Position the "next button" to the right */
+#next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+#prev:hover, #next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    color: var(--bg2-color);
+}
+
+@media (min-width: 768px) {
+    .slideshow-img {
+        height: 45vh;
+    }
+}
+
+/* ------------ NEW RESTAURANT CSS ------------ */
 
 /* The container */
-.container1 {
+.cuisines {
     display: block;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 14px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: pointer;
 }
 
 /* Hide the browser's default checkbox */
-.container1 input {
+.cuisines input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -609,29 +957,29 @@ a:hover {
 }
 
 /* On mouse-over, add a grey background color */
-.container1:hover input ~ .checkmark {
+.cuisines:hover input ~ .checkmark {
     background-color: grey;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container1 input:checked ~ .checkmark {
+.cuisines input:checked ~ .checkmark {
     background-color: red;
 }
 
 /*!* Create the checkmark/indicator (hidden when not checked) *!*/
 /*.checkmark:after {*/
-    /*content: "";*/
-    /*position: absolute;*/
-    /*display: none;*/
+/*content: "";*/
+/*position: absolute;*/
+/*display: none;*/
 /*}*/
 
 /* Show the checkmark when checked */
-.container1 input:checked ~ .checkmark:after {
+.cuisines input:checked ~ .checkmark:after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.container1 .checkmark:after {
+.cuisines .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -643,37 +991,83 @@ a:hover {
     transform: rotate(45deg);
 }
 
+.create-restauarant-input{
+    margin: 5px 7% 5px 3%;
+}
 
+.create-restaurant-text-area {
+    width: 100%;
+}
+
+
+/* ------------ REVIEWS CSS ------------ */
+
+.reviews {
+    position: relative;
+    min-height: 80px;
+    margin: 15px 0px 5px 0px;
+    color: var(--text-color) !important;
+    overflow: hidden;
+}
+
+.review-thumbnail-wrapper {
+    height: 70px;
+    width: 70px;
+    margin-top: 5px;
+}
+
+.review-thumbnail {
+    height: 60px;
+    width: 60px;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+.review-wrapper {
+    display: inline;
+    width: 70%;
+}
+
+.review-header {
+    width: 50%;
+}
+
+.review-date {
+    width: 50%;
+    padding-left: 15px;
+}
+
+/* ------------ CREATE REVIEW CSS ------------ */
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 0;
     top: 0;
-    width: 100%; /* Full width */
+    left: 0;
+    display: none; /* Hidden by default */
     height: 100%; /* Full height */
+    width: 100%; /* Full width */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    width: 70%; /* Could be more or less, depending on screen size */
     margin: 5px auto; /* 15% from the top and centered */
     border: 1px solid #888;
-    width: 70%; /* Could be more or less, depending on screen size */
+    background-color: #fefefe;
 }
 
 /* The Close Button */
 .close {
     /* Position it in the top right corner outside of the modal */
     position: absolute;
-    right: 25px;
     top: 0;
+    right: 25px;
     color: #000;
     font-size: 35px;
     font-weight: bold;
@@ -693,30 +1087,52 @@ a:hover {
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
 }
 
 @keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
-
-
-.slidecontainerreview{
-    width: 50%;
-}
-
 
 .modalheader {
     padding: 2px 16px;
+    background-color: var(--bg2-color);
+    color: white;
     font-size: 22px;
-    background-color: red;
+}
+
+.new-review-submit {
+    float: left;
+    width: 40%;
+    margin: 10px 5% 0px 0px;
+}
+
+.new-review-cancel {
+    float: right;
+    width: 25%;
+    margin: 10px 0px 0px 3%;
+}
+
+.new-review-submit, .new-review-cancel {
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background: var(--bg2-color);
     color: white;
 }
 
-.wrSubmit, .cancelbtn {
-    float: left;
-    width: 20%;
+.review-text {
+    width: 100%;
 }
 
+/* ------------ OTHER CSS ------------ */

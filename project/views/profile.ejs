@@ -10,43 +10,57 @@
     <script src="javascripts/location.js"></script>
     <script src="javascripts/load.js"></script>
     <script src="javascripts/reviewRating.js"></script>
+    <script src="javascripts/date.js"></script>
     <title><%= title %></title>
 </head>
 <body onload="load();">
-<div class="mainWrapper">
+<div class="main-wrapper">
+
     <% include header.ejs %>
-    <div class="profile">
-        <div class="pBorder">
-            <div class="pTitle"><%= title %></div>
-            <div class="pInfo">
+
+    <div class="user-form">
+
+        <div class="user-border">
+
+            <div class="user-title"><%= title %></div>
+
+            <div class="profile s-font">
+
                 <div class="row">
-                    <div class="col-5">
+                    <div class="profile-details col-50">
+
                         <div class="row">
                             <div class="col-8"><h2>Personal Details</h2></div>
+
                             <%if (myProfile === true){%>
-                                <div class="col-4"><button>Edit</button></div>
+                                <div class="col-4"><button class="profile-edit">Edit</button></div>
                             <%}%>
                         </div>
+
                         <div class="row">
                             <div class="col-6">Forename:</div>
                             <div class="col-6"><%= user.forename %></div>
                         </div>
+
                         <div class="row">
                             <div class="col-6">Surname:</div>
                             <div class="col-6"><%= user.surname %></div>
                         </div>
+
                         <div class="row">
                             <div class="col-6">Username:</div>
                             <div class="col-6"><%= user.username %></div>
                         </div>
+
                         <%if (myProfile === true){%>
                             <div class="row">
                                 <div class="col-6">Email:</div>
                                 <div class="col-6"><%= user.email %></div>
                             </div>
                         <%}%>
+
                     </div>
-                    <div class="col-7">
+                    <div class="profile-review-wrapper col-50">
                         <% if(reviewCount == 0){%>
                             <h2>Reviews</h2>
                             <p>No reviews yet</p>
@@ -56,10 +70,12 @@
                         <% var reviewNum = 0;%>
                         <% reviews.forEach(function(review){ %>
                         <% reviewNum += 1;%>
-                        <div class="container pReview">
+                        <div class="container profile-review">
                             <div class="row">
                                 <div class="col-6 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
-                                <div class="col-6"><%= review.date.getDate() %>-<%= review.date.getMonth() %>-<%= review.date.getFullYear() %></div>
+                                <% var divID = "review-date" + reviewNum.toString();%>
+                                <div class="col-5 review-date align-right" id='<%=divID%>'><%= review.date %></div>
+                                <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divID%>");</script>
                             </div>
                             <div class="row">
                                 <% var divID = "review" + reviewNum.toString();%>

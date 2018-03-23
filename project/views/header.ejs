@@ -3,27 +3,28 @@
 <head>
     <script src="javascripts/toplinks.js"></script>
 </head>
-<header>
+
+<header class="headerMenu">
     <div class="container-fluid header">
-        <div id="msg">
+        <div class="logo-wrapper">
             <a href="/">
-                <img src="images/Dine Hard Full.png" alt="Dine Hard" style="height:35px;border:0;">
+                <img src="images/Dine Hard Full.png" alt="Dine Hard" class="header-logo">
             </a>
         </div>
-
-        <ul class="inlineList" id="top-links">
-            <% if (!loggedIn) {%>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            <%}else{%>
-                <!--<li>Welcome <%= /*forename*/ %></li>-->
-                <li><a href="/profile">View Profile</a></li>
-                <li><a href="/create-restaurant">Add New Restaurant</a></li>
-                <li><a href="/logout" onclick="alert('Logout Successful!');">Logout</a></li>
-            <%}%>
-
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <% if (!loggedIn) { %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <% }else{ %>
+            <li><a href="/profile">View Profile</a></li>
+            <li><a href="/create-restaurant">Add New Restaurant</a></li>
+            <li><a href="/logout" onclick="alert('Logout Successful!');">Logout</a></li>
+            <% } %>
         </ul>
-        <script></script>
     </div>
 </header>
+
+
 </html>
