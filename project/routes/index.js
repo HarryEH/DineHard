@@ -11,7 +11,7 @@ var PasswordController = require('../controllers/passwordcontroller');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    req.session.prevURL = req.url;
+    req.session.prevURL = req.url || '/';
 
     var login = checkLogin(req, res, next);
     var forename = req.session.forename;
@@ -25,7 +25,7 @@ router.get('/restaurant', function(req, res, next) {
 });
 
 router.get('/restaurant-*', function(req, res, next) {
-    req.session.prevURL = req.url;
+    req.session.prevURL = req.url || '/';
 
     var login = checkLogin(req, res, next);
     RestaurantController.renderRestaurant(req,res,login);
@@ -34,7 +34,7 @@ router.get('/restaurant-*', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/results', function(req, res, next) {
-    req.session.prevURL = req.url;
+    req.session.prevURL = req.url || '/';
 
     var login = checkLogin(req, res, next);// pass this
     ResultsController.handleSearch(req,res, login);
@@ -128,7 +128,7 @@ router.get('/create-restaurant', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/profile', function(req, res, next) {
-    req.session.prevURL = req.url;
+    req.session.prevURL = req.url || '/';
     var login = checkLogin(req, res, next);
     if(login === false)
     {
@@ -139,14 +139,14 @@ router.get('/profile', function(req, res, next) {
 });
 
 router.get('/profile-*', function(req, res, next) {
-    req.session.prevURL = req.url;
+    req.session.prevURL = req.url || '/';
     var login = checkLogin(req, res, next);
     profileController.renderProfile(req, res, next, login);
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/accessibility', function(req, res, next) {
-    req.session.prevURL = req.url;
+    req.session.prevURL = req.url || '/';
 
     var login = checkLogin(req, res, next);
     res.render('accessibility', { loggedIn: login });

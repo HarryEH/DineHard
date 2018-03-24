@@ -68,10 +68,8 @@ function registerValidate(){
     if(!registerOk)
     {
         event.preventDefault();
-        alert("Register not fine!");
         return false;
     } else {
-        alert("Register fine!");
         return true;
     }
 }
