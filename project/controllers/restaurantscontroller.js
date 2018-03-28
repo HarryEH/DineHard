@@ -21,8 +21,8 @@ module.exports = {
         models.connect();
         // verify that the restaurant's address isn't already in the db
 
-        const no = req.query.doorNumber;
-        const postcode = req.query.postcode;
+        const no = req.body.doorNumber;
+        const postcode = req.body.postcode;
 
         models.Restaurant.find({doorNumber: no, postcode: postcode}, function (err, results) {
             if (err) {
@@ -37,7 +37,7 @@ module.exports = {
 
             // else render some error
 
-        })
+        });
 
     }
 
@@ -59,14 +59,19 @@ function loadRestaurant(req, res, login, rId) {
                     return console.error(err2);
                 }
 
-                console.log("ARGHHH");
-
                 var userLat = req.session.user_lat;
                 var userLng = req.session.user_lng;
 
                 results.distance = results.getDistance(userLat, userLng);
 
-                geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+                var obj = {};
+                obj.req = req;
+                obj.res = res;
+                obj.login = login;
+                obj.results = results;
+                obj.reviewResults = reviewResults;
+
+                geodata.getFullAddress(renderResCallback, obj);
                 return;
             });
 
@@ -81,14 +86,20 @@ function getReviews(req, res, login, results, rId) {
             return console.error(err2);
         }
 
-        console.log("ARGHHH");
-
         var userLat = req.session.user_lat;
         var userLng = req.session.user_lng;
 
         results.distance = results.getDistance(userLat, userLng);
 
-        geodata.getFullAddress(renderResCallback, req, res, login, results, reviewResults);
+        var obj = {};
+        obj.req = req;
+        obj.res = res;
+        obj.login = login;
+        obj.results = results;
+        obj.reviewResults = reviewResults;
+
+
+        geodata.getFullAddress(renderResCallback, obj);
         return;
     });
 }
@@ -104,17 +115,18 @@ function addResCallback(obj) {
     const lng = obj.lng;
 
     var restaurant = new models.Restaurant({
-        name: req.query.name,
-        doorNumber: req.query.doorNumber,
-        postcode: req.query.postcode,
-        description: req.query.description,
-        phoneNo: req.query.phoneNo,
+        name: req.body.name,
+        doorNumber: req.body.doorNumber,
+        postcode: req.body.postcode,
+        description: req.body.description,
+        phoneNo: req.body.phoneNo,
+        price: req.body.price,
         lat: lat,
         lng: lng,
         photoURL: "",
-        tags: req.query.tags,
+        tags: req.body.tags + ", " + req.body.name,
         rating: 0,
-        websiteURL: req.query.websiteURL
+        websiteURL: req.body.websiteURL
     });
 
     restaurant.save(function (err, restaurant) {
@@ -124,7 +136,13 @@ function addResCallback(obj) {
 
 }
 
-function renderResCallback(req, res, results, reviews, login) {
+function renderResCallback(obj) {
+
+    const req = obj.req;
+    const res = obj.res;
+    const results = obj.results;
+    const reviews = obj.reviewResults;
+    const login = obj.login;
 
     var reviewCount = reviews.length;
     res.render('restaurant', {restaurant: results, loggedIn: login, reviews: reviews, reviewCount: reviewCount});

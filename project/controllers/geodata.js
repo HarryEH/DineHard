@@ -54,17 +54,17 @@ module.exports = {
         });
     },
 
-    getFullAddress: function(callback, req, res, login, results, reviews){
-        var address = results.postcode.toString();
+    getFullAddress: function(callback, obj){
+        var address = obj.results.postcode.toString();
         googleMapsClient.geocode({
             address: address
         }, function(err, response) {
             if (!err) {
                 console.log(response.json.results[0].formatted_address);
 
-                results.address = results.doorNumber.toString() + " " + response.json.results[0].formatted_address;
+                obj.results.address = obj.results.doorNumber.toString() + " " + response.json.results[0].formatted_address;
 
-                callback(req, res, results, reviews, login);
+                callback(obj);
                 return;
             }
         });
