@@ -117,13 +117,23 @@ router.get('/create-restaurant', function(req, res, next) {
     if (login === false) {
         res.redirect('/login');
     } else {
+        res.render('create-restaurant', {loggedIn: login, error: ""});
+    }
+
+});
+
+router.post('/create-restaurant', function(req, res, next) {
+    var login = checkLogin(req, res, next);
+    //check the query
+    if (login === false) {
+        res.redirect('/login');
+    } else {
         if (testCreateRestaurantInput(req)) {
             RestaurantController.addRestaurant(req, res, login);
         } else {
             res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
         }
     }
-
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,14 +182,14 @@ function checkLogin(req, res, next){
 }
 
 function testCreateRestaurantInput(req){
-    const doorNumber = req.query.doorNumber;
-    const postcode = req.query.postcode;
-    const phoneNo = req.query.phoneNo;
-    const name = req.query.doorNumber;
-    const description = req.query.description;
-    const photoURL = req.query.photo;
-    const tags = req.query.tags;
-    const websiteURL = req.query.doorNumber;
+    const doorNumber = req.body.doorNumber;
+    const postcode = req.body.postcode;
+    const phoneNo = req.body.phoneNo;
+    const name = req.body.doorNumber;
+    const description = req.body.description;
+    const photoURL = req.body.photo;
+    const tags = req.body.tags;
+    const websiteURL = req.body.doorNumber;
 
     return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
         && undefCheck(photoURL) && undefCheck(tags) && undefCheck(websiteURL)

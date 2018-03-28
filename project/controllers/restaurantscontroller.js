@@ -21,8 +21,8 @@ module.exports = {
         models.connect();
         // verify that the restaurant's address isn't already in the db
 
-        const no = req.query.doorNumber;
-        const postcode = req.query.postcode;
+        const no = req.body.doorNumber;
+        const postcode = req.body.postcode;
 
         models.Restaurant.find({doorNumber: no, postcode: postcode}, function (err, results) {
             if (err) {
@@ -115,17 +115,18 @@ function addResCallback(obj) {
     const lng = obj.lng;
 
     var restaurant = new models.Restaurant({
-        name: req.query.name,
-        doorNumber: req.query.doorNumber,
-        postcode: req.query.postcode,
-        description: req.query.description,
-        phoneNo: req.query.phoneNo,
+        name: req.body.name,
+        doorNumber: req.body.doorNumber,
+        postcode: req.body.postcode,
+        description: req.body.description,
+        phoneNo: req.body.phoneNo,
+        price: req.body.price,
         lat: lat,
         lng: lng,
         photoURL: "",
-        tags: req.query.tags + ", " + req.query.name,
+        tags: req.body.tags + ", " + req.body.name,
         rating: 0,
-        websiteURL: req.query.websiteURL
+        websiteURL: req.body.websiteURL
     });
 
     restaurant.save(function (err, restaurant) {
