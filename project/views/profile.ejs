@@ -11,6 +11,7 @@
     <script src="javascripts/load.js"></script>
     <script src="javascripts/reviewRating.js"></script>
     <script src="javascripts/date.js"></script>
+    <script src="javascripts/profile.js"></script>
     <title><%= title %></title>
 </head>
 <body onload="load();">
@@ -27,13 +28,13 @@
             <div class="profile s-font">
 
                 <div class="row">
-                    <div class="profile-details col-50">
+                    <div class="profile-details col-50" id="profile-details">
 
                         <div class="row">
                             <div class="col-8"><h2>Personal Details</h2></div>
 
                             <%if (myProfile === true){%>
-                                <div class="col-4"><button class="profile-edit">Edit</button></div>
+                                <div class="col-4"><button class="profile-edit" onclick="showEdit()">Edit</button></div>
                             <%}%>
                         </div>
 
@@ -58,6 +59,57 @@
                                 <div class="col-6"><%= user.email %></div>
                             </div>
                         <%}%>
+
+                    </div>
+
+                    <div class="edit-profile-details col-50" id="edit-profile-details" style="display: none">
+
+                        <div class="row">
+                            <div class="col-8"><h2>Edit Personal Details</h2></div>
+
+                            <div class="col-4"><button class="profile-edit" onclick="showDetails()">Back</button></div>
+                        </div>
+
+                        <div class="row edit">
+                            <div class="col-30">Username:</div>
+                            <div class="col-60"><%= user.username %></div>
+                        </div>
+
+                        <form id="editProfile" onsubmit="">
+
+                            <div class="row edit-profile">
+                                <div class="col-30">
+                                    <label for='f'>Forename:</label>
+                                </div>
+
+                                <div class="col-70">
+                                    <input type="'text" placeholder="Enter Forename" name="f" id="f" value="<%= user.forename %>">
+                                </div>
+                            </div>
+
+                            <div class="row edit-profile">
+                                <div class="col-30">
+                                    <label for='s'>Surname:</label>
+                                </div>
+
+                                <div class="col-70">
+                                    <input type="'text" placeholder="Enter Surname" name="s" id="s" value="<%= user.surname %>">
+                                </div>
+                            </div>
+
+                            <div class="row edit-profile">
+                                <div class="col-30">
+                                    <label for='e'>Surname:</label>
+                                </div>
+
+                                <div class="col-70">
+                                    <input type="'text" placeholder="Enter Email" name="e" id="e" value="<%= user.email %>">
+                                </div>
+                            </div>
+
+                            <input type="submit" name="g" value="Save" id="g" class="edit-save">
+
+                        </form>
 
                     </div>
                     <div class="profile-review-wrapper col-50">
