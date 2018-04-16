@@ -29,6 +29,8 @@ module.exports = {
                 return console.error(err);
             }
 
+
+
             if (results.length == 0) {
                 const obj = {res: res, req: req, login: login};
                 geodata.postcodeToLocation(postcode, addResCallback, obj);
