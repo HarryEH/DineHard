@@ -24,9 +24,14 @@
         <div class="container-fluid row">
 
             <div class="results-search col-30 m-font">
-                <form>
-                    <input type="text" class="results-search-text" placeholder="Enter keyword(s)">
-                    <input type="submit" class="results-submit" value="Search">
+                <form class="results-search-form">
+                    <div class="col-80">
+                        <input type="text" class="results-search-text" placeholder="Enter keyword(s)">
+                        <input type="text" class="results-search-text" placeholder="Enter postcode">
+                    </div>
+                    <div class="col-20">
+                        <input type="submit" class="results-submit" value="Search">
+                    </div>
                 </form>
 
                 <div class="results-search-area xs-font">
@@ -34,13 +39,6 @@
                     <label for="nearMe" class="search-area" >Search results near me</label>
                     <input type="radio" name="searchArea" id="all" value="all">
                     <label for="all" class="search-area" >Search all results</label>
-                </div>
-
-                <div class="results-distance m-font">
-                    <p>Distance from me: <span id="distVal"></span> miles</p>
-                    <div class="slidecontainer">
-                        <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange">
-                    </div>
                 </div>
 
                 <div class="results-sort m-font">
@@ -51,6 +49,13 @@
                         <option value="priceH2L">Price: High to Low</option>
                         <option value="distance">Distance</option>
                     </select>
+                </div>
+
+                <div class="results-distance m-font">
+                    <p>Distance from me: <span id="distVal"></span> miles</p>
+                    <div class="slidecontainer">
+                        <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange">
+                    </div>
                 </div>
 
             </div>
