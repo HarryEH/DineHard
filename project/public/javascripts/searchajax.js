@@ -1,28 +1,40 @@
-function sendAjaxQuery(e) {
-
+function textQueryAjax(e) {
     e.preventDefault();
+    genericAjax(updateResults);
+}
 
-    const parser = document.createElement('a');
-    parser.href = document.URL;
+function updateResults(data) {
+    document.getElementById('results-keyword').value = data.one + " " +  data.two + " " + data.three;
+    document.getElementById('results-postcode').value = "pleaaase";
+}
 
-    // parser.protocol; // => "http:"
-    // parser.host;     // => "example.com:3000"
-    // parser.hostname; // => "example.com"
-    // parser.port;     // => "3000"
-    // parser.pathname; // => "/pathname/"
-    // parser.hash;     // => "#hash"
-    // parser.search;   // => "?search=test"
-    // parser.origin;   // => "http://example.com:3000"
+function sliderAjax(e) {
+    genericAjax(function(data){
+        console.log(dataR.one + " " +  dataR.two + " " + dataR.three);
+    });
+}
 
+function sortAjax(e) {
+    genericAjax(function(data){
+        console.log(dataR.one + " " +  dataR.two + " " + dataR.three);
+    });
+}
+
+function genericAjax(callback) {
     $.ajax({
-        url: parser.href,
-        data: JSON.stringify({newKeywords: document.getElementById('results-keyword').value, newPostcode: document.getElementById('results-postcode').value}),
+        url: document.URL,
+        data: JSON.stringify({
+            newKeywords: document.getElementById('results-keyword').value,
+            newPostcode: document.getElementById('results-postcode').value,
+            slider: document.getElementById('distRange').value,
+            sortBy: document.getElementById('selectMe').value
+        }),
         contentType: 'application/json',
         type: 'POST',
         dataType: "json",
         success: function (dataR) {
             // Code to change the page goes here
-            updateResults(dataR);
+            callback(dataR);
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);
@@ -30,8 +42,6 @@ function sendAjaxQuery(e) {
     });
 }
 
-function updateResults(data) {
-    document.getElementById('results-keyword').value = data.one + " " +  data.two + " " + data.three;
-    document.getElementById('results-postcode').value = "pleaaase";
-}
+
+
 
