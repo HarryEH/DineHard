@@ -80,14 +80,32 @@ mailer.extend(app, {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  var forename = req.session.forename;
-  res.render('error', { loggedIn: true, forename: forename });
+    // render the error page
+    res.status(err.status || 500);
+
+    const checkLogin = checkLogin(req, res, next);
+
+    var forename;
+    if (checkLogin) {
+        forename = req.session.forename;
+    } else {
+        forename = "";
+    }
+
+
+    res.render('error', { loggedIn: checkLogin, forename: forename });
 });
+
+function checkLogin(req, res, next){
+    if(req.session.user_id === undefined){
+        return false;
+    } else {
+        return true;
+    }
+}
 
 module.exports = app;
