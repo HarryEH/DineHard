@@ -50,12 +50,14 @@ router.post('/results', function(req, res, next) {
     console.log(req.query.lng);
     console.log(req.body.newKeywords);
     console.log(req.body.newPostcode);
+    console.log(req.body.slider);
+    console.log(req.body.sortBy);
     console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
     // get previous results!
     // then filter them based on the new query!
 
-    res.send(JSON.stringify({one: "fuck", two: "me", three: "daddy"}));
+    res.send(JSON.stringify({one: "results", two: "got", three: "returned"}));
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
