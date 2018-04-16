@@ -18,7 +18,7 @@ var adam = new models.User({
     surname: "Orr",
     email: "a@o.com",
     username: "aca14ao",
-    password: "45e$ffdjj3120sA",
+    password: "qwertyuiop",
     score: 0
 });
 
