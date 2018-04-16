@@ -48,7 +48,8 @@ router.post('/results', function(req, res, next) {
     console.log(req.query.q);
     console.log(req.query.lat);
     console.log(req.query.lng);
-    console.log(req.body.newQuery);
+    console.log(req.body.newKeywords);
+    console.log(req.body.newPostcode);
     console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
     // get previous results!

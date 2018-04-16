@@ -16,15 +16,22 @@ function sendAjaxQuery(e) {
 
     $.ajax({
         url: parser.href,
-        data: JSON.stringify({newQuery: document.getElementById('results-search-text').value}),
+        data: JSON.stringify({newKeywords: document.getElementById('results-keyword').value, newPostcode: document.getElementById('results-postcode').value}),
         contentType: 'application/json',
         type: 'POST',
         dataType: "json",
         success: function (dataR) {
-            document.getElementById('results-search-text').value = dataR.one + " " +  dataR.two + " " + dataR.three;
+            // Code to change the page goes here
+            updateResults(dataR);
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);
         }
     });
 }
+
+function updateResults(data) {
+    document.getElementById('results-keyword').value = data.one + " " +  data.two + " " + data.three;
+    document.getElementById('results-postcode').value = "pleaaase";
+}
+
