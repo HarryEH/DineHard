@@ -107,7 +107,7 @@ a:hover {
 
 [class*='row'] {
     margin: 0px;
-    padding: 0px;
+    padding: 2px 0px 3px 0px;
 }
 
 [class*='col-'] {
@@ -667,7 +667,7 @@ a:hover {
     background: white;
 }
 
-.profile-details, .profile-review-wrapper {
+.profile-details, .edit-profile-details, .profile-review-wrapper {
     padding: 5px 5px 5px 5px;
 }
 
@@ -677,6 +677,22 @@ a:hover {
     border: none;
     border-radius: 5px;
     background-color: var(--bg2-color);
+    color: white;
+}
+
+.edit-profile input{
+    width: 95%;
+}
+
+.edit-save {
+    height: 30px;
+    width: 30%;
+    min-width: 70px;
+    margin: 10px 35% 0px 35%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--bg2-color);
     color: white;
 }
 
