@@ -10,13 +10,13 @@ function updateResults(data) {
 
 function sliderAjax(e) {
     genericAjax(function(data){
-        console.log(dataR.one + " " +  dataR.two + " " + dataR.three);
+        console.log(data.one + " " +  data.two + " " + data.three);
     });
 }
 
 function sortAjax(e) {
     genericAjax(function(data){
-        console.log(dataR.one + " " +  dataR.two + " " + dataR.three);
+        console.log(data.one + " " +  data.two + " " + data.three);
     });
 }
 
