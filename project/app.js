@@ -78,6 +78,10 @@ mailer.extend(app, {
     }
 });
 
+function checkLogin(req, res, next){
+
+}
+
 // error handler
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
@@ -87,25 +91,14 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
 
-    const checkLogin = checkLogin(req, res, next);
-
-    var forename;
-    if (checkLogin) {
-        forename = req.session.forename;
+    if(req.session.user_id === undefined){
+        res.render('error', { loggedIn: checkLogin, forename: "" });
     } else {
-        forename = "";
+        res.render('error', { loggedIn: checkLogin, forename: req.session.forename });
     }
 
-
-    res.render('error', { loggedIn: checkLogin, forename: forename });
 });
 
-function checkLogin(req, res, next){
-    if(req.session.user_id === undefined){
-        return false;
-    } else {
-        return true;
-    }
-}
+
 
 module.exports = app;

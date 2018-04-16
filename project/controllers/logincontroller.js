@@ -6,8 +6,6 @@ module.exports = {
         var user = req.body.u.toLowerCase();
         var pass = req.body.p;
 
-        models.connect();
-
         models.User.findOne({username: new RegExp(user, "i")}, function (err, results) {
             if (err) {return console.error(err);}
 

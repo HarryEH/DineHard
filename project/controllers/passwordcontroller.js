@@ -29,8 +29,6 @@ module.exports = {
 
     handleReset: function (req, res, login) {
 
-        models.connect();
-
         const id  = req.body.tokenId;
         const usr = req.body.username;
         const pss = req.body.password;

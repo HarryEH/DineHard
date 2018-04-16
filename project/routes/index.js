@@ -54,10 +54,17 @@ router.post('/results', function(req, res, next) {
     console.log(req.body.sortBy);
     console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
+    const queryPrev = {
+        postcode: req.body.newPostcode,
+        keyword: req.body.newKeywords,
+        slider: req.body.slider,
+        sortBy: req.body.sortBy
+    };
+
     // get previous results!
     // then filter them based on the new query!
 
-    res.send(JSON.stringify({one: "results", two: "got", three: "returned"}));
+    res.send(JSON.stringify({one: "results", two: "got", three: "returned", prevQuery: queryPrev}));
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

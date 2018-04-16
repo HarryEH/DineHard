@@ -1,11 +1,8 @@
 function textQueryAjax(e) {
     e.preventDefault();
-    genericAjax(updateResults);
-}
-
-function updateResults(data) {
-    document.getElementById('results-keyword').value = data.one + " " +  data.two + " " + data.three;
-    document.getElementById('results-postcode').value = "pleaaase";
+    genericAjax(function(data){
+        console.log(data.one + " " +  data.two + " " + data.three);
+    });
 }
 
 function sliderAjax(e) {
@@ -32,9 +29,13 @@ function genericAjax(callback) {
         contentType: 'application/json',
         type: 'POST',
         dataType: "json",
-        success: function (dataR) {
+        success: function (data) {
             // Code to change the page goes here
-            callback(dataR);
+            document.getElementById('results-keyword').value = data.prevQuery.keyword;
+            document.getElementById('results-postcode').value = data.prevQuery.postcode;
+            document.getElementById('distRange').value = data.prevQuery.slider;
+            document.getElementById('selectMe').value = data.prevQuery.sortBy;
+            callback(data);
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);

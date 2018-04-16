@@ -66,8 +66,6 @@ function onPostcode(obj){
     const lng_min = lng - distAdd;
     const lng_max = lng + distAdd;
 
-    models.connect();
-
     models.Restaurant.find({lat: { $gt: lat_min, $lt: lat_max }, lng: { $gt: lng_min, $lt: lng_max }}, function (err, results) {
         if (err) {return console.error(err);}
 
@@ -77,7 +75,9 @@ function onPostcode(obj){
             results[i].distance = results[i].getDistance(lat, lng);
         }
 
-        res.render('results', { loggedIn: login, results: results });
+        const queryPrev = {postcode: obj.postcode};
+
+        res.render('results', { loggedIn: login, results: results, prevQuery: queryPrev });
 
     });
 
@@ -95,7 +95,7 @@ function returnAll(res, login, lat, lng){
             results[i].distance = results[i].getDistance(lat, lng);
         }
 
-        res.render('results', { query: "", loggedIn: login, results: results });
+        res.render('results', { query: "", loggedIn: login, results: results, prevQuery: {} });
 
     });
 }
@@ -121,7 +121,9 @@ function keywordSearch(res, login, str, lat, lng){
             results[i].distance = results[i].getDistance(lat, lng);
         }
 
-        res.render('results', { query: str, loggedIn: login, results: results });
+        const queryPrev = {keyword: str};
+
+        res.render('results', { query: str, loggedIn: login, results: results, prevQuery: queryPrev });
 
     });
 }
