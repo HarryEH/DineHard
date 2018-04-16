@@ -120,7 +120,8 @@ function addResCallback(obj) {
         lat: lat,
         lng: lng,
         photoURL: "",
-        tags: req.body.tags + ", " + req.body.name,
+        cuisines: req.body.cuisines,
+        tags: req.body.tags + ", " + req.body.name + ", " + req.body.cuisines + ", " + req.body.description,
         rating: 0,
         websiteURL: req.body.websiteURL
     });
