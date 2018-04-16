@@ -11,6 +11,7 @@
     <script src="javascripts/reviewRating.js"></script>
     <script src="javascripts/pricing.js"></script>
     <script src="javascripts/results.js"></script>
+    <script src="javascripts/searchajax.js"></script>
     <title>Results</title>
 </head>
 
@@ -24,13 +25,13 @@
         <div class="container-fluid row">
 
             <div class="results-search col-30 m-font">
-                <form class="results-search-form">
+                <form class="results-search-form" onsubmit="sendAjaxQuery(event)">
                     <div class="col-80">
-                        <input type="text" class="results-search-text" placeholder="Enter keyword(s)">
-                        <input type="text" class="results-search-text" placeholder="Enter postcode">
+                        <input type="text" id="results-keyword" class="results-search-text" placeholder="Enter keyword(s)">
+                        <input type="text" id="results-postcode" class="results-search-text" placeholder="Enter postcode">
                     </div>
                     <div class="col-20">
-                        <input type="submit" class="results-submit" value="Search">
+                        <input type="submit" id="results-submit" class="results-submit" value="Search">
                     </div>
                 </form>
 

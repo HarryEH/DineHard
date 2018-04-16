@@ -94,6 +94,10 @@ module.exports = {
             // we're connected!
             console.log("connected");
         });
+    },
+
+    close: function() {
+        mongoose.connection.close();
     }
 
 };

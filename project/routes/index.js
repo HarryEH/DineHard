@@ -37,7 +37,25 @@ router.get('/results', function(req, res, next) {
     req.session.prevURL = req.url || '/';
 
     var login = checkLogin(req, res, next);// pass this
+
     ResultsController.handleSearch(req,res, login);
+});
+
+router.post('/results', function(req, res, next) {
+
+    console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    console.log(req.url);
+    console.log(req.query.q);
+    console.log(req.query.lat);
+    console.log(req.query.lng);
+    console.log(req.body.newKeywords);
+    console.log(req.body.newPostcode);
+    console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+
+    // get previous results!
+    // then filter them based on the new query!
+
+    res.send(JSON.stringify({one: "fuck", two: "me", three: "daddy"}));
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
