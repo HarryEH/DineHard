@@ -66,8 +66,6 @@ function onPostcode(obj){
     const lng_min = lng - distAdd;
     const lng_max = lng + distAdd;
 
-    models.connect();
-
     models.Restaurant.find({lat: { $gt: lat_min, $lt: lat_max }, lng: { $gt: lng_min, $lt: lng_max }}, function (err, results) {
         if (err) {return console.error(err);}
 

@@ -4,8 +4,6 @@ module.exports = {
 
     renderProfile: function (req, res, next, login) {
 
-        models.connect();
-
         const uname = req.url.substring(9);
 
         models.User.findOne({username: uname}, function (err, user) {
@@ -32,8 +30,6 @@ module.exports = {
     },
 
     renderMyProfile: function (req, res, next, login) {
-
-        models.connect();
 
         const uID = req.session.user_id;
 

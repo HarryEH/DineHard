@@ -5,8 +5,6 @@ module.exports = {
 
     renderRestaurant: function (req, res, login) {
 
-        models.connect();
-
         const rId = req.query.rId;
 
         if (typeof rId == "undefined") {
@@ -18,7 +16,6 @@ module.exports = {
     },
 
     addRestaurant: function (req, res, login) {
-        models.connect();
         // verify that the restaurant's address isn't already in the db
 
         const no = req.body.doorNumber;
@@ -29,16 +26,13 @@ module.exports = {
                 return console.error(err);
             }
 
-
-
             if (results.length == 0) {
                 const obj = {res: res, req: req, login: login};
                 geodata.postcodeToLocation(postcode, addResCallback, obj);
+
                 return;
             }
-
             // else render some error
-
         });
 
     }

@@ -1,7 +1,5 @@
 const models = require('../models/models');
 
-models.connect();
-
 module.exports = {
     handleRegister: function(req, res, next) {
 
@@ -16,8 +14,6 @@ module.exports = {
         var registerOk = true;
         var userError = "";
         var emailError = "";
-
-        models.connect();
 
         var newUser = new models.User({
             forename: fname,
