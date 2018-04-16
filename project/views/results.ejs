@@ -27,20 +27,20 @@
             <div class="results-search col-30 m-font">
                 <form class="results-search-form" onsubmit="textQueryAjax(event)">
                     <div class="col-80">
-                        <input type="text" id="results-keyword" class="results-search-text" placeholder="Enter keyword(s)">
-                        <input type="text" id="results-postcode" class="results-search-text" placeholder="Enter postcode">
+                        <input type="text" id="results-keyword" class="results-search-text" placeholder="Enter keyword(s)" value="<%= prevQuery.keyword %>">
+                        <input type="text" id="results-postcode" class="results-search-text" placeholder="Enter postcode" value="<%= prevQuery.postcode %>">
                     </div>
                     <div class="col-20">
                         <input type="submit" id="results-submit" class="results-submit" value="Search">
                     </div>
                 </form>
 
-                <div class="results-search-area xs-font">
-                    <input type="radio" name="searchArea" id="nearMe" checked="checked" value="nearMe">
-                    <label for="nearMe" class="search-area" >Search results near me</label>
-                    <input type="radio" name="searchArea" id="all" value="all">
-                    <label for="all" class="search-area" >Search all results</label>
-                </div>
+                <!--<div class="results-search-area xs-font">-->
+                    <!--<input type="radio" name="searchArea" id="nearMe" checked="checked" value="nearMe">-->
+                    <!--<label for="nearMe" class="search-area" >Search results near me</label>-->
+                    <!--<input type="radio" name="searchArea" id="all" value="all">-->
+                    <!--<label for="all" class="search-area" >Search all results</label>-->
+                <!--</div>-->
 
                 <div class="results-sort m-font">
                     <p class="inline">Sort by:</p>

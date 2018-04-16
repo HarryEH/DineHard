@@ -77,7 +77,9 @@ function onPostcode(obj){
             results[i].distance = results[i].getDistance(lat, lng);
         }
 
-        res.render('results', { loggedIn: login, results: results });
+        const queryPrev = {postcode: obj.postcode};
+
+        res.render('results', { loggedIn: login, results: results, prevQuery: queryPrev });
 
     });
 
@@ -95,7 +97,7 @@ function returnAll(res, login, lat, lng){
             results[i].distance = results[i].getDistance(lat, lng);
         }
 
-        res.render('results', { query: "", loggedIn: login, results: results });
+        res.render('results', { query: "", loggedIn: login, results: results, prevQuery: {} });
 
     });
 }
@@ -121,7 +123,9 @@ function keywordSearch(res, login, str, lat, lng){
             results[i].distance = results[i].getDistance(lat, lng);
         }
 
-        res.render('results', { query: str, loggedIn: login, results: results });
+        const queryPrev = {keyword: str};
+
+        res.render('results', { query: str, loggedIn: login, results: results, prevQuery: queryPrev });
 
     });
 }

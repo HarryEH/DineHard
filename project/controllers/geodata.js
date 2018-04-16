@@ -32,7 +32,7 @@ module.exports = {
                 const lat = response.json.results[0].geometry.location.lat;
                 const lng = response.json.results[0].geometry.location.lng;
 
-
+                obj.postcode = address;
                 obj.lat = lat;
                 obj.lng = lng;
 
