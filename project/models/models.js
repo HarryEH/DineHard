@@ -26,7 +26,7 @@ restaurantSchema.methods.getDistance = function (lat, lng) {
     var x = geodata.getRDistance(this.lat, this.lng, lat, lng);
 
     if (isNaN(x)) {
-        x = 0;
+        x = -1;
     }
 
     return Math.round((x / 1602) * 100) / 100;
