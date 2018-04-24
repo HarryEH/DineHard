@@ -39,7 +39,7 @@ router.get('/results', function(req, res, next) {
 });
 
 router.post('/results', function(req, res, next) {
-    ResultsController.ajaxSearch(req,res,checkLogin(req, res, next))
+    ResultsController.ajaxSearch(req,res);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -46,14 +46,14 @@
                     <p class="inline">Sort by:</p>
                     <select name="sort" class="inline" id="selectMe" onchange="sortAjax()">
                         <!--<option value="relevance">Relevance</option>-->
+                        <option value="distance">Distance</option>
                         <option value="priceL2H">Price: Low to High</option>
                         <option value="priceH2L">Price: High to Low</option>
-                        <option value="distance">Distance</option>
                     </select>
                 </div>
 
                 <div class="results-distance m-font">
-                    <p>Distance from me: <span id="distVal"></span> miles</p>
+                    <p>Distance from me: <span id="distVal"></span> kilometers</p>
                     <div class="slidecontainer">
                         <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange" onchange="sliderAjax(event)">
                     </div>
