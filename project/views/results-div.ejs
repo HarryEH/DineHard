@@ -1,0 +1,58 @@
+<div id="results-changeable" class="results-list-wrapper col-70">
+
+    <% var resNum = 0;%>
+
+    <div class="container-fluid">
+
+        <% results.forEach(function(item){ %>
+        <% resNum += 1;%>
+
+        <a href="/<%= item.generateURL()%>">
+
+            <div class="row results s-font">
+
+                <div class="result-thumbnail">
+                    <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
+                </div>
+
+                <div class="results-info">
+                    <div class="result-title row m-font">
+
+                        <div class="col-50">
+                            <div> <%= item.name %></div>
+                        </div>
+
+                        <div class="col-50">
+                            <% var divID = "resStar" + resNum.toString();%>
+                            <div class="align-right" id='<%=divID%>'> Reviews </div>
+                            <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-6">
+                            <%= item.cuisines %>
+                        </div>
+
+                        <div class="col-6">
+                            <% divID = "resPrice" + resNum.toString();%>%>
+                            <div class="align-right" id='<%=divID%>'> Price </div>
+                            <script>getPrice(<%= item.price %>, "<%=divID%>");</script>
+                        </div>
+
+                    </div>
+
+                    <div class="result-distance" id="dist"><%= item.distance %> kilometers away</div>
+
+                </div>
+            </div>
+        </a>
+
+        <hr>
+
+        <% }); %>
+
+    </div>
+</div>

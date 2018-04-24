@@ -35,42 +35,17 @@ router.get('/restaurant-*', function(req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/results', function(req, res, next) {
     req.session.prevURL = req.url || '/';
-
-    var login = checkLogin(req, res, next);// pass this
-
-    ResultsController.handleSearch(req,res, login);
+    ResultsController.handleSearch(req,res, checkLogin(req, res, next));
 });
 
 router.post('/results', function(req, res, next) {
-
-    console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    console.log(req.url);
-    console.log(req.query.q);
-    console.log(req.query.lat);
-    console.log(req.query.lng);
-    console.log(req.body.newKeywords);
-    console.log(req.body.newPostcode);
-    console.log(req.body.slider);
-    console.log(req.body.sortBy);
-    console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-
-    const queryPrev = {
-        postcode: req.body.newPostcode,
-        keyword: req.body.newKeywords,
-        slider: req.body.slider,
-        sortBy: req.body.sortBy
-    };
-
-    // get previous results!
-    // then filter them based on the new query!
-
-    res.send(JSON.stringify({one: "results", two: "got", three: "returned", prevQuery: queryPrev}));
+    ResultsController.ajaxSearch(req,res);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/login', function(req, res, next) {
-    var login = checkLogin(req, res, next);
+    const login = checkLogin(req, res, next);
 
     if(login === true){
         res.redirect(req.session.prevURL);
@@ -86,7 +61,7 @@ router.post('/login', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/forgot-password', function(req, res, next) {
-    var login = checkLogin(req, res, next);
+    const login = checkLogin(req, res, next);
 
     if(login === true){
         res.redirect(req.session.prevURL);
@@ -97,7 +72,7 @@ router.get('/forgot-password', function(req, res, next) {
 });
 
 router.post('/forgot-password', function(req, res, next) {
-    var login = checkLogin(req, res, next);
+    const login = checkLogin(req, res, next);
 
     if(login === true){
         res.redirect(req.session.prevURL);
@@ -110,13 +85,11 @@ router.post('/forgot-password', function(req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/change-password*', function(req, res, next) {
-    var login = checkLogin(req, res, next);
-    res.render('change-password', {tokenId: req.query.tokenId, username: req.query.username, loggedIn: login, error: ""});
+    res.render('change-password', {tokenId: req.query.tokenId, username: req.query.username, loggedIn: checkLogin(req, res, next), error: ""});
 });
 
 router.post('/change-password', function(req, res, next) {
-    var login = checkLogin(req, res, next);
-    PasswordController.handleReset(req,res,login);
+    PasswordController.handleReset(req,res,checkLogin(req, res, next));
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -127,7 +100,7 @@ router.get('/logout', function (req, res, next) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/register', function(req, res, next) {
-    var login = checkLogin(req, res, next);
+    const login = checkLogin(req, res, next);
     var values = {fname: "", sname: "", email: "", user: ""};
     res.render('register', { loggedIn: login, error:"", uerror: "", emerror: "", values: values});
 });
@@ -135,7 +108,6 @@ router.get('/register', function(req, res, next) {
 router.post('/register', function(req, res, next) {
     registerController.handleRegister(req, res, next);
 });
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get('/create-restaurant', function(req, res, next) {

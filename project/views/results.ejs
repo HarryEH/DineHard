@@ -27,8 +27,8 @@
             <div class="results-search col-30 m-font">
                 <form class="results-search-form" onsubmit="textQueryAjax(event)">
                     <div class="col-80">
-                        <input type="text" id="results-keyword" class="results-search-text" placeholder="Enter keyword(s)" value="<%= prevQuery.keyword %>">
-                        <input type="text" id="results-postcode" class="results-search-text" placeholder="Enter postcode" value="<%= prevQuery.postcode %>">
+                        <input type="text" id="results-keyword" oninput="textQueryAjax(event);" class="results-search-text" placeholder="Enter keyword(s)" value="<%= prevQuery.keyword %>">
+                        <input type="text" id="results-postcode" oninput="textQueryAjax(event);" class="results-search-text" placeholder="Enter postcode" value="<%= prevQuery.postcode %>">
                     </div>
                     <div class="col-20">
                         <input type="submit" id="results-submit" class="results-submit" value="Search">
@@ -45,15 +45,15 @@
                 <div class="results-sort m-font">
                     <p class="inline">Sort by:</p>
                     <select name="sort" class="inline" id="selectMe" onchange="sortAjax()">
-                        <option value="relevance">Relevance</option>
+                        <!--<option value="relevance">Relevance</option>-->
+                        <option value="distance">Distance</option>
                         <option value="priceL2H">Price: Low to High</option>
                         <option value="priceH2L">Price: High to Low</option>
-                        <option value="distance">Distance</option>
                     </select>
                 </div>
 
                 <div class="results-distance m-font">
-                    <p>Distance from me: <span id="distVal"></span> miles</p>
+                    <p>Distance from me: <span id="distVal"></span> kilometers</p>
                     <div class="slidecontainer">
                         <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange" onchange="sliderAjax(event)">
                     </div>
@@ -61,64 +61,8 @@
 
             </div>
 
-            <div class="results-list-wrapper col-70">
+            <% include results-div.ejs%>
 
-                <% var resNum = 0;%>
-
-                <div class="container-fluid">
-
-                <% results.forEach(function(item){ %>
-                <% resNum += 1;%>
-
-                    <a href="/<%= item.generateURL()%>">
-
-                        <div class="row results s-font">
-
-                            <div class="result-thumbnail">
-                                <img class="thumbnail" style="background: url('images/restTest1.jpg') 50% 50%; background-size: cover;">
-                            </div>
-
-                            <div class="results-info">
-                                <div class="result-title row m-font">
-
-                                    <div class="col-50">
-                                        <div> <%= item.name %></div>
-                                    </div>
-
-                                    <div class="col-50">
-                                        <% var divID = "resStar" + resNum.toString();%>
-                                        <div class="align-right" id='<%=divID%>'> Reviews </div>
-                                        <script>getStarRating(<%= item.rating %>, "<%=divID%>");</script>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col-6">
-                                        <%= item.cuisines %>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <% divID = "resPrice" + resNum.toString();%>%>
-                                        <div class="align-right" id='<%=divID%>'> Price </div>
-                                        <script>getPrice(<%= item.price %>, "<%=divID%>");</script>
-                                    </div>
-
-                                </div>
-
-                                <div class="result-distance" id="dist"><%= item.distance %> miles away</div>
-
-                            </div>
-                        </div>
-                    </a>
-
-                    <hr>
-
-                <% }); %>
-
-                </div>
-            </div>
         </div>
     </div>
 

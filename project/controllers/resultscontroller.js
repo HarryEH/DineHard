@@ -1,131 +1,211 @@
 const models = require('../models/models');
 const geodata = require('./geodata');
+const fs = require('fs');
+const ejs = require('ejs');
 
-const mToDD = 100000;
-
-function valid_postcode(postcode) {
+function validPostcode(postcode) {
     postcode = postcode.replace(/\s/g, "");
+    //TODO reference this !!!!!!!!
     var regex = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))[0-9][A-Za-z]{2})$/i;
     return regex.test(postcode);
 }
 
+const DEFAULT_DIST = 10;
+
 module.exports = {
     handleSearch: function(req, res, login) {
 
-        const str = req.query.q;
-        var lat = req.query.lat;
-        req.session.user_lat = lat;
-        var lng = req.query.lng;
-        req.session.user_lng = lng;
-        var dist = req.query.distance;
-
-        const DEFAULT_DIST = 5000;
-
-        if (typeof dist == 'undefined') {
-            dist = DEFAULT_DIST;
-        }
-
-        models.connect();
+        req.session.user_lat = req.query.lat;
+        req.session.user_lng = req.query.lng;
 
         // undefined || empty - return everything
-        if (typeof str == 'undefined') {
-            returnAll(res, login, lat, lng);
-            return;
+        if (validPostcode(req.query.q)) {
+            const obj = {res: res, login: login};
+            geodata.postcodeToLocation(req.query.q, onPostcode, obj);
+        } else {
+            // otherwise keyword search
+            keywordSearch(res, login, req.query.q, req.query.lat, req.query.lng);
         }
 
-        // undefined || empty - return everything
-        if (str == "") {
-            returnAll(res, login, lat, lng);
-            return;
+    },
+
+    ajaxSearch: function(req, res) {
+
+        if (typeof req.body.newPostcode == "undefined") {req.body.newPostcode = "";}
+        if (typeof req.body.newKeywords == "undefined") {req.body.newKeywords = "";}
+        if (typeof req.body.slider == "undefined") {req.body.newKeywords = 10;}
+        if (typeof req.body.sortBy == "undefined") {req.body.sortBy = "distance";}
+
+        const queryPrev = {
+            postcode: req.body.newPostcode,
+            keyword: req.body.newKeywords,
+            slider: req.body.slider,
+            sortBy: req.body.sortBy
+        };
+
+        if (validPostcode(req.body.newPostcode)) {
+            // search by and keyword
+            geodata.postcodeToLocation(req.body.newPostcode, ajaxPostcode, {req: req, res: res, prevQuery: queryPrev});
+        } else {
+            ajaxKeyword(req, res, queryPrev);
         }
 
-        // if postcode
-        if (valid_postcode(str)) {
-            const obj = {res: res, login: login, dist: dist};
-            geodata.postcodeToLocation(str, onPostcode, obj);
-            return;
-        }
-
-        // otherwise keyword search
-        keywordSearch(res, login, str, lat, lng);
     }
+
 };
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Normal searching
 function onPostcode(obj){
-
-    const res = obj.res;
-    const login = obj.login;
-    const lat = obj.lat;
-    const lng = obj.lng;
-    const distance = obj.dist;
-
-    const distAdd = distance / mToDD;
-
-    const lat_min = lat - distAdd;
-    const lat_max = lat + distAdd;
-    const lng_min = lng - distAdd;
-    const lng_max = lng + distAdd;
-
-    models.Restaurant.find({lat: { $gt: lat_min, $lt: lat_max }, lng: { $gt: lng_min, $lt: lng_max }}, function (err, results) {
-        if (err) {return console.error(err);}
-
-        console.log(results);
-
-        for(var i = 0; i < results.length; i++) {
-            results[i].distance = results[i].getDistance(lat, lng);
-        }
-
-        const queryPrev = {postcode: obj.postcode};
-
-        res.render('results', { loggedIn: login, results: results, prevQuery: queryPrev });
-
-    });
-
-}
-
-function returnAll(res, login, lat, lng){
-    console.log('all');
 
     models.Restaurant.find(function (err, results) {
         if (err) {return console.error(err);}
 
-        console.log(results);
+        var actual_results = [];
+        var actual_count = 0;
 
-        for(var i = 0; i < results.length; i++) {
-            results[i].distance = results[i].getDistance(lat, lng);
+        for (var x in results) {
+            results[x].distance = results[x].getDistance(obj.lat, obj.lng);
+
+            console.log(results[x].distance);
+
+            if (results[x].distance < DEFAULT_DIST) {
+                actual_results[actual_count] = results[x];
+                actual_count++;
+            }
         }
 
-        res.render('results', { query: "", loggedIn: login, results: results, prevQuery: {} });
+        obj.res.render('results', { loggedIn: obj.login, results: sortBy({ejs: {results: actual_results}, prevQuery: {sortBy: "distance"}}), prevQuery: { postcode: obj.postcode} });
 
     });
+
 }
 
-function keywordSearch(res, login, str, lat, lng){
-    // Keyword search!
-    models.connect();
+function keywordSearch(res, login, query, lat, lng){
 
-    // May need this when we are dynamically changing the distance
-    // const distAdd = dist / mToDD;
-    //
-    // const lat_min = lat - distAdd;
-    // const lat_max = lat - (-distAdd);
-    // const lng_min = lng - distAdd;
-    // const lng_max = lng - (-distAdd);
+    const distTest = 10;
 
-    models.Restaurant.find({tags: new RegExp(str, "i") } , function (err, results) {
+    models.Restaurant.find({tags: new RegExp(query, "i") } , function (err, results) {
         if (err) {return console.error(err);}
 
-        console.log(results);
+        var actual_results = [];
+        var actual_count = 0;
 
-        for(var i = 0; i < results.length; i++) {
-            results[i].distance = results[i].getDistance(lat, lng);
+        for (var x in results) {
+            results[x].distance = results[x].getDistance(lat, lng);
+
+            if (results[x].distance < distTest) {
+                actual_results[actual_count] = results[x];
+                actual_count++;
+            }
         }
 
-        const queryPrev = {keyword: str};
+        res.render('results', { query: query, loggedIn: login, results: sortBy({ejs: {results: actual_results}, prevQuery: {sortBy: "distance"}}), prevQuery: {keyword: query} });
+    });
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        res.render('results', { query: str, loggedIn: login, results: results, prevQuery: queryPrev });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// AJAX
+function ajaxKeyword(req, res, queryPrev){
+
+    console.log("got to ajax keyword");
+    var query = req.body.newKeywords;
+    if (typeof query == "undefined") {
+        query = "";
+    }
+
+    models.Restaurant.find({tags: new RegExp(query, "i") } , function (err, results) {
+        if (err) {return console.error(err);}
+
+        results = distanceFilter(results, req.query.lat, req.query.lng, req.body.slider);
+        var obj = {res: res, ejs: {results: results}, prevQuery: queryPrev};
+
+        renderHtml(obj);
 
     });
 }
+
+function ajaxPostcode(obj){
+    console.log("got to ajax postcode");
+
+    models.Restaurant.find({tags: new RegExp(obj.req.body.newKeywords, "i")}, function (err, results) {
+        if (err) {return console.error(err);}
+
+        results = distanceFilter(results, obj.lat, obj.lng, obj.req.body.slider);
+        obj.ejs = {results: results};
+
+        renderHtml(obj);
+
+    });
+}
+
+function renderHtml(obj) {
+    console.log("got to render html");
+
+    obj.ejs.results = sortBy(obj);
+
+    const file = fs.readFileSync('views/results-div.ejs', 'ascii');
+    const rendered = ejs.render(file, obj.ejs);
+
+    console.log(rendered);
+    console.log(JSON.stringify({prevQuery: obj.ejs.prevQuery, results: obj.ejs.results, html: rendered}));
+    obj.res.send(JSON.stringify({results: obj.ejs.results, html: rendered, prevQuery: obj.prevQuery}));
+}
+
+
+function sortBy(obj){
+
+    const sortParam = obj.prevQuery.sortBy;
+
+    const sortFunc = function(field, reverse, primer){
+
+        var key = primer ?
+            function(x) {return primer(x[field])} :
+            function(x) {return x[field]};
+
+        reverse = !reverse ? 1 : -1;
+
+        return function (a, b) {
+            return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+        }
+    };
+
+    switch (sortParam) {
+        case "priceH2L":
+            obj.ejs.results.sort(sortFunc('price', true, parseInt));
+            break;
+        case "priceL2H":
+            obj.ejs.results.sort(sortFunc('price', false, parseInt));
+            break;
+        case "distance":
+            obj.ejs.results.sort(sortFunc('distance', false, parseFloat));
+            break;
+    }
+    return obj.ejs.results;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function distanceFilter(results, lat, lng, distance){
+    var actual_results = [];
+    var actual_count = 0;
+
+    for (var x in results) {
+        results[x].distance = results[x].getDistance(lat, lng);
+
+        if (results[x].distance < distance) {
+            actual_results[actual_count] = results[x];
+            actual_count++;
+        }
+    }
+
+    return actual_results;
+
+}
+
+
+
+
 
 
