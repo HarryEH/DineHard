@@ -35,8 +35,6 @@ module.exports = {
         if (typeof req.body.slider == "undefined") {req.body.slider = 10;}
         if (typeof req.body.sortBy == "undefined") {req.body.sortBy = "distance";}
 
-
-
         const queryPrev = {
             postcode: req.body.newPostcode,
             keyword: req.body.newKeywords,
@@ -46,7 +44,6 @@ module.exports = {
 
         if (validPostcode(req.body.newPostcode)) {
             // search by and keyword
-            console.log("postcode");
             geodata.postcodeToLocation(req.body.newPostcode, ajaxPostcode, {req: req, res: res, prevQuery: queryPrev});
         } else {
             ajaxKeyword(req, res, queryPrev);

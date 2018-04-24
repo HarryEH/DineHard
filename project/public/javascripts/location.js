@@ -54,8 +54,6 @@ function addMarkers(lat,lng) {
         title: 'Restaurant'
     });
 
-    map.addMarker(marker);
-
-    map.addMarker(lat, lng);
+   // map.addMarker(lat, lng);
 
 }

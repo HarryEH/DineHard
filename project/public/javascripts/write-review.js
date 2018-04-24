@@ -1,21 +1,17 @@
 
 
-function reviewValidate(){
-    var reviewdescription = document.forms["writeReviewForm"]["reviewdecription"].value.trim();
+function reviewValidate(e){
+    e.preventDefault();
+    var reviewdescription = document.forms["writeReviewForm"]["review-text"].value.trim();
     var dError = document.getElementById("dError");
-
-    var reviewOk = true;
 
     dError.innerHTML = "";
 
-    if(reviewdescription === ""){
+    if(reviewdescription === "") {
         dError.innerHTML = "* Please enter a review *";
-        reviewOk = false;
-    }
-    if(!reviewOk) {
-        event.preventDefault();
         return false;
-    } else {
-        return true;
     }
+
+    reviewAjax(e);
+    return true;
 }

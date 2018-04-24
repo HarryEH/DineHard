@@ -16,6 +16,7 @@ var restaurantSchema = mongoose.Schema({
     cuisines: String,
     price: Number,
     rating: Number,
+    noRating: Number,
     lat: Number,
     lng: Number,
     websiteURL: String

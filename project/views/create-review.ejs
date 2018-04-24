@@ -1,4 +1,5 @@
 <script src="javascripts/write-review.js"></script>
+<script src="javascripts/reviewajax.js"></script>
 
 <!-- Button to open the modal login form -->
 <button onclick="document.getElementById('reviewForm').style.display='block'">Write a review</button>
@@ -8,7 +9,7 @@
     <span onclick="document.getElementById('reviewForm').style.display='none'" class="close" title="Close Modal">&times;</span>
 
     <!-- Modal Content -->
-    <form id="writeReviewForm" class="modal-content animate" onsubmit="reviewValidate();">
+    <form id="writeReviewForm" class="modal-content animate" onsubmit="reviewValidate(event);">
         <div class="modalheader">
             <h2>Write Review for <%= restaurant.name %></h2>
         </div>
@@ -21,7 +22,7 @@
 
                 <div class="col-66">
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="7" value="4" class="slider" name="slider" id="reviewslider">
+                        <input type="range" min="0" max="7" value="4" class="slider" name="slider" id="slider">
                     </div>
                 </div>
 
@@ -41,7 +42,7 @@
                 </div>
 
                 <div class="col-66">
-                    <textarea class="review-text" rows="8" cols="50" placeholder="Enter review" name="reviewdecription"></textarea>
+                    <textarea class="review-text" rows="8" cols="50" placeholder="Enter review" name="review-text" id="review-text"></textarea>
                 </div>
 
             </div>
@@ -54,7 +55,7 @@
 
 <script>
 
-    var slider = document.getElementById("reviewslider");
+    var slider = document.getElementById("slider");
     var output = document.getElementById("star");
     output.innerHTML = slider.value; // Display the default slider value
 

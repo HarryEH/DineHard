@@ -15,7 +15,8 @@ var res1 = new models.Restaurant({
     photoURL: "null",
     price: 10,
     tags: "homely, warm, good ambiance, bubbly, lovely, italian, newcastle, welcoming",
-    rating: 3.14,
+    rating: 7,
+    noRating: 1,
     websiteURL: "http://howarth.io"
 });
 
@@ -36,7 +37,8 @@ var res2 = new models.Restaurant({
     photoURL: "null",
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, chinese, sheffield, acceptable, excellent",
-    rating: 4.37,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://harryehowarth.com"
 });
 
@@ -57,7 +59,8 @@ var res3 = new models.Restaurant({
     photoURL: "null",
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, korean, sheffield, acceptable, excellent, kebab, chips, pizza, cheap",
-    rating: 2.67,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://google.com"
 });
 
@@ -78,7 +81,8 @@ var res4 = new models.Restaurant({
     photoURL: "null",
     price: 1,
     tags: "homely, warm, good ambiance, good, great, thai, sheffield, acceptable, excellent, potato, chips, delicious, fryup",
-    rating: 6.9,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://example.com"
 });
 
@@ -99,7 +103,8 @@ var res5 = new models.Restaurant({
     photoURL: "null",
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, indian, sheffield, acceptable, excellent, haven, delight, superior",
-    rating: 5.72,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://isitchristmas.com"
 });
 
@@ -120,7 +125,8 @@ var res6 = new models.Restaurant({
     photoURL: "null",
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, italian, sheffield, acceptable, excellent, bread, yummy, tasty",
-    rating: 5.72,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://help.com"
 });
 
