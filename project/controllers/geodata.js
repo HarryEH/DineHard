@@ -36,6 +36,7 @@ module.exports = {
                 obj.lat = lat;
                 obj.lng = lng;
 
+                console.log("callback activated");
                 callback(obj);
                 return;
             }

@@ -1,23 +1,17 @@
 function textQueryAjax(e) {
     e.preventDefault();
-    genericAjax(function(data){
-        console.log(data.one + " " +  data.two + " " + data.three);
-    });
+    genericAjax();
 }
 
 function sliderAjax(e) {
-    genericAjax(function(data){
-        console.log(data.one + " " +  data.two + " " + data.three);
-    });
+    genericAjax();
 }
 
 function sortAjax(e) {
-    genericAjax(function(data){
-        console.log(data.one + " " +  data.two + " " + data.three);
-    });
+    genericAjax();
 }
 
-function genericAjax(callback) {
+function genericAjax() {
     $.ajax({
         url: document.URL,
         data: JSON.stringify({
@@ -30,17 +24,31 @@ function genericAjax(callback) {
         type: 'POST',
         dataType: "json",
         success: function (data) {
+            console.log(data);
             // Code to change the page goes here
             document.getElementById('results-keyword').value = data.prevQuery.keyword;
             document.getElementById('results-postcode').value = data.prevQuery.postcode;
             document.getElementById('distRange').value = data.prevQuery.slider;
             document.getElementById('selectMe').value = data.prevQuery.sortBy;
-            callback(data);
+
+            showAjaxSearchResults(data.html, data.results);
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);
         }
     });
+}
+
+function showAjaxSearchResults(html, results){
+
+    document.getElementById('results-changeable').outerHTML = html;
+
+    // The <script> doesn't get run so this is required to do that
+    for (var i = 0; i < results.length; i++) {
+        getStarRating(results[i].rating,"resStar" + (i+1).toString());
+        getPrice(results[i].price, "resPrice" + (i+1).toString());
+    }
+
 }
 
 
