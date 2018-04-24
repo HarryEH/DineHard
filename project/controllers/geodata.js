@@ -22,25 +22,45 @@ module.exports = {
 
     postcodeToLocation: function (address, callback, obj){
 
+        console.log("hello");
         // Geocode an address.
         googleMapsClient.geocode({
             address: address
         }, function(err, response) {
+            console.log("fuck");
             if (!err) {
-                console.log(response.json.results[0].geometry.location);
 
-                const lat = response.json.results[0].geometry.location.lat;
-                const lng = response.json.results[0].geometry.location.lng;
+                if(typeof response.json.results[0] == "undefined") {
+                    obj.postcode = address;
+                    obj.lat = 0;
+                    obj.lng = 0;
 
-                obj.postcode = address;
-                obj.lat = lat;
-                obj.lng = lng;
+                    console.log("callback activated");
+                    callback(obj);
 
-                console.log("callback activated");
-                callback(obj);
+                } else {
+                    const lat = response.json.results[0].geometry.location.lat;
+                    const lng = response.json.results[0].geometry.location.lng;
+
+                    obj.postcode = address;
+                    obj.lat = lat;
+                    obj.lng = lng;
+
+                    console.log("callback activated");
+                    callback(obj);
+                }
+
                 return;
             }
+
+
         });
+
+        // obj.postcode = address;
+        // obj.lat = 0;
+        // obj.lng = 0;
+        // callback(obj);
+
     },
 
     addressToLocation: function (address){

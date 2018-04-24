@@ -35,6 +35,8 @@ module.exports = {
         if (typeof req.body.slider == "undefined") {req.body.slider = 10;}
         if (typeof req.body.sortBy == "undefined") {req.body.sortBy = "distance";}
 
+
+
         const queryPrev = {
             postcode: req.body.newPostcode,
             keyword: req.body.newKeywords,
@@ -44,6 +46,7 @@ module.exports = {
 
         if (validPostcode(req.body.newPostcode)) {
             // search by and keyword
+            console.log("postcode");
             geodata.postcodeToLocation(req.body.newPostcode, ajaxPostcode, {req: req, res: res, prevQuery: queryPrev});
         } else {
             ajaxKeyword(req, res, queryPrev);
@@ -147,8 +150,6 @@ function renderHtml(obj) {
     const file = fs.readFileSync('views/results-div.ejs', 'ascii');
     const rendered = ejs.render(file, obj.ejs);
 
-    console.log(rendered);
-    console.log(JSON.stringify({prevQuery: obj.ejs.prevQuery, results: obj.ejs.results, html: rendered}));
     obj.res.send(JSON.stringify({results: obj.ejs.results, html: rendered, prevQuery: obj.prevQuery}));
 }
 

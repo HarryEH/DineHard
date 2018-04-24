@@ -8,7 +8,7 @@
     <span onclick="document.getElementById('reviewForm').style.display='none'" class="close" title="Close Modal">&times;</span>
 
     <!-- Modal Content -->
-    <form id="writeReviewForm" class="modal-content animate" action="/action_page.php" onsubmit="reviewValidate();">
+    <form id="writeReviewForm" class="modal-content animate" onsubmit="reviewValidate();">
         <div class="modalheader">
             <h2>Write Review for <%= restaurant.name %></h2>
         </div>
@@ -21,7 +21,7 @@
 
                 <div class="col-66">
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="7" value="4" class="slider" id="reviewslider">
+                        <input type="range" min="0" max="7" value="4" class="slider" name="slider" id="reviewslider">
                     </div>
                 </div>
 
