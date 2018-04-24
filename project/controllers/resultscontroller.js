@@ -26,14 +26,13 @@ module.exports = {
             // otherwise keyword search
             keywordSearch(res, login, req.query.q, req.query.lat, req.query.lng);
         }
-
     },
 
     ajaxSearch: function(req, res) {
 
         if (typeof req.body.newPostcode == "undefined") {req.body.newPostcode = "";}
         if (typeof req.body.newKeywords == "undefined") {req.body.newKeywords = "";}
-        if (typeof req.body.slider == "undefined") {req.body.newKeywords = 10;}
+        if (typeof req.body.slider == "undefined") {req.body.slider = 10;}
         if (typeof req.body.sortBy == "undefined") {req.body.sortBy = "distance";}
 
         const queryPrev = {
@@ -148,8 +147,6 @@ function renderHtml(obj) {
     const file = fs.readFileSync('views/results-div.ejs', 'ascii');
     const rendered = ejs.render(file, obj.ejs);
 
-    console.log(rendered);
-    console.log(JSON.stringify({prevQuery: obj.ejs.prevQuery, results: obj.ejs.results, html: rendered}));
     obj.res.send(JSON.stringify({results: obj.ejs.results, html: rendered, prevQuery: obj.prevQuery}));
 }
 

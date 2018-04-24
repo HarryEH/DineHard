@@ -27,20 +27,30 @@ module.exports = {
             address: address
         }, function(err, response) {
             if (!err) {
-                console.log(response.json.results[0].geometry.location);
 
-                const lat = response.json.results[0].geometry.location.lat;
-                const lng = response.json.results[0].geometry.location.lng;
+                if(typeof response.json.results[0] == "undefined") {
+                    obj.postcode = address;
+                    obj.lat = 0;
+                    obj.lng = 0;
 
-                obj.postcode = address;
-                obj.lat = lat;
-                obj.lng = lng;
+                    callback(obj);
 
-                console.log("callback activated");
-                callback(obj);
+                } else {
+                    const lat = response.json.results[0].geometry.location.lat;
+                    const lng = response.json.results[0].geometry.location.lng;
+
+                    obj.postcode = address;
+                    obj.lat = lat;
+                    obj.lng = lng;
+
+                    callback(obj);
+                }
+
                 return;
             }
+
         });
+
     },
 
     addressToLocation: function (address){

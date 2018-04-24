@@ -34,7 +34,7 @@ function genericAjax() {
             showAjaxSearchResults(data.html, data.results);
         },
         error: function (xhr, status, error) {
-            alert('Error: ' + error.message);
+            console.log("err");
         }
     });
 }

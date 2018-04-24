@@ -15,7 +15,8 @@ var res1 = new models.Restaurant({
     photoURL: "null",
     price: 10,
     tags: "homely, warm, good ambiance, bubbly, lovely, italian, newcastle, welcoming",
-    rating: 3.14,
+    rating: 7,
+    noRating: 1,
     websiteURL: "http://howarth.io"
 });
 
@@ -36,7 +37,8 @@ var res2 = new models.Restaurant({
     photoURL: "null",
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, chinese, sheffield, acceptable, excellent",
-    rating: 4.37,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://harryehowarth.com"
 });
 
@@ -57,7 +59,8 @@ var res3 = new models.Restaurant({
     photoURL: "null",
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, korean, sheffield, acceptable, excellent, kebab, chips, pizza, cheap",
-    rating: 2.67,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://google.com"
 });
 
@@ -78,7 +81,8 @@ var res4 = new models.Restaurant({
     photoURL: "null",
     price: 1,
     tags: "homely, warm, good ambiance, good, great, thai, sheffield, acceptable, excellent, potato, chips, delicious, fryup",
-    rating: 6.9,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://example.com"
 });
 
@@ -99,7 +103,8 @@ var res5 = new models.Restaurant({
     photoURL: "null",
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, indian, sheffield, acceptable, excellent, haven, delight, superior",
-    rating: 5.72,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://isitchristmas.com"
 });
 
@@ -111,16 +116,17 @@ res5.save(function (err, res5) {
 var res6 = new models.Restaurant({
     name: "Fabio's Focaccia",
     doorNumber: "1",
-    postcode: "nn2 6tm",
+    postcode: "s10 1gy",
     phoneNo: "07108283231",
     description: "A warm welcome awaits you in this 16th century restaurant with rooms. The George is situated on the edge of the village green in Cavendish, positioned in between the popular villages of Clare and Long Melford and just a short drive from the timeless village of Lavenham.Since October 2010, co-owners Lewis Bennet & Bonnie Steel have achieved their 1st Rosette and four stars from the AA & Visit Britain tourist guides.The emphasis at The George is on the quality of food and customer service. The menus offer a wide range of dishes to suit all tastes and budgets. The menus change frequently and are guided by the seasons. We aim to use the highest quality, sustainably sourced ingredients and utilise our garden to grow seasonal items such as baby leaf, beetroot, edible flowers, tomatoes and herbs to use on the menu.",
     cuisines: "Italian",
-    lat: 52.253276,
-    lng: -0.941966,
+    lat: 53.38376,
+    lng: -1.50736,
     photoURL: "null",
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, italian, sheffield, acceptable, excellent, bread, yummy, tasty",
-    rating: 5.72,
+    rating: 0,
+    noRating: 0,
     websiteURL: "http://help.com"
 });
 

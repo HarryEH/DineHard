@@ -14,6 +14,11 @@
     <script src="javascripts/pricing.js"></script>
     <script src="javascripts/date.js"></script>
     <script src="javascripts/write-review.js"></script>
+    <script src="javascripts/reviewajax.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        setupSocket();
+    </script>
     <title><%= restaurant.name %></title>
 </head>
 
@@ -32,7 +37,7 @@
 
             <div class="row">
                 <ul class="inline-list">
-                    <li><div id="starRating" class="inline"></div> <%= restaurant.rating %> with <%= reviewCount %> reviews</li>
+                    <li><div id="starRating" class="inline"></div> <%= restaurant.rating / restaurant.noRating %> with <%= reviewCount %> reviews</li>
 
                     <li><%= restaurant.cuisines %></li>
 
@@ -42,7 +47,7 @@
                 </ul>
             </div>
 
-            <script>getStarRating(<%= restaurant.rating %>, "starRating");</script>
+            <script>getStarRating(<%= restaurant.rating / restaurant.noRating %>, "starRating");</script>
 
             <div class="row">
                 <ul class="inline-list">

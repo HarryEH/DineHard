@@ -7,6 +7,7 @@ var registerController = require('../controllers/registercontroller');
 var profileController = require('../controllers/profilecontroller');
 var RestaurantController = require('../controllers/restaurantscontroller');
 var PasswordController = require('../controllers/passwordcontroller');
+var ReviewController = require('../controllers/review');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
@@ -29,6 +30,16 @@ router.get('/restaurant-*', function(req, res, next) {
 
     var login = checkLogin(req, res, next);
     RestaurantController.renderRestaurant(req,res,login);
+});
+
+router.post('/restaurant-*', function(req, res, next) {
+    console.log("hello world");
+    if (checkLogin(req, res, next)) {
+        ReviewController.createReview(req, res);
+    } else {
+        res.render('login', {loggedIn: false, error: ""});
+    }
+
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
