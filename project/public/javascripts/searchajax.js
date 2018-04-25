@@ -45,7 +45,7 @@ function showAjaxSearchResults(html, results){
 
     // The <script> doesn't get run so this is required to do that
     for (var i = 0; i < results.length; i++) {
-        getStarRating(results[i].rating,"resStar" + (i+1).toString());
+        getStarRating(results[i].rating/results[i].noRating,"resStar" + (i+1).toString());
         getPrice(results[i].price, "resPrice" + (i+1).toString());
     }
 

@@ -6,25 +6,28 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mailer = require('express-mailer');
-
-var app = express();
-
+const fs = require('fs');
+const ejs = require('ejs');
+const models = require('./models/models');
+const app = express();
+const index = require('./routes/index');
+const users = require('./routes/users');
 /**
  * Module dependencies.
  */
-var debug = require('debug')('project:server');
-var http = require('http');
+const debug = require('debug')('project:server');
+const http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -33,24 +36,32 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
-var io = require('socket.io').listen(server);
+/**
+ * Setup io, this has to be after the server listens on the port.
+ */
+const io = require('socket.io').listen(server);
 
 io.on('connection', function(socket) {
-    console.log('Client connected...');
 
+    /**
+     * When a new review is added this is triggered by the client.
+     * That then gets all the reviews and sends this to the client.
+     */
     socket.on("new-review", function(restaurant) {
-        console.log("////////////");
-        console.log(restaurant);
-        console.log("////////////");
-        socket.emit("review", {data: "print me out bitch"});
+       models.Review.find({rId: restaurant.rId}, function(err, data) {
+           if(err) {return console.error(err);}
+
+           const file = fs.readFileSync('./views/all-reviews.ejs', 'ascii');
+           socket.emit("review", {results: data, rendered:ejs.render(file, {reviews: data})});
+       });
+
     });
 
 });
 
-const models = require('./models/models');
+/**
+ * Code tht connects to the database
+ */
 models.connect();
 models.User.find({username: "admin"}, function(err, results) {
     if (err) {return console.error(err);}
