@@ -21,17 +21,20 @@ module.exports = {
     },
 
     postcodeToLocation: function (address, callback, obj){
-
+        console.error("starting postcode")
         // Geocode an address.
         googleMapsClient.geocode({
             address: address
         }, function(err, response) {
+            if (err) console.error(err);
             if (!err) {
 
                 if(typeof response.json.results[0] == "undefined") {
                     obj.postcode = address;
                     obj.lat = 0;
                     obj.lng = 0;
+
+                    console.error("done");
 
                     callback(obj);
 
@@ -42,6 +45,8 @@ module.exports = {
                     obj.postcode = address;
                     obj.lat = lat;
                     obj.lng = lng;
+
+                    console.error("done");
 
                     callback(obj);
                 }

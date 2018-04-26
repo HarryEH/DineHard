@@ -1,4 +1,6 @@
 var express = require('express');
+var formidable = require('formidable');
+var fs = require('fs');
 var router = express.Router();
 
 var ResultsController = require('../controllers/resultscontroller');
@@ -138,11 +140,22 @@ router.post('/create-restaurant', function(req, res, next) {
     if (login === false) {
         res.redirect('/login');
     } else {
-        if (testCreateRestaurantInput(req)) {
-            RestaurantController.addRestaurant(req, res, login);
-        } else {
-            res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
-        }
+        var form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields, files) {
+            if (testCreateRestaurantInput(fields)) {
+                    console.error(fields.pNo);
+                    if (files.photo != undefined) {
+                        var img_path = files.photo.path;
+                        RestaurantController.addRestaurant(req, res, login, fields, img_path);
+                    }
+                    else
+                    {
+                        console.error("IAMGE NOT LOAD");
+                    }
+            } else {
+                res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
+            }
+        });
     }
 });
 
@@ -191,18 +204,26 @@ function checkLogin(req, res, next){
     }
 }
 
-function testCreateRestaurantInput(req){
-    const doorNumber = req.body.doorNumber;
-    const postcode = req.body.postcode;
-    const phoneNo = req.body.phoneNo;
-    const name = req.body.doorNumber;
-    const description = req.body.description;
-    const photoURL = req.body.photo;
-    const tags = req.body.tags;
-    const websiteURL = req.body.doorNumber;
+function testCreateRestaurantInput(fields){
+    const doorNumber = fields.doorNumber;
+    const postcode = fields.postcode;
+    const phoneNo = fields.phoneNo;
+    const name = fields.name;
+    const description = fields.description;
+    const tags = fields.tags;
+    const websiteURL = fields.websiteURL;
+
+    console.log("DNum " + undefCheck(doorNumber));
+    console.log("post " + undefCheck(postcode));
+    console.log("name " + undefCheck(name));
+    console.log("tags " + undefCheck(tags));
+    console.log("WEb " + undefCheck(websiteURL));
+    console.log("phone " + undefCheck(phoneNo));
+    console.log("desc " + undefCheck(description));
+
 
     return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
-        && undefCheck(photoURL) && undefCheck(tags) && undefCheck(websiteURL)
+        && undefCheck(tags) && undefCheck(websiteURL)
         && undefCheck(phoneNo) && undefCheck(description);
 
 }

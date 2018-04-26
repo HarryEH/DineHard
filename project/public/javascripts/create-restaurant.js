@@ -67,7 +67,7 @@ function validateRestaurant(){
     var address = document.forms["createRestaurantForm"]["address"].value.trim();
     var doorNum = document.forms["createRestaurantForm"]["doorNumber"].value.trim();
     var postcode = document.forms["createRestaurantForm"]["postcode"].value.trim();
-    var photo = document.forms["createRestaurantForm"]["photo"].value.trim();
+    var photo = document.forms["createRestaurantForm"]["photo"].value;
     var tags = document.forms["createRestaurantForm"]["tags"].value.trim();
     var cuisines = document.forms["createRestaurantForm"]["cuisines"];
     var website = document.forms["createRestaurantForm"]["websiteurl"].value.trim();
@@ -99,31 +99,36 @@ function validateRestaurant(){
 
     if(name == ""){
         nHTML = "* Please enter a restaurant name *";
-        var createOk = false;
+        createOk = false;
     }
 
     if(phone == ""){
         pHTML = "* Please enter a restaurant phone number *";
-        var createOk = false;
+        createOk = false;
     }
 
     if(address == "" && doorNum == "" && postcode == ""){
         aHTML = "* Please enter a restaurant address *";
-        var createOk = false;
+        createOk = false;
     } else {
         if(doorNum == ""){
             dnHTML = "* Please enter a door number *";
-            var createOk = false;
+            createOk = false;
         }
         if(postcode == ""){
             pcHTML = "* Please enter a postcode *";
-            var createOk = false;
+            createOk = false;
         }
+    }
+
+    if(photo==""){
+        purlHTML = "* Please select a photo for the restaurant *";
+        createOk = false;
     }
 
     if(tags == ""){
         tHTML = "* Please enter at least one tag *";
-        var createOk = false;
+        createOk = false;
     }
 
     var cuisine = false;
@@ -135,19 +140,20 @@ function validateRestaurant(){
     }
     if(!cuisine){
         cHTML = "* Please select at least one cuisine type *";
+        createOk = false;
     }
 
     if(!validateURL(website)){
         wuHTML = "* Please enter a valid restaurant website *";
-        var createOk = false;
+        createOk = false;
     }
 
     if(desc == ""){
         deHTML = "* Please enter a description for the restaurant *";
-        var createOk = false;
+        createOk = false;
     } else if (countWords(desc) < 100){
         deHTML = "* Please enter at least 100 words for the description *";
-        var createOk = false;
+        createOk = false;
     }
 
     nError.innerHTML = nHTML;
