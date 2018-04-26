@@ -67,9 +67,12 @@
             <div class="row">
                 <div class="slideshow-container">
 
+                    <% var resPhotos = restaurant.photoURL.length %>
+                    <% for (var i = 0; i < resPhotos; i++) {%>
                     <div class="restaurant-img">
-                        <img class="slideshow-img" src="/restaurant/<%= restaurant._id %>/picture">
+                        <img class="slideshow-img" src="/restaurant/<%= restaurant._id + "-" + i %>/picture">
                     </div>
+                    <% } %>
 
                     <div class="restaurant-img">
                         <img class="slideshow-img" src="images/restTest2.jpg">

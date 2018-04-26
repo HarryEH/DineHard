@@ -44,11 +44,11 @@ router.post('/restaurant-*', function(req, res, next) {
 
 });
 
-router.get('/restaurant/:restID/picture', function(req,res,next) {
+router.get('/restaurant/:index/picture', function(req,res,next) {
     RestaurantController.getPicture(req, res);
 });
 
-router.get('/review/:reviewID/picture', function(req,res,next) {
+router.get('/review/:index/picture', function(req,res,next) {
     ReviewController.getPicture(req, res);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,17 +149,24 @@ router.post('/create-restaurant', function(req, res, next) {
         res.redirect('/login');
     } else {
         var form = new formidable.IncomingForm();
+        var filesList = [];
+        form.on('file', function(field, file) {
+            console.log(file.name);
+            filesList.push([field, file]);
+        });
+
         form.parse(req, function (err, fields, files) {
+            console.error(filesList);
             if (testCreateRestaurantInput(fields)) {
-                    console.error(fields.pNo);
-                    if (files.photo != undefined) {
-                        var img_path = files.photo.path;
-                        RestaurantController.addRestaurant(req, res, login, fields, img_path);
+                var imgs = [];
+                for (var i = 0; i < filesList.length; i++) {
+                    if (filesList[i][1] != undefined) {
+                        var img_path = filesList[i][1].path;
+                        console.error(img_path);
+                        imgs.push({data: fs.readFileSync(img_path), contentType: 'image/png'});
                     }
-                    else
-                    {
-                        console.error("IAMGE NOT LOAD");
-                    }
+                }
+                RestaurantController.addRestaurant(req, res, login, fields, imgs);
             } else {
                 res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
             }

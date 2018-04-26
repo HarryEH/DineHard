@@ -15,7 +15,7 @@ module.exports = {
 
     },
 
-    addRestaurant: function (req, res, login, fields, img_path) {
+    addRestaurant: function (req, res, login, fields, imgs) {
         // verify that the restaurant's address isn't already in the db
 
         console.error("starting add restuarant");
@@ -31,8 +31,7 @@ module.exports = {
             }
 
             if (results.length == 0) {
-                console.error(postcode);
-                const obj = {res: res, req: req, login: login, fields: fields, img_path: img_path};
+                const obj = {res: res, req: req, login: login, fields: fields, imgs: imgs};
                 geodata.postcodeToLocation(postcode, addResCallback, obj);
 
                 return;
@@ -43,12 +42,14 @@ module.exports = {
     },
 
     getPicture: function (req, res){
-        const rId = req.params.restID;
+        const indexID = req.params.index;
+        var rId = indexID.substring(0, indexID.lastIndexOf("-"));
+        var pId = indexID.substring(indexID.lastIndexOf("-")+1);
 
         models.Restaurant.findById(rId, function (err, results) {
-            if (err) return next(err);
-            res.contentType(results.photoURL.contentType);
-            res.send(results.photoURL.data);
+           if (err) console.error(err);
+           res.contentType(results.photoURL[pId].contentType);
+           res.send(results.photoURL[pId].data);
         });
     }
 
@@ -116,8 +117,6 @@ function getReviews(req, res, login, results, rId) {
 }
 
 function addResCallback(obj) {
-    console.error(obj.img_path);
-
     // add the restaurant to the db
     models.connect();
 
@@ -127,9 +126,9 @@ function addResCallback(obj) {
     const lat = obj.lat;
     const lng = obj.lng;
     const fields = obj.fields;
-    const img_path = obj.img_path;
+    const imgs = obj.imgs;
 
-    console.error(img_path);
+    console.error("Mongo Res Start");
 
     var restaurant = new models.Restaurant({
         name: fields.name,
@@ -140,12 +139,14 @@ function addResCallback(obj) {
         price: fields.price,
         lat: lat,
         lng: lng,
-        photoURL: { data: fs.readFileSync(img_path), contentType: 'image/png' },
+        photoURL: imgs,
         cuisines: fields.cuisines,
         tags: fields.tags + ", " + fields.name + ", " + fields.cuisines + ", " + fields.description,
         rating: 0,
         websiteURL: fields.websiteURL
     });
+
+    console.error("Add Res Done");
 
     restaurant.save(function (err, restaurant) {
         if (err) return console.error(err);
