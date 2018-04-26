@@ -216,14 +216,18 @@ function testCreateRestaurantInput(fields){
     const description = fields.description;
     const tags = fields.tags;
     const websiteURL = fields.websiteURL;
+    const price = fields.price;
+    const cuisines = fields.cuisines;
 
-    console.log("DNum " + undefCheck(doorNumber));
-    console.log("post " + undefCheck(postcode));
-    console.log("name " + undefCheck(name));
-    console.log("tags " + undefCheck(tags));
-    console.log("WEb " + undefCheck(websiteURL));
-    console.log("phone " + undefCheck(phoneNo));
+    console.log("DNum " + undefCheck(doorNumber) + " - " + doorNumber);
+    console.log("post " + undefCheck(postcode) + " - " + postcode);
+    console.log("name " + undefCheck(name)+ " - " + name);
+    console.log("tags " + undefCheck(tags)+ " - " + tags);
+    console.log("WEb " + undefCheck(websiteURL)+ " - " + websiteURL);
+    console.log("phone " + undefCheck(phoneNo)+ " - " + phoneNo);
     console.log("desc " + undefCheck(description));
+    console.error(price + " - Price");
+    console.error(cuisines + " - Cuisines")
 
 
     return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
