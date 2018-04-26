@@ -45,15 +45,9 @@ module.exports = {
     getPicture: function (req, res){
         const rId = req.params.restID;
 
-        console.error(rId);
-
-        if (typeof rId == "undefined") {
-            res.render('error', {loggedIn: login, error: {status: "404"}});
-        }
         models.Restaurant.findById(rId, function (err, results) {
             if (err) return next(err);
             res.contentType(results.photoURL.contentType);
-            console.error(results.photoURL.contentType);
             res.send(results.photoURL.data);
         });
     }

@@ -14,6 +14,16 @@ module.exports = {
 
         });
 
+    },
+
+    getPicture: function (req, res){
+        const revId = req.params.reviewID;
+
+        models.Review.findById(revId, function (err, results) {
+            if (err) return next(err);
+            res.contentType(results.photoURL.contentType);
+            res.send(results.photoURL.data);
+        });
     }
 };
 
