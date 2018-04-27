@@ -45,7 +45,7 @@ function handleCreateReview(req, res, user, restaurant) {
     // const rRating = Math.round(((restaurant.rating + parseInt(req.body.slider)) /  (restaurant.noRating + 1) ) *100) / 100;
     const rRating = Math.round(((restaurant.rating + parseInt(req.body.slider)) /  (restaurant.noRating + 1) ) *100) / 100;
 
-    res.send(JSON.stringify({rating: rRating, error: "" }));
+    res.send(JSON.stringify({rating: rRating, error: "", rId: restaurant._id }));
 
     emitSocketEvent();
 

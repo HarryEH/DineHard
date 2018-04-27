@@ -16,10 +16,11 @@ function ajax() {
         type: 'POST',
         dataType: "json",
         success: function (data) {
-            document.getElementById('reviewForm').style.display='none'
-            console.log(data);
+            document.getElementById('reviewForm').style.display='none';
+            document.getElementById('slider').value = 3;
+            document.getElementById('review-text').value = "";
+
             emitEvent(data);
-            // Code to change the page goes here
         },
         error: function (xhr, status, error) {
             console.log("err");
@@ -28,9 +29,15 @@ function ajax() {
 }
 
 function handleSocket(data){
-    console.log("/////////////////");
-    console.log(data);
-    console.log("/////////////////");
+    document.getElementById('updateable').outerHTML = data.rendered;
+    // The <script> doesn't get run so this is required to do that
+    for (var i = 0; i < data.results.length; i++) {
+        var divID = "review-star" + (i+1).toString();
+        getStarRating(data.results[i].rating, divID);
+        divID = "review-date" + (i+1).toString();
+        formatDate(data.results[i].date.getDate(), data.results[i].date.getMonth(), data.results[i].date.getFullYear(), divID);
+
+    }
 }
 
 function setupSocket() {

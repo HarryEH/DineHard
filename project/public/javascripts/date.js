@@ -8,6 +8,8 @@ function formatDate(dateDay, dateMonth, dateYear, divID){
 
     dateHTML += dateDay.toString() + "-";
 
+    dateMonth++;
+
     if(dateMonth < 9){
         dateHTML += "0";
     }

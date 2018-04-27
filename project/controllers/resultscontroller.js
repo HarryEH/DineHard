@@ -84,7 +84,7 @@ function keywordSearch(res, login, query, lat, lng){
 
     const distTest = 10;
 
-    models.Restaurant.find({tags: new RegExp(query, "i") } , function (err, results) {
+    models.Restaurant.find({tags: new RegExp(query.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""), "i") } , function (err, results) {
         if (err) {return console.error(err);}
 
         var actual_results = [];
@@ -114,7 +114,7 @@ function ajaxKeyword(req, res, queryPrev){
         query = "";
     }
 
-    models.Restaurant.find({tags: new RegExp(query, "i") } , function (err, results) {
+    models.Restaurant.find({tags: new RegExp(query.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""), "i") } , function (err, results) {
         if (err) {return console.error(err);}
 
         results = distanceFilter(results, req.query.lat, req.query.lng, req.body.slider);
