@@ -47,20 +47,23 @@ io.on('connection', function(socket) {
      * When a new review is added this is triggered by the client.
      * That then gets all the reviews and sends this to the client.
      */
-    socket.on("new-review", function(restaurant) {
-       models.Review.find({rId: restaurant.rId}, function(err, data) {
+    socket.on("new-review", function(data) {
+        console.log(data.restaurant.rId);
+        // console.log(restaurant.rId);
+        models.Review.find({resId: data.restaurant.rId}, function(err, data) {
            if(err) {return console.error(err);}
 
-           const file = fs.readFileSync('./views/all-reviews.ejs', 'ascii');
-           socket.emit("review", {results: data, rendered:ejs.render(file, {reviews: data})});
-       });
-
+           if (data.length != 0) {
+               const file = fs.readFileSync('./views/all-reviews.ejs', 'ascii');
+               socket.emit("review", {results: data, rendered:ejs.render(file, {reviews: data})});
+           }
+        });
     });
 
 });
 
 /**
- * Code tht connects to the database
+ * Code that connects to the database
  */
 models.connect();
 models.User.find({username: "admin"}, function(err, results) {
