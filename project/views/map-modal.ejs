@@ -1,0 +1,24 @@
+<!-- Button to open the modal login form -->
+<button onclick="document.getElementById('map').style.display='block'">View on map</button>
+
+<!-- The Modal -->
+<div id="map" class="modal">
+    <span onclick="document.getElementById('map').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    <form id="map-modal" class="modal-content animate" >
+        <div class="modalheader">
+            <h2>MAP HERE</h2>
+        </div>
+    </form>
+</div>
+
+<script>
+    var modal = document.getElementById('reviewForm');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
