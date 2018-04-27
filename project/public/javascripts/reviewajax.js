@@ -35,7 +35,8 @@ function handleSocket(data){
         var divID = "review-star" + (i+1).toString();
         getStarRating(data.results[i].rating, divID);
         divID = "review-date" + (i+1).toString();
-        formatDate(data.results[i].date.getDate(), data.results[i].date.getMonth(), data.results[i].date.getFullYear(), divID);
+        const date = new Date(data.results[i].date);
+        formatDate(date.getDate(),date.getMonth(), date.getFullYear(), divID);
 
     }
 }
