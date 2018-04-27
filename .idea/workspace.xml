@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b30d874-2d79-4a01-ab9f-656cff8da24a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/project/models/seeding/restaurant_seed.js" afterPath="$PROJECT_DIR$/project/models/seeding/restaurant_seed.js" />
-      <change beforePath="$PROJECT_DIR$/project/views/restaurant.ejs" afterPath="$PROJECT_DIR$/project/views/restaurant.ejs" />
-      <change beforePath="$PROJECT_DIR$/project/views/results-div.ejs" afterPath="$PROJECT_DIR$/project/views/results-div.ejs" />
+      <change beforePath="$PROJECT_DIR$/project/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/project/public/stylesheets/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,11 +73,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="results.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="results.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/views/results.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-219">
+            <state relative-caret-position="-223">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="109" column="29" lean-forward="true" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -105,16 +113,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create-restaurant.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/views/create-restaurant.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="190" column="60" lean-forward="false" selection-start-line="190" selection-start-column="60" selection-end-line="190" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -135,6 +133,7 @@
       <find>req.body</find>
       <find>photos</find>
       <find>foreac</find>
+      <find>results-se</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,7 +148,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/project/public/javascripts/photo-display.js" />
-        <option value="$PROJECT_DIR$/project/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/project/public/javascripts/create-restaurant.js" />
         <option value="$PROJECT_DIR$/project/controllers/geodata.js" />
         <option value="$PROJECT_DIR$/project/views/create-restaurant.ejs" />
@@ -160,6 +158,7 @@
         <option value="$PROJECT_DIR$/project/models/seeding/restaurant_seed.js" />
         <option value="$PROJECT_DIR$/project/views/restaurant.ejs" />
         <option value="$PROJECT_DIR$/project/views/results-div.ejs" />
+        <option value="$PROJECT_DIR$/project/public/stylesheets/style.css" />
       </list>
     </option>
   </component>
@@ -239,7 +238,7 @@
               <item name="iw-assignment" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iw-assignment" type="b2602c69:ProjectViewProjectNode" />
@@ -378,12 +377,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524649790495</updated>
-      <workItem from="1524649792187" duration="21166000" />
+      <workItem from="1524649792187" duration="21603000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21166000" />
+    <option name="totallyTimeSpent" value="21603000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -448,14 +447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1329">
-          <caret line="596" column="13" lean-forward="false" selection-start-line="596" selection-start-column="13" selection-end-line="596" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -558,8 +549,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/views/results.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-219">
+        <state relative-caret-position="-223">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="109" column="29" lean-forward="true" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
           <folding />
         </state>
       </provider>

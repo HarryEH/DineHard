@@ -107,7 +107,7 @@ a:hover {
 
 [class*='row'] {
     margin: 0px;
-    padding: 2px 0px 3px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 [class*='col-'] {
@@ -823,7 +823,7 @@ a:hover {
 @media (min-width: 768px) {
     .results-search {
         z-index: 0;
-        height: 95vh;
+        height: 100vh;
         margin-bottom: -45px;
     }
 
