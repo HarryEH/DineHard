@@ -902,6 +902,7 @@ a:hover {
 /* ------------ SLIDER CSS ------------ */
 
 .slidecontainer {
+    padding: 10px 0% 15px 0%;
     width: 100%; /* Width of the outside container */
 }
 
@@ -1130,6 +1131,18 @@ a:hover {
 .review-date {
     width: 50%;
     padding-left: 15px;
+}
+
+.review-add-btn{
+    height: 40px;
+    width: 170px;
+    min-width: 70px;
+    margin: 10px 40% 10px 40%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--bg2-color);
+    color: white;
 }
 
 /* ------------ CREATE REVIEW CSS ------------ */

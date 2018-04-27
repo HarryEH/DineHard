@@ -1,8 +1,9 @@
+<% include stylesheets.ejs %>
 <script src="javascripts/write-review.js"></script>
 <script src="javascripts/reviewajax.js"></script>
 
 <!-- Button to open the modal login form -->
-<button onclick="document.getElementById('reviewForm').style.display='block'">Write a review</button>
+<button class="review-add-btn s-font" onclick="document.getElementById('reviewForm').style.display='block'">Write a review</button>
 
 <!-- The Modal -->
 <div id="reviewForm" class="modal">
@@ -11,13 +12,13 @@
     <!-- Modal Content -->
     <form id="writeReviewForm" class="modal-content animate" onsubmit="reviewValidate(event);">
         <div class="modalheader">
-            <h2>Write Review for <%= restaurant.name %></h2>
+            <h2>Write Review for '<%= restaurant.name %>'</h2>
         </div>
 
         <div class="reviewcontainer">
             <div class="row review">
                 <div class="col-33">
-                    <label for="rating">Rating: <span id="star"></span> out of 7 stars</label>
+                    <label for="rating" class="s-font">Rating: <span id="star"></span> out of 7 stars</label>
                 </div>
 
                 <div class="col-66">
@@ -38,17 +39,17 @@
 
             <div class="row review">
                 <div class="col-33">
-                    <label for="reviewdescription">Review description</label>
+                    <label for="reviewdescription" class="s-font">Review description</label>
                 </div>
 
                 <div class="col-66">
-                    <textarea class="review-text" rows="8" cols="50" placeholder="Enter review" name="review-text" id="review-text"></textarea>
+                    <textarea class="review-text s-font" rows="8" cols="50" placeholder="Enter review" name="review-text" id="review-text"></textarea>
                 </div>
 
             </div>
-            <button type="submit" class="new-review-submit">Submit Review</button>
+            <button type="submit" class="new-review-submit s-font">Submit Review</button>
 
-            <button type="button" onclick="document.getElementById('reviewForm').style.display='none'" class="new-review-cancel">Cancel</button>
+            <button type="button" onclick="document.getElementById('reviewForm').style.display='none'" class="new-review-cancel s-font">Cancel</button>
         </div>
     </form>
 </div>
