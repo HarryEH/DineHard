@@ -1,6 +1,12 @@
 const models = require('../models');
+var fs = require('fs');
 
 models.connect();
+
+img1 = "public/images/restTest1.jpg";
+img2 = "public/images/restTest2.jpg";
+img3 = "public/images/restTest3.jpg";
+imgs = [{data: fs.readFileSync(img1), contentType: 'image/jpg'}, {data: fs.readFileSync(img2), contentType: 'image/jpg'}, {data: fs.readFileSync(img3), contentType: 'image/jpg'}]
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 var res1 = new models.Restaurant({
@@ -12,7 +18,7 @@ var res1 = new models.Restaurant({
     cuisines: "Italian",
     lat: 53.39476,
     lng: -1.50796,
-    photoURL: "null",
+    photoURL: imgs,
     price: 10,
     tags: "homely, warm, good ambiance, bubbly, lovely, italian, newcastle, welcoming, dine, hard",
     rating: 7,
@@ -34,7 +40,7 @@ var res2 = new models.Restaurant({
     cuisines: "Chinese",
     lat: 53.3806721,
     lng: -1.4822935,
-    photoURL: "null",
+    photoURL: imgs,
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, chinese, sheffield, acceptable, excellent, the, wonder, inn",
     rating: 0,
@@ -56,7 +62,7 @@ var res3 = new models.Restaurant({
     cuisines: "Korean",
     lat: 53.378378,
     lng: -1.479892,
-    photoURL: "null",
+    photoURL: imgs,
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, korean, sheffield, acceptable, excellent, harry, harrys, kebab, shop, chips, pizza, cheap",
     rating: 0,
@@ -78,7 +84,7 @@ var res4 = new models.Restaurant({
     cuisines: "Thai",
     lat: 53.33844,
     lng: -1.48711,
-    photoURL: "null",
+    photoURL: imgs,
     price: 1,
     tags: "homely, warm, good ambiance, good, great, thai, sheffield, acceptable, excellent, potato, chips, delicious, fryup, adam, potato, dungeon, adams",
     rating: 0,
@@ -100,7 +106,7 @@ var res5 = new models.Restaurant({
     cuisines: "Indian",
     lat: 53.37735,
     lng: -1.42184,
-    photoURL: "null",
+    photoURL: imgs,
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, indian, sheffield, acceptable, excellent, haven, delight, superior, victoria, victorias",
     rating: 0,
@@ -122,7 +128,7 @@ var res6 = new models.Restaurant({
     cuisines: "Italian",
     lat: 53.38376,
     lng: -1.50736,
-    photoURL: "null",
+    photoURL: imgs,
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, italian, sheffield, acceptable, excellent, bread, yummy, tasty, fabio, fabios, facaccia",
     rating: 0,
