@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2b30d874-2d79-4a01-ab9f-656cff8da24a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/project/public/javascripts/create-restaurant.js" afterPath="$PROJECT_DIR$/project/public/javascripts/create-restaurant.js" />
-      <change beforePath="$PROJECT_DIR$/project/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/project/public/stylesheets/style.css" />
+      <change beforePath="$PROJECT_DIR$/project/package-lock.json" afterPath="$PROJECT_DIR$/project/package-lock.json" />
+      <change beforePath="$PROJECT_DIR$/project/package.json" afterPath="$PROJECT_DIR$/project/package.json" />
+      <change beforePath="$PROJECT_DIR$/project/public/javascripts/capture.js" afterPath="$PROJECT_DIR$/project/public/javascripts/capture.js" />
+      <change beforePath="$PROJECT_DIR$/project/routes/index.js" afterPath="$PROJECT_DIR$/project/routes/index.js" />
       <change beforePath="$PROJECT_DIR$/project/views/create-restaurant.ejs" afterPath="$PROJECT_DIR$/project/views/create-restaurant.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -39,13 +41,14 @@
       <file leaf-file-name="create-restaurant.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/views/create-restaurant.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-76">
-              <caret line="129" column="54" lean-forward="false" selection-start-line="129" selection-start-column="54" selection-end-line="129" selection-end-column="54" />
+            <state relative-caret-position="212">
+              <caret line="150" column="98" lean-forward="false" selection-start-line="150" selection-start-column="80" selection-end-line="150" selection-end-column="98" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="capture.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="capture.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/public/javascripts/capture.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2209">
-              <caret line="145" column="64" lean-forward="false" selection-start-line="145" selection-start-column="64" selection-end-line="145" selection-end-column="64" />
+            <state relative-caret-position="92">
+              <caret line="106" column="40" lean-forward="false" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -86,6 +89,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1002">
               <caret line="124" column="33" lean-forward="false" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="175" column="30" lean-forward="true" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -118,8 +131,9 @@
       <find>video</find>
       <find>start</find>
       <find>photo-u</find>
-      <find>foreac</find>
       <find>photo-c</find>
+      <find>output</find>
+      <find>foreac</find>
       <find>photo</find>
     </findStrings>
   </component>
@@ -138,7 +152,6 @@
         <option value="$PROJECT_DIR$/project/controllers/geodata.js" />
         <option value="$PROJECT_DIR$/project/controllers/review.js" />
         <option value="$PROJECT_DIR$/project/models/models.js" />
-        <option value="$PROJECT_DIR$/project/routes/index.js" />
         <option value="$PROJECT_DIR$/project/controllers/restaurantscontroller.js" />
         <option value="$PROJECT_DIR$/project/models/seeding/restaurant_seed.js" />
         <option value="$PROJECT_DIR$/project/views/restaurant.ejs" />
@@ -146,6 +159,7 @@
         <option value="$PROJECT_DIR$/project/public/javascripts/create-restaurant.js" />
         <option value="$PROJECT_DIR$/project/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/project/views/create-restaurant.ejs" />
+        <option value="$PROJECT_DIR$/project/routes/index.js" />
         <option value="$PROJECT_DIR$/project/public/javascripts/capture.js" />
       </list>
     </option>
@@ -240,6 +254,12 @@
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iw-assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iw-assignment" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iw-assignment" type="b2602c69:ProjectViewProjectNode" />
@@ -378,12 +398,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524649790495</updated>
-      <workItem from="1524649792187" duration="28896000" />
+      <workItem from="1524649792187" duration="34437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28896000" />
+    <option name="totallyTimeSpent" value="34437000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -524,18 +544,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/project/models/seeding/restaurant_seed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="23" />
+        <state relative-caret-position="119">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/views/profile.ejs">
+    <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="36" column="120" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="120" />
+        <state relative-caret-position="119">
+          <caret line="706" column="7" lean-forward="false" selection-start-line="706" selection-start-column="1" selection-end-line="706" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -548,22 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/public/javascripts/profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/models/seeding/restaurant_seed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/views/restaurant.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -572,31 +576,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/public/javascripts/capture.js">
+    <entry file="file://$PROJECT_DIR$/project/public/javascripts/profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2209">
-          <caret line="145" column="64" lean-forward="false" selection-start-line="145" selection-start-column="64" selection-end-line="145" selection-end-column="64" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/views/profile.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="36" column="120" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="120" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/views/create-restaurant.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="129" column="54" lean-forward="false" selection-start-line="129" selection-start-column="54" selection-end-line="129" selection-end-column="54" />
+        <state relative-caret-position="212">
+          <caret line="150" column="98" lean-forward="false" selection-start-line="150" selection-start-column="80" selection-end-line="150" selection-end-column="98" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
+    <entry file="file://$PROJECT_DIR$/project/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="706" column="7" lean-forward="false" selection-start-line="706" selection-start-column="1" selection-end-line="706" selection-end-column="7" />
+        <state relative-caret-position="282">
+          <caret line="175" column="30" lean-forward="true" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/public/javascripts/capture.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="106" column="40" lean-forward="false" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
           <folding />
         </state>
       </provider>

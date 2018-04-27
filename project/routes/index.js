@@ -1,4 +1,5 @@
 var express = require('express');
+var dataUriToBuffer = require('data-uri-to-buffer');
 var formidable = require('formidable');
 var fs = require('fs');
 var router = express.Router();
@@ -157,14 +158,23 @@ router.post('/create-restaurant', function(req, res, next) {
 
         form.parse(req, function (err, fields, files) {
             console.error(filesList);
+            console.error(fields.photoCaptureSource);
             if (testCreateRestaurantInput(fields)) {
                 var imgs = [];
                 for (var i = 0; i < filesList.length; i++) {
                     if (filesList[i][1] != undefined) {
-                        var img_path = filesList[i][1].path;
-                        console.error(img_path);
-                        imgs.push({data: fs.readFileSync(img_path), contentType: 'image/png'});
+                        if(filesList[i][1].size != 0) {
+                            var img_path = filesList[i][1].path;
+                            console.error(img_path);
+                            imgs.push({data: fs.readFileSync(img_path), contentType: 'image/png'});
+                        }
                     }
+                }
+
+                uri = fields.photoCaptureSource;
+                decoded = dataUriToBuffer(uri);
+                if(uri != ""){
+                    imgs.push({data: decoded, contentType: 'image/png'})
                 }
                 RestaurantController.addRestaurant(req, res, login, fields, imgs);
             } else {

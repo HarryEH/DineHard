@@ -24,6 +24,7 @@
         video = document.getElementById('video');
         canvas = document.getElementById('canvas');
         photo = document.getElementById('photo-capture');
+        photoText = document.getElementById('photo-text-source')
         startbutton = document.getElementById('start-button');
         retakebutton = document.getElementById('retake-button');
 
@@ -104,6 +105,7 @@
 
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
+        photoText.setAttribute('value', data);
     }
 
     // Capture a photo by fetching the current contents of the video
