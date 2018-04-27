@@ -8,7 +8,7 @@ var restaurantSchema = mongoose.Schema({
     name: String,
     doorNumber: String,
     postcode: String,
-    photoURL: String,
+    photoURL: [{ data: Buffer, contentType: String }],
     description: String,
     phoneNo: String,
     tags: String,

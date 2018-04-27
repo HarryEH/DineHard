@@ -1,8 +1,8 @@
 const models = require('../models/models');
 const geodata = require('./geodata');
+const fs = require('fs');
 
 module.exports = {
-
     renderRestaurant: function (req, res, login) {
 
         const rId = req.query.rId;
@@ -15,11 +15,15 @@ module.exports = {
 
     },
 
-    addRestaurant: function (req, res, login) {
+    addRestaurant: function (req, res, login, fields, imgs) {
         // verify that the restaurant's address isn't already in the db
 
-        const no = req.body.doorNumber;
-        const postcode = req.body.postcode;
+        console.error("starting add restuarant");
+
+        const no = fields.doorNumber;
+        const postcode = fields.postcode;
+
+        console.error(postcode);
 
         models.Restaurant.find({doorNumber: no, postcode: postcode}, function (err, results) {
             if (err) {
@@ -27,7 +31,7 @@ module.exports = {
             }
 
             if (results.length == 0) {
-                const obj = {res: res, req: req, login: login};
+                const obj = {res: res, req: req, login: login, fields: fields, imgs: imgs};
                 geodata.postcodeToLocation(postcode, addResCallback, obj);
 
                 return;
@@ -35,6 +39,18 @@ module.exports = {
             // else render some error
         });
 
+    },
+
+    getPicture: function (req, res){
+        const indexID = req.params.index;
+        var rId = indexID.substring(0, indexID.lastIndexOf("-"));
+        var pId = indexID.substring(indexID.lastIndexOf("-")+1);
+
+        models.Restaurant.findById(rId, function (err, results) {
+           if (err) console.error(err);
+           res.contentType(results.photoURL[pId].contentType);
+           res.send(results.photoURL[pId].data);
+        });
     }
 
 };
@@ -109,22 +125,28 @@ function addResCallback(obj) {
     const login = obj.login;
     const lat = obj.lat;
     const lng = obj.lng;
+    const fields = obj.fields;
+    const imgs = obj.imgs;
+
+    console.error("Mongo Res Start");
 
     var restaurant = new models.Restaurant({
-        name: req.body.name,
-        doorNumber: req.body.doorNumber,
-        postcode: req.body.postcode,
-        description: req.body.description,
-        phoneNo: req.body.phoneNo,
-        price: req.body.price,
+        name: fields.name,
+        doorNumber: fields.doorNumber,
+        postcode: fields.postcode,
+        description: fields.description,
+        phoneNo: fields.phoneNo,
+        price: fields.price,
         lat: lat,
         lng: lng,
-        photoURL: "",
-        cuisines: req.body.cuisines,
-        tags: req.body.tags + ", " + req.body.name + ", " + req.body.cuisines + ", " + req.body.description,
+        photoURL: imgs,
+        cuisines: fields.cuisines,
+        tags: fields.tags + ", " + fields.name + ", " + fields.cuisines + ", " + fields.description,
         rating: 0,
-        websiteURL: req.body.websiteURL
+        websiteURL: fields.websiteURL
     });
+
+    console.error("Add Res Done");
 
     restaurant.save(function (err, restaurant) {
         if (err) return console.error(err);

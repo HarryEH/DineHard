@@ -1,4 +1,6 @@
 var express = require('express');
+var formidable = require('formidable');
+var fs = require('fs');
 var router = express.Router();
 
 var ResultsController = require('../controllers/resultscontroller');
@@ -40,6 +42,14 @@ router.post('/restaurant-*', function(req, res, next) {
         res.render('login', {loggedIn: false, error: ""});
     }
 
+});
+
+router.get('/restaurant/:index/picture', function(req,res,next) {
+    RestaurantController.getPicture(req, res);
+});
+
+router.get('/review/:index/picture', function(req,res,next) {
+    ReviewController.getPicture(req, res);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -138,11 +148,29 @@ router.post('/create-restaurant', function(req, res, next) {
     if (login === false) {
         res.redirect('/login');
     } else {
-        if (testCreateRestaurantInput(req)) {
-            RestaurantController.addRestaurant(req, res, login);
-        } else {
-            res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
-        }
+        var form = new formidable.IncomingForm();
+        var filesList = [];
+        form.on('file', function(field, file) {
+            console.log(file.name);
+            filesList.push([field, file]);
+        });
+
+        form.parse(req, function (err, fields, files) {
+            console.error(filesList);
+            if (testCreateRestaurantInput(fields)) {
+                var imgs = [];
+                for (var i = 0; i < filesList.length; i++) {
+                    if (filesList[i][1] != undefined) {
+                        var img_path = filesList[i][1].path;
+                        console.error(img_path);
+                        imgs.push({data: fs.readFileSync(img_path), contentType: 'image/png'});
+                    }
+                }
+                RestaurantController.addRestaurant(req, res, login, fields, imgs);
+            } else {
+                res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
+            }
+        });
     }
 });
 
@@ -191,18 +219,30 @@ function checkLogin(req, res, next){
     }
 }
 
-function testCreateRestaurantInput(req){
-    const doorNumber = req.body.doorNumber;
-    const postcode = req.body.postcode;
-    const phoneNo = req.body.phoneNo;
-    const name = req.body.doorNumber;
-    const description = req.body.description;
-    const photoURL = req.body.photo;
-    const tags = req.body.tags;
-    const websiteURL = req.body.doorNumber;
+function testCreateRestaurantInput(fields){
+    const doorNumber = fields.doorNumber;
+    const postcode = fields.postcode;
+    const phoneNo = fields.phoneNo;
+    const name = fields.name;
+    const description = fields.description;
+    const tags = fields.tags;
+    const websiteURL = fields.websiteURL;
+    const price = fields.price;
+    const cuisines = fields.cuisines;
+
+    console.log("DNum " + undefCheck(doorNumber) + " - " + doorNumber);
+    console.log("post " + undefCheck(postcode) + " - " + postcode);
+    console.log("name " + undefCheck(name)+ " - " + name);
+    console.log("tags " + undefCheck(tags)+ " - " + tags);
+    console.log("WEb " + undefCheck(websiteURL)+ " - " + websiteURL);
+    console.log("phone " + undefCheck(phoneNo)+ " - " + phoneNo);
+    console.log("desc " + undefCheck(description));
+    console.error(price + " - Price");
+    console.error(cuisines + " - Cuisines")
+
 
     return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
-        && undefCheck(photoURL) && undefCheck(tags) && undefCheck(websiteURL)
+        && undefCheck(tags) && undefCheck(websiteURL)
         && undefCheck(phoneNo) && undefCheck(description);
 
 }

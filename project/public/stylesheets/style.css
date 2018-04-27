@@ -590,6 +590,24 @@ a:hover {
     margin: 8% 5% 0% 5%;
 }
 
+.user-form ol {
+    padding-left: 0;
+}
+
+.user-form li {
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    list-style-type: none;
+    border: 1px solid black;
+}
+
+.user-form img {
+    height: 64px;
+    order: 1;
+}
+
 .user-border {
     padding: 5px 15px 15px 15px;
     border-radius: 25px;

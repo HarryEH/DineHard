@@ -25,8 +25,7 @@
             <div class = "error"><%= error %></div>
 
             <div class="user-input-wrapper s-font">
-
-                <form id="createRestaurantForm" action="/create-restaurant" onsubmit="validateRestaurant();" method="post" >
+                <form id="createRestaurantForm" action="/create-restaurant" onsubmit="validateRestaurant();" method="post" enctype="multipart/form-data">
 
                     <div class="row create-restaurant">
                         <div class="col-100">
@@ -51,7 +50,7 @@
 
                     <div class="row create-restaurant">
                         <div class="col-5">
-                            <label for='telephone'>Restaurant Telephone Number:</label>
+                            <label for='phoneNo'>Restaurant Telephone Number:</label>
                         </div>
                         <div class="col-7">
                             <input type="text" placeholder="Enter telephone number" name="phoneNo" id="phoneNo">
@@ -82,7 +81,7 @@
 
                     <div class="row create-restaurant">
                         <div class="col-5">
-                            <label for="doornumber">Door Number:</label>
+                            <label for="doorNumber">Door Number:</label>
                         </div>
                         <div class="col-7">
                             <input class="field" name="doorNumber" id="street_number" disabled="true">
@@ -99,15 +98,6 @@
                             </input>
                         </div>
                     </div>
-
-                    <!--<div class="row createRestaurant">-->
-                    <!--<div class="col-5">-->
-                    <!--<label for="city">City:</label>-->
-                    <!--</div>-->
-                    <!--<div class="col-7">-->
-                    <!--<td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"></input></td>-->
-                    <!--</div>-->
-                    <!--</div>-->
 
                     <div class="row create-restaurant">
                         <div class="col-100">
@@ -136,7 +126,12 @@
                             <label for='photo'>Photo URL:</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" placeholder="Enter restaurant photo URL" name="photo" id="photo">
+                            <div>
+                                <input type="file" id="image_uploads" name="photo" accept=".png" multiple>
+                            </div>
+                            <div class="image-preview" id="preview">
+                                <p>No files currently selected for upload</p>
+                            </div>
                         </div>
                     </div>
 
@@ -168,23 +163,33 @@
                         </div>
                         <div class="col-7 xs-font">
                             <div class="create-restauarant-input">
-                                <label class="cuisines">Italian<br>
-                                    <input type="checkbox" name="cuisines">
+                                <label class="cuisines">Chinese<br>
+                                    <input type="checkbox" name="cuisines" value="Chinese">
                                     <span class="checkmark"></span>
                                 </label>
 
-                                <label class="cuisines">Chinese<br>
-                                    <input type="checkbox" name="cuisines">
+                                <label class="cuisines">Italian<br>
+                                    <input type="checkbox" name="cuisines" value="Italian">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Korean<br>
+                                    <input type="checkbox" name="cuisines" value="Spanish">
                                     <span class="checkmark"></span>
                                 </label>
 
                                 <label class="cuisines">Mexican<br>
-                                    <input type="checkbox" name="cuisines">
+                                    <input type="checkbox" name="cuisines" value="Mexican">
                                     <span class="checkmark"></span>
                                 </label>
 
                                 <label class="cuisines">Spanish<br>
-                                    <input type="checkbox" name="cuisines">
+                                    <input type="checkbox" name="cuisines" value="Spanish">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Thai<br>
+                                    <input type="checkbox" name="cuisines" value="Spanish">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -203,7 +208,7 @@
                         </div>
                         <div class="col-7">
                             <div class="create-restauarant-input">
-                                <select name="pricerange">
+                                <select name="price">
                                     <option value="1">£</option>
                                     <option value="2">£-££</option>
                                     <option value="3">££</option>
@@ -225,10 +230,10 @@
 
                     <div class="row create-restaurant">
                         <div class="col-5">
-                            <label for='websiteurl'>Website URL:</label>
+                            <label for='websiteURL'>Website URL:</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" placeholder="Enter website URL" name="websiteurl" id="websiteurl">
+                            <input type="text" placeholder="Enter website URL" name="websiteURL" id="websiteurl">
                         </div>
                     </div>
 
@@ -258,5 +263,6 @@
     </div>
 </div>
 <% include footer.ejs %>
+<script src="javascripts/photo-display.js"></script>
 </body>
 </html>
