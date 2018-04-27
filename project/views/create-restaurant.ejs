@@ -10,6 +10,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="javascripts/create-restaurant.js"></script>
     <script src="javascripts/write-review.js"></script>
+    <script src="javascripts/capture.js"></script>
 </head>
 
 <body>
@@ -126,11 +127,27 @@
                             <label for='photo'>Photo URL:</label>
                         </div>
                         <div class="col-7">
-                            <div>
-                                <input type="file" id="image_uploads" name="photo" accept=".png" multiple>
+                            <div id="photo-upload-area" style="display:block">
+                                <div class="photo-upload"><button onclick="showCapture(event)">Take Photo</button></div>
+                                <div>
+                                    <input type="file" id="image_uploads" name="photo-upload" accept=".png" multiple>
+                                </div>
+                                <div class="photo-upload image-preview" id="preview">
+                                    <p>No files currently selected for upload</p>
+                                </div>
                             </div>
-                            <div class="image-preview" id="preview">
-                                <p>No files currently selected for upload</p>
+                            <div class="contentarea" id="photo-capture-area" style="display:none">
+                                <div><button onclick="showUpload(event)">Upload Photo</button></div>
+                                <div class="camera" id="camera" style="display:block">
+                                    <video id="video">Video stream not available.</video>
+                                    <button id="start-button">Take photo</button>
+                                </div>
+                                <canvas id="canvas">
+                                </canvas>
+                                <div class="output" id="output" style="display: none">
+                                    <img id="photo-capture" name="photo-capture" alt="The screen capture will appear in this box.">
+                                    <button id="retake-button">Retake photo?</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -224,8 +241,6 @@
                                 <div class="col-7">
                                     <input type="text" placeholder="Other" name="othercuisine" id="othercuisine">
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

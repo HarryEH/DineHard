@@ -67,7 +67,8 @@ function validateRestaurant(){
     var address = document.forms["createRestaurantForm"]["address"].value.trim();
     var doorNum = document.forms["createRestaurantForm"]["doorNumber"].value.trim();
     var postcode = document.forms["createRestaurantForm"]["postcode"].value.trim();
-    var photo = document.forms["createRestaurantForm"]["photo"].value;
+    var photoU = document.forms["createRestaurantForm"]["photo-upload"].value;
+    var photoC = document.forms["createRestaurantForm"]["photo-capture"].getAttribute("src");
     var tags = document.forms["createRestaurantForm"]["tags"].value.trim();
     var cuisines = document.forms["createRestaurantForm"]["cuisines"];
     var website = document.forms["createRestaurantForm"]["websiteurl"].value.trim();
@@ -121,7 +122,7 @@ function validateRestaurant(){
         }
     }
 
-    if(photo==""){
+    if(photoU=="" && photoC==null){
         purlHTML = "* Please select a photo for the restaurant *";
         createOk = false;
     }
