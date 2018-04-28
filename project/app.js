@@ -55,7 +55,7 @@ io.on('connection', function(socket) {
 
            if (data.length != 0) {
                const file = fs.readFileSync('./views/all-reviews.ejs', 'ascii');
-               socket.emit("review", {results: data, rendered:ejs.render(file, {reviews: data})});
+               io.sockets.emit("review", {results: data, rendered:ejs.render(file, {reviews: data})});
            }
         });
     });

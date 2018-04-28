@@ -13,6 +13,7 @@ function validPostcode(postcode) {
 const DEFAULT_DIST = 10;
 
 module.exports = {
+
     handleSearch: function(req, res, login) {
 
         req.session.user_lat = req.query.lat;
@@ -74,7 +75,7 @@ function onPostcode(obj){
             }
         }
 
-        obj.res.render('results', { loggedIn: obj.login, results: sortBy({ejs: {results: actual_results}, prevQuery: {sortBy: "distance"}}), prevQuery: { postcode: obj.postcode} });
+        obj.res.render('results', { lat: obj.lat, lng: obj.lng, loggedIn: obj.login, results: sortBy({ejs: {results: actual_results}, prevQuery: {sortBy: "distance"}}), prevQuery: { postcode: obj.postcode} });
 
     });
 
@@ -99,7 +100,7 @@ function keywordSearch(res, login, query, lat, lng){
             }
         }
 
-        res.render('results', { query: query, loggedIn: login, results: sortBy({ejs: {results: actual_results}, prevQuery: {sortBy: "distance"}}), prevQuery: {keyword: query} });
+        res.render('results', { lat: lat, lng: lng, query: query, loggedIn: login, results: sortBy({ejs: {results: actual_results}, prevQuery: {sortBy: "distance"}}), prevQuery: {keyword: query} });
     });
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

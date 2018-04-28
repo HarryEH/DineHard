@@ -7,7 +7,7 @@
     <% include stylesheets.ejs %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4&callback=myMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4"></script>
     <script src="javascripts/location.js"></script>
     <script src="javascripts/load.js"></script>
     <script src="javascripts/reviewRating.js"></script>
@@ -16,9 +16,7 @@
     <script src="javascripts/write-review.js"></script>
     <script src="javascripts/reviewajax.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        setupSocket();
-    </script>
+    <script>setupSocket();</script>
     <title><%= restaurant.name %></title>
 </head>
 
