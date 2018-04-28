@@ -4,19 +4,23 @@ var formidable = require('formidable');
 var fs = require('fs');
 var router = express.Router();
 
-var ResultsController = require('../controllers/resultscontroller');
-var loginController = require('../controllers/logincontroller');
-var registerController = require('../controllers/registercontroller');
-var profileController = require('../controllers/profilecontroller');
-var RestaurantController = require('../controllers/restaurantscontroller');
-var PasswordController = require('../controllers/passwordcontroller');
-var ReviewController = require('../controllers/review');
+/**
+ * All of the controllers that have been required.
+ */
+var resultsController = require('../controllers/results');
+var loginController = require('../controllers/login');
+var registerController = require('../controllers/register');
+var profileController = require('../controllers/profile');
+var restaurantController = require('../controllers/restaurants');
+var passwordController = require('../controllers/password');
+var reviewController = require('../controllers/review');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* GET home page. */
+/**
+ *
+ */
 router.get('/', function(req, res, next) {
     req.session.prevURL = req.url || '/';
-
     var login = checkLogin(req, res, next);
     var forename = req.session.forename;
     res.render('index', { loggedIn: login, forename: forename });
@@ -24,48 +28,72 @@ router.get('/', function(req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/restaurant', function(req, res, next) {
     res.redirect(req.session.prevURL);
 });
 
+/**
+ *
+ */
 router.get('/restaurant-*', function(req, res, next) {
     req.session.prevURL = req.url || '/';
 
     var login = checkLogin(req, res, next);
-    RestaurantController.renderRestaurant(req,res,login);
+    restaurantController.renderRestaurant(req,res,login);
 });
 
+/**
+ *
+ */
 router.post('/restaurant-*', function(req, res, next) {
     console.log("hello world");
     if (checkLogin(req, res, next)) {
-        ReviewController.createReview(req, res);
+        reviewController.createReview(req, res);
     } else {
         res.render('login', {loggedIn: false, error: ""});
     }
 
 });
 
+/**
+ *
+ */
 router.get('/restaurant/:index/picture', function(req,res,next) {
-    RestaurantController.getPicture(req, res);
+    restaurantController.getPicture(req, res);
 });
 
+/**
+ *
+ */
 router.get('/review/:index/picture', function(req,res,next) {
-    ReviewController.getPicture(req, res);
+    reviewController.getPicture(req, res);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/results', function(req, res, next) {
     req.session.prevURL = req.url || '/';
-    ResultsController.handleSearch(req,res, checkLogin(req, res, next));
+    resultsController.handleSearch(req,res, checkLogin(req, res, next));
 });
 
+/**
+ *
+ */
 router.post('/results', function(req, res, next) {
-    ResultsController.ajaxSearch(req,res);
+    resultsController.ajaxSearch(req,res);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/login', function(req, res, next) {
     const login = checkLogin(req, res, next);
 
@@ -76,12 +104,18 @@ router.get('/login', function(req, res, next) {
     }
 });
 
+/**
+ *
+ */
 router.post('/login', function(req, res, next) {
     loginController.handleLogin(req, res, next);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/forgot-password', function(req, res, next) {
     const login = checkLogin(req, res, next);
 
@@ -93,45 +127,69 @@ router.get('/forgot-password', function(req, res, next) {
 
 });
 
+/**
+ *
+ */
 router.post('/forgot-password', function(req, res, next) {
     const login = checkLogin(req, res, next);
 
     if(login === true){
         res.redirect(req.session.prevURL);
     } else {
-        PasswordController.sendEmail(req,res,login);
+        passwordController.sendEmail(req,res,login);
     }
 
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/change-password*', function(req, res, next) {
     res.render('change-password', {tokenId: req.query.tokenId, username: req.query.username, loggedIn: checkLogin(req, res, next), error: ""});
 });
 
+/**
+ *
+ */
 router.post('/change-password', function(req, res, next) {
-    PasswordController.handleReset(req,res,checkLogin(req, res, next));
+    passwordController.handleReset(req,res,checkLogin(req, res, next));
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/logout', function (req, res, next) {
     delete req.session.user_id;
     res.redirect('/');
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/register', function(req, res, next) {
     const login = checkLogin(req, res, next);
     var values = {fname: "", sname: "", email: "", user: ""};
     res.render('register', { loggedIn: login, error:"", uerror: "", emerror: "", values: values});
 });
 
+/**
+ *
+ */
 router.post('/register', function(req, res, next) {
     registerController.handleRegister(req, res, next);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/create-restaurant', function(req, res, next) {
     var login = checkLogin(req, res, next);
     //check the query
@@ -143,6 +201,9 @@ router.get('/create-restaurant', function(req, res, next) {
 
 });
 
+/**
+ *
+ */
 router.post('/create-restaurant', function(req, res, next) {
     var login = checkLogin(req, res, next);
     //check the query
@@ -176,15 +237,19 @@ router.post('/create-restaurant', function(req, res, next) {
                 if(uri != ""){
                     imgs.push({data: decoded, contentType: 'image/png'})
                 }
-                RestaurantController.addRestaurant(req, res, login, fields, imgs);
+                restaurantController.addRestaurant(req, res, login, fields, imgs);
             } else {
                 res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
             }
         });
     }
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/profile', function(req, res, next) {
     req.session.prevURL = req.url || '/';
     var login = checkLogin(req, res, next);
@@ -196,37 +261,42 @@ router.get('/profile', function(req, res, next) {
     }
 });
 
+/**
+ *
+ */
 router.get('/profile-*', function(req, res, next) {
     req.session.prevURL = req.url || '/';
     var login = checkLogin(req, res, next);
     profileController.renderProfile(req, res, next, login);
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/accessibility', function(req, res, next) {
     req.session.prevURL = req.url || '/';
 
     var login = checkLogin(req, res, next);
     res.render('accessibility', { loggedIn: login });
 });
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ */
 router.get('/tandc', function(req, res, next) {
     var login = checkLogin(req, res, next);
     res.render('terms-conditions', { loggedIn: login });
 });
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 module.exports = router;
 
 function checkLogin(req, res, next){
-    if(req.session.user_id === undefined){
-        return false;
-    } else {
-        return true;
-    }
+    return undefCheck(req.session.user_id);
 }
 
 function testCreateRestaurantInput(fields){
@@ -240,6 +310,8 @@ function testCreateRestaurantInput(fields){
     const price = fields.price;
     const cuisines = fields.cuisines;
 
+    //FIXME
+    //TODO please remove these at some point
     console.log("DNum " + undefCheck(doorNumber) + " - " + doorNumber);
     console.log("post " + undefCheck(postcode) + " - " + postcode);
     console.log("name " + undefCheck(name)+ " - " + name);
@@ -249,7 +321,6 @@ function testCreateRestaurantInput(fields){
     console.log("desc " + undefCheck(description));
     console.error(price + " - Price");
     console.error(cuisines + " - Cuisines")
-
 
     return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
         && undefCheck(tags) && undefCheck(websiteURL)

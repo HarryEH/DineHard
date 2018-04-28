@@ -47,12 +47,6 @@ function handleCreateReview(req, res, user, restaurant) {
 
     res.send(JSON.stringify({rating: rRating, error: "", rId: restaurant._id }));
 
-    emitSocketEvent();
-
-}
-
-function emitSocketEvent(){
-    console.log("*****: placeholder :*****")
 }
 
 function updateRestaurant(req, restaurant){
