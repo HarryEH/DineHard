@@ -7,15 +7,17 @@
     <% include stylesheets.ejs %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4"></script>
     <script src="javascripts/location.js"></script>
     <script src="javascripts/reviewRating.js"></script>
     <script src="javascripts/pricing.js"></script>
     <script src="javascripts/results.js"></script>
     <script src="javascripts/searchajax.js"></script>
+
     <title>Results</title>
 </head>
 
-<body>
+<body onload="modalMap(<%=JSON.stringify(lat)%>, <%=JSON.stringify(lng)%>, <%=JSON.stringify(results)%>);">
 <div class="main-wrapper">
 
     <% include header.ejs %>
@@ -59,7 +61,8 @@
                     </div>
                 </div>
 
-                <% include map-modal.ejs%>
+                <!-- Button to open the modal login form -->
+                <button onclick="document.getElementById('map').style.display='block';">View on map</button>
 
             </div>
 
@@ -71,6 +74,8 @@
     <div class="push"></div>
 
 </div>
+
+    <% include map-modal.ejs%>
 
     <% include footer.ejs %>
 
