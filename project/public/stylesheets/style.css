@@ -48,6 +48,14 @@ a:hover {
 
 /* ------------ GENERAL CSS ------------ */
 
+/* progressive web app*/
+.offline_div{
+    width:100%;
+    text-align: center;
+    font-size: 40pt;
+}
+
+
 .main-wrapper {
     min-height: 100%;
     margin-bottom: -45px;
