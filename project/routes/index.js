@@ -51,10 +51,7 @@ router.get('/restaurant-*', function(req, res, next) {
 router.post('/restaurant-*', function(req, res, next) {
     if (checkLogin(req, res, next)) {
         reviewController.createReview(req, res);
-    } else {
-        res.render('login', {loggedIn: false, error: ""});
     }
-
 });
 
 /**
@@ -232,8 +229,8 @@ router.post('/create-restaurant', function(req, res, next) {
                 }
 
                 uri = fields.photoCaptureSource;
-                decoded = dataUriToBuffer(uri);
                 if(uri != ""){
+                    decoded = dataUriToBuffer(uri);
                     imgs.push({data: decoded, contentType: 'image/png'})
                 }
                 restaurantController.addRestaurant(req, res, login, fields, imgs);
@@ -309,22 +306,9 @@ function testCreateRestaurantInput(fields){
     const price = fields.price;
     const cuisines = fields.cuisines;
 
-    //FIXME
-    //TODO please remove these at some point
-    console.log("DNum " + undefCheck(doorNumber) + " - " + doorNumber);
-    console.log("post " + undefCheck(postcode) + " - " + postcode);
-    console.log("name " + undefCheck(name)+ " - " + name);
-    console.log("tags " + undefCheck(tags)+ " - " + tags);
-    console.log("WEb " + undefCheck(websiteURL)+ " - " + websiteURL);
-    console.log("phone " + undefCheck(phoneNo)+ " - " + phoneNo);
-    console.log("desc " + undefCheck(description));
-    console.error(price + " - Price");
-    console.error(cuisines + " - Cuisines")
-
     return undefCheck(doorNumber) && undefCheck(postcode) && undefCheck(name)
         && undefCheck(tags) && undefCheck(websiteURL)
         && undefCheck(phoneNo) && undefCheck(description);
-
 }
 
 function undefCheck(x){

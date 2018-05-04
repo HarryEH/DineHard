@@ -1,15 +1,16 @@
 const models = require('../models/models');
 
 module.exports = {
-    createReview: function(req, res) {
+    createReview: function(req, res, imgs) {
 
+        console.error(req.session.user_id);
         models.User.findById({ _id: req.session.user_id }, function (err, user) {
             if (err) {return res.send(JSON.stringify({error: "Couldn't find User"}));}
 
             models.Restaurant.findById({ _id: req.query.rId }, function (err2, restaurant) {
                 if (err2) {return res.send(JSON.stringify({error: "Couldn't find Restaurant"}));}
 
-                handleCreateReview(req, res, user, restaurant);
+                handleCreateReview(req, res, user, restaurant, imgs);
             });
 
         });
@@ -21,21 +22,21 @@ module.exports = {
 
         models.Review.findById(revId, function (err, results) {
             if (err) return next(err);
-            res.contentType(results.photoURL.contentType);
-            res.send(results.photoURL.data);
+            res.contentType(results.photos.contentType);
+            res.send(results.photos.data);
         });
     }
 };
 
-function handleCreateReview(req, res, user, restaurant) {
+function handleCreateReview(req, res, user, restaurant, imgs) {
 
     var review = new models.Review({
         username: user.username,
         resId: req.query.rId,
         rating: req.body.slider,
         date: Date.now(),
-        review: req.body.review,
-        photos: ""
+        photos: imgs,
+        review: req.body.review
     });
 
     review.save();// this saves the review in the db

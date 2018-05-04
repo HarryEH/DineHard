@@ -7,8 +7,8 @@ var reviewSchema = mongoose.Schema({
     rating: Number,
     time: String,
     date: { type: Date, default: Date.now },
-    review: String,
-    photos: String
+    photos: [{ data: Buffer, contentType: String }],
+    review: String
 });
 
 module.exports = {review : mongoose.model('Review', reviewSchema)};

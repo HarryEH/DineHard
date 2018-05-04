@@ -598,11 +598,11 @@ a:hover {
     margin: 8% 5% 0% 5%;
 }
 
-.user-form ol {
+.user-form ol, .review-form ol {
     padding-left: 0;
 }
 
-.user-form li {
+.user-form li, .review-form li {
     background: #eee;
     display: flex;
     justify-content: space-between;
@@ -1160,7 +1160,7 @@ a:hover {
 /* The Modal (background) */
 .modal {
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 99; /* Sit on top */
     top: 0;
     left: 0;
     display: none; /* Hidden by default */
