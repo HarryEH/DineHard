@@ -35,6 +35,9 @@
 
             <div class="row">
                 <ul class="inline-list">
+                    <% if (restaurant.noRating == 0) {%>
+                        <% restaurant.noRating = 1; %>
+                    <% } %>
                     <li><div id="starRating" class="inline"></div> <%= restaurant.rating / restaurant.noRating %> with <%= reviewCount %> reviews</li>
 
                     <li><%= restaurant.cuisines %></li>
