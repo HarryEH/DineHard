@@ -3,7 +3,7 @@ var urlsToCache = [
 // add the files you want to cache here
     '/',
     '/index',
-    '/styles/style.css',
+    '/stylesheets/style.css',
     '/javascripts/app.js'
 ];
 self.addEventListener('install', function(event) {
