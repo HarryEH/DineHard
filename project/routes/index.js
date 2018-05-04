@@ -331,3 +331,4 @@ function testCreateRestaurantInput(fields){
 function undefCheck(x){
     return typeof x != "undefined";
 }
+

@@ -2,8 +2,9 @@ var CACHE_NAME = 'dine-hard-cache-v1';
 var urlsToCache = [
 // add the files you want to cache here
     '/',
+    '/index',
     '/styles/style.css',
-    '/script/load.js'
+    '/javascripts/app.js'
 ];
 self.addEventListener('install', function(event) {
 // Perform install steps
@@ -63,3 +64,5 @@ self.addEventListener('fetch', function(event) {
             return response;
         })
     });
+
+

@@ -20,6 +20,7 @@
     <% include header.ejs %>
 
     <div class="index-top-wrapper">
+        <div class="offline_div" id="offline_div" style="display: none">You are offline</div>
         <div class="index-header">
             <p class="index-title title-font">A Good Day to Dine Hard</p>
             <p class="index-subtitle l-font">The food, the bad and the ugly</p>
@@ -58,6 +59,7 @@
                 <span class="glyphicon glyphicon-star feat-icon-font" style="color:orangered"></span><br>
                 Write and view reviews from other users
             </div>
+
         </div>
     </div>
 
@@ -69,6 +71,6 @@
 <% include footer.ejs %>
 
 <script type="text/javascript" id="cookieinfo" src="//cookieinfoscript.com/js/cookieinfo.min.js"></script>
-
+<script src="/javascripts/app.js" ></script>
 </body>
 </html>
