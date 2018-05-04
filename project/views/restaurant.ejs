@@ -65,11 +65,12 @@
             <div class="row">
                 <div class="slideshow-container">
 
-                    <% var resPhotos = restaurant.photoURL.length %>
-                    <% for (var i = 0; i < resPhotos; i++) {%>
-                    <div class="restaurant-img">
-                        <img class="slideshow-img" src="/restaurant/<%= restaurant._id + "-" + i %>/picture">
-                    </div>
+                    <% var resPhotos = restaurant.photoURL.length; %>
+                    <% console.log(resPhotos); %>
+                    <% for (var i = 0; i < resPhotos ; i++) {%>
+                        <div class="restaurant-img">
+                            <img class="slideshow-img" src="/restaurant/<%= restaurant._id + "-" + i %>/picture">
+                        </div>
                     <% } %>
 
                     <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
