@@ -124,9 +124,9 @@
                         <% reviewNum += 1;%>
                         <div class="container profile-review">
                             <div class="row">
-                                <div class="col-6 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
+                                <div class="col-7 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
                                 <% var divID = "review-date" + reviewNum.toString();%>
-                                <div class="col-5 review-date align-right" id='<%=divID%>'><%= review.date %></div>
+                                <div class="col-4 review-date align-right" id='<%=divID%>'><%= review.date %></div>
                                 <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divID%>");</script>
                             </div>
                             <div class="row">

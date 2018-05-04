@@ -18,6 +18,7 @@ function ajax() {
         success: function (data) {
             document.getElementById('reviewForm').style.display='none';
             document.getElementById('slider').value = 3;
+            document.getElementById('star').value = 3;
             document.getElementById('review-text').value = "";
 
             emitEvent(data);

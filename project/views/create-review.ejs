@@ -10,7 +10,7 @@
     <span onclick="document.getElementById('reviewForm').style.display='none'" class="close" title="Close Modal">&times;</span>
 
     <!-- Modal Content -->
-    <form id="writeReviewForm" class="modal-content animate" onsubmit="reviewValidate(event);">
+    <form id="writeReviewForm" class="modal-content review-form animate" onsubmit="reviewValidate(event);">
         <div class="modalheader">
             <h2>Write Review for '<%= restaurant.name %>'</h2>
         </div>
@@ -26,13 +26,12 @@
                         <input type="range" min="0" max="7" value="4" class="slider" name="slider" id="slider">
                     </div>
                 </div>
-
             </div>
 
             <div class="row review">
 
                 <div class="col-100">
-                    <div class="form-error" id="dError"></div>
+                    <div class="form-error s-font" id="dError"></div>
                 </div>
 
             </div>
@@ -54,15 +53,18 @@
     </form>
 </div>
 
-<script>
+<script src="javascripts/photo-display.js"></script>
+<script src="javascripts/capture.js"></script>
+<script>startup();</script>
 
+<script>
     var slider = document.getElementById("slider");
-    var output = document.getElementById("star");
-    output.innerHTML = slider.value; // Display the default slider value
+    var rating = document.getElementById("star");
+    rating.innerHTML = slider.value; // Display the default slider value
 
     // Update the current slider value (each time you drag the slider handle)
     slider.oninput = function() {
-        output.innerHTML = this.value;
+        rating.innerHTML = this.value;
     };
     var modal = document.getElementById('reviewForm');
 
