@@ -976,6 +976,7 @@ a:hover {
 /* Slideshow container */
 .slideshow-container {
     position: relative;
+    height: 55vh;
     width: 100%;
     margin: 15px 0px 15px 0px;
     background: #000000;
@@ -988,7 +989,7 @@ a:hover {
 
 .slideshow-img {
     display: block;
-    height: 35vh;
+    height: 55vh;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -1024,7 +1025,7 @@ a:hover {
 
 @media (min-width: 768px) {
     .slideshow-img {
-        height: 45vh;
+        height: 55vh;
     }
 }
 
