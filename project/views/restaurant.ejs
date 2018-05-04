@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4"></script>
     <script src="javascripts/location.js"></script>
+    <script src="javascripts/map.js"></script>
     <script src="javascripts/load.js"></script>
     <script src="javascripts/reviewRating.js"></script>
     <script src="javascripts/pricing.js"></script>
@@ -35,7 +36,10 @@
 
             <div class="row">
                 <ul class="inline-list">
-                    <li><div id="starRating" class="inline"></div> <%= restaurant.rating / restaurant.noRating %> with <%= reviewCount %> reviews</li>
+                    <% if (isNaN(restaurant.noRating) || restaurant.noRating == 0) {%>
+                        <% restaurant.noRating = 1; %>
+                    <% } %>
+                    <li><div id="starRating" class="inline"></div> <div id="ratingText"><%= restaurant.rating / restaurant.noRating %> with <%= reviewCount %> reviews</div></li>
 
                     <li><%= restaurant.cuisines %></li>
 

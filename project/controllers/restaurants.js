@@ -143,6 +143,7 @@ function addResCallback(obj) {
         cuisines: fields.cuisines,
         tags: fields.tags + ", " + fields.name + ", " + fields.cuisines + ", " + fields.description,
         rating: 0,
+        noRating: 0,
         websiteURL: fields.websiteURL
     });
 

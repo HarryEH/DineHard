@@ -23,6 +23,7 @@ function ajax() {
 
             emitEvent(data);
         },
+
         error: function (xhr, status, error) {
             console.log("err");
         }
@@ -32,6 +33,18 @@ function ajax() {
 function handleSocket(data){
     document.getElementById('updateable').outerHTML = data.rendered;
     // The <script> doesn't get run so this is required to do that
+
+    const x = data.restaurant.rating;
+    var y = data.restaurant.noRating;
+
+    if(y == 0) {
+        y = 1;
+    }
+
+    getStarRating(x/y, "starRating");
+
+    document.getElementById("ratingText").innerText = x/y + " with " + y + " reviews";
+
     for (var i = 0; i < data.results.length; i++) {
         var divID = "review-star" + (i+1).toString();
         getStarRating(data.results[i].rating, divID);
