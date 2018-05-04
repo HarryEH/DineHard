@@ -22,6 +22,7 @@ function updateImageDisplay() {
             if(validFileType(curFiles[i])) {
                 para.textContent = 'File name ' + curFiles[i].name + ', file size ' + returnFileSize(curFiles[i].size) + '.';
                 var image = document.createElement('img');
+                image.className = "photo-preview";
                 image.src = window.URL.createObjectURL(curFiles[i]);
 
                 listItem.appendChild(image);

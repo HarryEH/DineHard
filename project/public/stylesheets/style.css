@@ -611,11 +611,6 @@ a:hover {
     border: 1px solid black;
 }
 
-.user-form img {
-    height: 64px;
-    order: 1;
-}
-
 .user-border {
     padding: 5px 15px 15px 15px;
     border-radius: 25px;
@@ -630,6 +625,11 @@ a:hover {
 
 .photo-capture, .photo-upload{
     margin: 5px 7% 5px 3%;
+}
+
+.photo-preview{
+    height: 64px;
+    order: 1;
 }
 
 .user-input-wrapper, .reviewcontainer {

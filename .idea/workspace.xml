@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b30d874-2d79-4a01-ab9f-656cff8da24a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/project/public/javascripts/photo-display.js" afterPath="$PROJECT_DIR$/project/public/javascripts/photo-display.js" />
       <change beforePath="$PROJECT_DIR$/project/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/project/public/stylesheets/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,10 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="611" column="1" lean-forward="false" selection-start-line="611" selection-start-column="1" selection-end-line="611" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="create-restaurant.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/views/create-restaurant.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
+            <state relative-caret-position="416">
               <caret line="150" column="98" lean-forward="false" selection-start-line="150" selection-start-column="80" selection-end-line="150" selection-end-column="98" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -29,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
+      <file leaf-file-name="photo-display.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/project/public/javascripts/photo-display.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="1026" column="20" lean-forward="true" selection-start-line="1026" selection-start-column="20" selection-end-line="1026" selection-end-column="20" />
+            <state relative-caret-position="187">
+              <caret line="23" column="55" lean-forward="false" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -99,16 +110,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="slideshow.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/public/javascripts/slideshow.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="restaurant.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/models/restaurant.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -154,10 +155,12 @@
       <find>submit</find>
       <find>review</find>
       <find>slidecon</find>
-      <find>photo</find>
       <find>blacklink</find>
       <find>slideshow</find>
       <find>restaurant-i</find>
+      <find>create-re</find>
+      <find>upload</find>
+      <find>photo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,7 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/project/public/javascripts/photo-display.js" />
         <option value="$PROJECT_DIR$/project/controllers/geodata.js" />
         <option value="$PROJECT_DIR$/project/controllers/review.js" />
         <option value="$PROJECT_DIR$/project/models/models.js" />
@@ -187,6 +189,7 @@
         <option value="$PROJECT_DIR$/project/controllers/restaurants.js" />
         <option value="$PROJECT_DIR$/project/views/restaurant.ejs" />
         <option value="$PROJECT_DIR$/project/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/project/public/javascripts/photo-display.js" />
       </list>
     </option>
   </component>
@@ -259,6 +262,13 @@
               <item name="iw-assignment" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iw-assignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iw-assignment" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iw-assignment" type="b2602c69:ProjectViewProjectNode" />
@@ -410,12 +420,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524649790495</updated>
-      <workItem from="1524649792187" duration="44486000" />
+      <workItem from="1524649792187" duration="44788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44486000" />
+    <option name="totallyTimeSpent" value="44788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -568,14 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/public/javascripts/photo-display.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/models/seeding/restaurant_seed.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -632,22 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/public/javascripts/capture.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="124" column="53" lean-forward="false" selection-start-line="124" selection-start-column="53" selection-end-line="124" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="232" column="0" lean-forward="false" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/controllers/restaurants.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-738">
@@ -664,9 +650,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/views/restaurant.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="70" column="36" lean-forward="false" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project/views/create-restaurant.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
+        <state relative-caret-position="416">
           <caret line="150" column="98" lean-forward="false" selection-start-line="150" selection-start-column="80" selection-end-line="150" selection-end-column="98" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -678,18 +672,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/views/restaurant.ejs">
+    <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="70" column="36" lean-forward="false" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="50" />
+        <state relative-caret-position="102">
+          <caret line="611" column="1" lean-forward="false" selection-start-line="611" selection-start-column="1" selection-end-line="611" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/public/stylesheets/style.css">
+    <entry file="file://$PROJECT_DIR$/project/public/javascripts/capture.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="1026" column="20" lean-forward="true" selection-start-line="1026" selection-start-column="20" selection-end-line="1026" selection-end-column="20" />
+        <state relative-caret-position="664">
+          <caret line="124" column="53" lean-forward="false" selection-start-line="124" selection-start-column="53" selection-end-line="124" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="232" column="0" lean-forward="false" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/public/javascripts/photo-display.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="23" column="55" lean-forward="false" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
           <folding />
         </state>
       </provider>
