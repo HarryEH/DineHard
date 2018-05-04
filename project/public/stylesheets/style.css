@@ -611,11 +611,6 @@ a:hover {
     border: 1px solid black;
 }
 
-.user-form img {
-    height: 64px;
-    order: 1;
-}
-
 .user-border {
     padding: 5px 15px 15px 15px;
     border-radius: 25px;
@@ -630,6 +625,11 @@ a:hover {
 
 .photo-capture, .photo-upload{
     margin: 5px 7% 5px 3%;
+}
+
+.photo-preview{
+    height: 64px;
+    order: 1;
 }
 
 .user-input-wrapper, .reviewcontainer {
@@ -707,12 +707,13 @@ a:hover {
 }
 
 .camera {
-    margin: 10px 0px 10px 0px;
+    margin: 15px 0px 15px 0px;
     width: 25vw;
     display:inline-block;
 }
 
 .output {
+    margin: 15px 0px 15px 0px;
     width: 25vw;
     display:inline-block;
 }
@@ -734,7 +735,7 @@ a:hover {
 .contentarea {
     font-size: 16px;
     font-family: "Lucida Grande", "Arial", sans-serif;
-    width: 760px;
+    width: 40%;
     margin: 5px 7% 5px 3%;
 }
 
@@ -976,6 +977,7 @@ a:hover {
 /* Slideshow container */
 .slideshow-container {
     position: relative;
+    height: 55vh;
     width: 100%;
     margin: 15px 0px 15px 0px;
     background: #000000;
@@ -988,7 +990,7 @@ a:hover {
 
 .slideshow-img {
     display: block;
-    height: 35vh;
+    height: 55vh;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -1024,7 +1026,7 @@ a:hover {
 
 @media (min-width: 768px) {
     .slideshow-img {
-        height: 45vh;
+        height: 55vh;
     }
 }
 
@@ -1145,7 +1147,7 @@ a:hover {
     height: 40px;
     width: 170px;
     min-width: 70px;
-    margin: 10px 40% 10px 40%;
+    margin: 10px 30% 10px 0%;
     border: none;
     border-radius: 5px;
     text-align: center;
