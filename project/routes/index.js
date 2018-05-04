@@ -49,7 +49,6 @@ router.get('/restaurant-*', function(req, res, next) {
  *
  */
 router.post('/restaurant-*', function(req, res, next) {
-    console.log("hello world");
     if (checkLogin(req, res, next)) {
         reviewController.createReview(req, res);
     } else {
