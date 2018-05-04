@@ -49,15 +49,26 @@ io.on('connection', function(socket) {
      */
     socket.on("new-review", function(data) {
         console.log(data.restaurant.rId);
-        // console.log(restaurant.rId);
-        models.Review.find({resId: data.restaurant.rId}, function(err, data) {
-           if(err) {return console.error(err);}
 
-           if (data.length != 0) {
-               const file = fs.readFileSync('./views/all-reviews.ejs', 'ascii');
-               io.sockets.emit("review", {results: data, rendered:ejs.render(file, {reviews: data})});
-           }
+        models.Restaurant.find({_id : data.restaurant.rId}, function(err, restaurant){
+            console.log("fuck off log");
+
+            // console.log(restaurant.rId);
+            models.Review.find({resId: data.restaurant.rId}, function(err, data) {
+                if(err) {return console.error(err);}
+
+                console.log("fuck off");
+
+                if (data.length != 0) {
+                    const file = fs.readFileSync('./views/all-reviews.ejs', 'ascii');
+                    io.sockets.emit("review", {restaurant: restaurant[0], results: data, rendered:ejs.render(file, {reviews: data})});
+                }
+
+            });
         });
+
+
+
     });
 
 });

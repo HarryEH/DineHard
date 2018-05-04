@@ -50,8 +50,12 @@ function handleCreateReview(req, res, user, restaurant) {
 }
 
 function updateRestaurant(req, restaurant){
+    console.log(restaurant.rating);
+    console.log(restaurant.noRating);
     restaurant.rating = restaurant.rating + parseInt(req.body.slider);
     restaurant.noRating = restaurant.noRating + 1;
+    console.log(restaurant.rating);
+    console.log(restaurant.noRating);
     restaurant.save();// updates the restaurant
 }
 
