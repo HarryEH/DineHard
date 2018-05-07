@@ -12,6 +12,7 @@ const models = require('./models/models');
 const app = express();
 const index = require('./routes/index');
 const users = require('./routes/users');
+const bcrypt = require('bcrypt');
 /**
  * Module dependencies.
  */
@@ -76,24 +77,25 @@ io.on('connection', function(socket) {
 models.connect();
 models.User.find({username: "admin"}, function(err, results) {
     if (err) {return console.error(err);}
-
     if(results.length == 0) {
-        var admin = new models.User({
-            forename: "Administrator",
-            surname: "Account",
-            email: "admin@admin.com",
-            username: "admin",
-            password: "adminPassword1",
-            admin: true,
-            score: 0
-        });
+        bcrypt.hash("adminPassword1", 10, function(err, hash) {
+            console.log(hash);
+            var admin = new models.User({
+                forename: "Administrator",
+                surname: "Account",
+                email: "admin@admin.com",
+                username: "admin",
+                password: hash,
+                admin: true,
+                score: 0
+            });
 
-        admin.save(function (err, admin) {
-            if (err) return console.error(err);
-            console.log("admin account created");
+            admin.save(function (err, admin) {
+                if (err) return console.error(err);
+                console.log("admin account created");
+            });
         });
     }
-
 });
 
 // view engine setup
