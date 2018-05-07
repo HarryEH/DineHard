@@ -94,7 +94,14 @@ models.User.find({username: "admin"}, function(err, results) {
                 if (err) return console.error(err);
                 console.log("admin account created");
             });
+
+            bcrypt.compare("adminPassword1", hash, function(err, res) {
+                console.log(res);
+            });
+
         });
+
+
     }
 });
 

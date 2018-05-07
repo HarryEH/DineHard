@@ -4,20 +4,17 @@ const bcrypt = require('bcrypt');
 module.exports = {
 
     handleLogin: function(req, res, next) {
-        var user = req.body.u.toLowerCase();
-        var pass = req.body.p;
+        var username = req.body.u.toLowerCase();
+        var password = req.body.p;
 
-        models.User.findOne({username: new RegExp(user, "i")}, function (err, user) {
+        models.User.findOne({username: new RegExp(username, "i")}, function (err, user) {
             if (err) {return console.error(err);}
-
-            console.log(user);
-            console.log(user.password);
-            console.log(pass);
 
             if(user !== null) {
 
-                bcrypt.compare(pass, user.password, function(err, result) {
-                    if (user === user.username.toLowerCase() && result) {
+                bcrypt.compare(password, user.password, function(err, result) {
+
+                    if (username === user.username.toLowerCase() && result) {
                         req.session.user_id = user._id;
                         req.session.forename = user.forename;
                         res.redirect(req.session.prevURL);

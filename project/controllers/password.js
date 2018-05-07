@@ -1,4 +1,5 @@
 const models = require('../models/models');
+const bcrypt   = require('bcrypt');
 
 module.exports = {
 
@@ -34,17 +35,21 @@ module.exports = {
         const pss = req.body.password;
 
         models.User.findOne({username: usr, _id: id}, function (err, user) {
-            user.password = pss;
 
-            user.save(function (err) {
-                if(err) {
-                    console.error('ERROR!');
-                    res.render('change-password', {tokenId: req.query.tokenId, username: req.query.username,
-                                                    loggedIn: login, error: "That didn't work. Try Again."});
-                }
+            bcrypt.hash(pss, 10, function(err, hash) {
+                user.password = hash;
 
-                res.redirect('/login');
+                user.save(function (err) {
+                    if(err) {
+                        console.error('ERROR!');
+                        res.render('change-password', {tokenId: req.query.tokenId, username: req.query.username,
+                            loggedIn: login, error: "That didn't work. Try Again."});
+                    }
+
+                    res.redirect('/login');
+                });
             });
+
         });
     }
 
