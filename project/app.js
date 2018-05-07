@@ -51,13 +51,10 @@ io.on('connection', function(socket) {
         console.log(data.restaurant.rId);
 
         models.Restaurant.find({_id : data.restaurant.rId}, function(err, restaurant){
-            console.log("fuck off log");
 
             // console.log(restaurant.rId);
             models.Review.find({resId: data.restaurant.rId}, function(err, data) {
                 if(err) {return console.error(err);}
-
-                console.log("fuck off");
 
                 if (data.length != 0) {
                     const file = fs.readFileSync('./views/all-reviews.ejs', 'ascii');
