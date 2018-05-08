@@ -8,6 +8,14 @@ var rad = function(x) {
 
 module.exports = {
 
+    /**
+     *
+     * @param xLat
+     * @param xLng
+     * @param yLat
+     * @param yLng
+     * @returns {number}
+     */
     getRDistance: function(xLat, xLng, yLat, yLng) {
         const R = 6378137; // Earth’s mean radius in meter
         const dLat = rad(xLat - yLat);
@@ -20,6 +28,12 @@ module.exports = {
         return d; // returns the distance in meters
     },
 
+    /**
+     *
+     * @param address
+     * @param callback
+     * @param obj
+     */
     postcodeToLocation: function (address, callback, obj){
         console.error("starting postcode")
         // Geocode an address.
@@ -58,6 +72,10 @@ module.exports = {
 
     },
 
+    /**
+     *
+     * @param address
+     */
     addressToLocation: function (address){
         // Geocode an address.
         googleMapsClient.geocode({
@@ -70,6 +88,11 @@ module.exports = {
         });
     },
 
+    /**
+     *
+     * @param callback
+     * @param obj
+     */
     getFullAddress: function(callback, obj){
         var address = obj.results.postcode.toString();
         googleMapsClient.geocode({
