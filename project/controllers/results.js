@@ -1,5 +1,5 @@
 const models = require('../models/models');
-const geodata = require('./geodata');
+const geodata = require('../utilities/geodata');
 const fs = require('fs');
 const ejs = require('ejs');
 
