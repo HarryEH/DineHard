@@ -206,6 +206,7 @@ router.post('/create-restaurant', function(req, res, next) {
     if (login === false) {
         res.redirect('/login');
     } else {
+        //TODO put this somewhere else...
         var form = new formidable.IncomingForm();
         var filesList = [];
         form.on('file', function(field, file) {
