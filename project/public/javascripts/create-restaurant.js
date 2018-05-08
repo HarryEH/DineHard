@@ -1,6 +1,5 @@
 //The Autocompletion of addresses was sourced from Google javascript code, using google maps.
 // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-//
 var placeSearch, autocomplete;
 var componentForm = {
     street_number: 'short_name',
@@ -168,13 +167,11 @@ function validateRestaurant(){
     wuError.innerHTML = wuHTML;
     deError.innerHTML = deHTML;
 
-    if(!createOk)
-    {
+    if (!createOk) {
         event.preventDefault();
         alert("Creation not fine!");
         return false;
     } else {
-        alert("Creation fine!");
         return true;
     }
 }
