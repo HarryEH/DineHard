@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const geodata  = require('../controllers/geodata');
+const geodata  = require('../utilities/geodata');
 
 // Restaurant Schema
 var restaurantSchema = mongoose.Schema({

@@ -132,7 +132,7 @@
 
                     <div class="review-wrapper">
                         <div class ="row">
-                            <div class="review-header userLink"><a href="/profile-<%= review.username %>"><%= review.username %></a></div>
+                            <div class="review-header userLink"><a href="/profile?username=<%= review.username %>"><%= review.username %></a></div>
                             <% var divID = "review-date" + reviewNum.toString();%>
                             <div class="review-date align-right" id='<%=divID%>'><%= review.date %></div>
                             <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divID%>");</script>

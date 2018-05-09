@@ -4,9 +4,9 @@ module.exports = {
 
     renderProfile: function (req, res, next, login) {
 
-        const uname = req.url.substring(9);
+        const username = req.query.username;
 
-        models.User.findOne({username: uname}, function (err, user) {
+        models.User.findOne({username: username}, function (err, user) {
             if (err) {
                 res.render('error', {loggedIn: login, error: {status: "404"}});
                 console.error(err);
@@ -21,7 +21,7 @@ module.exports = {
                 if (myID == uID) {
                     res.redirect('/profile');
                 } else {
-                    var title = uname + "'s Profile";
+                    var title = username + "'s Profile";
                     loadProfile(req, res, next, login, uID, title, false);
                 }
             }
