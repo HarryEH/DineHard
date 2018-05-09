@@ -61,7 +61,7 @@
 
                     <li class="no-wrap">
                         <i class="fa fa-laptop"></i>
-                        <a href="<%= restaurant.websiteURL %>" style="color:black;"><%= restaurant.websiteURL %></a>
+                        <a href="<%= restaurant.websiteURL %>" target="_blank" style="color:black;"><%= restaurant.websiteURL %></a>
                     </li>
                 </ul>
             </div>
@@ -139,7 +139,7 @@
 
                         <div class ="row">
                             <% divID = "review-star" + reviewNum.toString();%>
-                            <div class="col-12" id='<%=divID%>'><%= review.rating %> out of 7 Chips</div>
+                            <div class="col-12" id='<%=divID%>'><%= review.rating %> out of 7 Stars</div>
                             <script>getStarRating(<%= review.rating %>, "<%=divID%>");</script>
                         </div>
 

@@ -8,6 +8,7 @@
   "dependencies": {
     "@google/maps": "^0.4.5",
     "bcrypt": "^2.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.2",
     "client-sessions": "^0.8.0",
     "cookie-parser": "~1.4.3",
