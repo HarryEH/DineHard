@@ -19,10 +19,10 @@ module.exports = {
     },
 
     getPicture: function (req, res){
-        const revId = req.params.reviewID;
+        const revId = req.params.index;
 
         models.Review.findById(revId, function (err, results) {
-            if (err) return next(err);
+            if (err) return err;
             res.contentType(results.photo.contentType);
             res.send(results.photo.data);
         });
