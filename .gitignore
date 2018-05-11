@@ -9,5 +9,12 @@ project/.idea/runConfigurations/bin_www.xml
 
 project/project.iml
 
+# exclude everything
+project/node_modules/*
+
+# exception to the rule
+!project/node_modules/.gitkeep
+!project/.idea/.gitkeep 
+
 
 
