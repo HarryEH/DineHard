@@ -46,6 +46,7 @@ router.get('/restaurant-*', function(req, res, next) {
  *
  */
 router.post('/restaurant-*', function(req, res, next) {
+    console.log("Get fucked nerd! Restaurant post");
     if (validation.checkLogin(req, res, next)) {
         reviewController.createReview(req, res);
     }
@@ -91,7 +92,7 @@ router.get('/login', function(req, res, next) {
     if(validation.checkLogin(req, res, next)){
         res.redirect(req.session.prevURL);
     } else {
-        res.render('login', {loggedIn: login, error: ""});
+        res.render('login', {loggedIn: validation.checkLogin(req, res, next), error: ""});
     }
 });
 
@@ -217,9 +218,9 @@ router.post('/create-restaurant', function(req, res, next) {
                     }
                 }
 
-                uri = fields.photoCaptureSource;
+                var uri = fields.photoCaptureSource;
                 if (uri != "") {
-                    decoded = dataUriToBuffer(uri);
+                    var decoded = dataUriToBuffer(uri);
                     imgs.push({data: decoded, contentType: 'image/png'})
                 }
                 restaurantController.addRestaurant(req, res, login, fields, imgs);

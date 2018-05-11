@@ -1,16 +1,18 @@
 function reviewAjax(e) {
     e.preventDefault();
-    ajax();
+    var uri = document.getElementById('photo-text-source').value;
+    ajax(uri);
 }
 
 var socket;
 
-function ajax() {
+function ajax(photoData) {
     $.ajax({
         url: document.URL,
         data: JSON.stringify({
             slider: document.getElementById('slider').value,
-            review: document.getElementById('review-text').value
+            review: document.getElementById('review-text').value,
+            photo: photoData
         }),
         contentType: 'application/json',
         type: 'POST',
