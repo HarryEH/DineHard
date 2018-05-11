@@ -1,3 +1,28 @@
+function reviewDeleteAjax(reviewid) {
+    ajax(reviewid);
+
+}
+
+function ajax(reviewid) {
+    $.ajax({
+        url: document.URL,
+        data: JSON.stringify({
+            id: reviewid
+        }),
+        contentType: 'application/json',
+        type: 'POST',
+        dataType: "json",
+        success: function (data) {
+            alert('Review Deleted');
+        },
+
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+}
+
+
 function showEdit(){
     var details = document.getElementById("profile-details");
     var editDetails = document.getElementById("edit-profile-details");

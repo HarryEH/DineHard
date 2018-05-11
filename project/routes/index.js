@@ -237,6 +237,13 @@ router.post('/create-restaurant', function(req, res, next) {
 /**
  *
  */
+router.post('/profile', function(req, res, next) {
+     if (validation.checkLogin(req, res, next)) {
+        profileController.deleteReview(req, res);
+     }
+});
+
+
 router.get('/profile', function(req, res, next) {
     req.session.prevURL = req.url || '/';
     if (validation.checkLogin(req, res, next)) {
