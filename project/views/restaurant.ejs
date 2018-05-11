@@ -39,7 +39,7 @@
                     <% if (isNaN(restaurant.noRating) || restaurant.noRating == 0) {%>
                         <% restaurant.noRating = 1; %>
                     <% } %>
-                    <li><div id="starRating" class="inline"></div> <div id="ratingText"><%= restaurant.rating / restaurant.noRating %> with <%= reviewCount %> reviews</div></li>
+                    <li><div id="starRating" class="inline"></div> <div id="ratingText" class="inline"><%= restaurant.rating / restaurant.noRating %> with <%= reviewCount %> reviews</div></li>
 
                     <li><%= restaurant.cuisines %></li>
 
@@ -131,7 +131,7 @@
 
                     <div class="review-wrapper">
                         <div class ="row">
-                            <div class="review-header userLink"><a href="/profile?username=<%= review.username %>"><%= review.username %></a></div>
+                            <div class="review-header userLink"><a href="/view-profile?username=<%= review.username %>"><%= review.username %></a></div>
                             <% var divID = "review-date" + reviewNum.toString();%>
                             <div class="review-date align-right" id='<%=divID%>'><%= review.date %></div>
                             <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divID%>");</script>
