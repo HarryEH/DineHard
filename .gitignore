@@ -7,8 +7,14 @@ project/.idea/runConfigurations/*
 project/.idea/runConfigurations/bin_www.xml
 
 
-project/.idea
-
 project/project.iml
 
-project/.idea/workspace.xml
+# exclude everything
+project/node_modules/*
+
+# exception to the rule
+!project/node_modules/.gitkeep
+!project/.idea/.gitkeep 
+
+
+
