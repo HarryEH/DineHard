@@ -29,6 +29,28 @@
             </div>
 
             <div class="row review">
+                <div class="col-33">
+                    <label class="s-font">Upload Photo</label>
+                </div>
+
+                <div class="col-66">
+                    <div class="contentarea" id="photo-capture-area">
+                        <div class="camera" id="camera" style="display:block">
+                            <video id="video">Video stream not available.</video>
+                            <button id="start-button">Take photo</button>
+                        </div>
+                        <canvas id="canvas">
+                        </canvas>
+                        <div class="output" id="output" style="display: none">
+                            <img id="photo-capture" alt="The screen capture will appear in this box.">
+                            <button id="retake-button">Retake photo?</button>
+                        </div>
+                        <input type="text" id="photo-text-source" name="photoCaptureSource" style="display: none">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row review">
 
                 <div class="col-100">
                     <div class="form-error s-font" id="dError"></div>
@@ -53,8 +75,8 @@
     </form>
 </div>
 
-<script src="javascripts/photo-display.js"></script>
 <script src="javascripts/capture.js"></script>
+<script>startup();</script>
 
 <script>
     var slider = document.getElementById("slider");

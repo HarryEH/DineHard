@@ -76,6 +76,11 @@
                             <img class="slideshow-img" src="/restaurant/<%= restaurant._id + "-" + i %>/picture">
                         </div>
                     <% } %>
+                    <% reviews.forEach(function(review){ %>
+                        <div class="restaurant-img">
+                            <img class="slideshow-img" src="/review/<%= review._id %>/picture">
+                        </div>
+                    <% }); %>
 
                     <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a id="next" onclick="plusSlides(1)">&#10095;</a>

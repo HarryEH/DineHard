@@ -1,7 +1,8 @@
 const models = require('../models/models');
+const dataUriToBuffer = require('data-uri-to-buffer');
 
 module.exports = {
-    createReview: function(req, res, imgs) {
+    createReview: function(req, res) {
 
         console.error(req.session.user_id);
         models.User.findById({ _id: req.session.user_id }, function (err, user) {
@@ -10,7 +11,7 @@ module.exports = {
             models.Restaurant.findById({ _id: req.query.rId }, function (err2, restaurant) {
                 if (err2) {return res.send(JSON.stringify({error: "Couldn't find Restaurant"}));}
 
-                handleCreateReview(req, res, user, restaurant, imgs);
+                handleCreateReview(req, res, user, restaurant);
             });
 
         });
@@ -18,24 +19,30 @@ module.exports = {
     },
 
     getPicture: function (req, res){
-        const revId = req.params.reviewID;
+        const revId = req.params.index;
 
         models.Review.findById(revId, function (err, results) {
-            if (err) return next(err);
-            res.contentType(results.photos.contentType);
-            res.send(results.photos.data);
+            if (err) return err;
+            res.contentType(results.photo.contentType);
+            res.send(results.photo.data);
         });
     }
 };
 
-function handleCreateReview(req, res, user, restaurant, imgs) {
+function handleCreateReview(req, res, user, restaurant) {
+
+    var uri = req.body.photo;
+    if (uri != "") {
+        var decoded = dataUriToBuffer(uri);
+        var photoData = ({data: decoded, contentType: 'image/png'})
+    }
 
     var review = new models.Review({
         username: user.username,
         resId: req.query.rId,
         rating: req.body.slider,
         date: Date.now(),
-        photos: imgs,
+        photo: photoData,
         review: req.body.review
     });
 

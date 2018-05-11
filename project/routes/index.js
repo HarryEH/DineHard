@@ -217,9 +217,9 @@ router.post('/create-restaurant', function(req, res, next) {
                     }
                 }
 
-                uri = fields.photoCaptureSource;
+                var uri = fields.photoCaptureSource;
                 if (uri != "") {
-                    decoded = dataUriToBuffer(uri);
+                    var decoded = dataUriToBuffer(uri);
                     imgs.push({data: decoded, contentType: 'image/png'})
                 }
                 restaurantController.addRestaurant(req, res, login, fields, imgs);
