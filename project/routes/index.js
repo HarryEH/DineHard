@@ -46,7 +46,6 @@ router.get('/restaurant-*', function(req, res, next) {
  *
  */
 router.post('/restaurant-*', function(req, res, next) {
-    console.log("Get fucked nerd! Restaurant post");
     if (validation.checkLogin(req, res, next)) {
         reviewController.createReview(req, res);
     }

@@ -4,8 +4,6 @@ const dataUriToBuffer = require('data-uri-to-buffer');
 module.exports = {
     createReview: function(req, res) {
 
-        console.log("Get fucked nerd!");
-
         console.error(req.session.user_id);
         models.User.findById({ _id: req.session.user_id }, function (err, user) {
             if (err) {return res.send(JSON.stringify({error: "Couldn't find User"}));}
@@ -32,8 +30,6 @@ module.exports = {
 };
 
 function handleCreateReview(req, res, user, restaurant) {
-
-    console.log("Get fucked nerd!");
 
     var uri = req.body.photo;
     if (uri != "") {
