@@ -250,7 +250,7 @@ router.get('/profile', function(req, res, next) {
 /**
  *
  */
-router.get('/profile-*', function(req, res, next) {
+router.get('/view-profile', function(req, res, next) {
     req.session.prevURL = req.url || '/';
     profileController.renderProfile(req, res, next, validation.checkLogin(req, res, next));
 });

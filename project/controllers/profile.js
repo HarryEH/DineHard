@@ -19,6 +19,7 @@ module.exports = {
                 const uID = user._id;
                 const myID = req.session.user_id;
                 if (myID == uID) {
+                    console.log("wtf");
                     res.redirect('/profile');
                 } else {
                     var title = username + "'s Profile";

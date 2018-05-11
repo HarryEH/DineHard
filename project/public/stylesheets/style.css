@@ -762,6 +762,14 @@ a:hover {
     color: white;
 }
 
+.review-edit {
+    width: 70%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bg2-color);
+    color: white;
+}
+
 .edit-profile input{
     width: 95%;
 }
