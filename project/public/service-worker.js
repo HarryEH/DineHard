@@ -43,26 +43,25 @@ self.addEventListener('fetch', function(event) {
             })
     );
     var fetchRequest = event.request.clone();
-    return fetch(fetchRequest).then(
-        function (response) {
-            // Check if we received a valid response. A basic response is one that
-            // is made to our own site. Do not cache responses to requests made
-            // to other sites
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-                return response;
-            }
-            // IMPORTANT: as mentioned we must clone the response.
-            // A response is a stream
-            // and because we want the browser to consume the response
-            // as well as the cache consuming the response, we need
-            // to clone it so we have two streams.
-            var responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-                .then(function (cache) {
-                    cache.put(event.request, responseToCache);
-                });
+    return fetch(fetchRequest).then( function (response) {
+        // Check if we received a valid response. A basic response is one that
+        // is made to our own site. Do not cache responses to requests made
+        // to other sites
+        if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
-        })
+        }
+        // IMPORTANT: as mentioned we must clone the response.
+        // A response is a stream
+        // and because we want the browser to consume the response
+        // as well as the cache consuming the response, we need
+        // to clone it so we have two streams.
+        var responseToCache = response.clone();
+        caches.open(CACHE_NAME)
+            .then(function (cache) {
+                cache.put(event.request, responseToCache);
+            });
+        return response;
     });
+});
 
 
