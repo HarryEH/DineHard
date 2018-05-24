@@ -30,10 +30,10 @@
                 <p class="index-search-title xs-font">Enter your postcode to find local restaurants</p>
             </div>
             <form class="index-search" id="searchForm" action="/results" method="get">
-                <input type="text" class="index-search-text xs-font" placeholder="Enter postcode or keyword(s)" name="q" id="q">
+                <input type="text" id="searchTextInput" class="index-search-text xs-font" placeholder="Enter postcode or keyword(s)" name="q" id="q">
                 <input type="text" class="latField" hidden="true" name="lat" id="lat">
                 <input type="text" class="lngField" hidden="true" name="lng" id="lng">
-                <input type="submit" class="index-search-submit xs-font" name="g" value="Search" id="g">
+                <input type="submit" class="index-search-submit xs-font" onclick="validateSearchQuery(event)" name="g" value="Search" id="g">
             </form>
             <div class="offline_div" id="offline_div" style="display: none">You are offline</div>
         </div>
