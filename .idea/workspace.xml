@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bca04f04-05fc-44f9-b1f1-4389c2dc6c93" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/project/views/all-reviews.ejs" afterPath="$PROJECT_DIR$/project/views/all-reviews.ejs" />
       <change beforePath="$PROJECT_DIR$/project/views/restaurant.ejs" afterPath="$PROJECT_DIR$/project/views/restaurant.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +27,8 @@
       <file leaf-file-name="all-reviews.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/views/all-reviews.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="43" />
+            <state relative-caret-position="153">
+              <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -57,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/project/views/restaurant.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="106" column="16" lean-forward="false" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
+              <caret line="136" column="56" lean-forward="false" selection-start-line="136" selection-start-column="56" selection-end-line="136" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -118,6 +119,7 @@
         <option value="$PROJECT_DIR$/project/views/results.ejs" />
         <option value="$PROJECT_DIR$/project/views/profile.ejs" />
         <option value="$PROJECT_DIR$/project/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/project/views/all-reviews.ejs" />
         <option value="$PROJECT_DIR$/project/views/restaurant.ejs" />
       </list>
     </option>
@@ -188,13 +190,6 @@
               <item name="iw-assignment" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iw-assignment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iw-assignment" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iw-assignment" type="b2602c69:ProjectViewProjectNode" />
@@ -338,12 +333,12 @@
       <option name="presentableId" value="Default" />
       <updated>1526040256171</updated>
       <workItem from="1526040289382" duration="762000" />
-      <workItem from="1526041124998" duration="14889000" />
+      <workItem from="1526041124998" duration="15734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15651000" />
+    <option name="totallyTimeSpent" value="16496000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -649,14 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/views/all-reviews.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/views/results-div.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -665,10 +652,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/views/all-reviews.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project/views/restaurant.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="106" column="16" lean-forward="false" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
+          <caret line="136" column="56" lean-forward="false" selection-start-line="136" selection-start-column="56" selection-end-line="136" selection-end-column="56" />
           <folding />
         </state>
       </provider>
