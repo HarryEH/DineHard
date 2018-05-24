@@ -17,7 +17,14 @@ module.exports = {
                     if (username === user.username.toLowerCase() && result) {
                         req.session.user_id = user._id;
                         req.session.forename = user.forename;
-                        res.redirect(req.session.prevURL);
+
+                        if (req.session.prevURL === undefined){
+                            res.redirect("/");
+                        } else {
+                            res.redirect(req.session.prevURL);
+                        }
+
+
                     } else {
                         res.render('login', { loggedIn: false, error: "Username and password do not match" });
                     }
