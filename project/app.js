@@ -11,7 +11,6 @@ const ejs = require('ejs');
 const models = require('./models/models');
 const app = express();
 const index = require('./routes/index');
-const users = require('./routes/users');
 const bcrypt = require('bcrypt');
 /**
  * Module dependencies.
