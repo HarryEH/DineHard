@@ -67,8 +67,6 @@ function onPostcode(obj){
         for (var x in results) {
             results[x].distance = results[x].getDistance(obj.lat, obj.lng);
 
-            console.log(results[x].distance);
-
             if (results[x].distance < DEFAULT_DIST) {
                 actual_results[actual_count] = results[x];
                 actual_count++;
@@ -109,7 +107,6 @@ function keywordSearch(res, login, query, lat, lng){
 // AJAX
 function ajaxKeyword(req, res, queryPrev){
 
-    console.log("got to ajax keyword");
     var query = req.body.newKeywords;
     if (typeof query == "undefined") {
         query = "";
@@ -127,7 +124,6 @@ function ajaxKeyword(req, res, queryPrev){
 }
 
 function ajaxPostcode(obj){
-    console.log("got to ajax postcode");
 
     models.Restaurant.find({tags: new RegExp(obj.req.body.newKeywords, "i")}, function (err, results) {
         if (err) {return console.error(err);}
@@ -141,7 +137,6 @@ function ajaxPostcode(obj){
 }
 
 function renderHtml(obj) {
-    console.log("got to render html");
 
     obj.ejs.results = sortBy(obj);
 

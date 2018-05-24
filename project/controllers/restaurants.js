@@ -18,12 +18,8 @@ module.exports = {
     addRestaurant: function (req, res, login, fields, imgs) {
         // verify that the restaurant's address isn't already in the db
 
-        console.error("starting add restuarant");
-
         const no = fields.doorNumber;
         const postcode = fields.postcode;
-
-        console.error(postcode);
 
         models.Restaurant.find({doorNumber: no, postcode: postcode}, function (err, results) {
             if (err) {
@@ -128,8 +124,6 @@ function addResCallback(obj) {
     const fields = obj.fields;
     const imgs = obj.imgs;
 
-    console.error("Mongo Res Start");
-
     var restaurant = new models.Restaurant({
         name: fields.name,
         doorNumber: fields.doorNumber,
@@ -146,8 +140,6 @@ function addResCallback(obj) {
         noRating: 0,
         websiteURL: fields.websiteURL
     });
-
-    console.error("Add Res Done");
 
     restaurant.save(function (err, restaurant) {
         if (err) return console.error(err);
