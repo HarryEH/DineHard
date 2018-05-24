@@ -26,8 +26,8 @@ var res1 = new models.Restaurant({
     photoURL: imgs,
     price: 10,
     tags: "homely, warm, good ambiance, bubbly, lovely, italian, newcastle, welcoming, dine, hard",
-    rating: 7,
-    noRating: 1,
+    rating: 11,
+    noRating: 2,
     websiteURL: "http://howarth.io"
 });
 
@@ -50,8 +50,8 @@ var res2 = new models.Restaurant({
     photoURL: imgs,
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, chinese, sheffield, acceptable, excellent, the, wonder, inn",
-    rating: 0,
-    noRating: 0,
+    rating: 5,
+    noRating: 2,
     websiteURL: "http://harryehowarth.com"
 });
 
@@ -74,8 +74,8 @@ var res3 = new models.Restaurant({
     photoURL: imgs,
     price: 2,
     tags: "homely, warm, good ambiance, good, radiant, great, korean, sheffield, acceptable, excellent, harry, harrys, kebab, shop, chips, pizza, cheap",
-    rating: 0,
-    noRating: 0,
+    rating: 11,
+    noRating: 2,
     websiteURL: "http://google.com"
 });
 
@@ -98,8 +98,8 @@ var res4 = new models.Restaurant({
     photoURL: imgs,
     price: 1,
     tags: "homely, warm, good ambiance, good, great, thai, sheffield, acceptable, excellent, potato, chips, delicious, fryup, adam, potato, dungeon, adams",
-    rating: 0,
-    noRating: 0,
+    rating: 9,
+    noRating: 2,
     websiteURL: "http://example.com"
 });
 
@@ -122,8 +122,8 @@ var res5 = new models.Restaurant({
     photoURL: imgs,
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, indian, sheffield, acceptable, excellent, haven, delight, superior, victoria, victorias",
-    rating: 0,
-    noRating: 0,
+    rating: 12,
+    noRating: 2,
     websiteURL: "http://isitchristmas.com"
 });
 
@@ -146,8 +146,8 @@ var res6 = new models.Restaurant({
     photoURL: imgs,
     price: 4,
     tags: "homely, warm, good ambiance, good, radiant, great, italian, sheffield, acceptable, excellent, bread, yummy, tasty, fabio, fabios, facaccia",
-    rating: 0,
-    noRating: 0,
+    rating: 20,
+    noRating: 3,
     websiteURL: "http://help.com"
 });
 
