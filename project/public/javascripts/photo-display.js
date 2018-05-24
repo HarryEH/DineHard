@@ -3,6 +3,11 @@ var preview = document.getElementById("preview");
 
 input.addEventListener('change', updateImageDisplay);
 
+var fileTypes = ['image/jpeg', 'image/pjpeg', 'image/png'];
+
+/**
+ * Updates the display to contain the previews for all images selected for upload
+ */
 function updateImageDisplay() {
     while(preview.firstChild) {
         preview.removeChild(preview.firstChild);
@@ -27,7 +32,6 @@ function updateImageDisplay() {
 
                 listItem.appendChild(image);
                 listItem.appendChild(para);
-
             } else {
                 para.textContent = 'File name ' + curFiles[i].name + ': Not a valid file type. Update your selection.';
                 listItem.appendChild(para);
@@ -38,22 +42,25 @@ function updateImageDisplay() {
     }
 }
 
-var fileTypes = [
-    'image/jpeg',
-    'image/pjpeg',
-    'image/png'
-]
-
+/**
+ * Determines whether a file is of a valid file type
+ * @param file the file to be tested
+ * @return boolean if file is valid or not
+ */
 function validFileType(file) {
     for(var i = 0; i < fileTypes.length; i++) {
         if(file.type === fileTypes[i]) {
             return true;
         }
     }
-
     return false;
 }
 
+/**
+ * Formats the file size and returns the formatted string
+ * @param number size of the file in bytes
+ * @return string formatted file size
+ */
 function returnFileSize(number) {
     if(number < 1024) {
         return number + 'bytes';

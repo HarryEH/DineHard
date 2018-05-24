@@ -1,3 +1,6 @@
+/**
+ * Validates whether the user has a valid login form
+ */
 function loginValidate(){
     var user = document.forms["loginForm"]["u"].value;
     var pass = document.forms["loginForm"]["p"].value;
