@@ -1,4 +1,5 @@
-/* The autocompletion of addresses was sourced from Google, and uses google maps.
+/*
+* The autocompletion of addresses was sourced from Google, and uses google maps.
 * https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
 */
 var placeSearch, autocomplete;
