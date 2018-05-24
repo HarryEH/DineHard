@@ -4,7 +4,8 @@ var urlsToCache = [
     '/',
     '/index',
     '/stylesheets/style.css',
-    '/javascripts/app.js'
+    '/javascripts/app.js',
+    '/results*'
 ];
 self.addEventListener('install', function(event) {
 // Perform install steps

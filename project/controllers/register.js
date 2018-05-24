@@ -32,11 +32,7 @@ module.exports = {
                     return console.error(err);
                 }
 
-                console.log("USER SEARCH");
-                console.log(results);
-
                 if (results) {
-                    console.log("NO");
                     registerOk = false;
                     userError = "* This Username is not available *";
                 }
@@ -46,19 +42,12 @@ module.exports = {
                         return console.error(err);
                     }
 
-                    console.log("EMAIL SEARCH");
-                    console.log(results);
-
                     if (results) {
-                        console.log("NO");
                         registerOk = false;
                         emailError = "* This Email Address is already in use *";
                     }
 
-                    console.log(registerOk);
-
                     if(registerOk === true) {
-                        console.log("REGIST IS OK");
                         newUser.save(function (err, user) {
                             if (err) {
                                 res.render('register', {
@@ -75,7 +64,6 @@ module.exports = {
 
                         });
                     } else {
-                        console.log("REGIST IS NOT OK");
                         res.render('register', {
                             loggedIn: false,
                             error: "",

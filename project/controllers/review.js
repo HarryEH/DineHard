@@ -3,8 +3,6 @@ const dataUriToBuffer = require('data-uri-to-buffer');
 
 module.exports = {
     createReview: function(req, res) {
-
-        console.error(req.session.user_id);
         models.User.findById({ _id: req.session.user_id }, function (err, user) {
             if (err) {return res.send(JSON.stringify({error: "Couldn't find User"}));}
 
@@ -58,12 +56,8 @@ function handleCreateReview(req, res, user, restaurant) {
 }
 
 function updateRestaurant(req, restaurant){
-    console.log(restaurant.rating);
-    console.log(restaurant.noRating);
     restaurant.rating = restaurant.rating + parseInt(req.body.slider);
     restaurant.noRating = restaurant.noRating + 1;
-    console.log(restaurant.rating);
-    console.log(restaurant.noRating);
     restaurant.save();// updates the restaurant
 }
 

@@ -4,7 +4,7 @@ function reviewDeleteAjax(reviewid) {
 }
 
 function ajax(reviewid) {
-    if (confirm('Are you sure you want to delete this?')) {
+    if (confirm('Are you sure you want to delete this review?')) {
         $.ajax({
             url: document.URL,
             data: JSON.stringify({

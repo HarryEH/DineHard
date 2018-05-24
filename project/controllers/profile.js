@@ -19,7 +19,6 @@ module.exports = {
                 const uID = user._id;
                 const myID = req.session.user_id;
                 if (myID == uID) {
-                    console.log("wtf");
                     res.redirect('/profile');
                 } else {
                     var title = username + "'s Profile";
@@ -45,7 +44,6 @@ module.exports = {
    deleteReview: function (req, res) {
        models.Review.remove({_id: req.body.id}, function (err) {
            if (err) return handleError(err);
-           console.log("deleted review");
            res.send(JSON.stringify({ }));
        });
    }
@@ -60,14 +58,10 @@ function loadProfile(req, res, next, login, uID, title, myProfile) {
             return;
         }
 
-        //console.log(results);
-
         models.Review.find({username: results.username}, function (err2, reviewResults) {
             if (err2) {
                 return console.error(err2);
             }
-
-            //console.log(reviewResults);
 
             var reviewCount = reviewResults.length;
 

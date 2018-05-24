@@ -2,8 +2,8 @@
 <script src="javascripts/write-review.js"></script>
 <script src="javascripts/reviewajax.js"></script>
 
-<!-- Button to open the modal login form -->
-<button class="review-add-btn s-font" onclick="document.getElementById('reviewForm').style.display='block'">Write a review</button>
+<!-- Button to open the modal review form -->
+<button class="review-add-btn s-font" onclick="document.getElementById('reviewForm').style.display='block';startup();">Write a review</button>
 
 <!-- The Modal -->
 <div id="reviewForm" class="modal">
@@ -76,7 +76,6 @@
 </div>
 
 <script src="javascripts/capture.js"></script>
-<script>startup();</script>
 
 <script>
     var slider = document.getElementById("slider");
