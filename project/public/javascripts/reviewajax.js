@@ -1,6 +1,7 @@
 function reviewAjax(e) {
     e.preventDefault();
     var uri = document.getElementById('photo-text-source').value;
+    console.log(uri.length);
     ajax(uri);
 }
 
