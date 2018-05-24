@@ -4,22 +4,24 @@ function reviewDeleteAjax(reviewid) {
 }
 
 function ajax(reviewid) {
-    $.ajax({
-        url: document.URL,
-        data: JSON.stringify({
-            id: reviewid
-        }),
-        contentType: 'application/json',
-        type: 'POST',
-        dataType: "json",
-        success: function (data) {
-            alert('Review Deleted');
-        },
+    if (confirm('Are you sure you want to delete this?')) {
+        $.ajax({
+            url: document.URL,
+            data: JSON.stringify({
+                id: reviewid
+            }),
+            contentType: 'application/json',
+            type: 'POST',
+            dataType: "json",
+            success: function (data) {
+                //alert('Review Deleted');
+            },
 
-        error: function (xhr, status, error) {
-            console.log(error);
-        }
-    });
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
 }
 
 
