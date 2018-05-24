@@ -16,8 +16,12 @@ module.exports = {
 
     handleSearch: function(req, res, login) {
 
-        req.session.user_lat = req.query.lat;
-        req.session.user_lng = req.query.lng;
+        // req.session lat n lng
+        if ((req.query.lat === "" || req.query.lng === "") && req.query.q == "") {
+            // enter a postcode
+            res.redirect('/');
+            return;
+        }
 
         // undefined || empty - return everything
         if (validPostcode(req.query.q)) {

@@ -8,7 +8,7 @@ function getLocation() {
 }
 
 /**
- * Sets the hiddlen fields to the values of the Users location
+ * Sets the hidden fields to the values of the Users location
  */
 function hiddenFields() {
     const lat = sessionStorage.getItem("userLat");
