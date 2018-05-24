@@ -1,3 +1,7 @@
+/**
+ * Calculates and displays the formatted price string for a restaurant
+ * @params price the price value of the restaurant, divID the ID of the div to display the price string
+ */
 function getPrice(price, divID){
     var priceDiv = document.getElementById(divID);
     var priceHTML = "";
