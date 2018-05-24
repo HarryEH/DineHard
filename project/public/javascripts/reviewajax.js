@@ -45,7 +45,7 @@ function handleSocket(data){
 
     getStarRating(x/y, "starRating");
 
-    document.getElementById("ratingText").innerText = x/y + " with " + y + " reviews";
+    document.getElementById("ratingText").innerText = Math.round((x/y) * 100) / 100 + " with " + y + " reviews";
 
     for (var i = 0; i < data.results.length; i++) {
         var divID = "review-star" + (i+1).toString();

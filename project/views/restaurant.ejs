@@ -41,7 +41,7 @@
                     <% } %>
                     <li>
                         <div id="starRating" class="inline"></div>
-                        <div id="ratingText" class="inline"><%= restaurant.rating / restaurant.noRating %>
+                        <div id="ratingText" class="inline"><%= Math.round( restaurant.rating / restaurant.noRating * 100)/100; %>
                             with <%= reviewCount %> reviews
                         </div>
                     </li>
