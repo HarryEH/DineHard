@@ -1,5 +1,6 @@
-//The Autocompletion of addresses was sourced from Google javascript code, using google maps.
-// https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+/* The autocompletion of addresses was sourced from Google, and uses google maps.
+* https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+*/
 var placeSearch, autocomplete;
 var componentForm = {
     street_number: 'short_name',
