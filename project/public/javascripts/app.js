@@ -29,11 +29,17 @@ window.addEventListener('online', function(e) {
 
 
 function showOfflineWarning(){
-    if (document.getElementById('offline_div')!=null)
-        document.getElementById('offline_div').style.display='block';
+    if (document.getElementById('offline_div') != null) {
+        document.getElementById('offline_div').style.display = 'block';
+        document.getElementById('search-bar').style.display = 'none';
+    }
 }
 
 function hideOfflineWarning(){
-    if (document.getElementById('offline_div')!=null)
-        document.getElementById('offline_div').style.display='none';
+    if (document.getElementById('offline_div') != null) {
+        document.getElementById('offline_div').style.display = 'none';
+    }
+    if (document.getElementById('search-bar') !=null) {
+        document.getElementById('search-bar').style.display = 'block';
+    }
 }
