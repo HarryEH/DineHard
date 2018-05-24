@@ -32,10 +32,6 @@
 
                         <div class="row">
                             <div class="col-8"><h2>Personal Details</h2></div>
-
-                            <%if (myProfile === true){%>
-                                <div class="col-4"><button class="profile-edit" onclick="showEdit()">Edit</button></div>
-                            <%}%>
                         </div>
 
                         <div class="row">
@@ -123,16 +119,17 @@
                         <% reviews.forEach(function(review){ %>
                         <% reviewNum += 1;%>
                         <div class="container profile-review">
+                            <% var divID = "review" + reviewNum.toString();%>
                             <div class="row">
                                 <div class="col-7 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
+                                <div class="col-4 align-right"><button class="review-delete" onclick="reviewDeleteAjax('<%=review._id%>')">Delete</button></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7" id='<%=divID%>'><%= review.rating %> out of 7 stars</div>
+                                <script>getStarRating(<%= review.rating %>, "<%=divID%>");</script>
                                 <% var divID = "review-date" + reviewNum.toString();%>
                                 <div class="col-4 review-date align-right" id='<%=divID%>'><%= review.date %></div>
                                 <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divID%>");</script>
-                            </div>
-                            <div class="row">
-                                <% var divID = "review" + reviewNum.toString();%>
-                                <div class="col-12" id='<%=divID%>'><%= review.rating %> out of 7 stars</div>
-                                <script>getStarRating(<%= review.rating %>, "<%=divID%>");</script>
                             </div>
                             <div class="row">
                                 <div class="col-12"><%= review.review %></div>

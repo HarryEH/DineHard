@@ -1,3 +1,6 @@
+/**
+ * Formats the links at the top of the page for when the User is logged in
+ */
 function isLoggedIn(){
     var topLinks = document.getElementById("top-links");
     var html = "";

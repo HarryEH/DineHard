@@ -666,6 +666,30 @@ a:hover {
     color: white;
 }
 
+.map-view {
+    height: 30px;
+    width: 70%;
+    min-width: 70px;
+    margin: 15px 15% 15px 15%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--bg2-color);
+    color: white;
+}
+
+.results-submit{
+    height: 30px;
+    width: 20%;
+    min-width: 70px;
+    margin: 10px 5% 10px 5%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--bg2-color);
+    color: white;
+}
+
 .error {
     width: 100%;
     background: rgba(150, 0, 37, 0.35);
@@ -756,6 +780,14 @@ a:hover {
 .profile-edit {
     width: 60%;
     margin: 5px 20% 5px 20%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bg2-color);
+    color: white;
+}
+
+.review-delete {
+    width: 80%;
     border: none;
     border-radius: 5px;
     background-color: var(--bg2-color);
@@ -1067,17 +1099,11 @@ a:hover {
     background-color: grey;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a red background */
 .cuisines input:checked ~ .checkmark {
     background-color: red;
 }
 
-/*!* Create the checkmark/indicator (hidden when not checked) *!*/
-/*.checkmark:after {*/
-/*content: "";*/
-/*position: absolute;*/
-/*display: none;*/
-/*}*/
 
 /* Show the checkmark when checked */
 .cuisines input:checked ~ .checkmark:after {

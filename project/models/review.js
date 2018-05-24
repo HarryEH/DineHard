@@ -7,7 +7,7 @@ var reviewSchema = mongoose.Schema({
     rating: Number,
     time: String,
     date: { type: Date, default: Date.now },
-    photos: [{ data: Buffer, contentType: String }],
+    photo: { data: Buffer, contentType: String },
     review: String
 });
 

@@ -1,5 +1,3 @@
-
-
 function reviewValidate(e){
     e.preventDefault();
     var reviewdescription = document.forms["writeReviewForm"]["review-text"].value.trim();

@@ -19,6 +19,7 @@ module.exports = {
                 const uID = user._id;
                 const myID = req.session.user_id;
                 if (myID == uID) {
+                    console.log("wtf");
                     res.redirect('/profile');
                 } else {
                     var title = username + "'s Profile";
@@ -39,10 +40,18 @@ module.exports = {
 
         loadProfile(req, res, next, login, uID, "My Profile", true);
 
-    }
+    },
+
+   deleteReview: function (req, res) {
+       models.Review.remove({_id: req.body.id}, function (err) {
+           if (err) return handleError(err);
+           console.log("deleted review");
+           res.send(JSON.stringify({ }));
+       });
+   }
 };
 
-function loadProfile(req, res, next, login, uID, title, myProfile){
+function loadProfile(req, res, next, login, uID, title, myProfile) {
 
     models.User.findById(uID, function (err, results) {
         if (err) {
@@ -53,36 +62,53 @@ function loadProfile(req, res, next, login, uID, title, myProfile){
 
         //console.log(results);
 
-        models.Review.find({username: results.username}, function(err2, reviewResults) {
-            if (err2) { return console.error(err2);}
+        models.Review.find({username: results.username}, function (err2, reviewResults) {
+            if (err2) {
+                return console.error(err2);
+            }
 
             //console.log(reviewResults);
 
             var reviewCount = reviewResults.length;
 
-            if(reviewCount == 0)
-            {
-                res.render('profile', { user: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount, title: title, myProfile: myProfile });
+            if (reviewCount == 0) {
+                res.render('profile', {
+                    user: results,
+                    loggedIn: login,
+                    reviews: reviewResults,
+                    reviewCount: reviewCount,
+                    title: title,
+                    myProfile: myProfile
+                });
                 return;
             }
 
             var reviewIndex = 0;
-            reviewResults.forEach(function(review)
-            {
-                models.Restaurant.findById(review.resId, function(err3,restaurant){
-                    if (err3) { return console.error(err3);}
+            reviewResults.forEach(function (review) {
+                models.Restaurant.findById(review.resId, function (err3, restaurant) {
+                    if (err3) {
+                        return console.error(err3);
+                    }
                     reviewIndex++;
 
                     review.resName = restaurant.name;
-                    review.resURL = "restaurant-" + review.resName.replace(/\s/g, '-') + "?rId="+ review.resId;
+                    review.resURL = "restaurant-" + review.resName.replace(/\s/g, '-') + "?rId=" + review.resId;
 
-                    if(reviewIndex == reviewCount){
-                        res.render('profile', { user: results, loggedIn: login, reviews: reviewResults, reviewCount: reviewCount, title: title, myProfile: myProfile });
+                    if (reviewIndex == reviewCount) {
+                        res.render('profile', {
+                            user: results,
+                            loggedIn: login,
+                            reviews: reviewResults,
+                            reviewCount: reviewCount,
+                            title: title,
+                            myProfile: myProfile
+                        });
                         return;
                     }
                 });
             });
         });
-
     });
+
+
 }

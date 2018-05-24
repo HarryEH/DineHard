@@ -91,7 +91,7 @@ router.get('/login', function(req, res, next) {
     if(validation.checkLogin(req, res, next)){
         res.redirect(req.session.prevURL);
     } else {
-        res.render('login', {loggedIn: login, error: ""});
+        res.render('login', {loggedIn: validation.checkLogin(req, res, next), error: ""});
     }
 });
 
@@ -217,9 +217,9 @@ router.post('/create-restaurant', function(req, res, next) {
                     }
                 }
 
-                uri = fields.photoCaptureSource;
+                var uri = fields.photoCaptureSource;
                 if (uri != "") {
-                    decoded = dataUriToBuffer(uri);
+                    var decoded = dataUriToBuffer(uri);
                     imgs.push({data: decoded, contentType: 'image/png'})
                 }
                 restaurantController.addRestaurant(req, res, login, fields, imgs);
@@ -237,6 +237,13 @@ router.post('/create-restaurant', function(req, res, next) {
 /**
  *
  */
+router.post('/profile', function(req, res, next) {
+     if (validation.checkLogin(req, res, next)) {
+        profileController.deleteReview(req, res);
+     }
+});
+
+
 router.get('/profile', function(req, res, next) {
     req.session.prevURL = req.url || '/';
     if (validation.checkLogin(req, res, next)) {
@@ -249,7 +256,7 @@ router.get('/profile', function(req, res, next) {
 /**
  *
  */
-router.get('/profile-*', function(req, res, next) {
+router.get('/view-profile', function(req, res, next) {
     req.session.prevURL = req.url || '/';
     profileController.renderProfile(req, res, next, validation.checkLogin(req, res, next));
 });
