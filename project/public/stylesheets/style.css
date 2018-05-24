@@ -666,6 +666,30 @@ a:hover {
     color: white;
 }
 
+.map-view {
+    height: 30px;
+    width: 70%;
+    min-width: 70px;
+    margin: 15px 15% 15px 15%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--bg2-color);
+    color: white;
+}
+
+.results-submit{
+    height: 30px;
+    width: 20%;
+    min-width: 70px;
+    margin: 10px 5% 10px 5%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--bg2-color);
+    color: white;
+}
+
 .error {
     width: 100%;
     background: rgba(150, 0, 37, 0.35);
