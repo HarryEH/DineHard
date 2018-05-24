@@ -1,3 +1,9 @@
+/*
+* This function validates user input for registering an account. If there is an element missing, the user will
+* be alerted, and red writing appears above the fields that are not satisfied.
+* @return true if all fields contain validate input, or returns false otherwise, with an alert and the fields that
+* do not contain a valid input are clearly highlighted.
+ */
 function registerValidate(){
     var fname = document.forms["registerForm"]["f"].value.trim();
     var sname = document.forms["registerForm"]["s"].value.trim();
@@ -74,11 +80,19 @@ function registerValidate(){
     }
 }
 
+/*
+* Regexes the email to check if it is valid*
+* @return true if regex is true, false if regex is false
+ */
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
 
+/*
+* Regexes the username to check if it is valid*
+* @return true if regex is true, false if regex is false
+ */
 function validateUsername(user) {
     var re = /[^A-Za-z0-9_-]/;
     return re.test(String(user).toLowerCase());
