@@ -4,35 +4,33 @@ var placeSearch, autocomplete;
 var componentForm = {
     street_number: 'short_name',
     route: 'long_name',
-    //locality: 'long_name',
-    // administrative_area_level_1: 'short_name',
-    // country: 'long_name',
     postal_code: 'short_name'
 };
 
+
+/*
+* This function creates an autocomplete object, uses google maps and geocode.
+* Calls the fill in address function.
+ */
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
         {types: ['geocode']});
-
-    // When the user selects an address from the dropdown, populate the address
-    // fields in the form.
     autocomplete.addListener('place_changed', fillInAddress);
 }
 
+/*
+* This function gets the location details from the autocomplete object and fills the form field for each element
+* of the address.
+ */
 function fillInAddress() {
-    // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-
     for (var component in componentForm) {
         document.getElementById(component).value = '';
         document.getElementById(component).disabled = false;
     }
-
-    // Get each component of the address from the place details
-    // and fill the corresponding field on the form.
     for (var i = 0; i < place.address_components.length; i++) {
         var addressType = place.address_components[i].types[0];
         if (componentForm[addressType]) {
@@ -42,8 +40,12 @@ function fillInAddress() {
     }
 }
 
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
+/*
+* This function is called in create-restaurant.ejs
+* It gets the user's geographical location, which is from navigator.geolocation in the browser.
+* Uses a circle to get nearby addresses so that when the user starts typing the address, all relevant addresses
+* in this range appear in the drop down.
+ */
 function geolocate() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -60,6 +62,12 @@ function geolocate() {
     }
 }
 
+/*
+* This function validates user input for creating a restaurant. If there is an element missing, the user will
+* be alerted, and red writing appears above the fields that are not satisfied.
+* @return true if all fields contain validate input, or returns false otherwise, with an alert and the fields that
+* do not contain a valid input are clearly highlighted.
+ */
 function validateRestaurant(){
     var name = document.forms["createRestaurantForm"]["name"].value.trim();
     var phone = document.forms["createRestaurantForm"]["phoneNo"].value.trim();
@@ -169,17 +177,26 @@ function validateRestaurant(){
 
     if (!createOk) {
         event.preventDefault();
-        alert("Creation not fine!");
+        alert("Please enter details for all required fields!");
         return false;
     } else {
         return true;
     }
 }
 
+/*
+* Counts words for the restaurant description field, so that there must be over 100 words, as this fills
+* the restaurant page.
+* @return number of words
+ */
 function countWords(str) {
     return str.trim().split(/\s+/).length;
 }
 
+/*
+* Validates the URL to make sure it is a real website.
+* @return boolean of whether the website is valid or not.
+ */
 function validateURL(website){
     return true;
 }
