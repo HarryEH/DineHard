@@ -1,4 +1,4 @@
-/*
+/**
 * The autocompletion of addresses was sourced from Google, and uses google maps.
 * https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
 */
@@ -10,7 +10,7 @@ var componentForm = {
 };
 
 
-/*
+/**
 * This function creates an autocomplete object, uses google maps and geocode.
 * Calls the fill in address function.
  */
@@ -23,7 +23,7 @@ function initAutocomplete() {
     autocomplete.addListener('place_changed', fillInAddress);
 }
 
-/*
+/**
 * This function gets the location details from the autocomplete object and fills the form field for each element
 * of the address.
  */
@@ -42,7 +42,7 @@ function fillInAddress() {
     }
 }
 
-/*
+/**
 * This function is called in create-restaurant.ejs
 * It gets the user's geographical location, which is from navigator.geolocation in the browser.
 * Uses a circle to get nearby addresses so that when the user starts typing the address, all relevant addresses
@@ -64,7 +64,7 @@ function geolocate() {
     }
 }
 
-/*
+/**
 * This function validates user input for creating a restaurant. If there is an element missing, the user will
 * be alerted, and red writing appears above the fields that are not satisfied.
 * @return true if all fields contain validate input, or returns false otherwise, with an alert and the fields that
@@ -186,7 +186,7 @@ function validateRestaurant(){
     }
 }
 
-/*
+/**
 * Counts words for the restaurant description field, so that there must be over 100 words, as this fills
 * the restaurant page.
 * @return number of words
@@ -195,9 +195,10 @@ function countWords(str) {
     return str.trim().split(/\s+/).length;
 }
 
-/*
-* Validates the URL to make sure it is a real website.
-* @return boolean of whether the website is valid or not.
+/**
+ * Validates the URL to make sure it is a real website. This is dead code... the URL is not validated
+ * @param website
+ * @returns {boolean} boolean of whether the website is valid or not.
  */
 function validateURL(website){
     return true;
