@@ -122,7 +122,9 @@
                             <% var divID = "review" + reviewNum.toString();%>
                             <div class="row">
                                 <div class="col-7 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
-                                <div class="col-4 align-right"><button class="review-delete" onclick="reviewDeleteAjax('<%=review._id%>')">Delete</button></div>
+                                <% if (myProfile == true) {%>
+                                    <div class="col-4 align-right"><button class="review-delete" onclick="reviewDeleteAjax('<%=review._id%>')">Delete</button></div>
+                                <% }%>
                             </div>
                             <div class="row">
                                 <div class="col-7" id='<%=divID%>'><%= review.rating %> out of 7 stars</div>
