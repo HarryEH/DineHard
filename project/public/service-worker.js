@@ -35,61 +35,86 @@ self.addEventListener('activate', function(event){
     )
 });
 
+var queue = [];
+
 self.addEventListener('fetch', function(event) {
-    console.log(event.request);
+
+    const cloned = event.request.clone();
+
+    if (event.request.method !== "GET" && !event.request.url.includes("login")) {
+        console.log(cloned);
+    }
+
     event.respondWith (
-        fetch(event.request).catch(function(e) {
-            console.error('Fetch failed; returning a cached or offline page instead.', e);
+        fetch(event.request).then( function (response) {
+            if (event.request.method === "GET") {
+                if (response && response.status === 200 && response.type === 'basic') {
+                    var responseToCache = response.clone();
+                    caches.open(CACHE_NAME).then(function (cache) {
+                        cache.put(event.request, responseToCache);
+                    });
+                }
+
+            }
+
+            // handle sending the unsent response here
+            if (queue.length !== 0) {
+                const len = queue.length
+                for (var q = 0; q < len; q++) {
+                    const request = queue.shift();
+                    fetch(request).then(function(r){
+                        console.log("unsent message sent and response received");
+                        console.log(r);
+                    }).catch(function(err) {
+                        console.err(err);
+                        // something went wrong when sending this...
+                    })
+                }
+            }
+
+            return response;
+        }).catch(function(e) {
+
+            console.log("in the catch");
+
+            if (cloned.method !== "GET" && !cloned.url.includes("login") && !cloned.url.includes("socket")) {
+                console.log(queue);
+                console.log(cloned.url);
+                queue.push(cloned);
+            }
+
             return caches.open(CACHE_NAME).then(function(cache) {
-                //return cache.match(event.request);
                 return caches.match(event.request).then(function (response) {
                     // Cache hit - return the cache response (the cached page)
                     if (response) {
-                        console.log("here1");
                         return response;
                     } else {
-                        console.log("here2");
                         return caches.match('/offline.html').then(function(r){return r;})
                     }
                 })
             });
         })
-        // fetch(event.request).catch(function(err) {
-        //     // it checks if the requested page is among the cached ones
-        //     caches.match(event.request).then(function (response) {
-        //         // Cache hit - return the cache response (the cached page)
-        //         if (response) {
-        //             console.log("here1");
-        //             return response;
-        //         } else {
-        //             console.log("here2");
-        //             return caches.match('/offline.html').then(function(r){return r;})
-        //         }
-        //     })
-        // })
     );
 
-    var fetchRequest = event.request.clone();
-    return fetch(fetchRequest).then( function (response) {
-        // Check if we received a valid response. A basic response is one that
-        // is made to our own site. Do not cache responses to requests made
-        // to other sites
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-        }
-        // IMPORTANT: as mentioned we must clone the response.
-        // A response is a stream
-        // and because we want the browser to consume the response
-        // as well as the cache consuming the response, we need
-        // to clone it so we have two streams.
-        var responseToCache = response.clone();
-        caches.open(CACHE_NAME)
-            .then(function (cache) {
-                cache.put(event.request, responseToCache);
-            });
-        return response;
-    });
+    // if (event.request.method === "GET") {
+    //     var fetchRequest = event.request.clone();
+    //     return fetch(fetchRequest).then( function (response) {
+    //
+    //         if (!response || response.status !== 200 || response.type !== 'basic') {
+    //             return response;
+    //         }
+    //
+    //         var responseToCache = response.clone();
+    //         caches.open(CACHE_NAME)
+    //             .then(function (cache) {
+    //                 cache.put(event.request, responseToCache);
+    //             });
+    //         return response;
+    //     });
+    // }
+
 });
+
 
 
 
