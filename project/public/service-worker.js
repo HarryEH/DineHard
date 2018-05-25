@@ -1,48 +1,74 @@
-var CACHE_NAME = 'dine-hard-cache-v1';
-var urlsToCache = [
+const CACHE_NAME = 'dine-hard-cache-v1';
+const ERROR_CACHE = 'dine-hard-error';
+const urlsToCache = [
 // add the files you want to cache here
     '/',
-    '/index',
     '/stylesheets/style.css',
-    '/javascripts/app.js',
-    '/results*'
+    '/offline.html'
 ];
+
 self.addEventListener('install', function(event) {
-// Perform install steps
+    // Perform install steps
     console.log('[ServiceWorker] Install');
-        event.waitUntil(
-            caches.open(CACHE_NAME).then(function(cache) {
-                    console.log('[ServiceWorker] Caching app shell');
-                    return cache.addAll(urlsToCache);
-                })
-        );
-    });
+
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(function(cache) {
+                console.log('[ServiceWorker] Caching app shell');
+                return cache.addAll(urlsToCache);
+        })
+    );
+
+});
 
 self.addEventListener('activate', function(event){
-   console.log('[ServiceWorker] Activate');
-   e.waitUntil(
+    console.log('[ServiceWorker] Activate');
+
+    event.waitUntil(
        caches.keys().then(function(keyList) {
            return Promise.all(keyList.map(function(key){
-               if(key !== cacheName && key !== dataCacheName) {
+               if(key !== CACHE_NAME) {
                    console.log('[ServiceWorker] Removing old cache', key);
                    return caches.delete(key);
                }
            }))
        })
-   )
+    )
 });
 
 self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        // it checks if the requested page is among the cached ones
-        caches.match(event.request).then(function (response) {
-                // Cache hit - return the cache response (the cached page)
-                if (response) {
-                    return response;
-                } //cache does not have the page — go to the server
-                return fetch(event.request);
-            })
+    console.log(event.request);
+    event.respondWith (
+        fetch(event.request).catch(function(e) {
+            console.error('Fetch failed; returning a cached or offline page instead.', e);
+            return caches.open(CACHE_NAME).then(function(cache) {
+                //return cache.match(event.request);
+                return caches.match(event.request).then(function (response) {
+                    // Cache hit - return the cache response (the cached page)
+                    if (response) {
+                        console.log("here1");
+                        return response;
+                    } else {
+                        console.log("here2");
+                        return caches.match('/offline.html').then(function(r){return r;})
+                    }
+                })
+            });
+        })
+        // fetch(event.request).catch(function(err) {
+        //     // it checks if the requested page is among the cached ones
+        //     caches.match(event.request).then(function (response) {
+        //         // Cache hit - return the cache response (the cached page)
+        //         if (response) {
+        //             console.log("here1");
+        //             return response;
+        //         } else {
+        //             console.log("here2");
+        //             return caches.match('/offline.html').then(function(r){return r;})
+        //         }
+        //     })
+        // })
     );
+
     var fetchRequest = event.request.clone();
     return fetch(fetchRequest).then( function (response) {
         // Check if we received a valid response. A basic response is one that
@@ -64,5 +90,7 @@ self.addEventListener('fetch', function(event) {
         return response;
     });
 });
+
+
 
 
