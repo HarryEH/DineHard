@@ -18,3 +18,7 @@ project/node_modules/*
 
 
 
+
+*.iml
+
+project/project.iml

@@ -35,19 +35,15 @@ self.addEventListener('activate', function(event){
     )
 });
 
+var queue = [];
+
 self.addEventListener('fetch', function(event) {
 
-    const cunt = event.request.clone();
-    // console.log(event.request);
-    //
-    // event.request.arrayBuffer().then(function(r){
-    //     var enc = new TextDecoder("utf-8");
-    //     var arr = new Uint8Array(r);
-    //     console.log(enc.decode(arr));
-    // });
-    //
-    // console.log(event.request);
+    const cloned = event.request.clone();
 
+    if (event.request.method !== "GET" && !event.request.url.includes("login")) {
+        console.log(cloned);
+    }
 
     event.respondWith (
         fetch(event.request).then( function (response) {
@@ -59,28 +55,34 @@ self.addEventListener('fetch', function(event) {
                     });
                 }
 
-            } else {
-                console.log(cunt);
-
-                // event.request.arrayBuffer()
-                // event.request.blob()
-                // event.request.json()
-                // event.request.text()
-                // event.request.formData()
-
-                // cunt.arrayBuffer().then(function(r){
-                //     var enc = new TextDecoder("utf-8");
-                //     var arr = new Uint8Array(r);
-                //     console.log(enc.decode(arr));
-                // });
-
-                cunt.text().then(function(r){
-                    console.log(r);
-                }).catch(function(err){console.log(err)});
             }
+
+            // handle sending the unsent response here
+            if (queue.length !== 0) {
+                const len = queue.length
+                for (var q = 0; q < len; q++) {
+                    const request = queue.shift();
+                    fetch(request).then(function(r){
+                        console.log("unsent message sent and response received");
+                        console.log(r);
+                    }).catch(function(err) {
+                        console.err(err);
+                        // something went wrong when sending this...
+                    })
+                }
+            }
+
             return response;
         }).catch(function(e) {
-            console.error('Fetch failed; returning a cached or offline page instead.', e);
+
+            console.log("in the catch");
+
+            if (cloned.method !== "GET" && !cloned.url.includes("login") && !cloned.url.includes("socket")) {
+                console.log(queue);
+                console.log(cloned.url);
+                queue.push(cloned);
+            }
+
             return caches.open(CACHE_NAME).then(function(cache) {
                 return caches.match(event.request).then(function (response) {
                     // Cache hit - return the cache response (the cached page)
