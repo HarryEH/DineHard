@@ -179,7 +179,6 @@ function validateRestaurant(){
 
     if (!createOk) {
         event.preventDefault();
-        alert("Please enter details for all required fields!");
         return false;
     } else {
         return true;
