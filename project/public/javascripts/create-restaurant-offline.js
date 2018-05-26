@@ -4,7 +4,7 @@
 window.addEventListener('offline', function(e) {
     // Queue up events for server.
     console.log("You are offline");
-    handleGoingOfflineRestaurant();
+    // handleGoingOfflineRestaurant();
 }, false);
 
 /**
@@ -14,8 +14,10 @@ window.addEventListener('offline', function(e) {
 window.addEventListener('online', function(e) {
     // Resync data with server.
     console.log("You are online");
-    handleGoingOnlineRestaurant();
+    // handleGoingOnlineRestaurant();
 }, false);
+
+
 
 
 function handleGoingOfflineRestaurant() {

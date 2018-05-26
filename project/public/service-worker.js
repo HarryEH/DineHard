@@ -41,6 +41,8 @@ self.addEventListener('fetch', function(event) {
 
     const cloned = event.request.clone();
 
+    console.log(queue);
+
     if (event.request.method !== "GET" && !event.request.url.includes("login")) {
         console.log(cloned);
     }
@@ -54,21 +56,22 @@ self.addEventListener('fetch', function(event) {
                         cache.put(event.request, responseToCache);
                     });
                 }
-
             }
 
-            // handle sending the unsent response here
-            if (queue.length !== 0) {
-                const len = queue.length
-                for (var q = 0; q < len; q++) {
-                    const request = queue.shift();
-                    fetch(request).then(function(r){
-                        console.log("unsent message sent and response received");
-                        console.log(r);
-                    }).catch(function(err) {
-                        console.err(err);
-                        // something went wrong when sending this...
-                    })
+            if (response && response.status === 200 && response.type === 'basic') {
+                // handle sending the unsent response here
+                if (queue.length !== 0) {
+                    const len = queue.length
+                    for (var q = 0; q < len; q++) {
+                        const request = queue.shift();
+                        fetch(request).then(function (r) {
+                            console.log("unsent message sent and response received");
+                            console.log(r);
+                        }).catch(function (err) {
+                            console.err(err);
+                            // something went wrong when sending this...
+                        })
+                    }
                 }
             }
 
