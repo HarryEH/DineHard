@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="javascripts/location.js"></script>
-    <script src="javascripts/load.js"></script>
+    <script src="javascripts/index.js"></script>
     <title>Dine Hard</title>
 
 </head>
@@ -29,7 +29,7 @@
             <div class="container-fluid row">
                 <p class="index-search-title xs-font">Enter your postcode to find local restaurants</p>
             </div>
-            <form class="index-search" id="searchForm" action="/results" method="get">
+            <form class="index-search" id="searchForm" onsubmit="handleOfflineSearch(event)" action="/results" method="get">
                 <input type="text" id="searchTextInput" class="index-search-text xs-font" placeholder="Enter postcode or keyword(s)" name="q" id="q">
                 <input type="text" class="latField" hidden="true" name="lat" id="lat">
                 <input type="text" class="lngField" hidden="true" name="lng" id="lng">
