@@ -20,7 +20,7 @@ module.exports = {
         const revId = req.params.index;
 
         models.Review.findById(revId, function (err, results) {
-            if (err) return err;
+            if (err) return res.send(err);
             res.contentType(results.photo.contentType);
             res.send(results.photo.data);
         });

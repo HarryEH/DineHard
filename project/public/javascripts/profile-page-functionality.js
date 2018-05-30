@@ -1,9 +1,9 @@
-function reviewDeleteAjax(reviewid) {
-    ajax(reviewid);
+function reviewDeleteAjax(reviewid, divID) {
+    ajax(reviewid, divID);
 
 }
 
-function ajax(reviewid) {
+function ajax(reviewid, divID) {
     if (confirm('Are you sure you want to delete this review?')) {
         $.ajax({
             url: document.URL,
@@ -14,9 +14,7 @@ function ajax(reviewid) {
             type: 'POST',
             dataType: "json",
             success: function (data) {
-                //alert('Review Deleted');
-                //TODO we need to write this code ???
-                //FIXME hello
+                document.getElementById(divID).parentNode.removeChild(document.getElementById(divID));
             },
 
             error: function (xhr, status, error) {
@@ -24,15 +22,6 @@ function ajax(reviewid) {
             }
         });
     }
-}
-
-
-function showEdit(){
-    var details = document.getElementById("profile-details");
-    var editDetails = document.getElementById("edit-profile-details");
-
-    details.style.display = "none";
-    editDetails.style.display = "block";
 }
 
 function showDetails(){

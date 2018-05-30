@@ -2,92 +2,6 @@ const models = require('../models');
 
 models.connect();
 
-models.Restaurant.findOne({name: /^Dine/}, function (err, res) {
-    if (err) return console.error(err);
-    models.User.findOne({forename: /^Har/}, function (err, user) {
-        if (err) return console.error(err);
-
-        var review = new models.Review({
-            username: user.username,
-            resId: res._id,
-            rating: "7",
-            time: "15:39:21",
-            date: "7/3/18",
-            review: "Absolutely great. Would recommend",
-            photos: ""
-        });
-
-        review.save(function (err, review) {
-            if (err) return console.error(err);
-
-        });
-
-    });
-
-    models.User.findOne({forename: /^Vic/}, function (err, user) {
-        if (err) return console.error(err);
-
-        var review = new models.Review({
-            username: user.username,
-            resId: res._id,
-            rating: "4",
-            time: "12:19:31",
-            date: "2/4/18",
-            review: "'Dine Hard'?! They're the best.",
-            photos: ""
-        });
-
-        review.save(function (err, review) {
-            if (err) return console.error(err);
-
-        });
-
-    });
-});
-
-models.Restaurant.findOne({name: /^The Wonder Inn/}, function (err, res) {
-    if (err) return console.error(err);
-    models.User.findOne({forename: /^Har/}, function (err, user) {
-        if (err) return console.error(err);
-
-        var review = new models.Review({
-            username: user.username,
-            resId: res._id,
-            rating: "2",
-            time: "11:34:21",
-            date: "2/4/18",
-            review: "Wonderful time at the wonder in. I think they have the best food in town!",
-            photos: ""
-        });
-
-        review.save(function (err, review) {
-            if (err) return console.error(err);
-
-        });
-
-    });
-
-    models.User.findOne({forename: /^Ada/}, function (err, user) {
-        if (err) return console.error(err);
-
-        var review = new models.Review({
-            username: user.username,
-            resId: res._id,
-            rating: "3",
-            time: "12:19:31",
-            date: "3/12/17",
-            review: "Eh. Food was okay, staff were rude and bitchy. Would NOT recommend to a friend or loved one - only my enemies",
-            photos: ""
-        });
-
-        review.save(function (err, review) {
-            if (err) return console.error(err);
-
-        });
-
-    });
-});
-
 models.Restaurant.findOne({name: /^Harry/}, function (err, res) {
     if (err) return console.error(err);
     models.User.findOne({forename: /^Vic/}, function (err, user) {
@@ -217,7 +131,7 @@ models.Restaurant.findOne({name: /^Ada/}, function (err, res) {
     });
 });
 
-models.Restaurant.findOne({name: /^Fab/}, function (err, res) {
+models.Restaurant.findOne({name: /^Fre/}, function (err, res) {
     if (err) return console.error(err);
     models.User.findOne({forename: /^Vic/}, function (err, user) {
         if (err) return console.error(err);

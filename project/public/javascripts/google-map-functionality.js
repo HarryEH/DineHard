@@ -8,7 +8,7 @@ function myMap(){
         scaleControl: false,
         draggable: false,
     };
-    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    const map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
 }
 
 function addMarkers(lat,lng) {
@@ -22,7 +22,7 @@ function addMarkers(lat,lng) {
         scaleControl: false,
         draggable: false,
     };
-    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    const map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
 
     new google.maps.Marker({
         position: {lat: lat, lng: lng},

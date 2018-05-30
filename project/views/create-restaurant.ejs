@@ -10,10 +10,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="javascripts/create-restaurant.js"></script>
+    <script src="/javascripts/create-restaurant-offline.js" ></script>
     <script src="javascripts/capture.js"></script>
 </head>
 
-<body>
+<body onload="initialMessageDisplay()">
 <div class="main-wrapper">
 
     <% include header.ejs %>
@@ -22,6 +23,8 @@
         <div class ="user-border">
 
             <div class="user-title">Create Restaurant</div>
+
+            <div class="offline_div soft-highlight" id="offline_div" style="display: none">Despite being offline, creating this restaurant will work!</div>
 
             <div class = "error"><%= error %></div>
 
@@ -311,7 +314,6 @@
     </div>
 </div>
 <% include footer.ejs %>
-<script src="/javascripts/create-restaurant-offline.js" ></script>
 <script src="javascripts/photo-display.js"></script>
 </body>
 </html>
