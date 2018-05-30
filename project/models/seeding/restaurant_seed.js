@@ -11,55 +11,6 @@ var img5 = {data: fs.readFileSync("public/images/restTest5.jpg"), contentType: '
 var img6 = {data: fs.readFileSync("public/images/restTest6.jpg"), contentType: 'image/jpg'};
 
 
-//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-var imgs = [img1, img2, img3];
-
-var res1 = new models.Restaurant({
-    name: "Dine Hard",
-    doorNumber: "37",
-    postcode: "S6 5BP",
-    phoneNo: "01912401786",
-    description: "We have gone to great lengths to try and use only local produce and suppliers, thus ensuring our quality is always of a very high standard for our guests to enjoy. At Dine Hard you are always guaranteed a warm welcome from our loving owners Harry, Victoria and Adam.",
-    cuisines: "Italian",
-    lat: 53.39476,
-    lng: -1.50796,
-    photoURL: imgs,
-    price: 10,
-    tags: "homely, warm, good ambiance, bubbly, lovely, italian, newcastle, welcoming, dine, hard",
-    rating: 11,
-    noRating: 2,
-    websiteURL: "http://howarth.io"
-});
-
-res1.save(function (err, res1) {
-    if (err) return console.error(err);
-
-});
-
-imgs = [img2, img4, img6];
-
-var res2 = new models.Restaurant({
-    name: "The Wonder Inn",
-    doorNumber: "37",
-    postcode: "s1 4dg",
-    phoneNo: "07504988541",
-    description: "A warm welcome awaits you in this 16th century restaurant with rooms. The Wonder Inn is situated on the edge of the village green in Sheffield, positioned in between the popular villages of Sheffield Primer and Sheffield Village, and just a short drive from the timeless village of Brackham. Since October 2010, co-owners Fredderick Trankstine & Chilton Clegg have achieved their 1st Rosette and four stars from the AA & Visit Britain tourist guides. The emphasis at The Wonder Inn is on the quality of food and customer service. The menus offer a wide range of dishes to suit all tastes and budgets. The menus change frequently and are guided by the seasons. We aim to use the highest quality, sustainably sourced ingredients and utilise our garden to grow seasonal items such as baby leaf, beetroot, edible flowers, tomatoes and herbs to use on the menu.",
-    cuisines: "Chinese",
-    lat: 53.3806721,
-    lng: -1.4822935,
-    photoURL: imgs,
-    price: 2,
-    tags: "homely, warm, good ambiance, good, radiant, great, chinese, sheffield, acceptable, excellent, the, wonder, inn",
-    rating: 5,
-    noRating: 2,
-    websiteURL: "http://harryehowarth.com"
-});
-
-res2.save(function (err, res2) {
-    if (err) return console.error(err);
-
-});
-
 imgs = [img5, img3, img1];
 
 var res3 = new models.Restaurant({
@@ -135,11 +86,11 @@ res5.save(function (err, res5) {
 imgs = [img3, img5, img1];
 
 var res6 = new models.Restaurant({
-    name: "Fabio's Focaccia",
+    name: "Fredrick's Focaccia",
     doorNumber: "1",
     postcode: "s10 1gy",
     phoneNo: "07108283231",
-    description: "Here at Fabio's Focaccia we have the best Italian bakery goods from all of Italy in our one and only focaccia bakery where the only thing better than our focaccia is Fabio himself. Our baked goods are both served with a cherry on top and also a smile. We love to get back to our roots, and so all our ingredients are imported from the magnificent land of Italy where all the best ingredients come from. We then take these ingredients and mould them into the heavenly creations that you can find only at Fabio's Focaccia. Our restaurant takes place within a beautiful 17th Century villa which has been kept in all its glory and still has the original clay baked oven used by great King Charles VI himself. We cannot wait to welcome your with warm loaves and open arms when you join us at Fabio's Focaccia.",
+    description: "Here at Fredrick's Focaccia we have the best Italian bakery goods from all of Italy in our one and only focaccia bakery where the only thing better than our focaccia is Fredrick himself. Our baked goods are both served with a cherry on top and also a smile. We love to get back to our roots, and so all our ingredients are imported from the magnificent land of Italy where all the best ingredients come from. We then take these ingredients and mould them into the heavenly creations that you can find only at Fredrick's Focaccia. Our restaurant takes place within a beautiful 17th Century villa which has been kept in all its glory and still has the original clay baked oven used by great King Charles VI himself. We cannot wait to welcome your with warm loaves and open arms when you join us at Fredrick's Focaccia.",
     cuisines: "Italian",
     lat: 53.38376,
     lng: -1.50736,

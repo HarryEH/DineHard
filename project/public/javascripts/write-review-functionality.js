@@ -46,6 +46,10 @@ function handleSocket(data){
 
     getStarRating(x/y, "starRating");
 
+    if (document.getElementById('no-reviews-yet') !== null) {
+        document.getElementById('no-reviews-yet').style.display = 'none';
+    }
+
     document.getElementById("ratingText").innerText = Math.round((x/y) * 100) / 100 + " with " + y + " reviews";
 
     for (var i = 0; i < data.results.length; i++) {

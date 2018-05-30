@@ -48,6 +48,14 @@ function showOfflineWarning(){
     if (document.getElementById('offline_div') != null) {
         document.getElementById('offline_div').style.display = 'block';
     }
+
+    if (document.getElementById('g') != null) {
+        document.getElementById('g').disabled = 'disabled';
+    }
+
+    if (document.getElementById('searchTextInput') != null) {
+        document.getElementById('searchTextInput').disabled = 'disabled';
+    }
 }
 
 /**
@@ -57,4 +65,13 @@ function hideOfflineWarning(){
     if (document.getElementById('offline_div') != null) {
         document.getElementById('offline_div').style.display = 'none';
     }
+
+    if (document.getElementById('g') != null) {
+        document.getElementById('g').disabled = '';
+    }
+
+    if (document.getElementById('searchTextInput') != null) {
+        document.getElementById('searchTextInput').disabled = '';
+    }
+
 }

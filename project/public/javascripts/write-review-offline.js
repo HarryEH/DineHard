@@ -1,4 +1,13 @@
-//TODO this all needs changing
+/**
+ * When the page loads, check if you are offline or online.
+ */
+function initialMessageDisplay(){
+    if (navigator.onLine) {
+        hideOfflineWarning();
+    } else {
+        showOfflineWarning();
+    }
+}
 
 /**
  * When the client gets off-line, it shows an off line warning to the user
@@ -6,7 +15,6 @@
  */
 window.addEventListener('offline', function(e) {
     // Queue up events for server.
-    console.log("You are offline");
     showOfflineWarning();
 }, false);
 
@@ -15,20 +23,25 @@ window.addEventListener('offline', function(e) {
  */
 window.addEventListener('online', function(e) {
     // Resync data with server.
-    console.log("You are online");
     hideOfflineWarning();
 }, false);
 
 
+/**
+ * Function that shows the offline warning div
+ */
 function showOfflineWarning(){
     if (document.getElementById('offline_div') != null) {
         document.getElementById('offline_div').style.display = 'block';
-        document.getElementById('search-bar').style.display = 'none';
     }
 }
 
-function hideOfflineWarning() {
+/**
+ * Function that hides the offline warning div
+ */
+function hideOfflineWarning(){
     if (document.getElementById('offline_div') != null) {
         document.getElementById('offline_div').style.display = 'none';
     }
+
 }
