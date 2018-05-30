@@ -1182,8 +1182,7 @@ a:hover {
 }
 
 /* ------------ CREATE REVIEW CSS ------------ */
-
-/* The Modal (background) */
+/* The modal */
 .modal {
     position: fixed; /* Stay in place */
     z-index: 99; /* Sit on top */
@@ -1198,7 +1197,7 @@ a:hover {
     padding-top: 60px;
 }
 
-/* Modal Content/Box */
+
 .modal-content {
     width: 70%; /* Could be more or less, depending on screen size */
     margin: 5px auto; /* 15% from the top and centered */
@@ -1206,9 +1205,8 @@ a:hover {
     background-color: #fefefe;
 }
 
-/* The Close Button */
+
 .close {
-    /* Position it in the top right corner outside of the modal */
     position: absolute;
     top: 0;
     right: 25px;
@@ -1217,14 +1215,12 @@ a:hover {
     font-weight: bold;
 }
 
-/* Close button on hover */
 .close:hover,
 .close:focus {
     color: red;
     cursor: pointer;
 }
 
-/* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s

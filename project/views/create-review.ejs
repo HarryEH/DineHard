@@ -2,17 +2,12 @@
 
 <!-- Button to open the modal review form -->
 <button class="review-add-btn s-font" onclick="document.getElementById('reviewForm').style.display='block';startup();">Write a review</button>
-
-<!-- The Modal -->
 <div id="reviewForm" class="modal">
     <span onclick="document.getElementById('reviewForm').style.display='none'" class="close" title="Close Modal">&times;</span>
-
-    <!-- Modal Content -->
     <form id="writeReviewForm" class="modal-content review-form animate" onsubmit="reviewValidate(event);">
         <div class="modalheader">
             <h2>Write Review for '<%= restaurant.name %>'</h2>
         </div>
-
         <div class="reviewcontainer">
             <div class="row review">
                 <div class="col-33">
@@ -25,12 +20,10 @@
                     </div>
                 </div>
             </div>
-
             <div class="row review">
                 <div class="col-33">
                     <label class="s-font">Upload Photo</label>
                 </div>
-
                 <div class="col-66">
                     <div class="contentarea" id="photo-capture-area">
                         <div class="camera" id="camera" style="display:block">
