@@ -1,5 +1,10 @@
 const CACHE_NAME = 'dine-hard-cache-v1';
 const ERROR_CACHE = 'dine-hard-error';
+
+const KEY_INDEXEDDB = 'requests';
+
+self.importScripts('javascripts/library/idb-keyval-iife.min.js');
+
 const urlsToCache = [
 // add the files you want to cache here
     '/',
@@ -18,7 +23,10 @@ self.addEventListener('install', function(event) {
         })
     );
 
+    initialiseIfEmpty();
+
 });
+
 
 self.addEventListener('activate', function(event){
     console.log('[ServiceWorker] Activate');
@@ -35,21 +43,16 @@ self.addEventListener('activate', function(event){
     )
 });
 
-var queue = [];
+var firstTime = true;
 
 self.addEventListener('fetch', function(event) {
 
     const cloned = event.request.clone();
 
-    console.log(queue);
-
-    if (event.request.method !== "GET" && !event.request.url.includes("login")) {
-        console.log(cloned);
-    }
-
     event.respondWith (
         fetch(event.request).then( function (response) {
-            if (event.request.method === "GET") {
+
+            if (event.request.method === "GET") { // We only want to cache responses to GET requests.
                 if (response && response.status === 200 && response.type === 'basic') {
                     var responseToCache = response.clone();
                     caches.open(CACHE_NAME).then(function (cache) {
@@ -58,32 +61,44 @@ self.addEventListener('fetch', function(event) {
                 }
             }
 
-            if (response && response.status === 200 && response.type === 'basic') {
+            if (firstTime && response && response.status === 200 && response.type === 'basic') {
                 // handle sending the unsent response here
-                if (queue.length !== 0) {
-                    const len = queue.length
-                    for (var q = 0; q < len; q++) {
-                        const request = queue.shift();
-                        fetch(request).then(function (r) {
-                            console.log("unsent message sent and response received");
-                            console.log(r);
-                        }).catch(function (err) {
-                            console.err(err);
-                            // something went wrong when sending this...
-                        })
+                firstTime = false;
+                idbKeyval.get(KEY_INDEXEDDB).then(function(queue){
+
+                    if (queue.length !== 0) {
+                        for (var q = 0; q < queue.length; q++) {
+                            const request = queue.shift();
+
+                            const R = new Request(request.url, {method: request.method, body: request.body});
+
+                            fetch(R).then(function (r) {
+                                idbKeyval.set('requests', queue);
+                            }).catch(function (err) {
+                                console.log(err);
+                            })
+                        }
                     }
-                }
+                });
             }
 
             return response;
         }).catch(function(e) {
 
-            console.log("in the catch");
+            if (cloned.method !== "GET" && (cloned.url.includes("restaurant") || cloned.url.includes("review") )) {
+                // Store in IndexedDB if its a POST that failed.
+                idbKeyval.get(KEY_INDEXEDDB).then(function(result){
 
-            if (cloned.method !== "GET" && !cloned.url.includes("login") && !cloned.url.includes("socket")) {
-                console.log(queue);
-                console.log(cloned.url);
-                queue.push(cloned);
+                    // cloned.text().then(function(text){
+                    //     {url: cloned.url, body: text, method: cloned.method}
+                        result.push(cloned);
+                        idbKeyval.set(KEY_INDEXEDDB, result);
+                    // });
+
+                });
+
+                firstTime = true;
+
             }
 
             return caches.open(CACHE_NAME).then(function(cache) {
@@ -99,24 +114,17 @@ self.addEventListener('fetch', function(event) {
         })
     );
 
-    // if (event.request.method === "GET") {
-    //     var fetchRequest = event.request.clone();
-    //     return fetch(fetchRequest).then( function (response) {
-    //
-    //         if (!response || response.status !== 200 || response.type !== 'basic') {
-    //             return response;
-    //         }
-    //
-    //         var responseToCache = response.clone();
-    //         caches.open(CACHE_NAME)
-    //             .then(function (cache) {
-    //                 cache.put(event.request, responseToCache);
-    //             });
-    //         return response;
-    //     });
-    // }
-
 });
+
+function initialiseIfEmpty(){
+    idbKeyval.get(KEY_INDEXEDDB).then(function(response){
+        if (response === undefined) {
+            idbKeyval.set(KEY_INDEXEDDB, []);
+        }
+    }).catch(function (err) {
+        idbKeyval.set(KEY_INDEXEDDB, []);
+    });
+}
 
 
 

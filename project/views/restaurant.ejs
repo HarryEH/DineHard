@@ -8,21 +8,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4"></script>
-    <script src="javascripts/location.js"></script>
-    <script src="javascripts/map.js"></script>
-    <script src="javascripts/load.js"></script>
+    <script src="javascripts/google-map-functionality.js"></script>
     <script src="javascripts/reviewRating.js"></script>
-    <script src="javascripts/pricing.js"></script>
-    <script src="javascripts/date.js"></script>
-    <script src="javascripts/write-review.js"></script>
-    <script src="javascripts/reviewajax.js"></script>
+    <script src="javascripts/price-formatter.js"></script>
+    <script src="javascripts/date-formatter.js"></script>
+    <script src="javascripts/write-review-offline.js"></script>
+    <script src="javascripts/write-review-functionality.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="lzjs.js"></script>
     <script>setupSocket();</script>
     <title><%= restaurant.name %></title>
 </head>
 
-<body onload="load();myMap();addMarkers(<%= restaurant.lat %>, <%= restaurant.lng %>)">
+<body onload="myMap();addMarkers(<%= restaurant.lat %>, <%= restaurant.lng %>)">
 <div class="main-wrapper">
 
     <% include header.ejs %>

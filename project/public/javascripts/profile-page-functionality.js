@@ -15,6 +15,8 @@ function ajax(reviewid) {
             dataType: "json",
             success: function (data) {
                 //alert('Review Deleted');
+                //TODO we need to write this code ???
+                //FIXME hello
             },
 
             error: function (xhr, status, error) {

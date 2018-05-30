@@ -1,4 +1,16 @@
 /**
+ * Gathers the user Latitude and Longitude values.
+ * @params loggedIn a boolean for whether the User is logged in or not.
+ */
+function load(){
+    if (sessionStorage.getItem("userLat") == null){
+        getLocation();
+    } else if(sessionStorage.getItem("userLong") == null){
+        getLocation();
+    }
+}
+
+/**
  * Gets the location of the User
  */
 function getLocation() {
@@ -13,9 +25,6 @@ function getLocation() {
 function hiddenFields() {
     const lat = sessionStorage.getItem("userLat");
     const lng = sessionStorage.getItem("userLong");
-
-    console.log(lat);
-    console.log(lng);
 
     $( "input#lat" ).val( lat );
 

@@ -18,6 +18,8 @@ module.exports = {
     addRestaurant: function (req, res, login, fields, imgs) {
         // verify that the restaurant's address isn't already in the db
 
+        console.log(fields);
+
         const no = fields.doorNumber;
         const postcode = fields.postcode;
 

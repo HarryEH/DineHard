@@ -46,9 +46,7 @@ router.get('/restaurant-*', function(req, res, next) {
  *
  */
 router.post('/restaurant-*', function(req, res, next) {
-    if (validation.checkLogin(req, res, next)) {
-        reviewController.createReview(req, res);
-    }
+    reviewController.createReview(req, res);
 });
 
 /**
@@ -191,45 +189,43 @@ router.get('/create-restaurant', function(req, res, next) {
  *
  */
 router.post('/create-restaurant', function(req, res, next) {
-    var login = validation.checkLogin(req, res, next);
-    //check the query
-    if (login) {
-        //TODO put this somewhere else... messy messy
-        var form = new formidable.IncomingForm();
-        var filesList = [];
-        form.on('file', function(field, file) {
-            console.log(file.name);
-            filesList.push([field, file]);
-        });
+    //TODO put this somewhere else... messy messy
 
-        form.parse(req, function (err, fields, files) {
-            console.error(filesList);
-            console.error(fields.photoCaptureSource);
-            if (validation.testCreateRestaurantInput(fields)) {
-                var imgs = [];
-                for (var i = 0; i < filesList.length; i++) {
-                    if (filesList[i][1] != undefined) {
-                        if(filesList[i][1].size != 0) {
-                            var img_path = filesList[i][1].path;
-                            console.error(img_path);
-                            imgs.push({data: fs.readFileSync(img_path), contentType: 'image/png'});
-                        }
+    console.log(req.body);
+
+    var form = new formidable.IncomingForm();
+    console.log(form);
+    var filesList = [];
+    form.on('file', function(field, file) {
+        console.log(file.name);
+        filesList.push([field, file]);
+    });
+
+    form.parse(req, function (err, fields, files) {
+        console.error(filesList);
+        console.error(fields.photoCaptureSource);
+        if (validation.testCreateRestaurantInput(fields)) {
+            var imgs = [];
+            for (var i = 0; i < filesList.length; i++) {
+                if (filesList[i][1] != undefined) {
+                    if(filesList[i][1].size != 0) {
+                        var img_path = filesList[i][1].path;
+                        console.error(img_path);
+                        imgs.push({data: fs.readFileSync(img_path), contentType: 'image/png'});
                     }
                 }
-
-                var uri = fields.photoCaptureSource;
-                if (uri != "") {
-                    var decoded = dataUriToBuffer(uri);
-                    imgs.push({data: decoded, contentType: 'image/png'})
-                }
-                restaurantController.addRestaurant(req, res, login, fields, imgs);
-            } else {
-                res.render('create-restaurant', {loggedIn: login, error: "Fill all the required fields"});
             }
-        });
-    } else {
-        res.redirect('/login');
-    }
+
+            var uri = fields.photoCaptureSource;
+            if (uri != "") {
+                var decoded = dataUriToBuffer(uri);
+                imgs.push({data: decoded, contentType: 'image/png'})
+            }
+            restaurantController.addRestaurant(req, res, true, fields, imgs);
+        } else {
+            res.render('create-restaurant', {loggedIn: true, error: "Fill all the required fields"});
+        }
+    });
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -287,4 +283,6 @@ router.get('/tandc', function(req, res, next) {
  */
 module.exports = router;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 

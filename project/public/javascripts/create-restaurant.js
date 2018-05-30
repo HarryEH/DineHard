@@ -202,3 +202,10 @@ function countWords(str) {
 function validateURL(website){
     return true;
 }
+
+/**
+ * Function that updates the word count
+ */
+function wordCount(){
+    document.getElementById("word-count").innerHTML = countWords(document.getElementById("description").value);
+}
