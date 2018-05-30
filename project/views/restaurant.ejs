@@ -19,7 +19,7 @@
     <title><%= restaurant.name %></title>
 </head>
 
-<body onload="myMap();addMarkers(<%= restaurant.lat %>, <%= restaurant.lng %>)">
+<body onload="initialMessageDisplay();">
 <div class="main-wrapper">
 
     <% include header.ejs %>
@@ -98,7 +98,8 @@
                 <div class="restaurant-description col-50">
                     <p class="text"><%= restaurant.description %></p>
                 </div>
-                <div id="map" class="restaurant-map col-45"></div>
+                <div id="mapDiv" class="restaurant-map col-45"></div>
+                <script>addMarkers(<%= restaurant.lat %>, <%= restaurant.lng %>);</script>
             </div>
 
             <br>

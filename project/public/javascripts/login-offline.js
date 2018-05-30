@@ -31,25 +31,21 @@ window.addEventListener('online', function(e) {
  * Function that shows the offline warning div
  */
 function showOfflineWarning(){
+
     if (document.getElementById('offline_div') != null) {
         document.getElementById('offline_div').style.display = 'block';
     }
 
-    if (document.getElementById('autocomplete') != null) {
-        document.getElementById('autocomplete').placeholder = 'Enter Address Manually';
-        document.getElementById('autocomplete').disabled = 'Enter Address Manually';
+    if (document.getElementById('u') != null) {
+        document.getElementById('u').disabled = 'true';
     }
 
-    if (document.getElementById('street_number') != null) {
-        document.getElementById('street_number').disabled = '';
+    if (document.getElementById('p') != null) {
+        document.getElementById('p').disabled = 'true';
     }
 
-    if (document.getElementById('route') != null) {
-        document.getElementById('route').disabled = '';
-    }
-
-    if (document.getElementById('postal_code') != null) {
-        document.getElementById('postal_code').disabled = '';
+    if (document.getElementById('g') != null) {
+        document.getElementById('g').disabled = 'true';
     }
 
 }
@@ -62,20 +58,17 @@ function hideOfflineWarning(){
         document.getElementById('offline_div').style.display = 'none';
     }
 
-    if (document.getElementById('autocomplete') != null) {
-        document.getElementById('autocomplete').placeholder = 'Enter and select address';
+
+    if (document.getElementById('u') != null) {
+        document.getElementById('u').disabled = '';
     }
 
-    if (document.getElementById('street_number') != null) {
-        document.getElementById('street_number').disabled = 'true';
+    if (document.getElementById('p') != null) {
+        document.getElementById('p').disabled = '';
     }
 
-    if (document.getElementById('route') != null) {
-        document.getElementById('route').disabled = 'true';
-    }
-
-    if (document.getElementById('postal_code') != null) {
-        document.getElementById('postal_code').disabled = 'true';
+    if (document.getElementById('g') != null) {
+        document.getElementById('g').disabled = '';
     }
 
 

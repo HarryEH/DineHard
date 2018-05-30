@@ -116,20 +116,21 @@
                         <% var reviewNum = 0;%>
                         <% reviews.forEach(function(review){ %>
                         <% reviewNum += 1;%>
-                        <div class="container profile-review">
-                            <% var divID = "review" + reviewNum.toString();%>
+                        <% var divID = "review" + reviewNum.toString();%>
+                        <div class="container profile-review" id='<%=divID%>'>
                             <div class="row">
                                 <div class="col-7 resLink"><a href="/<%= review.resURL %>"><%= review.resName %></a></div>
                                 <% if (myProfile == true) {%>
-                                    <div class="col-4 align-right"><button class="review-delete" onclick="reviewDeleteAjax('<%=review._id%>')">Delete</button></div>
+                                    <div class="col-4 align-right"><button class="review-delete" onclick="reviewDeleteAjax('<%=review._id%>', '<%= divID %>')">Delete</button></div>
                                 <% }%>
                             </div>
                             <div class="row">
-                                <div class="col-7" id='<%=divID%>'><%= review.rating %> out of 7 stars</div>
-                                <script>getStarRating(<%= review.rating %>, "<%=divID%>");</script>
-                                <% var divID = "review-date" + reviewNum.toString();%>
-                                <div class="col-4 review-date align-right" id='<%=divID%>'><%= review.date %></div>
-                                <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divID%>");</script>
+                                <div class="col-7"><%= review.rating %> out of 7 stars</div>
+                                <% var divStar = "review-star" + reviewNum.toString();%>
+                                <script>getStarRating(<%= review.rating %>, "<%=divStar%>");</script>
+                                <% var divDate = "review-date" + reviewNum.toString();%>
+                                <div class="col-4 review-date align-right" id='<%=divDate%>'><%= review.date %></div>
+                                <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>,"<%=divDate%>");</script>
                             </div>
                             <div class="row">
                                 <div class="col-12"><%= review.review %></div>
