@@ -2,6 +2,11 @@ const models = require('../models/models');
 const dataUriToBuffer = require('data-uri-to-buffer');
 
 module.exports = {
+    /**
+     *  This function handles creating a review
+     * @param req the request
+     * @param res the response
+     */
     createReview: function(req, res) {
         models.User.findById({ _id: req.session.user_id }, function (err, user) {
             if (err) {return res.send(JSON.stringify({error: "Couldn't find User"}));}
@@ -16,6 +21,11 @@ module.exports = {
 
     },
 
+    /**
+     * This function handles getting and returning the picture
+     * @param req the request
+     * @param res the response
+     */
     getPicture: function (req, res){
         const revId = req.params.index;
 
@@ -27,6 +37,14 @@ module.exports = {
     }
 };
 
+/**
+ * This function uses the user and restaurant as well as the reqeust to create a new review and save it to the database
+ *
+ * @param req the request
+ * @param res the response
+ * @param user object
+ * @param restaurant object
+ */
 function handleCreateReview(req, res, user, restaurant) {
 
     var uri = req.body.photo;
@@ -55,6 +73,11 @@ function handleCreateReview(req, res, user, restaurant) {
 
 }
 
+/**
+ * This function updates the restaurant in the database based on the new review
+ * @param req the request
+ * @param restaurant object
+ */
 function updateRestaurant(req, restaurant){
     restaurant.rating = restaurant.rating + parseInt(req.body.slider);
     restaurant.noRating = restaurant.noRating + 1;

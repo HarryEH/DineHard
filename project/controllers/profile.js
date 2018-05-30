@@ -2,6 +2,12 @@ const models = require('../models/models');
 
 module.exports = {
 
+    /**
+     * This function renders a user profile from the database
+     * @param req the request
+     * @param res the response
+     * @param login boolean, is the user logged in
+     */
     renderProfile: function (req, res, next, login) {
 
         const username = req.query.username;
@@ -29,6 +35,12 @@ module.exports = {
 
     },
 
+    /**
+     * This function renders one owns profile, rather than someoneelse's.
+     * @param req the request
+     * @param res the response
+     * @param login boolean, is the user logged in
+     */
     renderMyProfile: function (req, res, next, login) {
 
         const uID = req.session.user_id;
@@ -41,14 +53,29 @@ module.exports = {
 
     },
 
-   deleteReview: function (req, res) {
-       models.Review.remove({_id: req.body.id}, function (err) {
-           if (err) return handleError(err);
-           res.send(JSON.stringify({ }));
-       });
-   }
+    /**
+     * This function handles deleting a review from the database.
+     * @param req the request
+     * @param res the response
+     */
+    deleteReview: function (req, res) {
+        models.Review.remove({_id: req.body.id}, function (err) {
+            if (err) return handleError(err);
+            res.send(JSON.stringify({ }));
+        });
+    }
 };
 
+/**
+ * This function loads the details of the profile from the database, and gets the reviews associated to that account
+ *
+ * @param req the request
+ * @param res the response
+ * @param login boolean, is the user logged in
+ * @param uID the user id
+ * @param title
+ * @param myProfile boolean, is it your own profile
+ */
 function loadProfile(req, res, next, login, uID, title, myProfile) {
 
     models.User.findById(uID, function (err, results) {

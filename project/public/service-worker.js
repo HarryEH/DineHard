@@ -12,6 +12,9 @@ const urlsToCache = [
     '/offline.html'
 ];
 
+/**
+ * This handles the install part of the lifecycle for the service worker
+ */
 self.addEventListener('install', function(event) {
     // Perform install steps
     console.log('[ServiceWorker] Install');
@@ -27,7 +30,9 @@ self.addEventListener('install', function(event) {
 
 });
 
-
+/**
+ * This handles the activate part of the lifecycle for the service worker
+ */
 self.addEventListener('activate', function(event){
     console.log('[ServiceWorker] Activate');
 
@@ -45,6 +50,9 @@ self.addEventListener('activate', function(event){
 
 var firstTime = true;
 
+/**
+ * This handles the fetch part of the lifecycle for the service worker
+ */
 self.addEventListener('fetch', function(event) {
 
     const cloned = event.request.clone();
@@ -52,6 +60,9 @@ self.addEventListener('fetch', function(event) {
     event.respondWith (
         fetch(event.request).then( function (response) {
 
+            /**
+             * This is the code that caches get request responses
+             */
             if (event.request.method === "GET") { // We only want to cache responses to GET requests.
                 if (response && response.status === 200 && response.type === 'basic') {
                     var responseToCache = response.clone();
@@ -66,6 +77,10 @@ self.addEventListener('fetch', function(event) {
                 firstTime = false;
                 idbKeyval.get(KEY_INDEXEDDB).then(function(queue){
 
+                    /**
+                     * This code is where the requests are sent after they got stored in indexed db.
+                     * This only happens after a successful request!
+                     */
                     if (queue.length !== 0) {
                         for (var q = 0; q < queue.length; q++) {
                             const request = queue.shift();
@@ -85,6 +100,9 @@ self.addEventListener('fetch', function(event) {
             return response;
         }).catch(function(e) {
 
+            /**
+             * This code is where the requests are stored in IndexedDB, this occurs after failed requests!!!! :)
+             */
             if (cloned.method !== "GET" && (cloned.url.includes("restaurant") || cloned.url.includes("review") )) {
                 // Store in IndexedDB if its a POST that failed.
                 idbKeyval.get(KEY_INDEXEDDB).then(function(result){
@@ -101,6 +119,9 @@ self.addEventListener('fetch', function(event) {
 
             }
 
+            /**
+             * This is the code where the database is fallen back on to render a page
+             */
             return caches.open(CACHE_NAME).then(function(cache) {
                 return caches.match(event.request).then(function (response) {
                     // Cache hit - return the cache response (the cached page)
@@ -116,6 +137,9 @@ self.addEventListener('fetch', function(event) {
 
 });
 
+/**
+ * This function initialises IndexedDB for our purposes if it is empty
+ */
 function initialiseIfEmpty(){
     idbKeyval.get(KEY_INDEXEDDB).then(function(response){
         if (response === undefined) {

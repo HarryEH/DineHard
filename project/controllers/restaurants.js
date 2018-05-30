@@ -3,6 +3,13 @@ const geodata = require('../utilities/geodata');
 const fs = require('fs');
 
 module.exports = {
+    /**
+     * This function renders the restaurant taking the values from the database.
+     *
+     * @param req the request object
+     * @param res the response object
+     * @param login boolean, is the user logged in
+     */
     renderRestaurant: function (req, res, login) {
 
         const rId = req.query.rId;
@@ -15,6 +22,14 @@ module.exports = {
 
     },
 
+    /**
+     * This function handles creating a new restaurant and adding it to the database.
+     * @param req the request
+     * @param res the response
+     * @param login boolean is the user logged in
+     * @param fields the input fields
+     * @param imgs the images
+     */
     addRestaurant: function (req, res, login, fields, imgs) {
         // verify that the restaurant's address isn't already in the db
 
@@ -39,6 +54,11 @@ module.exports = {
 
     },
 
+    /**
+     * This function handles getting the pictures for a restaurant.
+     * @param req the request
+     * @param res the response
+     */
     getPicture: function (req, res){
         const indexID = req.params.index;
         var rId = indexID.substring(0, indexID.lastIndexOf("-"));
@@ -53,6 +73,13 @@ module.exports = {
 
 };
 
+/**
+ * This function loads the restaurant's information from the database
+ * @param req the request
+ * @param res the response
+ * @param login boolean is the user logged in
+ * @param rId the restaurants database id
+ */
 function loadRestaurant(req, res, login, rId) {
 
     models.Restaurant.findById(rId, function (err, results) {
@@ -90,33 +117,11 @@ function loadRestaurant(req, res, login, rId) {
     });
 }
 
-function getReviews(req, res, login, results, rId) {
-    models.Review.find({resId: rId}, function (err2, reviewResults) {
-        if (err) {
-            return console.error(err2);
-        }
-
-        var userLat = req.session.user_lat;
-        var userLng = req.session.user_lng;
-
-        results.distance = results.getDistance(userLat, userLng);
-
-        var obj = {};
-        obj.req = req;
-        obj.res = res;
-        obj.login = login;
-        obj.results = results;
-        obj.reviewResults = reviewResults;
-
-
-        geodata.getFullAddress(renderResCallback, obj);
-        return;
-    });
-}
-
+/**
+ * This function is the callback for adding a restaurant to the database
+ * @param obj this contains all the required parameters
+ */
 function addResCallback(obj) {
-    // add the restaurant to the db
-    models.connect();
 
     const req = obj.req;
     const res = obj.res;
@@ -150,6 +155,10 @@ function addResCallback(obj) {
 
 }
 
+/**
+ * This is the callback for rendering the restaurant
+ * @param obj contains all the required parameters
+ */
 function renderResCallback(obj) {
 
     const req = obj.req;

@@ -3,6 +3,11 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
 
+    /**
+     * This function handles the login feature of the code
+     * @param req the request
+     * @param res the response
+     */
     handleLogin: function(req, res, next) {
         var username = req.body.u.toLowerCase();
         var password = req.body.p;

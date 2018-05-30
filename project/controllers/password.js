@@ -3,6 +3,12 @@ const bcrypt   = require('bcrypt');
 
 module.exports = {
 
+    /**
+     * This function sends an email and generates a URL so the user can reset their password
+     * @param req the request
+     * @param res the response
+     * @param login boolean, is the user logged in
+     */
     sendEmail: function (req, res, login) {
         models.User.findOne({ username: new RegExp(req.body.username, "i") }, function (err, user) {
             if (err) return console.error(err);
@@ -28,6 +34,12 @@ module.exports = {
 
     },
 
+    /**
+     * This function handles the resetting of the password
+     * @param req the request
+     * @param res the response
+     * @param login boolean, is the user logged in
+     */
     handleReset: function (req, res, login) {
 
         const id  = req.body.tokenId;

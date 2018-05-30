@@ -2,19 +2,25 @@ const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyApmqRUl9K_tUZmUR-0Rpk0snnYx7XDaMA'
 });
 
-var rad = function(x) {
+/**
+ * This function converts degrees to radians
+ * @param x the number to convert
+ * @returns {number} returns the radian value of x
+ */
+function rad(x) {
     return x * Math.PI / 180;
 };
 
 module.exports = {
 
     /**
-     *
-     * @param xLat
-     * @param xLng
-     * @param yLat
-     * @param yLng
-     * @returns {number}
+     * This function gets the haversine distance between two points. This means that it accounts for curvature of the
+     * earth.
+     * @param xLat geodetic latitude of point one
+     * @param xLng geodetic longitude of point one
+     * @param yLat geodetic latitude of point two
+     * @param yLng geodetic longitude of point two
+     * @returns {number} returns the distance between them
      */
     getRDistance: function(xLat, xLng, yLat, yLng) {
         const R = 6378137; // Earth’s mean radius in meter
@@ -29,10 +35,11 @@ module.exports = {
     },
 
     /**
-     *
-     * @param address
-     * @param callback
-     * @param obj
+     * This function converts a postcode to geodetic coordinates. It also takes a function and an object to be passed
+     * to this function, this is so that something can be done with the geodetic coordinates that are returned.
+     * @param address the postcode to convert
+     * @param callback the function to run with the result
+     * @param obj the parameters we want to pass
      */
     postcodeToLocation: function (address, callback, obj){
         console.error("starting postcode")
@@ -72,26 +79,11 @@ module.exports = {
 
     },
 
-    /**
-     *
-     * @param address
-     */
-    addressToLocation: function (address){
-        // Geocode an address.
-        googleMapsClient.geocode({
-            address: address
-        }, function(err, response) {
-            if (!err) {
-                console.log(response.json.results[0].geometry.location);
-                return response.json.results[0].geometry.location;
-            }
-        });
-    },
 
     /**
-     *
-     * @param callback
-     * @param obj
+     * This function gets the full address for a partial address
+     * @param callback the function to call after this is complete
+     * @param obj the object to pass to this callback
      */
     getFullAddress: function(callback, obj){
         var address = obj.results.postcode.toString();

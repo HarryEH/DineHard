@@ -2,6 +2,13 @@ const models = require('../models/models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
+    /**
+     * This function handles the registration of a new user to the website, encrypting their password and ensuring that
+     * the username is unique etc.
+     *
+     * @param req the request
+     * @param res the response
+     */
     handleRegister: function(req, res, next) {
 
         var fname = req.body.f;

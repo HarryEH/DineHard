@@ -3,9 +3,14 @@ const geodata = require('../utilities/geodata');
 const fs = require('fs');
 const ejs = require('ejs');
 
+/**
+ * This code checks for a valid postcode. The regex for this is taken from
+ * https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom#Validation
+ * @param postcode the postcode to validate
+ * @returns {boolean} true if the postcode is a valid UK postcode format (still may not exist)
+ */
 function validPostcode(postcode) {
     postcode = postcode.replace(/\s/g, "");
-    //TODO reference this !!!!!!!!
     var regex = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))[0-9][A-Za-z]{2})$/i;
     return regex.test(postcode);
 }
@@ -14,6 +19,12 @@ const DEFAULT_DIST = 10;
 
 module.exports = {
 
+    /**
+     * This function is the overarching search handler for GET
+     * @param req the request
+     * @param res the response
+     * @param login is the user logged in
+     */
     handleSearch: function(req, res, login) {
 
         // req.session lat n lng
@@ -33,6 +44,11 @@ module.exports = {
         }
     },
 
+    /**
+     * This is the overarching function for the AJAX portion of the search functionality.
+     * @param req the request
+     * @param res the response
+     */
     ajaxSearch: function(req, res) {
 
         if (typeof req.body.newPostcode == "undefined") {req.body.newPostcode = "";}
@@ -60,8 +76,10 @@ module.exports = {
 
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Normal searching
+/**
+ * This function is the handler for a postcode based search
+ * @param obj This contains the required parameters.
+ */
 function onPostcode(obj){
 
     models.Restaurant.find(function (err, results) {
@@ -85,6 +103,14 @@ function onPostcode(obj){
 
 }
 
+/**
+ * This function is the handler for a keyword search
+ * @param res the response
+ * @param login boolean, is the user logged in
+ * @param query the query
+ * @param lat geodetic latitude
+ * @param lng geodetic longitude
+ */
 function keywordSearch(res, login, query, lat, lng){
 
     const distTest = 10;
@@ -107,10 +133,13 @@ function keywordSearch(res, login, query, lat, lng){
         res.render('results', { lat: lat, lng: lng, query: query, loggedIn: login, results: sortBy({ejs: {results: actual_results}, prevQuery: {sortBy: "distance"}}), prevQuery: {keyword: query} });
     });
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// AJAX
+/**
+ * This function handles the ajax version of the keyword search
+ * @param req the request
+ * @param res the response
+ * @param queryPrev the previous query
+ */
 function ajaxKeyword(req, res, queryPrev){
 
     var query = req.body.newKeywords;
@@ -129,6 +158,10 @@ function ajaxKeyword(req, res, queryPrev){
     });
 }
 
+/**
+ * This function handles the ajax version of the postcode search
+ * @param obj this contains the required parameters, such as response, request and others.
+ */
 function ajaxPostcode(obj){
 
     models.Restaurant.find({tags: new RegExp(obj.req.body.newKeywords, "i")}, function (err, results) {
@@ -147,6 +180,11 @@ function ajaxPostcode(obj){
     });
 }
 
+/**
+ * this function is used in the ajax query, it renders a page that is then sent to the front end. This rendering is of
+ * all of the restaurants
+ * @param obj this contains the reqiured parameters, such as all of the restaurants
+ */
 function renderHtml(obj) {
 
     obj.ejs.results = sortBy(obj);
@@ -157,7 +195,11 @@ function renderHtml(obj) {
     obj.res.send(JSON.stringify({results: obj.ejs.results, html: rendered, prevQuery: obj.prevQuery}));
 }
 
-
+/**
+ * This function handles the sorting of the restaurants
+ * @param obj the required parameters, eg the restuarants
+ * @returns {*} returns the sorted results (restaurants)
+ */
 function sortBy(obj){
 
     const sortParam = obj.prevQuery.sortBy;
@@ -188,9 +230,15 @@ function sortBy(obj){
     }
     return obj.ejs.results;
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+/**
+ * This function filters the results (restaurants) based on the distance
+ * @param results the restaurants
+ * @param lat geodetic latitude, start point
+ * @param lng geodetic longitude, end point
+ * @param distance the max distance away that a restaurant can be
+ * @returns {Array} an array of te restaurants within the required distance.
+ */
 function distanceFilter(results, lat, lng, distance){
     var actual_results = [];
     var actual_count = 0;
