@@ -1,4 +1,4 @@
-/*
+/**
 * This function validates user input for registering an account. If there is an element missing, the user will
 * be alerted, and red writing appears above the fields that are not satisfied.
 * @return true if all fields contain validate input, or returns false otherwise, with an alert and the fields that
@@ -80,7 +80,7 @@ function registerValidate(){
     }
 }
 
-/*
+/**
 * Regexes the email to check if it is valid*
 * @return true if regex is true, false if regex is false
  */
@@ -89,7 +89,7 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-/*
+/**
 * Regexes the username to check if it is valid*
 * @return true if regex is true, false if regex is false
  */
