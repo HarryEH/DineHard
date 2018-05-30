@@ -44,7 +44,9 @@ module.exports = {
             postcode: req.body.newPostcode,
             keyword: req.body.newKeywords,
             slider: req.body.slider,
-            sortBy: req.body.sortBy
+            sortBy: req.body.sortBy,
+            lat: req.query.lat,
+            lng: req.query.lng
         };
 
         if (validPostcode(req.body.newPostcode)) {
@@ -130,12 +132,17 @@ function ajaxKeyword(req, res, queryPrev){
 function ajaxPostcode(obj){
 
     models.Restaurant.find({tags: new RegExp(obj.req.body.newKeywords, "i")}, function (err, results) {
+
         if (err) {return console.error(err);}
 
         results = distanceFilter(results, obj.lat, obj.lng, obj.req.body.slider);
         obj.ejs = {results: results};
 
+        obj.prevQuery.lat = obj.lat;
+        obj.prevQuery.lng = obj.lng;
+
         renderHtml(obj);
+
 
     });
 }
