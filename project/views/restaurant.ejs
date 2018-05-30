@@ -20,7 +20,7 @@
     <title><%= restaurant.name %></title>
 </head>
 
-<body onload="load();myMap();addMarkers(<%= restaurant.lat %>, <%= restaurant.lng %>)">
+<body onload="myMap();addMarkers(<%= restaurant.lat %>, <%= restaurant.lng %>)">
 <div class="main-wrapper">
 
     <% include header.ejs %>
