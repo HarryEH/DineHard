@@ -31,7 +31,7 @@ function genericAjax() {
             document.getElementById('distRange').value = data.prevQuery.slider;
             document.getElementById('selectMe').value = data.prevQuery.sortBy;
 
-            showAjaxSearchResults(data.html, data.results);
+            showAjaxSearchResults(data.html, data.results, data.prevQuery.lat, data.prevQuery.lng);
         },
         error: function (xhr, status, error) {
             console.log("err");
@@ -39,7 +39,7 @@ function genericAjax() {
     });
 }
 
-function showAjaxSearchResults(html, results){
+function showAjaxSearchResults(html, results, lat, lng){
 
     document.getElementById('results-changeable').outerHTML = html;
 
@@ -48,6 +48,8 @@ function showAjaxSearchResults(html, results){
         getStarRating(results[i].rating/results[i].noRating,"resStar" + (i+1).toString());
         getPrice(results[i].price, "resPrice" + (i+1).toString());
     }
+
+    modalMap(lat, lng, results);
 
 }
 
