@@ -1,3 +1,7 @@
+/**
+ * This function wraps the ajax call and does calls such as preventing the default form send and getting the photo
+ * @param e the event object
+ */
 function reviewAjax(e) {
     e.preventDefault();
     var uri = document.getElementById('photo-text-source').value;
@@ -7,6 +11,11 @@ function reviewAjax(e) {
 
 var socket;
 
+/**
+ * This is the ajax POST request that sends the new review and also emits the socket event that will cause everyones
+ * page to update.
+ * @param photoData this the data for the photo
+ */
 function ajax(photoData) {
     $.ajax({
         url: document.URL,
@@ -33,6 +42,10 @@ function ajax(photoData) {
     });
 }
 
+/**
+ * This handles the socket code that is run when the message is broadcast from the server. It adds the new review
+ * @param data this is the data sent in the broadcasted message.
+ */
 function handleSocket(data){
     document.getElementById('updateable').outerHTML = data.rendered;
     // The <script> doesn't get run so this is required to do that
@@ -62,15 +75,27 @@ function handleSocket(data){
     }
 }
 
+/**
+ * This is the functiont that sets up socket.io to listen for the new review
+ */
 function setupSocket() {
     socket = io('http://localhost:3000');
     socket.on('review', handleSocket);
 }
 
+/**
+ * This is the function that emits the event to the backend that says a new review has been created.
+ * @param data
+ */
 function emitEvent(data) {
     socket.emit("new-review", {restaurant: data});
 }
 
+/**
+ * This is the code that validates the review
+ * @param e the event object
+ * @returns {boolean} true if the review passes the validation
+ */
 function reviewValidate(e){
     e.preventDefault();
     var reviewdescription = document.forms["writeReviewForm"]["review-text"].value.trim();

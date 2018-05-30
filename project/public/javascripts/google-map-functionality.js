@@ -1,16 +1,8 @@
-function myMap(){
-    const mapOptions = {
-        center: new google.maps.LatLng(0, 0),
-        zoom: 17,
-        scrollwheel: false,
-        navigationControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: false,
-    };
-    const map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
-}
-
+/**
+ * This function creates a map and adds a marker to it. It also centers on the point that gets passed to it.
+ * @param lat geodetic latitude.
+ * @param lng geodetic longitude.
+ */
 function addMarkers(lat,lng) {
 
     const mapOptions = {
@@ -32,6 +24,13 @@ function addMarkers(lat,lng) {
 
 }
 
+/**
+ * Functions that creates a map and adds markers based on results that get passed to it. Centers on the lat and lng that
+ * get passed to the function.
+ * @param lat geodetic latitude
+ * @param lng geodetic coordinate
+ * @param results these are the restaurants that will get added to the map as markers
+ */
 function modalMap(lat, lng, results){
 
     const mapOptions = {

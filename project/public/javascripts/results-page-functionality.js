@@ -1,16 +1,33 @@
+/**
+ * This function provides a wrapper to the generic ajax function because text has slightly different behaviour in that
+ * it needs to prevent the default of submitting the form.
+ * @param e the event object.
+ */
 function textQueryAjax(e) {
     e.preventDefault();
     genericAjax();
 }
 
+/**
+ * This function provides a wrapper of the generic ajax function for the slider
+ * @param e the event object
+ */
 function sliderAjax(e) {
     genericAjax();
 }
 
+/**
+ * This function provides a wrapper of the generic ajax function for the sort drop down
+ * @param e the event object
+ */
 function sortAjax(e) {
     genericAjax();
 }
 
+/**
+ * This is the generic ajax function for the results page. It takes the parameters from the search bar and then updates
+ * the results when the success function runs.
+ */
 function genericAjax() {
     $.ajax({
         url: document.URL,
@@ -39,6 +56,13 @@ function genericAjax() {
     });
 }
 
+/**
+ * This is the function that deals with the displaying of the updated results from the ajax request.
+ * @param html this is the html that will get shown
+ * @param results these are the results that are required for getting prices and star ratings to display properly
+ * @param lat geodetic latitude, this is required for updating the modal map
+ * @param lng geodetic longitude, this is required for updating the modal map
+ */
 function showAjaxSearchResults(html, results, lat, lng){
 
     document.getElementById('results-changeable').outerHTML = html;
@@ -53,19 +77,9 @@ function showAjaxSearchResults(html, results, lat, lng){
 
 }
 
-function radioButtonChange(){
-    $(document).ready(function() {
-        $('input[type=radio][name=searchArea]').change(function() {
-            if (this.value == 'nearMe') {
-                alert("Search Results Near Me");
-            }
-            else if (this.value == 'all') {
-                alert("Search All Results");
-            }
-        });
-    });
-}
-
+/**
+ * This function acts when the slider changes to change the uderlying value
+ */
 function sliderChange(){
     var slider = document.getElementById("distRange");
     var output = document.getElementById("distVal");

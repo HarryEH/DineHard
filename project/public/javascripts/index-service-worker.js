@@ -1,5 +1,5 @@
 /**
- *
+ * This starts the service worker to go into its process of Install - Activate etc.
  */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
