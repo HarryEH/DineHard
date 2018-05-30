@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+/**
+ * This is just the review schema, self documenting.
+ */
+
 // Review Schema
 var reviewSchema = mongoose.Schema({
     username: String,

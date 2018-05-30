@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const geodata  = require('../utilities/geodata');
 
+/**
+ * This is just the restaurant schema, self documenting.
+ */
+
 // Restaurant Schema
 var restaurantSchema = mongoose.Schema({
     name: String,
