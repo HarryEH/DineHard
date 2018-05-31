@@ -3,7 +3,6 @@ var session = require('client-sessions');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mailer = require('express-mailer');
 const fs = require('fs');
@@ -41,6 +40,9 @@ server.on('listening', onListening);
  */
 const io = require('socket.io').listen(server);
 
+/**
+ * This code handles the socket-io code
+ */
 io.on('connection', function(socket) {
 
     /**
@@ -129,6 +131,11 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+/**
+ * This is the functionality for forgotten password - this does the emailing.
+ * This isn't actually setup properly as we don't have an email etc etc.
+ */
 mailer.extend(app, {
     from: 'no-reply@example.com',
     host: 'smtp.gmail.com', // hostname
@@ -141,10 +148,6 @@ mailer.extend(app, {
     }
 });
 
-function checkLogin(req, res, next){
-
-}
-
 // error handler
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
@@ -155,9 +158,9 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
 
     if(req.session.user_id === undefined){
-        res.render('error', { loggedIn: checkLogin, forename: "" });
+        res.render('error', { loggedIn: require('utilities/validation').checkLogin(req,res, next), forename: "" });
     } else {
-        res.render('error', { loggedIn: checkLogin, forename: req.session.forename });
+        res.render('error', { loggedIn: require('utilities/validation').checkLogin(req,res, next), forename: req.session.forename });
     }
 
 });
