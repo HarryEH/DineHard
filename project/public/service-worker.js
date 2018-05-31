@@ -107,11 +107,11 @@ self.addEventListener('fetch', function(event) {
                 // Store in IndexedDB if its a POST that failed.
                 idbKeyval.get(KEY_INDEXEDDB).then(function(result){
 
-                    // cloned.text().then(function(text){
-                    //     {url: cloned.url, body: text, method: cloned.method}
+                    cloned.text().then(function(text){
+                        {url: cloned.url, body: text, method: cloned.method}
                         result.push(cloned);
                         idbKeyval.set(KEY_INDEXEDDB, result);
-                    // });
+                    });
 
                 });
 
