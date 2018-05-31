@@ -46,6 +46,8 @@ router.get('/restaurant-*', function(req, res, next) {
  *
  */
 router.post('/restaurant-*', function(req, res, next) {
+    console.log(req.body);
+    console.log(req.query);
     reviewController.createReview(req, res);
 });
 

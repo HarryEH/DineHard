@@ -77,6 +77,8 @@ self.addEventListener('fetch', function(event) {
                 firstTime = false;
                 idbKeyval.get(KEY_INDEXEDDB).then(function(queue){
 
+                    console.log("in here");
+
                     /**
                      * This code is where the requests are sent after they got stored in indexed db.
                      * This only happens after a successful request!
@@ -91,7 +93,8 @@ self.addEventListener('fetch', function(event) {
                                 idbKeyval.set('requests', queue);
                             }).catch(function (err) {
                                 console.log(err);
-                            })
+                            });
+
                         }
                     }
                 });
@@ -107,7 +110,7 @@ self.addEventListener('fetch', function(event) {
                 // Store in IndexedDB if its a POST that failed.
                 idbKeyval.get(KEY_INDEXEDDB).then(function(result){
 
-                    cloned.text().then(function(text){
+                    cloned.json().then(function(text){
                         result.push({url: cloned.url, body: text, method: cloned.method});
                         idbKeyval.set(KEY_INDEXEDDB, result);
                     });
