@@ -108,8 +108,7 @@ self.addEventListener('fetch', function(event) {
                 idbKeyval.get(KEY_INDEXEDDB).then(function(result){
 
                     cloned.text().then(function(text){
-                        {url: cloned.url, body: text, method: cloned.method}
-                        result.push(cloned);
+                        result.push({url: cloned.url, body: text, method: cloned.method});
                         idbKeyval.set(KEY_INDEXEDDB, result);
                     });
 
