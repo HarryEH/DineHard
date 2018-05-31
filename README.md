@@ -1,6 +1,8 @@
 # iw-assignment
 intelligent web assignment
 
+Please cd in the 'project' directory to follow the instructions below.
+
 # Database
 
 Please have a clean database, and no mongo database called 'mydb'...
