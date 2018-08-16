@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add restaurant</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include stylesheets.ejs %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefp0BJY5sxA-EwvtHo6a_Pd5_3gHVBF4&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="javascripts/create-restaurant.js"></script>
+    <script src="/javascripts/create-restaurant-offline.js" ></script>
+    <script src="javascripts/capture.js"></script>
+</head>
+
+<body onload="initialMessageDisplay()">
+<div class="main-wrapper">
+
+    <% include header.ejs %>
+
+    <div class="user-form">
+        <div class ="user-border">
+
+            <div class="user-title">Create Restaurant</div>
+
+            <div class="offline_div soft-highlight" id="offline_div" style="display: none">Despite being offline, creating this restaurant will work!</div>
+
+            <div class = "error"><%= error %></div>
+
+            <div class="user-input-wrapper s-font">
+                <form id="createRestaurantForm" action="/create-restaurant" onsubmit="validateRestaurant();" method="post" enctype="multipart/form-data">
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="nError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='restaurantName'>Restaurant Name:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" placeholder="Enter restaurant name" name="name" id="name">
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="pError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='phoneNo'>Restaurant Telephone Number:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" placeholder="Enter telephone number" name="phoneNo" id="phoneNo">
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="aError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='address'>Restaurant Address:</label>
+                        </div>
+                        <div class="col-7">
+                            <input id="autocomplete" placeholder="Enter and select address" name="address" onFocus="geolocate()" type="text">
+                            </input>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="dnError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for="doorNumber">Door Number:</label>
+                        </div>
+                        <div class="col-7">
+                            <input class="field" name="doorNumber" id="street_number" disabled="true">
+                            </input>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for="streetname">Street Name:</label>
+                        </div>
+                        <div class="col-7">
+                            <input class="field" id="route" disabled="true">
+                            </input>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="pcError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for="postcode">Postcode:</label>
+                        </div>
+                        <div class="col-7">
+                            <input class="field" name="postcode" id="postal_code" disabled="true">
+                            </input>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="purlError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='photo'>Photo URL:</label>
+                        </div>
+                        <div class="col-7">
+                            <div id="photo-upload-area" style="display:block">
+                                <div class="photo-upload"><button onclick="showCapture(event)">Take Photo</button></div>
+                                <div>
+                                    <input type="file" id="image_uploads" name="photo-upload" accept=".png" multiple>
+                                </div>
+                                <div class="photo-upload image-preview" id="preview">
+                                    <p>No files currently selected for upload</p>
+                                </div>
+                            </div>
+                            <div class="contentarea" id="photo-capture-area" style="display:none">
+                                <div><button onclick="showUpload(event)">Upload Photo</button></div>
+                                <div class="camera" id="camera" style="display:block">
+                                    <video id="video">Video stream not available.</video>
+                                    <button id="start-button">Take photo</button>
+                                </div>
+                                <canvas id="canvas">
+                                </canvas>
+                                <div class="output" id="output" style="display: none">
+                                    <img id="photo-capture" alt="The screen capture will appear in this box.">
+                                    <button id="retake-button">Retake photo?</button>
+                                </div>
+                                <input type="text" id="photo-text-source" name="photoCaptureSource" style="display: none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="tError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='tags'>Tags:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" placeholder="Enter comma separated tags e.g cosy, fun" name="tags" id="tags">
+                        </div>
+                    </div>
+
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="cError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='cuisines'>Cuisine:</label>
+                        </div>
+                        <div class="col-7 xs-font">
+                            <div class="create-restauarant-input">
+                                <label class="cuisines">Chinese<br>
+                                    <input type="radio" name="cuisines" value="Chinese">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">English<br>
+                                    <input type="radio" name="cuisines" value="English">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Greek<br>
+                                    <input type="radio" name="cuisines" value="Greek">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Indian<br>
+                                    <input type="radio" name="cuisines" value="Indian">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Italian<br>
+                                    <input type="radio" name="cuisines" value="Italian">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Japanese<br>
+                                    <input type="radio" name="cuisines" value="Japanese">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Korean<br>
+                                    <input type="radio" name="cuisines" value="Korean">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Mexican<br>
+                                    <input type="radio" name="cuisines" value="Mexican">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Spanish<br>
+                                    <input type="radio" name="cuisines" value="Spanish">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Thai<br>
+                                    <input type="radio" name="cuisines" value="Thai">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="cuisines">Turkish<br>
+                                    <input type="radio" name="cuisines" value="Turkish">
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="pError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='price'>Price range:</label>
+                        </div>
+                        <div class="col-7">
+                            <div class="create-restauarant-input">
+                                <select name="price">
+                                    <option value="1">£</option>
+                                    <option value="2">£-££</option>
+                                    <option value="3">££</option>
+                                    <option value="4">££-£££</option>
+                                    <option value="5">£££</option>
+                                    <option value="6">£££-££££</option>
+                                    <option value="7">££££</option>
+                                    <option value="8">£££££</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="wuError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='websiteURL'>Website URL:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" placeholder="Enter website URL" name="websiteURL" id="websiteurl">
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-100">
+                            <div class="form-error" id="deError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row create-restaurant">
+                        <div class="col-5">
+                            <label for='description'>Restaurant Description:</label>
+                        </div>
+                        <div class="col-7">
+                            <div class="create-restauarant-input">
+                                <textarea onkeyup="wordCount()" class="create-restaurant-text-area" rows="8" cols="44" placeholder="Enter restaurant description" name="description" id="description"></textarea>
+                            </div>
+
+                            (100 Words Required) <br> Word Count: <div id="word-count">0</div>
+
+                        </div>
+
+                    </div>
+
+                    <input type="submit" name="g" value="Create" id="g" class="create-restaurant-submit">
+                </form>
+            </div>
+        </div>
+        <div id="results" style="margin-top:30px"></div>
+        <div class="push"></div>
+    </div>
+</div>
+<% include footer.ejs %>
+<script src="javascripts/photo-display.js"></script>
+</body>
+</html>

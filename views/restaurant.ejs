@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include stylesheets.ejs %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApmqRUl9K_tUZmUR-0Rpk0snnYx7XDaMA"></script>
+    <script src="javascripts/google-map-functionality.js"></script>
+    <script src="javascripts/reviewRating.js"></script>
+    <script src="javascripts/price-formatter.js"></script>
+    <script src="javascripts/date-formatter.js"></script>
+    <script src="javascripts/write-review-offline.js"></script>
+    <script src="javascripts/write-review-functionality.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>setupSocket();</script>
+    <title><%= restaurant.name %></title>
+</head>
+
+<body onload="initialMessageDisplay();">
+<div class="main-wrapper">
+
+    <% include header.ejs %>
+
+    <div class="col-100">
+        <div class="restaurant-info m-font">
+            <div class="row">
+                <ul class="inline-list">
+                    <li><p class="restaurant-title-font"><%= restaurant.name %></p></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <ul class="inline-list">
+                    <% if (isNaN(restaurant.noRating) || restaurant.noRating == 0) { %>
+                    <% restaurant.noRating = 1; %>
+                    <% } %>
+                    <li>
+                        <div id="starRating" class="inline"></div>
+                        <div id="ratingText" class="inline"><%= Math.round( restaurant.rating / restaurant.noRating * 100)/100; %>
+                            with <%= reviewCount %> reviews
+                        </div>
+                    </li>
+
+                    <li><%= restaurant.cuisines %></li>
+
+                    <li class="no-wrap">
+                        <div id="resPrice" class="inline">Price</div>
+                    </li>
+
+                    <script>getPrice(<%= restaurant.price %>, "resPrice");</script>
+                </ul>
+            </div>
+
+            <script>getStarRating(<%= restaurant.rating / restaurant.noRating %>, "starRating");</script>
+
+            <div class="row">
+                <ul class="inline-list">
+                    <li><%= restaurant.address %> (<%= restaurant.distance %> kilometers away)</li>
+
+                    <li class="no-wrap">
+                        <span class="glyphicon glyphicon-earphone"></span> <%= restaurant.phoneNo %>
+                    </li>
+
+                    <li class="no-wrap">
+                        <i class="fa fa-laptop"></i>
+                        <a href="<%= restaurant.websiteURL %>" target="_blank"
+                           style="color:black;"><%= restaurant.websiteURL %></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="slideshow-container">
+
+                    <% var resPhotos = restaurant.photoURL.length; %>
+                    <% console.log(resPhotos); %>
+                    <% for (var i = 0; i < resPhotos ; i++) { %>
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="/restaurant/<%= restaurant._id + "-" + i %>/picture">
+                    </div>
+                    <% } %>
+                    <% reviews.forEach(function(review){ %>
+                    <div class="restaurant-img">
+                        <img class="slideshow-img" src="/review/<%= review._id %>/picture">
+                    </div>
+                    <% }); %>
+
+                    <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a id="next" onclick="plusSlides(1)">&#10095;</a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="restaurant-description col-50">
+                    <p class="text"><%= restaurant.description %></p>
+                </div>
+                <div id="mapDiv" class="restaurant-map col-45"></div>
+                <script>addMarkers(<%= restaurant.lat %>, <%= restaurant.lng %>);</script>
+            </div>
+
+            <br>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8">
+                        <h1> Reviews </h1>
+                    </div>
+                    <div class="col-4">
+                        <% if (loggedIn !== false) { %>
+                        <% include create-review.ejs %>
+                        <% } %>
+                    </div>
+                </div>
+
+                <% if (loggedIn === false) { %>
+                <p class="blackLink s-font"><a href="/login">Login</a> to leave a review</p>
+                <% } %>
+
+                <% if (reviewCount < 1){ %>
+                <p class="s-font" id="no-reviews-yet">No reviews yet...</p>
+                <% } %>
+
+                <div id="updateable">
+                    <% var reviewNum = 0; %>
+
+                    <% reviews.forEach(function(review){ %>
+
+                    <% reviewNum += 1; %>
+
+                    <div class="container-fluid">
+
+                        <div class="row reviews s-font">
+
+                            <div class="review-wrapper">
+                                <div class="row">
+                                    <div class="review-header userLink"><a
+                                                href="/view-profile?username=<%= review.username %>"><%= review.username %></a>
+                                    </div>
+                                    <% var divID = "review-date" + reviewNum.toString(); %>
+                                    <div class="review-date align-right" id='<%= divID %>'><%= review.date %></div>
+                                    <script>formatDate(<%= review.date.getDate() %>,<%= review.date.getMonth() %>,<%= review.date.getFullYear() %>, "<%= divID %>");</script>
+                                </div>
+
+                                <div class="row">
+                                    <% divID = "review-star" + reviewNum.toString(); %>
+                                    <div class="col-12" id='<%= divID %>'><%= review.rating %> out of 7 Stars</div>
+                                    <script>getStarRating(<%= review.rating %>, "<%= divID %>");</script>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12"><%= review.review %></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <% }); %>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="push"></div>
+
+</div>
+
+<% include footer.ejs %>
+
+<script src="javascripts/slideshow.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include stylesheets.ejs %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApmqRUl9K_tUZmUR-0Rpk0snnYx7XDaMA"></script>
+    <script src="javascripts/google-map-functionality.js"></script>
+    <script src="javascripts/reviewRating.js"></script>
+    <script src="javascripts/price-formatter.js"></script>
+    <script src="javascripts/results-page-functionality.js"></script>
+
+    <title>Results</title>
+</head>
+
+<body onload="modalMap(<%=JSON.stringify(lat)%>, <%=JSON.stringify(lng)%>, <%=JSON.stringify(results)%>);">
+<div class="main-wrapper">
+
+    <% include header.ejs %>
+
+    <div class="results-wrapper">
+
+        <div class="container-fluid row">
+
+            <div class="results-search col-30 m-font">
+
+                <form class="results-search-form" onsubmit="textQueryAjax(event)">
+                    <div class="col-80">
+                        <input type="text" id="results-keyword" oninput="textQueryAjax(event);" class="results-search-text" placeholder="Enter keyword(s)" value="<%= prevQuery.keyword %>">
+                        <input type="text" id="results-postcode" oninput="textQueryAjax(event);" class="results-search-text" placeholder="Enter postcode" value="<%= prevQuery.postcode %>">
+                    </div>
+                    <div class="col-20">
+                        <input type="submit" id="results-submit" class="results-submit" value="Search">
+                    </div>
+                </form>
+
+                <div class="results-sort m-font">
+                    <p class="inline">Sort by:</p>
+                    <select name="sort" class="inline" id="selectMe" onchange="sortAjax()">
+                        <option value="distance">Distance</option>
+                        <option value="priceL2H">Price: Low to High</option>
+                        <option value="priceH2L">Price: High to Low</option>
+                    </select>
+                </div>
+
+                <div class="results-distance m-font">
+                    <p>Distance from me: <span id="distVal"></span> kilometers</p>
+                    <div class="slidecontainer">
+                        <input type="range" name="distance" min="1" max="25" value="10" class="slider" id="distRange" onchange="sliderAjax(event)">
+                    </div>
+
+                    <button class="map-view" onclick="document.getElementById('map').style.display='block';">View on map</button>
+                </div>
+
+                <!-- Button to open the modal login form -->
+
+            </div>
+
+            <% include results-div.ejs%>
+
+        </div>
+    </div>
+
+    <div class="push"></div>
+
+</div>
+
+    <% include map-modal.ejs%>
+
+    <% include footer.ejs %>
+
+    <script>sliderChange();</script>
+
+</body>
+</html>
