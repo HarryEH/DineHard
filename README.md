@@ -2,6 +2,7 @@
 
 # Run
 `npm install`
+then
 `node app.js`
 
 Will run on localhost:3000/
